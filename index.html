@@ -2248,7 +2248,16 @@ select option {
   <textarea name="message" placeholder="Tell us about your business..." required></textarea>
 
   <!-- Cloudflare Turnstile -->
-  <div class="cf-turnstile" data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"></div>
+ 
+<div class="turnstile-wrapper">
+  <div
+    class="cf-turnstile"
+    data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"
+    data-callback="onTurnstileSuccess"
+    data-error-callback="onTurnstileError"
+    data-expired-callback="onTurnstileExpired"
+  ></div>
+</div>
 
 <button type="submit" class="btn btn-primary" id="formSubmitBtn">Schedule a Consultation</button>
 <div id="formStatus" class="form-status"></div>
@@ -2620,6 +2629,29 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
 
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+function onTurnstileSuccess(token) {
+  console.log("Turnstile token received:", token ? "yes" : "no");
+}
 
+function onTurnstileError(code) {
+  console.error("Turnstile error:", code);
+  const status = document.getElementById("formStatus");
+  if (status) {
+    status.textContent = "Security check failed. Please refresh and try again.";
+    status.style.color = "var(--danger)";
+  }
+
+  if (window.turnstile) {
+    setTimeout(() => turnstile.reset(), 1000);
+  }
+}
+
+function onTurnstileExpired() {
+  if (window.turnstile) {
+    turnstile.reset();
+  }
+}
+</script>
 </body>
 </html>
