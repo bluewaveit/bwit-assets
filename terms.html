@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service | BlueWave IT – Managed IT Services, Algarve</title>
+  <meta name="description" content="BlueWave IT Terms of Service — the legal terms governing use of our managed IT services, website, and client agreements." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg:            #060e1a;
+      --bg-alt:        #0a1523;
+      --bg-card:       rgba(255,255,255,0.038);
+      --bg-card-hover: rgba(255,255,255,0.065);
+      --text:          #eef4fc;
+      --muted:         #7d9ab8;
+      --muted-2:       #a4bdd4;
+      --line:          rgba(255,255,255,0.09);
+      --line-strong:   rgba(255,255,255,0.14);
+      --cyan:          #00c2cb;
+      --cyan-2:        #38d9e8;
+      --cyan-3:        #b2f5ff;
+      --blue:          #0f4c81;
+      --blue-mid:      #1565a8;
+      --green:         #3ee89a;
+      --amber:         #ffcf4e;
+      --danger:        #ff5f5f;
+      --glow-cyan:     rgba(0,194,203,0.22);
+      --shadow:        0 20px 64px rgba(0,0,0,0.50);
+      --shadow-sm:     0 8px 28px rgba(0,0,0,0.30);
+      --shadow-card:   0 4px 24px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.12);
+      --radius:        20px;
+      --radius-sm:     12px;
+      --radius-xs:     8px;
+      --max:           1240px;
+      --header-h:      72px;
+      --font-display:  'Syne', sans-serif;
+      --fd-head:       'Questrial', sans-serif;
+      --font-body:     'DM Sans', sans-serif;
+      --font-mono:     'DM Mono', monospace;
+    }
+
+    body.theme-light {
+      --bg:            #f3f8fd;
+      --bg-alt:        #e8f1fa;
+      --bg-card:       rgba(255,255,255,0.82);
+      --bg-card-hover: rgba(255,255,255,0.96);
+      --text:          #0a1628;
+      --muted:         #4d6b88;
+      --muted-2:       #3d5a74;
+      --line:          rgba(10,22,40,0.09);
+      --line-strong:   rgba(10,22,40,0.15);
+      --glow-cyan:     rgba(0,194,203,0.14);
+      --shadow:        0 20px 64px rgba(10,22,40,0.14);
+      --shadow-sm:     0 8px 28px rgba(10,22,40,0.10);
+      --shadow-card:   0 4px 24px rgba(10,22,40,0.10), 0 1px 4px rgba(10,22,40,0.06);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse 80% 55% at 0% 0%,   rgba(0,194,203,0.13),   transparent 50%),
+        radial-gradient(ellipse 60% 45% at 100% 8%,  rgba(15,76,129,0.12),   transparent 50%),
+        radial-gradient(ellipse 90% 50% at 50% 100%, rgba(15,76,129,0.07),   transparent 60%),
+        linear-gradient(180deg, #060e1a 0%, #07101e 100%);
+      overflow-x: hidden;
+      transition: background 250ms ease, color 250ms ease;
+    }
+    body.theme-light {
+      background:
+        radial-gradient(ellipse 80% 55% at 0% 0%,   rgba(0,194,203,0.07),   transparent 50%),
+        radial-gradient(ellipse 60% 45% at 100% 8%,  rgba(15,76,129,0.06),   transparent 50%),
+        linear-gradient(180deg, #f3f8fd 0%, #edf4fb 100%);
+    }
+
+    h1, h2, h3, h4 { font-family: 'Questrial', sans-serif; margin: 0; font-weight: 400; }
+    h4 { font-family: var(--font-display); font-weight: 600; }
+    a  { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; cursor: pointer; }
+    p { margin: 0; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* ─── REVEAL ─────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 80ms; }
+    .reveal-delay-2 { transition-delay: 160ms; }
+
+    /* ─── HEADER ─────────────────────────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      background: rgba(6, 14, 26, 0.70);
+      border-bottom: 1px solid var(--line);
+      transition: background 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+    }
+    body.theme-light .site-header { background: rgba(243,248,253,0.80); }
+    .site-header.scrolled {
+      background: rgba(6, 14, 26, 0.94);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.30);
+      border-bottom-color: var(--line-strong);
+    }
+    body.theme-light .site-header.scrolled {
+      background: rgba(243,248,253,0.96);
+      box-shadow: 0 8px 32px rgba(10,22,40,0.10);
+    }
+
+    .nav {
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Logo */
+    .logo { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+    .logo-mark {
+      width: 44px; height: 44px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, rgba(0,194,203,0.25), rgba(15,76,129,0.30));
+      border: 1px solid rgba(56,217,232,0.24);
+      box-shadow: 0 0 28px rgba(0,194,203,0.16);
+      display: grid; place-items: center;
+      overflow: hidden; flex: 0 0 auto;
+    }
+    .logo-mark img { width: 86%; height: 86%; object-fit: contain; }
+    .logo-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-wordmark strong {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em;
+    }
+    .logo-wordmark span {
+      color: var(--muted); font-size: 0.74rem;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+
+    /* Nav links */
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a {
+      position: relative; color: var(--muted-2);
+      font-size: 0.95rem; font-weight: 500;
+      padding: 6px 12px; border-radius: var(--radius-xs);
+      transition: color 160ms ease, background 160ms ease;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    body.theme-light .nav-links a:hover { background: rgba(10,22,40,0.05); }
+    .nav-links a.active { color: var(--cyan-2); }
+
+    /* Nav right */
+    .nav-right { display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; }
+
+    .toggle-group {
+      display: inline-flex; gap: 2px; padding: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+    }
+    body.theme-light .toggle-group { background: rgba(10,22,40,0.04); }
+    .toggle-btn {
+      border: 0; background: transparent; color: var(--muted);
+      padding: 6px 12px; border-radius: 999px;
+      font-size: 0.84rem; font-weight: 500; transition: all 180ms ease;
+    }
+    .toggle-btn.active { background: rgba(56,217,232,0.15); color: var(--text); }
+
+    /* CTA button in nav */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 10px 22px; border-radius: 999px;
+      border: 1px solid transparent; font-family: var(--font-display);
+      font-size: 0.88rem; font-weight: 600; letter-spacing: 0.01em;
+      transition: transform 200ms ease, box-shadow 200ms ease,
+                  background 200ms ease, border-color 200ms ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(130deg, #00c2cb 0%, #38d9e8 100%);
+      color: #031922;
+      box-shadow: 0 6px 22px rgba(0,194,203,0.32), inset 0 1px 0 rgba(255,255,255,0.20);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,194,203,0.42), inset 0 1px 0 rgba(255,255,255,0.20);
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none; width: 42px; height: 42px;
+      border-radius: 12px; border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.04); color: var(--text);
+      align-items: center; justify-content: center;
+    }
+    .mobile-menu { display: none; padding: 0 0 14px; }
+    .mobile-menu.open { display: grid; gap: 8px; }
+    .mobile-menu a,
+    .mobile-menu .mobile-menu-theme {
+      padding: 11px 14px; border-radius: 13px;
+      background: var(--bg-card); border: 1px solid var(--line);
+      color: var(--text); display: flex; align-items: center;
+      gap: 10px; font-size: 0.96rem; font-weight: 500;
+    }
+    .mobile-menu .m-row {
+      padding: 11px 14px; border-radius: 13px;
+      background: var(--bg-card); border: 1px solid var(--line);
+      color: var(--text); display: flex; align-items: center;
+      gap: 10px; font-size: 0.96rem; font-weight: 500; flex-wrap: wrap;
+    }
+
+    /* ─── GRADIENT TEXT ──────────────────────────────────────── */
+    .gradient-text {
+      background: linear-gradient(105deg, #4beaf4 0%, #00c2cb 45%, #6af0fc 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    body.theme-light .gradient-text {
+      background: linear-gradient(105deg, #006f80 0%, #007f8f 50%, #009ab0 100%);
+      -webkit-background-clip: text; background-clip: text;
+    }
+
+    /* ─── PAGE HERO ──────────────────────────────────────────── */
+    .page-hero {
+      position: relative; overflow: hidden;
+      padding: 80px 0 60px; isolation: isolate;
+    }
+    .page-hero::before, .page-hero::after {
+      content: ""; position: absolute;
+      border-radius: 50%; pointer-events: none; z-index: -1;
+    }
+    .page-hero::before {
+      width: 480px; height: 480px; right: -140px; top: -80px;
+      background: radial-gradient(circle, rgba(0,194,203,0.12), transparent 60%);
+      filter: blur(40px); animation: floatGlow 12s ease-in-out infinite;
+    }
+    .page-hero::after {
+      width: 320px; height: 320px; left: -80px; bottom: -30px;
+      background: radial-gradient(circle, rgba(56,217,232,0.08), transparent 60%);
+      filter: blur(30px); animation: floatGlow 14s ease-in-out infinite reverse;
+    }
+    @keyframes floatGlow {
+      0%, 100% { transform: translate3d(0,0,0) scale(1); }
+      50%       { transform: translate3d(0,-18px,0) scale(1.05); }
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(56,217,232,0.20);
+      background: rgba(255,255,255,0.03);
+      color: #c6f7ff; font-size: 0.83rem; font-weight: 500; margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--cyan-2); box-shadow: 0 0 0 7px rgba(56,217,232,0.10);
+      flex: 0 0 auto;
+    }
+    body.theme-light .eyebrow { background: rgba(10,22,40,0.04); color: var(--blue-mid); }
+
+    .page-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.02; margin-bottom: 18px;
+    }
+    .page-hero .hero-sub {
+      color: var(--muted-2); font-size: 1.06rem;
+      max-width: 60ch; margin-bottom: 28px;
+    }
+
+    /* Date + version pill */
+    .meta-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 0; }
+    .meta-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 5px 13px; border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line-strong);
+      font-size: 0.80rem; color: var(--muted-2); font-family: var(--font-mono);
+    }
+    .meta-pill svg { width: 13px; height: 13px; stroke: var(--cyan-2); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    body.theme-light .meta-pill { background: rgba(10,22,40,0.04); }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────── */
+    .tos-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 40px;
+      padding: 60px 0 80px;
+      align-items: start;
+    }
+
+    /* ─── SIDEBAR TOC ────────────────────────────────────────── */
+    .tos-sidebar {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+    }
+    .toc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-card);
+    }
+    .toc-title {
+      font-family: var(--font-display);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cyan-3); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .toc-title svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .toc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+    .toc-list a {
+      display: flex; align-items: center; gap: 9px;
+      padding: 7px 10px; border-radius: var(--radius-xs);
+      font-size: 0.84rem; color: var(--muted-2);
+      transition: color 160ms, background 160ms;
+    }
+    .toc-list a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    body.theme-light .toc-list a:hover { background: rgba(10,22,40,0.05); }
+    .toc-list a.active { color: var(--cyan-2); background: rgba(56,217,232,0.08); }
+    .toc-num {
+      width: 20px; height: 20px; border-radius: 6px; flex: 0 0 auto;
+      background: rgba(56,217,232,0.10); border: 1px solid rgba(56,217,232,0.15);
+      display: grid; place-items: center;
+      font-size: 0.68rem; font-weight: 700; font-family: var(--font-mono);
+      color: var(--cyan-3);
+    }
+
+    .toc-divider { height: 1px; background: var(--line); margin: 14px 0; }
+
+    .contact-snippet {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.55;
+    }
+    .contact-snippet strong { color: var(--muted-2); display: block; margin-bottom: 4px; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .contact-snippet a { color: var(--cyan-2); font-weight: 600; }
+    .contact-snippet a:hover { text-decoration: underline; }
+
+    /* ─── MAIN CONTENT ───────────────────────────────────────── */
+    .tos-content { min-width: 0; }
+
+    .tos-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tos-section:last-child {
+      border-bottom: none; margin-bottom: 0;
+    }
+
+    /* Section header row */
+    .tos-section-head {
+      display: flex; align-items: flex-start; gap: 16px;
+      margin-bottom: 22px;
+    }
+    .tos-icon {
+      width: 44px; height: 44px; border-radius: 13px; flex: 0 0 auto;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(0,194,203,0.15), rgba(15,76,129,0.22));
+      border: 1px solid rgba(56,217,232,0.20);
+      color: var(--cyan-3);
+    }
+    .tos-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .tos-section h2 {
+      font-size: 1.45rem; line-height: 1.15;
+      margin-bottom: 4px; letter-spacing: 0.005em;
+    }
+    .tos-section-num {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--cyan-2); font-weight: 500;
+    }
+
+    /* Body text */
+    .tos-body { color: var(--muted-2); line-height: 1.78; }
+    .tos-body p { margin-bottom: 14px; }
+    .tos-body p:last-child { margin-bottom: 0; }
+
+    /* Inline list */
+    .tos-list {
+      list-style: none; margin: 14px 0; padding: 0; display: grid; gap: 9px;
+    }
+    .tos-list li {
+      display: flex; gap: 11px; align-items: flex-start;
+      color: var(--muted-2); font-size: 0.97rem;
+    }
+    .tos-list li svg {
+      width: 16px; height: 16px; stroke: var(--cyan-2); fill: none;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+      flex: 0 0 auto; margin-top: 3px;
+    }
+
+    /* Callout / highlight box */
+    .callout {
+      padding: 18px 22px; border-radius: var(--radius-sm);
+      background: rgba(56,217,232,0.06);
+      border: 1px solid rgba(56,217,232,0.18);
+      display: flex; gap: 14px; align-items: flex-start;
+      margin: 20px 0;
+    }
+    .callout.warn {
+      background: rgba(255,207,78,0.06);
+      border-color: rgba(255,207,78,0.20);
+    }
+    .callout.danger {
+      background: rgba(255,95,95,0.06);
+      border-color: rgba(255,95,95,0.18);
+    }
+    .callout-icon {
+      width: 32px; height: 32px; border-radius: 9px; flex: 0 0 auto;
+      display: grid; place-items: center;
+      background: rgba(56,217,232,0.12);
+      border: 1px solid rgba(56,217,232,0.20);
+      color: var(--cyan-3);
+    }
+    .callout.warn .callout-icon { background: rgba(255,207,78,0.12); border-color: rgba(255,207,78,0.25); color: var(--amber); }
+    .callout.danger .callout-icon { background: rgba(255,95,95,0.10); border-color: rgba(255,95,95,0.22); color: var(--danger); }
+    .callout-icon svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .callout-body { font-size: 0.93rem; color: var(--muted-2); line-height: 1.65; }
+    .callout-body strong { color: var(--text); display: block; margin-bottom: 4px; font-size: 0.9rem; }
+
+    /* Definition table */
+    .def-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.91rem; }
+    .def-table th {
+      font-family: var(--font-display); font-size: 0.74rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--cyan-3); text-align: left;
+      padding: 8px 14px; border-bottom: 1px solid var(--line-strong);
+    }
+    .def-table td {
+      padding: 10px 14px; border-bottom: 1px solid var(--line);
+      color: var(--muted-2); vertical-align: top; line-height: 1.6;
+    }
+    .def-table td:first-child { color: var(--text); font-weight: 500; width: 28%; white-space: nowrap; }
+    .def-table tr:last-child td { border-bottom: none; }
+    .def-table tr:hover td { background: rgba(255,255,255,0.025); }
+
+    /* ─── BAND (section divider bg) ─────────────────────────── */
+    .band { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--line);
+      padding: 52px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .footer-logo {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .footer-brand .footer-logo strong {
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+    }
+    .footer-brand p { color: var(--muted); font-size: 0.91rem; max-width: 38ch; line-height: 1.65; }
+    .footer-col h4 {
+      font-family: var(--font-display); font-size: 0.84rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .footer-col ul a {
+      color: var(--muted-2); font-size: 0.92rem;
+      transition: color 140ms ease;
+    }
+    .footer-col ul a:hover { color: var(--text); }
+    .footer-col ul a.active-link { color: var(--cyan-2); }
+    .footer-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { color: var(--muted); font-size: 0.85rem; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { color: var(--muted); font-size: 0.85rem; transition: color 140ms; }
+    .footer-legal a:hover { color: var(--text); }
+    .footer-legal a.current { color: var(--cyan-2); }
+
+    /* ─── BACK TO TOP ────────────────────────────────────────── */
+    .back-to-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 50;
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(6,14,26,0.88); border: 1px solid var(--line-strong);
+      color: var(--text); display: grid; place-items: center;
+      opacity: 0; transform: translateY(14px); pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
+      backdrop-filter: blur(12px);
+    }
+    .back-to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .back-to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    body.theme-light .back-to-top { background: rgba(255,255,255,0.90); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .nav-cta    { display: none; }
+    }
+    @media (max-width: 900px) {
+      .tos-layout { grid-template-columns: 1fr; }
+      .tos-sidebar { position: static; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .logo-wordmark span { display: none; }
+      .eyebrow { display: none; }
+      .nav-right .toggle-group[aria-label="Theme switcher"] { display: none; }
+      .toggle-btn { padding: 5px 8px; font-size: 0.76rem; }
+      .toggle-group { padding: 3px; }
+      .nav { flex-wrap: wrap; gap: 8px; padding: 8px 0; min-height: unset; }
+      .logo { flex: 1 1 auto; }
+      .nav-right { flex: 0 0 auto; gap: 6px; margin-left: auto; }
+      .page-hero { padding: 56px 0 44px; }
+      .meta-pills { gap: 7px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── HEADER ─────────────────────────────────────────────── -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a href="index.html" class="logo" aria-label="BlueWave IT Home">
+        <div class="logo-mark">
+          <img
+            src="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png"
+            data-dark="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png"
+            data-light="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png"
+            alt="BlueWave IT" class="logo-img" width="38" height="38"
+            style="width:100%;height:100%;object-fit:contain;border-radius:10px;" />
+        </div>
+        <div class="logo-wordmark">
+          <strong>BlueWave IT</strong>
+          <span data-i18n="managed_services_label">Managed IT Services</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html" data-i18n="nav_services">Services</a>
+        <a href="about.html"    data-i18n="nav_about">About</a>
+        <a href="pricing.html"  data-i18n="nav_pricing">Pricing</a>
+        <a href="pricing.html#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <!-- Theme switcher -->
+        <div class="toggle-group" aria-label="Theme switcher">
+          <button class="toggle-btn active" data-theme="dark"  data-i18n="theme_dark">Dark</button>
+          <button class="toggle-btn"        data-theme="light" data-i18n="theme_light">Light</button>
+        </div>
+        <!-- Language switcher -->
+        <div class="toggle-group" aria-label="Language switcher">
+          <button class="toggle-btn active" data-lang="en">EN</button>
+          <button class="toggle-btn"        data-lang="pt">PT</button>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary nav-cta" data-i18n="cta_book">Book a Consultation</a>
+        <!-- Hamburger -->
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6"  x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="about.html"    data-i18n="nav_about">About</a>
+      <a href="pricing.html"  data-i18n="nav_pricing">Pricing</a>
+      <a href="pricing.html#faq" data-i18n="nav_faq">FAQ</a>
+      <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+      <div class="mobile-menu-theme">
+        <div class="toggle-group" aria-label="Theme switcher">
+          <button class="toggle-btn active" data-theme="dark"  data-i18n="theme_dark">Dark</button>
+          <button class="toggle-btn"        data-theme="light" data-i18n="theme_light">Light</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── PAGE HERO ────────────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="container reveal">
+      <div class="eyebrow" data-i18n="tos_eyebrow">Legal &amp; Compliance</div>
+      <h1>
+        <span data-i18n="tos_title_1">Terms of</span>
+        <span class="gradient-text" data-i18n="tos_title_2"> Service</span>
+      </h1>
+      <p class="hero-sub" data-i18n="tos_subtitle">These terms govern the use of BlueWave IT's website and managed IT services. Please read them carefully before engaging our services.</p>
+      <div class="meta-pills">
+        <span class="meta-pill">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span data-i18n="tos_effective">Effective: 1 January 2026</span>
+        </span>
+        <span class="meta-pill">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span data-i18n="tos_version">Version 1.0</span>
+        </span>
+        <span class="meta-pill">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span data-i18n="tos_jurisdiction">Governed by Portuguese Law</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MAIN LAYOUT ───────────────────────────────────────────── -->
+  <main>
+    <div class="container tos-layout">
+
+      <!-- ── SIDEBAR TOC ── -->
+      <aside class="tos-sidebar reveal">
+        <div class="toc-card">
+          <div class="toc-title">
+            <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            <span data-i18n="toc_title">Contents</span>
+          </div>
+          <ul class="toc-list" id="tocList">
+            <li><a href="#definitions"   class="toc-link active"><span class="toc-num">01</span><span data-i18n="toc_1">Definitions</span></a></li>
+            <li><a href="#acceptance"    class="toc-link"><span class="toc-num">02</span><span data-i18n="toc_2">Acceptance of Terms</span></a></li>
+            <li><a href="#services"      class="toc-link"><span class="toc-num">03</span><span data-i18n="toc_3">Services Provided</span></a></li>
+            <li><a href="#client-obligations" class="toc-link"><span class="toc-num">04</span><span data-i18n="toc_4">Client Obligations</span></a></li>
+            <li><a href="#payment"       class="toc-link"><span class="toc-num">05</span><span data-i18n="toc_5">Payment Terms</span></a></li>
+            <li><a href="#ip"            class="toc-link"><span class="toc-num">06</span><span data-i18n="toc_6">Intellectual Property</span></a></li>
+            <li><a href="#data"          class="toc-link"><span class="toc-num">07</span><span data-i18n="toc_7">Data &amp; Privacy</span></a></li>
+            <li><a href="#liability"     class="toc-link"><span class="toc-num">08</span><span data-i18n="toc_8">Limitation of Liability</span></a></li>
+            <li><a href="#termination"   class="toc-link"><span class="toc-num">09</span><span data-i18n="toc_9">Termination</span></a></li>
+            <li><a href="#sla"           class="toc-link"><span class="toc-num">10</span><span data-i18n="toc_10">Service Levels</span></a></li>
+            <li><a href="#governing-law" class="toc-link"><span class="toc-num">11</span><span data-i18n="toc_11">Governing Law</span></a></li>
+            <li><a href="#changes"       class="toc-link"><span class="toc-num">12</span><span data-i18n="toc_12">Changes to Terms</span></a></li>
+            <li><a href="#contact-tos"   class="toc-link"><span class="toc-num">13</span><span data-i18n="toc_13">Contact</span></a></li>
+          </ul>
+          <div class="toc-divider"></div>
+          <div class="contact-snippet">
+            <strong data-i18n="toc_questions">Questions?</strong>
+            <span data-i18n="toc_contact_text">Contact us at </span>
+            <a href="mailto:legal@bluewave-it.pt">legal@bluewave-it.pt</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── CONTENT ── -->
+      <article class="tos-content">
+
+        <!-- ── 01 Definitions ── -->
+        <section class="tos-section reveal" id="definitions">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_1">Section 01</div>
+              <h2 data-i18n="tos_sec_title_1">Definitions</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_def_intro">The following terms are used throughout this document. Understanding them is important for interpreting these Terms of Service.</p>
+            <table class="def-table">
+              <thead>
+                <tr>
+                  <th data-i18n="def_term_col">Term</th>
+                  <th data-i18n="def_meaning_col">Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-i18n="def_t1">"BlueWave IT"</td>
+                  <td data-i18n="def_m1">BlueWave IT, a managed IT services provider operating in the Algarve region of Portugal.</td>
+                </tr>
+                <tr>
+                  <td data-i18n="def_t2">"Client"</td>
+                  <td data-i18n="def_m2">Any individual, company, or organisation that engages BlueWave IT for services or accesses this website.</td>
+                </tr>
+                <tr>
+                  <td data-i18n="def_t3">"Services"</td>
+                  <td data-i18n="def_m3">All managed IT support, cybersecurity, cloud management, backup, network, and consulting services provided by BlueWave IT.</td>
+                </tr>
+                <tr>
+                  <td data-i18n="def_t4">"Agreement"</td>
+                  <td data-i18n="def_m4">The service agreement or proposal accepted between BlueWave IT and the Client, together with these Terms of Service.</td>
+                </tr>
+                <tr>
+                  <td data-i18n="def_t5">"Website"</td>
+                  <td data-i18n="def_m5">The BlueWave IT website and any associated web properties operated by BlueWave IT.</td>
+                </tr>
+                <tr>
+                  <td data-i18n="def_t6">"Personal Data"</td>
+                  <td data-i18n="def_m6">Any information relating to an identified or identifiable natural person as defined under the GDPR.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── 02 Acceptance ── -->
+        <section class="tos-section reveal" id="acceptance">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_2">Section 02</div>
+              <h2 data-i18n="tos_sec_title_2">Acceptance of Terms</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_acc_1">By accessing our website or engaging BlueWave IT's services, you confirm that you have read, understood, and agreed to be bound by these Terms of Service.</p>
+            <p data-i18n="tos_acc_2">If you are entering into this agreement on behalf of a company or other legal entity, you represent that you have the authority to bind that entity to these terms. If you do not have such authority, or do not agree with these terms, you must not use our services.</p>
+            <div class="callout">
+              <div class="callout-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="callout-body">
+                <strong data-i18n="callout_acceptance_title">Binding Agreement</strong>
+                <span data-i18n="callout_acceptance_body">Continued use of our website or services following any update to these terms constitutes acceptance of the revised terms. We recommend reviewing this page periodically.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 03 Services ── -->
+        <section class="tos-section reveal" id="services">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_3">Section 03</div>
+              <h2 data-i18n="tos_sec_title_3">Services Provided</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_svc_intro">BlueWave IT provides managed IT services to small and medium businesses in the Algarve region of Portugal. The scope of services is defined in each Client's service agreement or proposal. Services may include:</p>
+            <ul class="tos-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_svc_1">Managed IT support, helpdesk, and remote troubleshooting</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_svc_2">Endpoint monitoring, patch management, and system maintenance</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_svc_3">Cybersecurity, endpoint protection, email security, and MFA deployment</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_svc_4">Cloud management, Microsoft 365 administration, and backup solutions</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_svc_5">Network infrastructure, firewall management, and Wi-Fi optimization</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_svc_6">IT consulting, roadmap planning, and vendor guidance</span>
+              </li>
+            </ul>
+            <p data-i18n="tos_svc_note">BlueWave IT reserves the right to modify, suspend, or discontinue any service with reasonable notice. Changes to the core scope of a Client's service agreement will be communicated in writing.</p>
+          </div>
+        </section>
+
+        <!-- ── 04 Client Obligations ── -->
+        <section class="tos-section reveal" id="client-obligations">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_4">Section 04</div>
+              <h2 data-i18n="tos_sec_title_4">Client Obligations</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_co_intro">To enable BlueWave IT to deliver services effectively and securely, Clients agree to the following obligations:</p>
+            <ul class="tos-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_co_1">Provide accurate and complete information about your IT environment, users, and business requirements.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_co_2">Grant BlueWave IT the necessary access, credentials, and administrative permissions required to perform managed services.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_co_3">Notify BlueWave IT promptly of any security incidents, suspected breaches, or changes to your IT environment that may affect service delivery.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_co_4">Ensure that end-users within your organisation follow reasonable IT security practices as advised by BlueWave IT.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_co_5">Pay invoices in accordance with the agreed payment schedule and terms.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_co_6">Not use BlueWave IT's services for any unlawful purpose, or in any way that violates applicable Portuguese or EU law.</span>
+              </li>
+            </ul>
+            <div class="callout warn">
+              <div class="callout-icon">
+                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="callout-body">
+                <strong data-i18n="callout_co_title">Access &amp; Cooperation</strong>
+                <span data-i18n="callout_co_body">Failure to provide timely access or cooperation required for service delivery may result in service delays or additional charges. BlueWave IT will not be held liable for failures caused by a Client's non-compliance with these obligations.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 05 Payment ── -->
+        <section class="tos-section reveal" id="payment">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_5">Section 05</div>
+              <h2 data-i18n="tos_sec_title_5">Payment Terms</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_pay_1">BlueWave IT operates on a monthly subscription model. Pricing is defined per user per month as agreed in the Client's service proposal or agreement.</p>
+            <ul class="tos-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_pay_l1">Invoices are issued monthly and are due within 30 days of the invoice date, unless otherwise agreed in writing.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_pay_l2">Pricing is in Euros (EUR) and is exclusive of applicable taxes including VAT (IVA), which will be added to invoices as required by Portuguese law.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_pay_l3">Late payments may incur statutory interest as provided under Portuguese commercial law (Decreto-Lei n.º 62/2013).</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_pay_l4">BlueWave IT reserves the right to suspend services if an account remains in arrears for more than 30 days after the payment due date.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_pay_l5">Pricing may be reviewed annually. Clients will be notified at least 30 days in advance of any changes.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ── 06 IP ── -->
+        <section class="tos-section reveal" id="ip">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_6">Section 06</div>
+              <h2 data-i18n="tos_sec_title_6">Intellectual Property</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_ip_1">All content on the BlueWave IT website — including but not limited to text, graphics, logos, icons, images, and software — is the exclusive property of BlueWave IT and is protected under applicable Portuguese and EU intellectual property law.</p>
+            <p data-i18n="tos_ip_2">Any tools, scripts, templates, processes, or methodologies developed by BlueWave IT in the course of delivering services remain the intellectual property of BlueWave IT, unless explicitly assigned to the Client in writing.</p>
+            <p data-i18n="tos_ip_3">Client data, content, and systems remain the property of the Client at all times. BlueWave IT only accesses Client data to the extent necessary to perform the agreed services.</p>
+          </div>
+        </section>
+
+        <!-- ── 07 Data & Privacy ── -->
+        <section class="tos-section reveal" id="data">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_7">Section 07</div>
+              <h2 data-i18n="tos_sec_title_7">Data &amp; Privacy</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_data_1">BlueWave IT is committed to protecting personal data in accordance with the General Data Protection Regulation (GDPR — Regulation (EU) 2016/679) and the Portuguese data protection legislation (Lei n.º 58/2019).</p>
+            <ul class="tos-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_data_l1">BlueWave IT acts as a data processor for Client personal data encountered during service delivery. The Client acts as the data controller.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_data_l2">Personal data is only processed for the purpose of delivering the agreed services and is not sold, rented, or shared with third parties without consent, except where required by law.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_data_l3">BlueWave IT implements appropriate technical and organisational security measures to protect personal data against unauthorised access, loss, or disclosure.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_data_l4">Clients may request a Data Processing Agreement (DPA) as required under GDPR Article 28. Contact us at legal@bluewave-it.pt.</span>
+              </li>
+            </ul>
+            <p data-i18n="tos_data_privacy_link">For full details on how we handle personal data, please review our <a href="privacy.html" style="color:var(--cyan-2);font-weight:600;" data-i18n="privacy_link_text">Privacy Policy</a>.</p>
+          </div>
+        </section>
+
+        <!-- ── 08 Liability ── -->
+        <section class="tos-section reveal" id="liability">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_8">Section 08</div>
+              <h2 data-i18n="tos_sec_title_8">Limitation of Liability</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_liab_1">BlueWave IT provides services with reasonable skill and care. However, IT systems involve inherent risks, and BlueWave IT does not guarantee uninterrupted or error-free service delivery.</p>
+            <div class="callout danger">
+              <div class="callout-icon">
+                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="callout-body">
+                <strong data-i18n="callout_liab_title">Liability Cap</strong>
+                <span data-i18n="callout_liab_body">To the maximum extent permitted by applicable law, BlueWave IT's total liability to a Client for any claim arising from or related to the services shall not exceed the total fees paid by that Client in the three months preceding the incident giving rise to the claim.</span>
+              </div>
+            </div>
+            <p data-i18n="tos_liab_2">BlueWave IT shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to: loss of data, loss of profits, business interruption, or damage to reputation.</p>
+            <p data-i18n="tos_liab_3">BlueWave IT is not liable for failures caused by circumstances beyond its reasonable control, including but not limited to: power outages, internet service interruptions, acts of third-party vendors, cyberattacks on unmanaged systems, or force majeure events.</p>
+          </div>
+        </section>
+
+        <!-- ── 09 Termination ── -->
+        <section class="tos-section reveal" id="termination">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_9">Section 09</div>
+              <h2 data-i18n="tos_sec_title_9">Termination</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_term_1">Either party may terminate the service agreement by providing 30 days' written notice, unless a different notice period is specified in the Client's service agreement.</p>
+            <ul class="tos-list">
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_term_l1">BlueWave IT may terminate immediately in the event of a material breach by the Client, non-payment of invoices, or use of services for unlawful purposes.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_term_l2">Upon termination, BlueWave IT will provide a reasonable transition period to assist the Client in migrating to alternative support arrangements.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_term_l3">All outstanding invoices become due and payable upon termination regardless of the reason for termination.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="tos_term_l4">BlueWave IT will return or securely delete Client data within 30 days of termination, as instructed by the Client.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ── 10 SLA ── -->
+        <section class="tos-section reveal" id="sla">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_10">Section 10</div>
+              <h2 data-i18n="tos_sec_title_10">Service Levels</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_sla_intro">BlueWave IT is committed to delivering responsive and reliable support. The following response targets apply to standard managed service agreements:</p>
+            <table class="def-table">
+              <thead>
+                <tr>
+                  <th data-i18n="sla_priority">Priority</th>
+                  <th data-i18n="sla_description">Description</th>
+                  <th data-i18n="sla_response">Response Target</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-i18n="sla_p1_name">Critical</td>
+                  <td data-i18n="sla_p1_desc">Complete service outage or security incident affecting business operations</td>
+                  <td data-i18n="sla_p1_resp">Within 1 hour</td>
+                </tr>
+                <tr>
+                  <td data-i18n="sla_p2_name">High</td>
+                  <td data-i18n="sla_p2_desc">Significant issue impacting multiple users or key business functions</td>
+                  <td data-i18n="sla_p2_resp">Within 4 business hours</td>
+                </tr>
+                <tr>
+                  <td data-i18n="sla_p3_name">Medium</td>
+                  <td data-i18n="sla_p3_desc">Single-user issue or degraded performance with workaround available</td>
+                  <td data-i18n="sla_p3_resp">Within 8 business hours</td>
+                </tr>
+                <tr>
+                  <td data-i18n="sla_p4_name">Low</td>
+                  <td data-i18n="sla_p4_desc">General queries, minor issues, or scheduled work requests</td>
+                  <td data-i18n="sla_p4_resp">Within 2 business days</td>
+                </tr>
+              </tbody>
+            </table>
+            <p data-i18n="tos_sla_note">Service levels are targets, not guarantees. Specific SLA commitments and remedies may be defined in individual service agreements.</p>
+          </div>
+        </section>
+
+        <!-- ── 11 Governing Law ── -->
+        <section class="tos-section reveal" id="governing-law">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_11">Section 11</div>
+              <h2 data-i18n="tos_sec_title_11">Governing Law &amp; Jurisdiction</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_law_1">These Terms of Service are governed by and construed in accordance with the laws of Portugal. Any disputes arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the Portuguese courts.</p>
+            <p data-i18n="tos_law_2">Where the Client is a consumer under Portuguese consumer protection law (Lei n.º 24/96), those statutory protections continue to apply in full. Nothing in these terms limits or excludes any rights granted to consumers under applicable Portuguese or EU law.</p>
+            <p data-i18n="tos_law_3">For business clients based within the EU, the applicable provisions of EU Regulation 2016/679 (GDPR) and related EU directives apply alongside Portuguese national law.</p>
+          </div>
+        </section>
+
+        <!-- ── 12 Changes ── -->
+        <section class="tos-section reveal" id="changes">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.8"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_12">Section 12</div>
+              <h2 data-i18n="tos_sec_title_12">Changes to These Terms</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_change_1">BlueWave IT reserves the right to update or modify these Terms of Service at any time. When material changes are made, we will update the "Effective Date" at the top of this page and, where appropriate, notify active Clients by email.</p>
+            <p data-i18n="tos_change_2">Continued use of our services following the posting of updated terms constitutes acceptance of those changes. If you do not agree with a material change, you may terminate your service agreement in accordance with the notice period defined in Section 09.</p>
+          </div>
+        </section>
+
+        <!-- ── 13 Contact ── -->
+        <section class="tos-section reveal" id="contact-tos">
+          <div class="tos-section-head">
+            <div class="tos-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="tos-section-num" data-i18n="tos_sec_num_13">Section 13</div>
+              <h2 data-i18n="tos_sec_title_13">Contact &amp; Legal Notices</h2>
+            </div>
+          </div>
+          <div class="tos-body">
+            <p data-i18n="tos_contact_intro">If you have questions about these Terms of Service, wish to submit a legal notice, or require a Data Processing Agreement, please contact us using the details below:</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px;">
+              <div class="callout" style="margin:0;flex-direction:column;gap:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="callout-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </div>
+                  <strong style="font-size:0.84rem;color:var(--text);" data-i18n="contact_info_email">Email</strong>
+                </div>
+                <a href="mailto:legal@bluewave-it.pt" style="color:var(--cyan-2);font-weight:600;font-size:0.90rem;">legal@bluewave-it.pt</a>
+              </div>
+              <div class="callout" style="margin:0;flex-direction:column;gap:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="callout-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <strong style="font-size:0.84rem;color:var(--text);" data-i18n="contact_info_region">Region</strong>
+                </div>
+                <span style="color:var(--muted-2);font-size:0.90rem;" data-i18n="contact_info_region_val">Algarve, Portugal</span>
+              </div>
+              <div class="callout" style="margin:0;flex-direction:column;gap:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="callout-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <strong style="font-size:0.84rem;color:var(--text);" data-i18n="contact_info_response">Response Time</strong>
+                </div>
+                <span style="color:var(--muted-2);font-size:0.90rem;" data-i18n="contact_info_response_val">Within 2 business days</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-mark" style="width:36px;height:36px;border-radius:10px;">
+              <img src="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png"
+                   data-dark="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png"
+                   data-light="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png"
+                   alt="BlueWave IT" class="logo-img" width="36" height="36"
+                   style="width:100%;height:100%;object-fit:contain;border-radius:9px;" />
+            </div>
+            <strong>BlueWave IT</strong>
+          </div>
+          <p data-i18n="footer_tagline">Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_services_head">Services</h4>
+          <ul>
+            <li><a href="services.html" data-i18n="svc_it_title">Managed IT</a></li>
+            <li><a href="services.html" data-i18n="svc_sec_title">Cybersecurity</a></li>
+            <li><a href="services.html" data-i18n="svc_cloud_title">Cloud Services</a></li>
+            <li><a href="services.html" data-i18n="svc_net_title">Network Management</a></li>
+            <li><a href="services.html" data-i18n="svc_backup_title">Backup &amp; Recovery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_company_head">Company</h4>
+          <ul>
+            <li><a href="about.html"    data-i18n="nav_about">About</a></li>
+            <li><a href="pricing.html"  data-i18n="nav_pricing">Pricing</a></li>
+            <li><a href="index.html#contact" data-i18n="footer_free_assessment">Free Assessment</a></li>
+            <li><a href="privacy.html"  data-i18n="footer_privacy">Privacy Policy</a></li>
+            <li><a href="terms.html"    class="active-link" data-i18n="footer_terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">© 2026 BlueWave IT. Reliable technology for growing businesses.</p>
+        <div class="footer-legal">
+          <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="terms.html" class="current" data-i18n="footer_terms">Terms of Service</a>
+          <a href="privacy.html#gdpr" data-i18n="footer_gdpr">GDPR</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ─── SCRIPTS ───────────────────────────────────────────── -->
+  <script>
+  (function() {
+    /* ── Translations ── */
+    var T = {
+      en: {
+        managed_services_label:'Managed IT Services',
+        nav_services:'Services', nav_about:'About', nav_pricing:'Pricing',
+        nav_faq:'FAQ', nav_contact:'Contact', cta_book:'Book a Consultation',
+        theme_dark:'Dark', theme_light:'Light',
+        footer_tagline:'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
+        footer_services_head:'Services', footer_company_head:'Company',
+        footer_free_assessment:'Free Assessment', footer_privacy:'Privacy Policy',
+        footer_terms:'Terms of Service', footer_gdpr:'GDPR',
+        footer_copy:'© 2026 BlueWave IT. Reliable technology for growing businesses.',
+        svc_it_title:'Managed IT', svc_sec_title:'Cybersecurity',
+        svc_cloud_title:'Cloud Services', svc_net_title:'Network Management',
+        svc_backup_title:'Backup & Recovery',
+        // Page-specific
+        tos_eyebrow:'Legal & Compliance',
+        tos_title_1:'Terms of', tos_title_2:' Service',
+        tos_subtitle:'These terms govern the use of BlueWave IT\'s website and managed IT services. Please read them carefully before engaging our services.',
+        tos_effective:'Effective: 1 January 2026', tos_version:'Version 1.0',
+        tos_jurisdiction:'Governed by Portuguese Law',
+        toc_title:'Contents', toc_questions:'Questions?',
+        toc_contact_text:'Contact us at ',
+        toc_1:'Definitions', toc_2:'Acceptance of Terms', toc_3:'Services Provided',
+        toc_4:'Client Obligations', toc_5:'Payment Terms', toc_6:'Intellectual Property',
+        toc_7:'Data & Privacy', toc_8:'Limitation of Liability', toc_9:'Termination',
+        toc_10:'Service Levels', toc_11:'Governing Law', toc_12:'Changes to Terms',
+        toc_13:'Contact',
+        tos_sec_num_1:'Section 01', tos_sec_title_1:'Definitions',
+        tos_sec_num_2:'Section 02', tos_sec_title_2:'Acceptance of Terms',
+        tos_sec_num_3:'Section 03', tos_sec_title_3:'Services Provided',
+        tos_sec_num_4:'Section 04', tos_sec_title_4:'Client Obligations',
+        tos_sec_num_5:'Section 05', tos_sec_title_5:'Payment Terms',
+        tos_sec_num_6:'Section 06', tos_sec_title_6:'Intellectual Property',
+        tos_sec_num_7:'Section 07', tos_sec_title_7:'Data & Privacy',
+        tos_sec_num_8:'Section 08', tos_sec_title_8:'Limitation of Liability',
+        tos_sec_num_9:'Section 09', tos_sec_title_9:'Termination',
+        tos_sec_num_10:'Section 10', tos_sec_title_10:'Service Levels',
+        tos_sec_num_11:'Section 11', tos_sec_title_11:'Governing Law & Jurisdiction',
+        tos_sec_num_12:'Section 12', tos_sec_title_12:'Changes to These Terms',
+        tos_sec_num_13:'Section 13', tos_sec_title_13:'Contact & Legal Notices',
+        def_term_col:'Term', def_meaning_col:'Meaning',
+        def_t1:'"BlueWave IT"', def_m1:'BlueWave IT, a managed IT services provider operating in the Algarve region of Portugal.',
+        def_t2:'"Client"', def_m2:'Any individual, company, or organisation that engages BlueWave IT for services or accesses this website.',
+        def_t3:'"Services"', def_m3:'All managed IT support, cybersecurity, cloud management, backup, network, and consulting services provided by BlueWave IT.',
+        def_t4:'"Agreement"', def_m4:'The service agreement or proposal accepted between BlueWave IT and the Client, together with these Terms of Service.',
+        def_t5:'"Website"', def_m5:'The BlueWave IT website and any associated web properties operated by BlueWave IT.',
+        def_t6:'"Personal Data"', def_m6:'Any information relating to an identified or identifiable natural person as defined under the GDPR.',
+        tos_def_intro:'The following terms are used throughout this document. Understanding them is important for interpreting these Terms of Service.',
+        tos_acc_1:'By accessing our website or engaging BlueWave IT\'s services, you confirm that you have read, understood, and agreed to be bound by these Terms of Service.',
+        tos_acc_2:'If you are entering into this agreement on behalf of a company or other legal entity, you represent that you have the authority to bind that entity to these terms. If you do not have such authority, or do not agree with these terms, you must not use our services.',
+        callout_acceptance_title:'Binding Agreement',
+        callout_acceptance_body:'Continued use of our website or services following any update to these terms constitutes acceptance of the revised terms. We recommend reviewing this page periodically.',
+        tos_svc_intro:'BlueWave IT provides managed IT services to small and medium businesses in the Algarve region of Portugal. The scope of services is defined in each Client\'s service agreement or proposal. Services may include:',
+        tos_svc_1:'Managed IT support, helpdesk, and remote troubleshooting',
+        tos_svc_2:'Endpoint monitoring, patch management, and system maintenance',
+        tos_svc_3:'Cybersecurity, endpoint protection, email security, and MFA deployment',
+        tos_svc_4:'Cloud management, Microsoft 365 administration, and backup solutions',
+        tos_svc_5:'Network infrastructure, firewall management, and Wi-Fi optimization',
+        tos_svc_6:'IT consulting, roadmap planning, and vendor guidance',
+        tos_svc_note:'BlueWave IT reserves the right to modify, suspend, or discontinue any service with reasonable notice. Changes to the core scope of a Client\'s service agreement will be communicated in writing.',
+        tos_co_intro:'To enable BlueWave IT to deliver services effectively and securely, Clients agree to the following obligations:',
+        tos_co_1:'Provide accurate and complete information about your IT environment, users, and business requirements.',
+        tos_co_2:'Grant BlueWave IT the necessary access, credentials, and administrative permissions required to perform managed services.',
+        tos_co_3:'Notify BlueWave IT promptly of any security incidents, suspected breaches, or changes to your IT environment that may affect service delivery.',
+        tos_co_4:'Ensure that end-users within your organisation follow reasonable IT security practices as advised by BlueWave IT.',
+        tos_co_5:'Pay invoices in accordance with the agreed payment schedule and terms.',
+        tos_co_6:'Not use BlueWave IT\'s services for any unlawful purpose, or in any way that violates applicable Portuguese or EU law.',
+        callout_co_title:'Access & Cooperation',
+        callout_co_body:'Failure to provide timely access or cooperation required for service delivery may result in service delays or additional charges. BlueWave IT will not be held liable for failures caused by a Client\'s non-compliance with these obligations.',
+        tos_pay_1:'BlueWave IT operates on a monthly subscription model. Pricing is defined per user per month as agreed in the Client\'s service proposal or agreement.',
+        tos_pay_l1:'Invoices are issued monthly and are due within 30 days of the invoice date, unless otherwise agreed in writing.',
+        tos_pay_l2:'Pricing is in Euros (EUR) and is exclusive of applicable taxes including VAT (IVA), which will be added to invoices as required by Portuguese law.',
+        tos_pay_l3:'Late payments may incur statutory interest as provided under Portuguese commercial law (Decreto-Lei n.º 62/2013).',
+        tos_pay_l4:'BlueWave IT reserves the right to suspend services if an account remains in arrears for more than 30 days after the payment due date.',
+        tos_pay_l5:'Pricing may be reviewed annually. Clients will be notified at least 30 days in advance of any changes.',
+        tos_ip_1:'All content on the BlueWave IT website — including but not limited to text, graphics, logos, icons, images, and software — is the exclusive property of BlueWave IT and is protected under applicable Portuguese and EU intellectual property law.',
+        tos_ip_2:'Any tools, scripts, templates, processes, or methodologies developed by BlueWave IT in the course of delivering services remain the intellectual property of BlueWave IT, unless explicitly assigned to the Client in writing.',
+        tos_ip_3:'Client data, content, and systems remain the property of the Client at all times. BlueWave IT only accesses Client data to the extent necessary to perform the agreed services.',
+        tos_data_1:'BlueWave IT is committed to protecting personal data in accordance with the General Data Protection Regulation (GDPR — Regulation (EU) 2016/679) and the Portuguese data protection legislation (Lei n.º 58/2019).',
+        tos_data_l1:'BlueWave IT acts as a data processor for Client personal data encountered during service delivery. The Client acts as the data controller.',
+        tos_data_l2:'Personal data is only processed for the purpose of delivering the agreed services and is not sold, rented, or shared with third parties without consent, except where required by law.',
+        tos_data_l3:'BlueWave IT implements appropriate technical and organisational security measures to protect personal data against unauthorised access, loss, or disclosure.',
+        tos_data_l4:'Clients may request a Data Processing Agreement (DPA) as required under GDPR Article 28. Contact us at legal@bluewave-it.pt.',
+        tos_data_privacy_link:'For full details on how we handle personal data, please review our ',
+        privacy_link_text:'Privacy Policy',
+        tos_liab_1:'BlueWave IT provides services with reasonable skill and care. However, IT systems involve inherent risks, and BlueWave IT does not guarantee uninterrupted or error-free service delivery.',
+        callout_liab_title:'Liability Cap',
+        callout_liab_body:'To the maximum extent permitted by applicable law, BlueWave IT\'s total liability to a Client for any claim arising from or related to the services shall not exceed the total fees paid by that Client in the three months preceding the incident giving rise to the claim.',
+        tos_liab_2:'BlueWave IT shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to: loss of data, loss of profits, business interruption, or damage to reputation.',
+        tos_liab_3:'BlueWave IT is not liable for failures caused by circumstances beyond its reasonable control, including but not limited to: power outages, internet service interruptions, acts of third-party vendors, cyberattacks on unmanaged systems, or force majeure events.',
+        tos_term_1:'Either party may terminate the service agreement by providing 30 days\' written notice, unless a different notice period is specified in the Client\'s service agreement.',
+        tos_term_l1:'BlueWave IT may terminate immediately in the event of a material breach by the Client, non-payment of invoices, or use of services for unlawful purposes.',
+        tos_term_l2:'Upon termination, BlueWave IT will provide a reasonable transition period to assist the Client in migrating to alternative support arrangements.',
+        tos_term_l3:'All outstanding invoices become due and payable upon termination regardless of the reason for termination.',
+        tos_term_l4:'BlueWave IT will return or securely delete Client data within 30 days of termination, as instructed by the Client.',
+        tos_sla_intro:'BlueWave IT is committed to delivering responsive and reliable support. The following response targets apply to standard managed service agreements:',
+        sla_priority:'Priority', sla_description:'Description', sla_response:'Response Target',
+        sla_p1_name:'Critical', sla_p1_desc:'Complete service outage or security incident affecting business operations', sla_p1_resp:'Within 1 hour',
+        sla_p2_name:'High', sla_p2_desc:'Significant issue impacting multiple users or key business functions', sla_p2_resp:'Within 4 business hours',
+        sla_p3_name:'Medium', sla_p3_desc:'Single-user issue or degraded performance with workaround available', sla_p3_resp:'Within 8 business hours',
+        sla_p4_name:'Low', sla_p4_desc:'General queries, minor issues, or scheduled work requests', sla_p4_resp:'Within 2 business days',
+        tos_sla_note:'Service levels are targets, not guarantees. Specific SLA commitments and remedies may be defined in individual service agreements.',
+        tos_law_1:'These Terms of Service are governed by and construed in accordance with the laws of Portugal. Any disputes arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the Portuguese courts.',
+        tos_law_2:'Where the Client is a consumer under Portuguese consumer protection law (Lei n.º 24/96), those statutory protections continue to apply in full. Nothing in these terms limits or excludes any rights granted to consumers under applicable Portuguese or EU law.',
+        tos_law_3:'For business clients based within the EU, the applicable provisions of EU Regulation 2016/679 (GDPR) and related EU directives apply alongside Portuguese national law.',
+        tos_change_1:'BlueWave IT reserves the right to update or modify these Terms of Service at any time. When material changes are made, we will update the "Effective Date" at the top of this page and, where appropriate, notify active Clients by email.',
+        tos_change_2:'Continued use of our services following the posting of updated terms constitutes acceptance of those changes. If you do not agree with a material change, you may terminate your service agreement in accordance with the notice period defined in Section 09.',
+        tos_contact_intro:'If you have questions about these Terms of Service, wish to submit a legal notice, or require a Data Processing Agreement, please contact us using the details below:',
+        contact_info_email:'Email', contact_info_region:'Region', contact_info_region_val:'Algarve, Portugal',
+        contact_info_response:'Response Time', contact_info_response_val:'Within 2 business days'
+      },
+      pt: {
+        managed_services_label:'Serviços IT Geridos',
+        nav_services:'Serviços', nav_about:'Sobre', nav_pricing:'Preços',
+        nav_faq:'FAQ', nav_contact:'Contacto', cta_book:'Marcar Consulta',
+        theme_dark:'Escuro', theme_light:'Claro',
+        footer_tagline:'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
+        footer_services_head:'Serviços', footer_company_head:'Empresa',
+        footer_free_assessment:'Avaliação Gratuita', footer_privacy:'Política de Privacidade',
+        footer_terms:'Termos de Serviço', footer_gdpr:'RGPD',
+        footer_copy:'© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
+        svc_it_title:'IT Gerido', svc_sec_title:'Cibersegurança',
+        svc_cloud_title:'Serviços Cloud', svc_net_title:'Gestão de Rede',
+        svc_backup_title:'Backup e Recuperação',
+        // Page-specific PT
+        tos_eyebrow:'Legal e Conformidade',
+        tos_title_1:'Termos de', tos_title_2:' Serviço',
+        tos_subtitle:'Estes termos regem a utilização do website e dos serviços de IT geridos da BlueWave IT. Por favor, leia-os atentamente antes de contratar os nossos serviços.',
+        tos_effective:'Vigente desde: 1 de janeiro de 2026', tos_version:'Versão 1.0',
+        tos_jurisdiction:'Regido pela Lei Portuguesa',
+        toc_title:'Índice', toc_questions:'Dúvidas?',
+        toc_contact_text:'Contacte-nos em ',
+        toc_1:'Definições', toc_2:'Aceitação dos Termos', toc_3:'Serviços Prestados',
+        toc_4:'Obrigações do Cliente', toc_5:'Condições de Pagamento', toc_6:'Propriedade Intelectual',
+        toc_7:'Dados e Privacidade', toc_8:'Limitação de Responsabilidade', toc_9:'Rescisão',
+        toc_10:'Níveis de Serviço', toc_11:'Lei Aplicável', toc_12:'Alterações aos Termos',
+        toc_13:'Contacto',
+        tos_sec_num_1:'Secção 01', tos_sec_title_1:'Definições',
+        tos_sec_num_2:'Secção 02', tos_sec_title_2:'Aceitação dos Termos',
+        tos_sec_num_3:'Secção 03', tos_sec_title_3:'Serviços Prestados',
+        tos_sec_num_4:'Secção 04', tos_sec_title_4:'Obrigações do Cliente',
+        tos_sec_num_5:'Secção 05', tos_sec_title_5:'Condições de Pagamento',
+        tos_sec_num_6:'Secção 06', tos_sec_title_6:'Propriedade Intelectual',
+        tos_sec_num_7:'Secção 07', tos_sec_title_7:'Dados e Privacidade',
+        tos_sec_num_8:'Secção 08', tos_sec_title_8:'Limitação de Responsabilidade',
+        tos_sec_num_9:'Secção 09', tos_sec_title_9:'Rescisão',
+        tos_sec_num_10:'Secção 10', tos_sec_title_10:'Níveis de Serviço',
+        tos_sec_num_11:'Secção 11', tos_sec_title_11:'Lei Aplicável e Jurisdição',
+        tos_sec_num_12:'Secção 12', tos_sec_title_12:'Alterações a Estes Termos',
+        tos_sec_num_13:'Secção 13', tos_sec_title_13:'Contacto e Notificações Legais',
+        def_term_col:'Termo', def_meaning_col:'Significado',
+        def_t1:'"BlueWave IT"', def_m1:'BlueWave IT, prestador de serviços de IT geridos a operar na região do Algarve, Portugal.',
+        def_t2:'"Cliente"', def_m2:'Qualquer pessoa singular, empresa ou organização que contrate a BlueWave IT para serviços ou aceda a este website.',
+        def_t3:'"Serviços"', def_m3:'Todos os serviços de suporte IT gerido, cibersegurança, gestão cloud, backup, rede e consultoria prestados pela BlueWave IT.',
+        def_t4:'"Acordo"', def_m4:'O contrato de serviços ou proposta aceite entre a BlueWave IT e o Cliente, juntamente com estes Termos de Serviço.',
+        def_t5:'"Website"', def_m5:'O website da BlueWave IT e quaisquer outras propriedades web operadas pela BlueWave IT.',
+        def_t6:'"Dados Pessoais"', def_m6:'Qualquer informação relativa a uma pessoa singular identificada ou identificável, conforme definido no RGPD.',
+        tos_def_intro:'Os seguintes termos são utilizados ao longo deste documento. A sua compreensão é fundamental para a correta interpretação destes Termos de Serviço.',
+        tos_acc_1:'Ao aceder ao nosso website ou contratar os serviços da BlueWave IT, confirma que leu, compreendeu e aceitou ficar vinculado por estes Termos de Serviço.',
+        tos_acc_2:'Se celebrar este acordo em nome de uma empresa ou outra entidade legal, declara ter autoridade para vincular essa entidade a estes termos. Se não tiver essa autoridade, ou não concordar com estes termos, não deve utilizar os nossos serviços.',
+        callout_acceptance_title:'Acordo Vinculativo',
+        callout_acceptance_body:'A utilização continuada do nosso website ou serviços após qualquer atualização a estes termos constitui aceitação dos termos revistos. Recomendamos a consulta periódica desta página.',
+        tos_svc_intro:'A BlueWave IT presta serviços de IT gerido a pequenas e médias empresas na região do Algarve, Portugal. O âmbito dos serviços é definido no contrato ou proposta de serviços de cada Cliente. Os serviços podem incluir:',
+        tos_svc_1:'Suporte IT gerido, helpdesk e resolução remota de problemas',
+        tos_svc_2:'Monitorização de endpoints, gestão de patches e manutenção de sistemas',
+        tos_svc_3:'Cibersegurança, proteção de endpoints, segurança de email e implementação de MFA',
+        tos_svc_4:'Gestão cloud, administração Microsoft 365 e soluções de backup',
+        tos_svc_5:'Infraestrutura de rede, gestão de firewalls e otimização Wi-Fi',
+        tos_svc_6:'Consultoria IT, planeamento de roadmap e orientação de fornecedores',
+        tos_svc_note:'A BlueWave IT reserva-se o direito de modificar, suspender ou descontinuar qualquer serviço com aviso prévio razoável. As alterações ao âmbito principal do contrato de um Cliente serão comunicadas por escrito.',
+        tos_co_intro:'Para permitir que a BlueWave IT preste serviços de forma eficaz e segura, os Clientes aceitam as seguintes obrigações:',
+        tos_co_1:'Fornecer informações precisas e completas sobre o seu ambiente IT, utilizadores e requisitos de negócio.',
+        tos_co_2:'Conceder à BlueWave IT os acessos, credenciais e permissões administrativas necessárias para a prestação dos serviços geridos.',
+        tos_co_3:'Notificar a BlueWave IT prontamente de quaisquer incidentes de segurança, suspeitas de violação ou alterações ao ambiente IT que possam afetar a prestação do serviço.',
+        tos_co_4:'Garantir que os utilizadores finais da sua organização seguem boas práticas de segurança IT conforme orientado pela BlueWave IT.',
+        tos_co_5:'Pagar as faturas de acordo com o calendário e condições de pagamento acordados.',
+        tos_co_6:'Não utilizar os serviços da BlueWave IT para qualquer fim ilegal ou de forma que viole a legislação portuguesa ou da UE aplicável.',
+        callout_co_title:'Acesso e Cooperação',
+        callout_co_body:'A falta de acesso ou cooperação atempada necessários para a prestação do serviço pode resultar em atrasos ou encargos adicionais. A BlueWave IT não será responsável por falhas causadas pelo incumprimento destas obrigações por parte do Cliente.',
+        tos_pay_1:'A BlueWave IT opera com um modelo de subscrição mensal. O preço é definido por utilizador por mês, conforme acordado na proposta ou contrato de serviços do Cliente.',
+        tos_pay_l1:'As faturas são emitidas mensalmente e têm prazo de pagamento de 30 dias a contar da data da fatura, salvo acordo escrito em contrário.',
+        tos_pay_l2:'Os preços são em Euros (EUR) e excluem impostos aplicáveis, incluindo IVA, que será adicionado às faturas conforme exigido pela lei portuguesa.',
+        tos_pay_l3:'Os pagamentos em atraso podem incorrer em juros legais nos termos da lei comercial portuguesa (Decreto-Lei n.º 62/2013).',
+        tos_pay_l4:'A BlueWave IT reserva-se o direito de suspender os serviços se uma conta permanecer em dívida por mais de 30 dias após a data de vencimento.',
+        tos_pay_l5:'Os preços podem ser revistos anualmente. Os Clientes serão notificados com pelo menos 30 dias de antecedência sobre quaisquer alterações.',
+        tos_ip_1:'Todo o conteúdo do website da BlueWave IT — incluindo, sem limitação, textos, gráficos, logótipos, ícones, imagens e software — é propriedade exclusiva da BlueWave IT e está protegido pela lei de propriedade intelectual portuguesa e da UE aplicável.',
+        tos_ip_2:'Quaisquer ferramentas, scripts, modelos, processos ou metodologias desenvolvidos pela BlueWave IT no âmbito da prestação de serviços permanecem propriedade intelectual da BlueWave IT, salvo atribuição expressa e por escrito ao Cliente.',
+        tos_ip_3:'Os dados, conteúdos e sistemas do Cliente permanecem sempre propriedade do Cliente. A BlueWave IT apenas acede aos dados do Cliente na medida necessária para a prestação dos serviços acordados.',
+        tos_data_1:'A BlueWave IT está empenhada na proteção de dados pessoais em conformidade com o Regulamento Geral de Proteção de Dados (RGPD — Regulamento (UE) 2016/679) e a legislação de proteção de dados portuguesa (Lei n.º 58/2019).',
+        tos_data_l1:'A BlueWave IT atua como subcontratante dos dados pessoais do Cliente encontrados durante a prestação do serviço. O Cliente atua como responsável pelo tratamento.',
+        tos_data_l2:'Os dados pessoais são tratados apenas para efeitos da prestação dos serviços acordados e não são vendidos, alugados ou partilhados com terceiros sem consentimento, exceto quando exigido por lei.',
+        tos_data_l3:'A BlueWave IT implementa medidas de segurança técnicas e organizacionais adequadas para proteger os dados pessoais contra acesso não autorizado, perda ou divulgação.',
+        tos_data_l4:'Os Clientes podem solicitar um Contrato de Subcontratação de Tratamento de Dados (DPA) conforme exigido pelo Artigo 28.º do RGPD. Contacte-nos em legal@bluewave-it.pt.',
+        tos_data_privacy_link:'Para mais detalhes sobre como tratamos os dados pessoais, consulte a nossa ',
+        privacy_link_text:'Política de Privacidade',
+        tos_liab_1:'A BlueWave IT presta serviços com razoável competência e cuidado. No entanto, os sistemas IT envolvem riscos inerentes e a BlueWave IT não garante a prestação do serviço sem interrupções ou erros.',
+        callout_liab_title:'Limite de Responsabilidade',
+        callout_liab_body:'Na máxima medida permitida pela lei aplicável, a responsabilidade total da BlueWave IT perante um Cliente por qualquer reclamação decorrente dos serviços não excederá o total das honorários pagos por esse Cliente nos três meses anteriores ao incidente que deu origem à reclamação.',
+        tos_liab_2:'A BlueWave IT não será responsável por danos indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo, mas não se limitando a: perda de dados, perda de lucros, interrupção de negócio ou danos à reputação.',
+        tos_liab_3:'A BlueWave IT não é responsável por falhas causadas por circunstâncias fora do seu controlo razoável, incluindo, mas não se limitando a: falhas de energia, interrupções de serviços de internet, atos de fornecedores terceiros, ciberataques em sistemas não geridos ou casos de força maior.',
+        tos_term_1:'Qualquer das partes pode rescindir o contrato de serviços mediante aviso prévio escrito de 30 dias, salvo se um prazo diferente estiver especificado no contrato de serviços do Cliente.',
+        tos_term_l1:'A BlueWave IT pode rescindir imediatamente em caso de incumprimento material pelo Cliente, falta de pagamento de faturas ou utilização dos serviços para fins ilegais.',
+        tos_term_l2:'Após a rescisão, a BlueWave IT proporcionará um período de transição razoável para auxiliar o Cliente na migração para outros prestadores de suporte.',
+        tos_term_l3:'Todas as faturas em aberto tornam-se imediatamente exigíveis e pagáveis na rescisão, independentemente do motivo.',
+        tos_term_l4:'A BlueWave IT devolverá ou eliminará de forma segura os dados do Cliente no prazo de 30 dias após a rescisão, conforme instruído pelo Cliente.',
+        tos_sla_intro:'A BlueWave IT está empenhada na prestação de um suporte responsivo e fiável. Os seguintes objetivos de resposta aplicam-se aos contratos de serviços geridos padrão:',
+        sla_priority:'Prioridade', sla_description:'Descrição', sla_response:'Objetivo de Resposta',
+        sla_p1_name:'Crítico', sla_p1_desc:'Interrupção total do serviço ou incidente de segurança com impacto nas operações de negócio', sla_p1_resp:'Dentro de 1 hora',
+        sla_p2_name:'Alto', sla_p2_desc:'Problema significativo que afeta múltiplos utilizadores ou funções críticas de negócio', sla_p2_resp:'Dentro de 4 horas úteis',
+        sla_p3_name:'Médio', sla_p3_desc:'Problema de utilizador único ou desempenho degradado com solução alternativa disponível', sla_p3_resp:'Dentro de 8 horas úteis',
+        sla_p4_name:'Baixo', sla_p4_desc:'Consultas gerais, problemas menores ou pedidos de trabalho agendado', sla_p4_resp:'Dentro de 2 dias úteis',
+        tos_sla_note:'Os níveis de serviço são objetivos, não garantias. Compromissos SLA específicos e respetivos recursos podem ser definidos nos contratos de serviços individuais.',
+        tos_law_1:'Estes Termos de Serviço são regidos e interpretados de acordo com a lei portuguesa. Quaisquer litígios decorrentes ou relacionados com estes termos ficam sujeitos à jurisdição exclusiva dos tribunais portugueses.',
+        tos_law_2:'Quando o Cliente seja um consumidor ao abrigo da lei de defesa do consumidor portuguesa (Lei n.º 24/96), essas proteções legais continuam a ser aplicadas integralmente. Nada nestes termos limita ou exclui quaisquer direitos concedidos aos consumidores ao abrigo da lei portuguesa ou da UE aplicável.',
+        tos_law_3:'Para clientes empresariais sediados na UE, as disposições aplicáveis do Regulamento (UE) 2016/679 (RGPD) e das diretivas europeias relacionadas aplicam-se juntamente com a lei nacional portuguesa.',
+        tos_change_1:'A BlueWave IT reserva-se o direito de atualizar ou modificar estes Termos de Serviço a qualquer momento. Quando forem efetuadas alterações materiais, a "Data de Entrada em Vigor" no topo desta página será atualizada e, quando adequado, os Clientes ativos serão notificados por e-mail.',
+        tos_change_2:'A utilização continuada dos nossos serviços após a publicação de termos atualizados constitui aceitação dessas alterações. Se não concordar com uma alteração material, pode rescindir o seu contrato de serviços de acordo com o prazo de aviso prévio definido na Secção 09.',
+        tos_contact_intro:'Se tiver dúvidas sobre estes Termos de Serviço, desejar enviar uma notificação legal ou necessitar de um Contrato de Subcontratação de Dados, contacte-nos através dos detalhes abaixo:',
+        contact_info_email:'E-mail', contact_info_region:'Região', contact_info_region_val:'Algarve, Portugal',
+        contact_info_response:'Tempo de Resposta', contact_info_response_val:'Dentro de 2 dias úteis'
+      }
+    };
+
+    var currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var k = el.dataset.i18n;
+        if (T[lang] && T[lang][k] !== undefined) el.textContent = T[lang][k];
+      });
+      document.querySelectorAll('[data-lang]').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+    }
+
+    function setTheme(theme) {
+      document.body.classList.toggle('theme-light', theme === 'light');
+      document.querySelectorAll('.logo-img').forEach(function(img) {
+        img.src = (theme === 'light') ? img.dataset.light : img.dataset.dark;
+      });
+      document.querySelectorAll('[data-theme]').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.theme === theme);
+      });
+    }
+
+    // Language buttons
+    document.querySelectorAll('[data-lang]').forEach(function(b) {
+      b.addEventListener('click', function() { setLanguage(b.dataset.lang); });
+    });
+
+    // Theme buttons
+    document.querySelectorAll('[data-theme]').forEach(function(b) {
+      b.addEventListener('click', function() { setTheme(b.dataset.theme); });
+    });
+
+    // Mobile menu
+    var navToggle  = document.getElementById('navToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (navToggle) {
+      navToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('open');
+        var open = mobileMenu.classList.contains('open');
+        navToggle.innerHTML = open
+          ? '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+          : '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+      });
+      document.querySelectorAll('.mobile-menu a').forEach(function(l) {
+        l.addEventListener('click', function() {
+          mobileMenu.classList.remove('open');
+          navToggle.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+        });
+      });
+    }
+
+    // Scroll header + back to top
+    var header   = document.getElementById('siteHeader');
+    var backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 16);
+      backToTop.classList.toggle('show', window.scrollY > 400);
+      // Update active TOC item
+      updateActiveToc();
+    });
+    if (backToTop) {
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Reveal on scroll
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) e.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+    // TOC active section tracking
+    var sections = document.querySelectorAll('.tos-section');
+    var tocLinks = document.querySelectorAll('.toc-link');
+
+    function updateActiveToc() {
+      var scrollY = window.scrollY + 120;
+      var active = null;
+      sections.forEach(function(sec) {
+        if (sec.offsetTop <= scrollY) active = sec.id;
+      });
+      tocLinks.forEach(function(link) {
+        var href = link.getAttribute('href').replace('#', '');
+        link.classList.toggle('active', href === active);
+      });
+    }
+    updateActiveToc();
+
+  })();
+  </script>
+</body>
+</html>
