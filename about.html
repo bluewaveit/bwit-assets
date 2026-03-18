@@ -616,7 +616,7 @@
       position: absolute;
       inset: 0;
       z-index: -2;
-      background-image: url('https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/hero_dark_bg_.png');
+      background-image: url('images/hero_dark_bg_.png');
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
@@ -633,7 +633,7 @@
       pointer-events: none;
     }
     body.theme-light .hero-bg-img {
-      background-image: url('https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/hero_light_bg_.png');
+      background-image: url('images/hero_light_bg_.png');
       opacity: 0.22;
       mix-blend-mode: multiply;
     }
@@ -646,19 +646,19 @@
     <div class="container nav">
       <a href="index.html" class="logo" aria-label="BlueWave IT Home">
         <div class="logo-mark">
-          <img src="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-dark="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-light="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
+          <img src="images/logo_dark.png" data-dark="images/logo_dark.png" data-light="images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
         </div>
         <div class="logo-wordmark">
           <strong>BlueWave IT</strong>
           <span data-i18n="nav_label">Managed IT Services</span>
         </div>
       </a>
-      <nav class="nav-links">
-        <a href="index.html"     data-i18n="nav_home">Home</a>
-        <a href="services.html"  data-i18n="nav_services">Services</a>
-        <a href="about.html" class="active" data-i18n="nav_about">About</a>
-        <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
-        <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html" data-i18n="nav_services">Services</a>
+        <a href="about.html"   class="active" data-i18n="nav_about">About</a>
+        <a href="pricing.html"  data-i18n="nav_pricing">Pricing</a>
+        <a href="pricing.html#faq"      data-i18n="nav_faq">FAQ</a>
+        <a href="contact.html"  data-i18n="nav_contact">Contact</a>
       </nav>
       <div class="nav-right">
         <div class="tog nav-theme-tog" aria-label="Theme switcher">
@@ -1615,7 +1615,7 @@
         <div class="footer-brand">
           <div class="footer-logo-row">
             <div class="logo-mark" style="width:36px;height:36px;border-radius:10px;background:transparent;border:none;box-shadow:none;">
-          <img src="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-dark="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-light="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
+          <img src="images/logo_dark.png" data-dark="images/logo_dark.png" data-light="images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
         </div>
             <strong>BlueWave IT</strong>
           </div>
@@ -1647,9 +1647,9 @@
       <div class="footer-bottom">
         <span data-i18n="ft_copy">© 2026 BlueWave IT. Reliable technology for growing businesses.</span>
         <div class="footer-legal">
-          <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
-          <a href="terms.html" data-i18n="footer_terms">Terms and Conditions</a>
-          <a href="GDPR.html" data-i18n="footer_gdpr">GDPR</a>
+          <a href="privacy.html" data-i18n="ft_privacy">Privacy Policy</a>
+          <a href="terms.html" data-i18n="ft_terms">Terms and Conditions</a>
+          <a href="GDPR.html" data-i18n="ft_gdpr">GDPR</a>
 
         </div>
       </div>
@@ -1757,7 +1757,7 @@
       ft_s1:'Managed IT', ft_s2:'Cybersecurity', ft_s3:'Cloud & M365', ft_s4:'Backup & Recovery', ft_s5:'Network Management', ft_s6:'IT Consulting',
       ft_c1:'Home', ft_c2:'About', ft_c3:'Pricing', ft_c4:'FAQ', ft_c5:'Contact',
       ft_copy:'© 2026 BlueWave IT. Reliable technology for growing businesses.',
-      ft_privacy:'Privacy Policy', ft_gdpr:'GDPR',
+      ft_privacy:'Privacy Policy', ft_gdpr:'GDPR', ft_terms:'Terms and Conditions',
     },
     pt: {
       nav_label:'Serviços IT Geridos', nav_home:'Início', nav_services:'Serviços', nav_about:'Sobre', nav_pricing:'Preços', nav_contact:'Contacto', cta_book:'Marcar Consulta',
@@ -1856,7 +1856,7 @@
       ft_s1:'IT Gerido', ft_s2:'Cibersegurança', ft_s3:'Cloud e M365', ft_s4:'Backup e Recuperação', ft_s5:'Gestão de Rede', ft_s6:'Consultoria IT',
       ft_c1:'Início', ft_c2:'Sobre', ft_c3:'Preços', ft_c4:'FAQ', ft_c5:'Contacto',
       ft_copy:'© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
-      ft_privacy:'Política de Privacidade', ft_gdpr:'RGPD',
+      ft_privacy:'Política de Privacidade', ft_gdpr:'RGPD',ft_terms:'Termos e Condições', 
     }
   };
 
@@ -2021,8 +2021,8 @@
 
   /* logo: set correct src for initial theme */
   (function(){
-    var dark  = 'https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png';
-    var light = 'https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png';
+    var dark  = 'images/logo_dark.png';
+    var light = 'images/logo_light.png';
     var isL = document.body.classList.contains('theme-light');
     document.querySelectorAll('.logo-img').forEach(function(img){
       img.src = isL ? light : dark;

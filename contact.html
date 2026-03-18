@@ -841,22 +841,24 @@
         </div>
       </a>
 
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="services.html" data-i18n="nav_services">Services</a>
         <a href="about.html"    data-i18n="nav_about">About</a>
         <a href="pricing.html"  data-i18n="nav_pricing">Pricing</a>
-        <a href="contact.html"  data-i18n="nav_contact" class="active">Contact</a>
-      </div>
+        <a href="pricing.html#faq"      data-i18n="nav_faq">FAQ</a>
+        <a href="contact.html" class="active" data-i18n="nav_contact">Contact</a>
+      </nav>
 
       <div class="nav-right">
+        <div class="toggle-group" role="group" aria-label="Theme">
+          <button class="toggle-btn" data-theme="dark"  data-i18n="theme_dark">Dark</button>
+          <button class="toggle-btn" data-theme="light" data-i18n="theme_light">Light</button>
+        </div> 
         <div class="toggle-group" role="group" aria-label="Language">
           <button class="toggle-btn" data-lang="en">EN</button>
           <button class="toggle-btn" data-lang="pt">PT</button>
         </div>
-        <div class="toggle-group" role="group" aria-label="Theme">
-          <button class="toggle-btn" data-theme="dark"  data-i18n="theme_dark">Dark</button>
-          <button class="toggle-btn" data-theme="light" data-i18n="theme_light">Light</button>
-        </div>
+
 
       </div>
 
