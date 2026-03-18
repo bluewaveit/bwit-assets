@@ -1,76 +1,39 @@
-
 export async function onRequestPost(context) {
+  const { request, env } = context;
+
   try {
-    const { request, env } = context;
-    const body = await request.json();
+    const data = await request.json();
 
-    const {
-      name = "",
-      company = "",
-      email = "",
-      phone = "",
-      service = "",
-      message = "",
-      turnstileToken = ""
-    } = body;
+    const token = data.turnstileToken;
 
-    if (!name || !email || !message || !turnstileToken) {
-      return json({ ok: false, error: "Missing required fields." }, 400);
+    // Verify Turnstile
+    const verify = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `secret=${env.TURNSTILE_SECRET}&response=${token}`
+      }
+    );
+
+    const result = await verify.json();
+
+    if (!result.success) {
+      return new Response(JSON.stringify({ ok: false, error: "Captcha failed" }), {
+        status: 400
+      });
     }
 
-    const verifyForm = new FormData();
-    verifyForm.append("secret", env.TURNSTILE_SECRET);
-    verifyForm.append("response", turnstileToken);
+    // 🚀 TEMP: Log instead of email
+    console.log("New contact form:", data);
 
-    const turnstileRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      body: verifyForm
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200
     });
 
-    const turnstileData = await turnstileRes.json();
-
-    if (!turnstileData.success) {
-      return json({ ok: false, error: "Security validation failed." }, 403);
-    }
-
-    const emailRes = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        from: env.CONTACT_FROM_EMAIL,
-        to: [env.CONTACT_TO_EMAIL],
-        reply_to: email,
-        subject: `New BlueWave IT enquiry: ${service || "General enquiry"}`,
-        text: [
-          `Name: ${name}`,
-          `Company: ${company}`,
-          `Email: ${email}`,
-          `Phone: ${phone}`,
-          `Service: ${service}`,
-          ``,
-          `Message:`,
-          message
-        ].join("\n")
-      })
+  } catch (err) {
+    return new Response(JSON.stringify({ ok: false, error: err.message }), {
+      status: 500
     });
-
-    if (!emailRes.ok) {
-      const errText = await emailRes.text();
-      return json({ ok: false, error: `Email send failed: ${errText}` }, 502);
-    }
-
-    return json({ ok: true }, 200);
-  } catch {
-    return json({ ok: false, error: "Server error." }, 500);
   }
-}
-
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { "Content-Type": "application/json" }
-  });
 }
