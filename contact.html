@@ -95,14 +95,6 @@
 }
 </script>
 
-<!-- Favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="images/favicon.png" />
-<link rel="manifest" href="site.webmanifest" />
-
 <style>
   /* ─── TOKENS ─────────────────────────────────────────────── */
   :root {
@@ -1068,7 +1060,7 @@
   <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const translations = {
     en: {
       managed_services_label:'Managed IT Services',
@@ -1335,44 +1327,6 @@ const WORKER_URL = "/api/contact";
       btn.textContent = originalBtnText;
     }
   });
-    e.preventDefault();
-    const form   = e.target;
-    const btn    = document.getElementById('formSubmitBtn');
-    const status = document.getElementById('formStatus');
-    const isPt   = currentLang === 'pt';
-
-    btn.disabled    = true;
-    btn.textContent = isPt ? 'A enviar…' : 'Sending…';
-    status.textContent = '';
-    status.style.color = '';
-
-    try {
-      const data = new FormData(form);
-      const res  = await fetch('/', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body:    new URLSearchParams(data).toString(),
-      });
-
-      if (res.ok) {
-        status.textContent = isPt
-          ? '✓ Mensagem enviada. Entraremos em contacto em breve.'
-          : '✓ Message sent. We\'ll be in touch shortly.';
-        status.style.color = 'var(--green)';
-        form.reset();
-      } else {
-        throw new Error('HTTP ' + res.status);
-      }
-    } catch (err) {
-      status.textContent = isPt
-        ? '⚠ Erro ao enviar. Por favor tente novamente ou contacte-nos por email.'
-        : '⚠ Submission failed. Please try again or contact us by email.';
-      status.style.color = 'var(--danger)';
-    } finally {
-      btn.disabled    = false;
-      btn.textContent = isPt ? 'Marcar Consulta' : 'Schedule a Consultation';
-    }
-  });
 
   /* ── init ── */
   setTheme('dark');
@@ -1387,30 +1341,5 @@ const WORKER_URL = "/api/contact";
   })();
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script>
-function onTurnstileSuccess(token) {
-  console.log("Turnstile token received:", token ? "yes" : "no");
-}
-
-function onTurnstileError(code) {
-  console.error("Turnstile error:", code);
-  const status = document.getElementById("formStatus");
-  if (status) {
-    status.textContent = "Security check failed. Please refresh and try again.";
-    status.style.color = "var(--danger)";
-  }
-
-  if (window.turnstile) {
-    setTimeout(() => turnstile.reset(), 1000);
-  }
-}
-
-function onTurnstileExpired() {
-  if (window.turnstile) {
-    turnstile.reset();
-  }
-}
-</script>
 </body>
 </html>
