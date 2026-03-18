@@ -22,8 +22,6 @@
 <!-- Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://challenges.cloudflare.com" />
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <link
   href="https://fonts.googleapis.com/css2?family=Questrial&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
   rel="stylesheet"
@@ -767,7 +765,7 @@
           </div>
           <h4 data-i18n="info_card_2_title">Send an Email</h4>
           <p data-i18n="info_card_2_body">Prefer to write it out? Use the form below or reach us directly by email for any questions.</p>
-          <a href="mailto:info@bluewaveit.pt">info@bluewaveit.pt</a>
+          <a href="/cdn-cgi/l/email-protection#0861666e67486a647d6d7f697e6d617c26787c"><span class="__cf_email__" data-cfemail="e1888f878ea1838d9484968097848895cf9195">[email&#160;protected]</span></a>
         </div>
 
         <div class="info-card">
@@ -1062,7 +1060,7 @@
   <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const translations = {
     en: {
       managed_services_label:'Managed IT Services',
@@ -1216,130 +1214,72 @@
   });
 
   /* ── form submit ── */
-const WORKER_URL = "/api/contact";
 
-  function setFormStatus(message, colorVar = "") {
-    const status = document.getElementById("formStatus");
-    if (!status) return;
-    status.textContent = message;
-    status.style.color = colorVar ? `var(${colorVar})` : "";
-  }
-
-  function resetTurnstileWidget() {
-    if (window.turnstile) {
-      try {
-        window.turnstile.reset();
-      } catch (err) {
-        console.warn("Turnstile reset failed:", err);
-      }
-    }
-  }
-
-  window.onTurnstileSuccess = function(token) {
-    console.log("Turnstile verified:", !!token);
-    setFormStatus("");
-  };
-
-  window.onTurnstileError = function(code) {
-    console.error("Turnstile error:", code);
-    // code 300030 is a benign "widget load" non-error — ignore it
-    if (code && code !== 300030) {
-      setFormStatus(
-        currentLang === "pt"
-          ? "Verificação de segurança falhou. Por favor actualize a página e tente novamente."
-          : "Security check failed. Please refresh the page and try again.",
-        "--danger"
-      );
-    }
-  };
-
-  window.onTurnstileExpired = function() {
-    setFormStatus(
-      currentLang === "pt"
-        ? "A verificação de segurança expirou. Por favor complete-a novamente."
-        : "Security check expired. Please complete it again.",
-      "--danger"
-    );
-    resetTurnstileWidget();
-  };
-
-  document.getElementById("contactForm")?.addEventListener("submit", async function (e) {
+  document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const form = e.target;
-    const btn = document.getElementById("formSubmitBtn");
-    const isPt = currentLang === "pt";
+    const form   = e.target;
+    const btn    = document.getElementById('formSubmitBtn');
+    const status = document.getElementById('formStatus');
+    const isPt   = currentLang === 'pt';
 
-    const originalBtnText = isPt ? "Marcar Consulta" : "Schedule a Consultation";
-    const sendingText = isPt ? "A enviar…" : "Sending…";
+    // Read token from the hidden input Turnstile injects into the DOM
+    const turnstileToken = document.querySelector('input[name="cf-turnstile-response"]')?.value;
 
-    setFormStatus("");
-    btn.disabled = true;
-    btn.textContent = sendingText;
+    if (!turnstileToken) {
+      status.textContent = isPt
+        ? 'Por favor conclua a verificação de segurança.'
+        : 'Please complete the security check.';
+      status.style.color = 'var(--danger)';
+      return;
+    }
+
+    btn.disabled    = true;
+    btn.textContent = isPt ? 'A enviar…' : 'Sending…';
+    status.textContent = '';
+    status.style.color = '';
 
     try {
-      if (!window.turnstile) {
-        throw new Error("Turnstile not loaded");
-      }
+      const payload = {
+        name:          form.name.value,
+        company:       form.company.value,
+        email:         form.email.value,
+        phone:         form.phone.value,
+        business_size: form.business_size.value,
+        service:       form.service.value,
+        message:       form.message.value,
+        turnstileToken
+      };
 
-      const turnstileToken = window.turnstile.getResponse();
-      if (!turnstileToken) {
-        setFormStatus(
-          isPt
-            ? "Por favor conclua a verificação de segurança."
-            : "Please complete the security check.",
-          "--danger"
-        );
-        btn.disabled = false;
-        btn.textContent = originalBtnText;
-        return;
-      }
-
-      const formData = new FormData(form);
-      formData.append("cf-turnstile-response", turnstileToken);
-
-      const payload = Object.fromEntries(formData.entries());
-
-      const res = await fetch(WORKER_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
+      const res = await fetch('/api/contact', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
       });
 
-      let result = {};
-      try {
-        result = await res.json();
-      } catch {
-        result = {};
-      }
+      const result = await res.json();
 
-      if (!res.ok) {
+      if (!res.ok || !result.ok) {
         throw new Error(result.error || `HTTP ${res.status}`);
       }
 
-      setFormStatus(
-        isPt
-          ? "✓ Mensagem enviada. Entraremos em contacto em breve."
-          : "✓ Message sent. We'll be in touch shortly.",
-        "--green"
-      );
-
+      status.textContent = isPt
+        ? '✓ Mensagem enviada. Entraremos em contacto em breve.'
+        : "✓ Message sent. We'll be in touch shortly.";
+      status.style.color = 'var(--green)';
       form.reset();
-      resetTurnstileWidget();
+
+      if (window.turnstile) { turnstile.reset(); }
+
     } catch (err) {
-      console.error("Form submission error:", err);
-      setFormStatus(
-        isPt
-          ? "⚠ Erro ao enviar. Por favor tente novamente ou envie email para info@bluewaveit.pt."
-          : "⚠ Submission failed. Please try again or email info@bluewaveit.pt.",
-        "--danger"
-      );
-      resetTurnstileWidget();
+      console.error('Form submission error:', err);
+      status.textContent = isPt
+        ? '⚠ Erro ao enviar. Por favor tente novamente ou envie email para hello@bluewaveit.pt.'
+        : '⚠ Submission failed. Please try again or email hello@bluewaveit.pt.';
+      status.style.color = 'var(--danger)';
     } finally {
-      btn.disabled = false;
-      btn.textContent = originalBtnText;
+      btn.disabled    = false;
+      btn.textContent = isPt ? 'Marcar Consulta' : 'Schedule a Consultation';
     }
   });
 
@@ -1349,11 +1289,37 @@ const WORKER_URL = "/api/contact";
 
   /* ── logo initial src ── */
   (function(){
-    const isL = document.body.classList.contains('theme-light');
-    document.querySelectorAll('.logo-img').forEach(img => {
+    var isL = document.body.classList.contains('theme-light');
+    document.querySelectorAll('.logo-img').forEach(function(img){
       img.src = isL ? img.dataset.light : img.dataset.dark;
     });
   })();
+
+</script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+function onTurnstileSuccess(token) {
+  console.log("Turnstile token received:", token ? "yes" : "no");
+}
+
+function onTurnstileError(code) {
+  console.error("Turnstile error:", code);
+  const status = document.getElementById("formStatus");
+  if (status) {
+    status.textContent = "Security check failed. Please refresh and try again.";
+    status.style.color = "var(--danger)";
+  }
+  if (window.turnstile) {
+    setTimeout(() => turnstile.reset(), 1000);
+  }
+}
+
+function onTurnstileExpired() {
+  if (window.turnstile) {
+    turnstile.reset();
+  }
+}
 </script>
 </body>
 </html>
