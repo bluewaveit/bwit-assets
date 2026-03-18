@@ -1116,6 +1116,7 @@
         data-callback="onTurnstileSuccess"
         data-error-callback="onTurnstileError"
         data-expired-callback="onTurnstileExpired"
+        data-execution="execute"
       ></div>
     </div>
 
@@ -1443,6 +1444,10 @@
       dot2.classList.add('active');
       conn.classList.add('filled');
       ps1.classList.remove('is-active'); ps2.classList.add('is-active');
+      // Trigger Turnstile now that the container is visible
+      if (window.turnstile) {
+        try { turnstile.execute(); } catch(e) { /* already executed */ }
+      }
     } else {
       s2.classList.remove('active');
       s1.classList.add('active');
