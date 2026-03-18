@@ -22,6 +22,8 @@
 <!-- Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://challenges.cloudflare.com" />
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <link
   href="https://fonts.googleapis.com/css2?family=Questrial&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
   rel="stylesheet"
@@ -1233,20 +1235,33 @@ const WORKER_URL = "/api/contact";
     }
   }
 
-  function onTurnstileSuccess(token) {
-    console.log("Turnstile token received:", !!token);
+  window.onTurnstileSuccess = function(token) {
+    console.log("Turnstile verified:", !!token);
     setFormStatus("");
-  }
+  };
 
-  function onTurnstileError(code) {
+  window.onTurnstileError = function(code) {
     console.error("Turnstile error:", code);
-    setFormStatus("Security check failed. Please refresh and try again.", "--danger");
-  }
+    // code 300030 is a benign "widget load" non-error — ignore it
+    if (code && code !== 300030) {
+      setFormStatus(
+        currentLang === "pt"
+          ? "Verificação de segurança falhou. Por favor actualize a página e tente novamente."
+          : "Security check failed. Please refresh the page and try again.",
+        "--danger"
+      );
+    }
+  };
 
-  function onTurnstileExpired() {
-    setFormStatus("Security check expired. Please complete it again.", "--danger");
+  window.onTurnstileExpired = function() {
+    setFormStatus(
+      currentLang === "pt"
+        ? "A verificação de segurança expirou. Por favor complete-a novamente."
+        : "Security check expired. Please complete it again.",
+      "--danger"
+    );
     resetTurnstileWidget();
-  }
+  };
 
   document.getElementById("contactForm")?.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -1340,6 +1355,5 @@ const WORKER_URL = "/api/contact";
     });
   })();
 </script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
