@@ -2223,31 +2223,38 @@ select option {
           </div>
 
           <div class="contact-panel">
-            <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify netlify-honeypot="bot-field" style="display:grid;gap:12px;">
-              <!-- Netlify required hidden fields -->
-              <input type="hidden" name="form-name" value="contact" />
-              <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+<form id="contactForm" style="display:grid;gap:12px;">
+  
+  <div class="form-grid">
+    <input type="text" name="name" placeholder="Your name" required />
+    <input type="text" name="company" placeholder="Company" required />
+  </div>
 
-              <div class="form-grid">
-                <input type="text"  name="name"    placeholder="Your name"     data-ph-en="Your name"     data-ph-pt="O seu nome"            required />
-                <input type="text"  name="company" placeholder="Company"       data-ph-en="Company"       data-ph-pt="Empresa"               required />
-              </div>
-              <div class="form-grid">
-                <input type="email" name="email"   placeholder="Email address" data-ph-en="Email address" data-ph-pt="Endereço de email"     required />
-                <input type="tel"   name="phone"   placeholder="Phone number"  data-ph-en="Phone number"  data-ph-pt="Número de telefone" />
-              </div>
-              <select name="service" id="serviceSelect">
-                <option value=""   data-en="Primary area of interest"  data-pt="Área principal de interesse">Primary area of interest</option>
-                <option data-en="Managed IT Services"  data-pt="Serviços IT Geridos">Managed IT Services</option>
-                <option data-en="Cybersecurity"        data-pt="Cibersegurança">Cybersecurity</option>
-                <option data-en="Cloud Services"       data-pt="Serviços Cloud">Cloud Services</option>
-                <option data-en="Backup & Recovery"    data-pt="Backup e Recuperação">Backup & Recovery</option>
-                <option data-en="IT Consulting"        data-pt="Consultoria IT">IT Consulting</option>
-              </select>
-              <textarea id="messageField" name="message" placeholder="Tell us about your business and what support you need." data-ph-en="Tell us about your business and what support you need." data-ph-pt="Fale-nos da sua empresa e do apoio que necessita." required></textarea><br>
-              <button class="btn btn-primary" type="submit" id="formSubmitBtn" style="width:100%;justify-content:center;" data-i18n="cta_schedule">Schedule a Consultation</button><br>        <div class="cf-turnstile" data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"></div>
-              <div class="form-status" id="formStatus"></div>
-            </form>
+  <div class="form-grid">
+    <input type="email" name="email" placeholder="Email address" required />
+    <input type="tel" name="phone" placeholder="Phone number" />
+  </div>
+
+  <select name="service" required>
+    <option value="">Primary area of interest</option>
+    <option value="Managed IT Services">Managed IT Services</option>
+    <option value="Cybersecurity">Cybersecurity</option>
+    <option value="Cloud Services">Cloud Services</option>
+    <option value="Backup & Recovery">Backup & Recovery</option>
+    <option value="IT Consulting">IT Consulting</option>
+    <option value="Join the Team">Join the Team</option>
+  </select>
+
+  <textarea name="message" placeholder="Tell us about your business..." required></textarea>
+
+  <!-- Cloudflare Turnstile -->
+  <div class="cf-turnstile" data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"></div>
+
+  <button type="submit" class="btn btn-primary">Schedule a Consultation</button>
+
+  <div id="formStatus"></div>
+
+</form>
           </div>
         </div>
       </div>
