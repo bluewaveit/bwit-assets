@@ -7,7 +7,8 @@ export async function onRequestPost(context) {
 
     if (!token) {
       return new Response(JSON.stringify({ ok: false, error: "Missing captcha token" }), {
-        status: 400
+        status: 400,
+        headers: { "Content-Type": "application/json" }
       });
     }
 
@@ -27,11 +28,51 @@ export async function onRequestPost(context) {
 
     if (!result.success) {
       return new Response(JSON.stringify({ ok: false, error: "Captcha failed" }), {
-        status: 400
+        status: 400,
+        headers: { "Content-Type": "application/json" }
       });
     }
 
-    console.log("New contact form:", data);
+    const {
+      name = "",
+      company = "",
+      email = "",
+      phone = "",
+      service = "",
+      message = ""
+    } = data;
+
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        from: env.CONTACT_FROM_EMAIL,
+        to: [env.CONTACT_TO_EMAIL],
+        reply_to: email,
+        subject: `New BlueWave IT enquiry: ${service || "General enquiry"}`,
+        text: [
+          `Name: ${name}`,
+          `Company: ${company}`,
+          `Email: ${email}`,
+          `Phone: ${phone}`,
+          `Service: ${service}`,
+          "",
+          "Message:",
+          message
+        ].join("\n")
+      })
+    });
+
+    if (!resendResponse.ok) {
+      const resendError = await resendResponse.text();
+      return new Response(JSON.stringify({ ok: false, error: resendError }), {
+        status: 502,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
