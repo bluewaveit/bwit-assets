@@ -869,48 +869,116 @@
         <div class="contact-panel">
           <h3 style="margin-bottom:22px;" data-i18n="form_title">Send us a message</h3>
       
-          <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify netlify-honeypot="bot-field" class="contact-form">
-            <!-- Netlify hidden fields -->
-            <input type="hidden" name="form-name" value="contact" />
-            <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+       <form id="contactForm" class="contact-form">
+  <div class="form-grid">
+    <input
+      type="text"
+      name="name"
+      placeholder="Your name"
+      data-ph-en="Your name"
+      data-ph-pt="O seu nome"
+      required
+    />
+    <input
+      type="text"
+      name="company"
+      placeholder="Company"
+      data-ph-en="Company"
+      data-ph-pt="Empresa"
+      required
+    />
+  </div>
 
-            <div class="form-grid">
-              <input type="text"  name="name"    placeholder="Your name"     data-ph-en="Your name"     data-ph-pt="O seu nome"            required />
-              <input type="text"  name="company" placeholder="Company"       data-ph-en="Company"       data-ph-pt="Empresa"               required />
-            </div>
-            <div class="form-grid">
-              <input type="email" name="email"   placeholder="Email address" data-ph-en="Email address" data-ph-pt="Endereço de email"     required />
-              <input type="tel"   name="phone"   placeholder="Phone number"  data-ph-en="Phone number"  data-ph-pt="Número de telefone" />
-            </div>
-            <input type="text" name="business_size" placeholder="Team size (e.g. 10 users)" data-ph-en="Team size (e.g. 10 users)" data-ph-pt="Tamanho da equipa (ex. 10 utilizadores)" />
+  <div class="form-grid">
+    <input
+      type="email"
+      name="email"
+      placeholder="Email address"
+      data-ph-en="Email address"
+      data-ph-pt="Endereço de email"
+      required
+    />
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone number"
+      data-ph-en="Phone number"
+      data-ph-pt="Número de telefone"
+    />
+  </div>
 
-            <select name="service" id="serviceSelect">
-              <option value=""   data-en="Primary area of interest"  data-pt="Área principal de interesse">Primary area of interest</option>
-              <option data-en="Managed IT Services"  data-pt="Serviços IT Geridos">Managed IT Services</option>
-              <option data-en="Cybersecurity"        data-pt="Cibersegurança">Cybersecurity</option>
-              <option data-en="Cloud Services"       data-pt="Serviços Cloud">Cloud Services</option>
-              <option data-en="Backup & Recovery"    data-pt="Backup e Recuperação">Backup &amp; Recovery</option>
-              <option data-en="IT Consulting"        data-pt="Consultoria IT">IT Consulting</option>
-              <option data-en="Free IT Assessment"   data-pt="Avaliação IT Gratuita">Free IT Assessment</option>
-            </select>
+  <input
+    type="text"
+    name="business_size"
+    placeholder="Team size (e.g. 10 users)"
+    data-ph-en="Team size (e.g. 10 users)"
+    data-ph-pt="Tamanho da equipa (ex. 10 utilizadores)"
+  />
 
-            <textarea id="messageField" name="message" placeholder="Tell us about your business and what support you need." data-ph-en="Tell us about your business and what support you need." data-ph-pt="Fale-nos da sua empresa e do apoio que necessita." required></textarea>
+  <select name="service" id="serviceSelect" required>
+    <option value="" data-en="Primary area of interest" data-pt="Área principal de interesse">
+      Primary area of interest
+    </option>
+    <option value="Managed IT Services" data-en="Managed IT Services" data-pt="Serviços IT Geridos">
+      Managed IT Services
+    </option>
+    <option value="Cybersecurity" data-en="Cybersecurity" data-pt="Cibersegurança">
+      Cybersecurity
+    </option>
+    <option value="Cloud Services" data-en="Cloud Services" data-pt="Serviços Cloud">
+      Cloud Services
+    </option>
+    <option value="Backup & Recovery" data-en="Backup & Recovery" data-pt="Backup e Recuperação">
+      Backup &amp; Recovery
+    </option>
+    <option value="IT Consulting" data-en="IT Consulting" data-pt="Consultoria IT">
+      IT Consulting
+    </option>
+    <option value="Free IT Assessment" data-en="Free IT Assessment" data-pt="Avaliação IT Gratuita">
+      Free IT Assessment
+    </option>
+  </select>
 
-            <button class="btn btn-primary" type="submit" id="formSubmitBtn" style="width:100%;justify-content:center;padding:14px 26px;" data-i18n="cta_schedule">Schedule a Consultation</button>
-            <div class="form-status" id="formStatus"></div>
-<form ...>
+  <textarea
+    id="messageField"
+    name="message"
+    placeholder="Tell us about your business and what support you need."
+    data-ph-en="Tell us about your business and what support you need."
+    data-ph-pt="Fale-nos da sua empresa e do apoio que necessita."
+    required
+  ></textarea>
 
-  <!-- your existing inputs -->
+  <div class="turnstile-wrapper" style="display:flex;justify-content:center;margin-top:4px;">
+    <div
+      class="cf-turnstile"
+      data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"
+      data-callback="onTurnstileSuccess"
+      data-error-callback="onTurnstileError"
+      data-expired-callback="onTurnstileExpired"
+    ></div>
+  </div>
 
-  <div class="cf-turnstile" data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"></div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    id="formSubmitBtn"
+    style="width:100%;justify-content:center;padding:14px 26px;"
+    data-i18n="cta_schedule"
+  >
+    Schedule a Consultation
+  </button>
 
-  <button type="submit">Schedule a Consultation</button>
+  <div class="form-status" id="formStatus"></div>
 
+  <p
+    style="font-size:0.80rem;color:var(--muted);text-align:center;margin-top:4px;"
+    data-i18n="form_privacy_note"
+  >
+    Your information is used only to respond to your enquiry. We never share your data.
+    See our
+    <a href="privacy.html" style="color:var(--cyan-2);" data-i18n="footer_privacy">Privacy Policy</a>.
+  </p>
 </form>
-            <p style="font-size:0.80rem;color:var(--muted);text-align:center;margin-top:4px;" data-i18n="form_privacy_note">
-              Your information is used only to respond to your enquiry. We never share your data. See our <a href="privacy.html" style="color:var(--cyan-2);" data-i18n="footer_privacy">Privacy Policy</a>.
-            </p>
-          </form>
         </div>
 
       </div>
@@ -1154,7 +1222,119 @@
   });
 
   /* ── form submit ── */
-  document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+const WORKER_URL = "/api/contact";
+
+  function setFormStatus(message, colorVar = "") {
+    const status = document.getElementById("formStatus");
+    if (!status) return;
+    status.textContent = message;
+    status.style.color = colorVar ? `var(${colorVar})` : "";
+  }
+
+  function resetTurnstileWidget() {
+    if (window.turnstile) {
+      try {
+        window.turnstile.reset();
+      } catch (err) {
+        console.warn("Turnstile reset failed:", err);
+      }
+    }
+  }
+
+  function onTurnstileSuccess(token) {
+    console.log("Turnstile token received:", !!token);
+    setFormStatus("");
+  }
+
+  function onTurnstileError(code) {
+    console.error("Turnstile error:", code);
+    setFormStatus("Security check failed. Please refresh and try again.", "--danger");
+  }
+
+  function onTurnstileExpired() {
+    setFormStatus("Security check expired. Please complete it again.", "--danger");
+    resetTurnstileWidget();
+  }
+
+  document.getElementById("contactForm")?.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const btn = document.getElementById("formSubmitBtn");
+    const isPt = currentLang === "pt";
+
+    const originalBtnText = isPt ? "Marcar Consulta" : "Schedule a Consultation";
+    const sendingText = isPt ? "A enviar…" : "Sending…";
+
+    setFormStatus("");
+    btn.disabled = true;
+    btn.textContent = sendingText;
+
+    try {
+      if (!window.turnstile) {
+        throw new Error("Turnstile not loaded");
+      }
+
+      const turnstileToken = window.turnstile.getResponse();
+      if (!turnstileToken) {
+        setFormStatus(
+          isPt
+            ? "Por favor conclua a verificação de segurança."
+            : "Please complete the security check.",
+          "--danger"
+        );
+        btn.disabled = false;
+        btn.textContent = originalBtnText;
+        return;
+      }
+
+      const formData = new FormData(form);
+      formData.append("cf-turnstile-response", turnstileToken);
+
+      const payload = Object.fromEntries(formData.entries());
+
+      const res = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      let result = {};
+      try {
+        result = await res.json();
+      } catch {
+        result = {};
+      }
+
+      if (!res.ok) {
+        throw new Error(result.error || `HTTP ${res.status}`);
+      }
+
+      setFormStatus(
+        isPt
+          ? "✓ Mensagem enviada. Entraremos em contacto em breve."
+          : "✓ Message sent. We'll be in touch shortly.",
+        "--green"
+      );
+
+      form.reset();
+      resetTurnstileWidget();
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setFormStatus(
+        isPt
+          ? "⚠ Erro ao enviar. Por favor tente novamente ou envie email para hello@bluewaveit.pt."
+          : "⚠ Submission failed. Please try again or email hello@bluewaveit.pt.",
+        "--danger"
+      );
+      resetTurnstileWidget();
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalBtnText;
+    }
+  });
     e.preventDefault();
     const form   = e.target;
     const btn    = document.getElementById('formSubmitBtn');
@@ -1207,6 +1387,30 @@
   })();
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+function onTurnstileSuccess(token) {
+  console.log("Turnstile token received:", token ? "yes" : "no");
+}
 
+function onTurnstileError(code) {
+  console.error("Turnstile error:", code);
+  const status = document.getElementById("formStatus");
+  if (status) {
+    status.textContent = "Security check failed. Please refresh and try again.";
+    status.style.color = "var(--danger)";
+  }
+
+  if (window.turnstile) {
+    setTimeout(() => turnstile.reset(), 1000);
+  }
+}
+
+function onTurnstileExpired() {
+  if (window.turnstile) {
+    turnstile.reset();
+  }
+}
+</script>
 </body>
 </html>
