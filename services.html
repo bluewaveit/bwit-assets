@@ -529,7 +529,8 @@
     .cloud-dash { padding: 0 22px 22px; display: grid; gap: 10px; }
     .cd-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 14px; border-radius: 12px; background: rgba(255,255,255,0.025); border: 1px solid var(--line); }
     .cd-left { display: flex; align-items: center; gap: 10px; }
-    .cd-icon { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-size: 0.95rem; background: rgba(0,194,203,0.10); }
+    .cd-icon { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: rgba(0,194,203,0.10); color: var(--cyan-2); }
+    .cd-icon svg { width: 16px; height: 16px; }
     .cd-name { font-size: 0.88rem; font-weight: 500; }
     .cd-status { font-size: 0.78rem; padding: 4px 9px; border-radius: 999px; font-weight: 500; }
     .cd-status.ok   { background: rgba(62,232,154,0.10); border: 1px solid rgba(62,232,154,0.20); color: #a8ffd6; }
@@ -1171,27 +1172,27 @@
             </div>
             <div class="cloud-dash">
               <div class="cd-row">
-                <div class="cd-left"><div class="cd-icon">📧</div><div class="cd-name" data-i18n="d_cld_r1">Exchange Online</div></div>
+                <div class="cd-left"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg></div><div class="cd-name" data-i18n="d_cld_r1">Exchange Online</div></div>
                 <div class="cd-status ok" data-i18n="d_cld_s1">Healthy</div>
               </div>
               <div class="cd-row">
-                <div class="cd-left"><div class="cd-icon">💬</div><div class="cd-name" data-i18n="d_cld_r2">Microsoft Teams</div></div>
+                <div class="cd-left"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="cd-name" data-i18n="d_cld_r2">Microsoft Teams</div></div>
                 <div class="cd-status ok" data-i18n="d_cld_s2">Healthy</div>
               </div>
               <div class="cd-row">
-                <div class="cd-left"><div class="cd-icon">📁</div><div class="cd-name" data-i18n="d_cld_r3">SharePoint / OneDrive</div></div>
+                <div class="cd-left"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><div class="cd-name" data-i18n="d_cld_r3">SharePoint / OneDrive</div></div>
                 <div class="cd-status ok" data-i18n="d_cld_s3">Healthy</div>
               </div>
               <div class="cd-row">
-                <div class="cd-left"><div class="cd-icon">🔐</div><div class="cd-name" data-i18n="d_cld_r4">Defender for Business</div></div>
+                <div class="cd-left"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="cd-name" data-i18n="d_cld_r4">Defender for Business</div></div>
                 <div class="cd-status ok" data-i18n="d_cld_s4">Active</div>
               </div>
               <div class="cd-row">
-                <div class="cd-left"><div class="cd-icon">📊</div><div class="cd-name" data-i18n="d_cld_r5">Secure Score</div></div>
+                <div class="cd-left"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="cd-name" data-i18n="d_cld_r5">Secure Score</div></div>
                 <div class="cd-status info" data-i18n="d_cld_s5">78 / 100</div>
               </div>
               <div class="cd-row">
-                <div class="cd-left"><div class="cd-icon">⚠️</div><div class="cd-name" data-i18n="d_cld_r6">Unlicensed Users</div></div>
+                <div class="cd-left"><div class="cd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><circle cx="12" cy="16" r=".5" fill="currentColor"/></svg></div><div class="cd-name" data-i18n="d_cld_r6">Unlicensed Users</div></div>
                 <div class="cd-status warn" data-i18n="d_cld_s6">2 flagged</div>
               </div>
             </div>
