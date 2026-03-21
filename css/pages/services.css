@@ -118,29 +118,10 @@
       min-height: var(--hh);
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
-    .logo { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
-    .logo-mark {
-      width: 42px; height: 42px; border-radius: 12px; flex: 0 0 auto;
-      background: linear-gradient(135deg, rgba(0,194,203,0.25), rgba(15,76,129,0.30));
-      border: 1px solid rgba(56,217,232,0.24);
-      box-shadow: 0 0 26px rgba(0,194,203,0.15);
-      display: grid; place-items: center; overflow: hidden;
-    }
-    .logo-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
-    .logo-wordmark strong { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; }
-    .logo-wordmark span   { color: var(--muted); font-size: 0.73rem; letter-spacing: 0.09em; text-transform: uppercase; }
 
-    .nav-links { display: flex; gap: 4px; align-items: center; }
-    .nav-links a {
-      color: var(--muted-2); font-size: 0.94rem; font-weight: 500;
-      padding: 6px 12px; border-radius: 8px;
-      transition: color 160ms, background 160ms;
-    }
     .nav-links a:hover    { color: var(--text); background: rgba(255,255,255,0.05); }
     .nav-links a.active   { color: var(--cyan-2); }
-    body.theme-light .nav-links a:hover { background: rgba(10,22,40,0.05); }
-
-    .nav-right { display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; }
+    body.theme-light
     .tog {
       display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px;
       background: rgba(255,255,255,0.04); border: 1px solid var(--line);
@@ -152,20 +133,7 @@
       transition: all 180ms;
     }
     .tog-btn.active { background: rgba(56,217,232,0.15); color: var(--text); }
-    .nav-toggle {
-      display: none; width: 42px; height: 42px; border-radius: 12px;
-      border: 1px solid var(--line-s); background: rgba(255,255,255,0.04);
-      color: var(--text); font-size: 1.2rem; align-items: center; justify-content: center;
-    }
-    .mobile-menu { display: none; padding: 0 0 14px; }
-    .mobile-menu.open { display: grid; gap: 8px; }
-    .mobile-menu a, .mobile-menu .m-row, .mobile-menu .mobile-menu-theme {
-      padding: 11px 14px; border-radius: 13px;
-      background: var(--bg-card); border: 1px solid var(--line);
-      color: var(--text); font-size: 0.95rem; font-weight: 500;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .mobile-menu .m-row { flex-wrap: wrap; gap: 8px; }
+    .mobile-menu a, .mobile-menu .m-row, .mobile-menu    .mobile-menu .m-row { flex-wrap: wrap; gap: 8px; }
 
     /* ─── BUTTONS ─────────────────────────────────────────────── */
     .btn {
@@ -648,8 +616,6 @@
 
     /* ─── RESPONSIVE ──────────────────────────────────────────── */
     @media (max-width: 1080px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: inline-flex; }
       .nav-cta { display: none; }
     }
     @media (max-width: 600px) {
@@ -663,13 +629,10 @@
       .tog, .toggle-group {
         padding: 3px;
       }
-      .nav-right { gap: 5px; }
       /* Hide logo subtitle on mobile */
-      .logo-wordmark span { display: none; }
       /* Shrink nav toggles */
       .tog .tog-btn { padding: 5px 8px; font-size: 0.76rem; }
       .tog { padding: 3px; }
-      .nav-right { gap: 6px; }
     }
     @media (max-width: 980px) {
       .svc-grid         { grid-template-columns: repeat(2, 1fr); }
