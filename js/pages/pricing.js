@@ -547,7 +547,9 @@
     });
   });
 
-  /* ── mobile nav ── */
+  /* ── reveal on scroll ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
   }, { threshold: 0.10 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
