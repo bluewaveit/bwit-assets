@@ -8,9 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/theme.css" />
-  <link rel="stylesheet" href="css/nav.css" />
-  <!-- ── FAVICONS ───────────────────────────────────────────────────── -->
+    <!-- ── FAVICONS ───────────────────────────────────────────────────── -->
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png" />
@@ -39,13 +37,14 @@
 
     <link rel="canonical" href="https://www.bluewaveit.pt/gdpr.html" />
   <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/pages/gdpr.css" />
 
 </head>
-<body>
 
-<!-- ─── HEADER ─────────────────────────────────────────── -->
+
+<!-- ── HEADER ── -->
   <div id="site-nav"></div>
 
 
@@ -53,15 +52,15 @@
   <div class="page-hero">
     <div class="container">
       <div class="breadcrumb reveal">
-        <a href="index.html">Home</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
         <span class="sep">›</span>
-        <span class="current">GDPR</span>
+        <span class="current" data-i18n="gdpr_bc">GDPR</span>
       </div>
       <div class="hero-pill reveal reveal-d1">
         <span class="hero-pill-dot"></span>
-        GDPR Compliance
+        <span data-i18n="gdpr_pill">GDPR Compliance</span>
       </div>
-      <h1 class="reveal reveal-d1">Your data.<br><em>Protected by design.</em></h1>
+      <h1 class="reveal reveal-d1"><span data-i18n-html="gdpr_h1">Your data.<br><em>Protected by design.</em></span></h1>
       <p class="hero-sub reveal reveal-d2">BlueWave IT is fully committed to the General Data Protection Regulation (EU) 2016/679. This page explains how we comply as a data processor, how we support your business in meeting its own GDPR obligations, and what your rights are.</p>
       <div class="hero-badges reveal reveal-d3">
         <span class="badge">
@@ -89,19 +88,19 @@
     <div class="stat-bar reveal">
       <div class="stat-cell">
         <div class="stat-num">72h</div>
-        <div class="stat-label">Breach notification window</div>
+        <div class="stat-label" data-i18n="gdpr_stat1">Breach notification window</div>
       </div>
       <div class="stat-cell">
         <div class="stat-num">30d</div>
-        <div class="stat-label">Data subject request response</div>
+        <div class="stat-label" data-i18n="gdpr_stat2">Data subject request response</div>
       </div>
       <div class="stat-cell">
         <div class="stat-num">AES-256</div>
-        <div class="stat-label">Encryption standard (at rest)</div>
+        <div class="stat-label" data-i18n="gdpr_stat3">Encryption standard (at rest)</div>
       </div>
       <div class="stat-cell">
         <div class="stat-num">TLS 1.3</div>
-        <div class="stat-label">Encryption standard (in transit)</div>
+        <div class="stat-label" data-i18n="gdpr_stat4">Encryption standard (in transit)</div>
       </div>
     </div>
   </div>
@@ -133,7 +132,7 @@
       <div class="section reveal" id="s1">
         <div class="sec-label">
           <span class="sec-num">01</span>
-          <h2>Our Role: Controller vs Processor</h2>
+          <h2 data-i18n="gdpr_h2_1">Our Role: Controller vs Processor</h2>
         </div>
         <div class="prose">
           <p>Under GDPR, BlueWave IT operates in two distinct roles depending on the context:</p>
@@ -152,7 +151,7 @@
               <tr>
                 <td class="emp">Managing our own website &amp; marketing</td>
                 <td><span class="tag tag-amber">Data Controller</span></td>
-                <td>We decide the purposes and means of processing. Our <a href="privacy.html">Privacy Policy</a> applies.</td>
+                <td>We decide the purposes and means of processing. Our <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a> applies.</td>
               </tr>
               <tr>
                 <td class="emp">Delivering managed IT services to clients</td>
@@ -185,7 +184,7 @@
       <div class="section reveal" id="s2">
         <div class="sec-label">
           <span class="sec-num">02</span>
-          <h2>The Seven GDPR Principles</h2>
+          <h2 data-i18n="gdpr_h2_2">The Seven GDPR Principles</h2>
         </div>
         <div class="prose">
           <p>Article 5 GDPR establishes seven core principles that govern all personal data processing. BlueWave IT embeds these into every service and internal process:</p>
@@ -277,7 +276,7 @@
       <div class="section reveal" id="s3">
         <div class="sec-label">
           <span class="sec-num">03</span>
-          <h2>Data Processing Agreements</h2>
+          <h2 data-i18n="gdpr_h2_3">Data Processing Agreements</h2>
         </div>
         <div class="prose">
           <p>Article 28 GDPR requires that any organisation engaging a data processor does so under a written contract — a Data Processing Agreement (DPA). BlueWave IT provides a GDPR-compliant DPA to all managed service clients.</p>
@@ -285,7 +284,7 @@
 
         <div class="callout green" style="margin-top:18px;">
           <span class="callout-icon">✅</span>
-          <p><strong>All BlueWave IT managed service contracts include a DPA</strong> as a standard schedule. No client data is processed without a valid DPA in place. If you are an existing client and require a copy of your DPA, contact hello@bluewaveit.pt.</p>
+          <p><strong>All BlueWave IT managed service contracts include a DPA</strong> as a standard schedule. No client data is processed without a valid DPA in place. If you are an existing client and require a copy of your DPA, contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3058555c5c5f70525c45554751465559441e4044">[email&#160;protected]</a>.</p>
         </div>
 
         <div class="prose" style="margin-top:18px;">
@@ -344,7 +343,7 @@
       <div class="section reveal" id="s4">
         <div class="sec-label">
           <span class="sec-num">04</span>
-          <h2>How We Help Your Business Comply</h2>
+          <h2 data-i18n="gdpr_h2_4">How We Help Your Business Comply</h2>
         </div>
         <div class="prose">
           <p>As your managed IT provider, BlueWave IT actively supports your own GDPR compliance obligations. Below are the concrete ways we assist:</p>
@@ -416,7 +415,7 @@
       <div class="section reveal" id="s5">
         <div class="sec-label">
           <span class="sec-num">05</span>
-          <h2>Data Subject Rights</h2>
+          <h2 data-i18n="gdpr_h2_5">Data Subject Rights</h2>
         </div>
         <div class="prose">
           <p>GDPR grants individuals eight fundamental rights over their personal data. As a data controller for your own clients and employees, you are responsible for facilitating these rights. BlueWave IT supports this technically. As a controller of our own data (website visitors, enquiries), we fulfil these rights directly.</p>
@@ -491,7 +490,7 @@
 
         <div class="callout info" style="margin-top:6px;">
           <span class="callout-icon">⏱️</span>
-          <p><strong>Response timeframe:</strong> We respond to all data subject requests within <strong>30 calendar days</strong> (Art. 12(3) GDPR). Where requests are complex or numerous, this can be extended by a further 60 days with notice. There is no charge unless requests are manifestly unfounded or excessive. Submit requests to hello@bluewaveit.pt.</p>
+          <p><strong>Response timeframe:</strong> We respond to all data subject requests within <strong>30 calendar days</strong> (Art. 12(3) GDPR). Where requests are complex or numerous, this can be extended by a further 60 days with notice. There is no charge unless requests are manifestly unfounded or excessive. Submit requests to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5139343d3d3e11333d24342630273438257f2125">[email&#160;protected]</a>.</p>
         </div>
       </div>
 
@@ -501,7 +500,7 @@
       <div class="section reveal" id="s6">
         <div class="sec-label">
           <span class="sec-num">06</span>
-          <h2>Security Measures (Art. 32)</h2>
+          <h2 data-i18n="gdpr_h2_6">Security Measures (Art. 32)</h2>
         </div>
         <div class="prose">
           <p>Article 32 GDPR requires that controllers and processors implement technical and organisational measures appropriate to the risk of processing. BlueWave IT applies the following measures across all operations:</p>
@@ -589,7 +588,7 @@
       <div class="section reveal" id="s7">
         <div class="sec-label">
           <span class="sec-num">07</span>
-          <h2>Data Breach Response</h2>
+          <h2 data-i18n="gdpr_h2_7">Data Breach Response</h2>
         </div>
         <div class="prose">
           <p>Articles 33 and 34 GDPR impose strict obligations on both controllers and processors in the event of a personal data breach. BlueWave IT maintains a documented incident response procedure aligned to these obligations.</p>
@@ -650,7 +649,7 @@
       <div class="section reveal" id="s8">
         <div class="sec-label">
           <span class="sec-num">08</span>
-          <h2>Sub-processors</h2>
+          <h2 data-i18n="gdpr_h2_8">Sub-processors</h2>
         </div>
         <div class="prose">
           <p>BlueWave IT engages the following categories of sub-processors when delivering managed services. All sub-processors are subject to DPAs with equivalent obligations to those in our client DPAs (Art. 28(4) GDPR). We will notify clients of any intended changes to sub-processors, providing an opportunity to object.</p>
@@ -698,7 +697,7 @@
 
         <div class="callout info">
           <span class="callout-icon">📧</span>
-          <p>To receive a complete and current list of sub-processors, including specific vendor names, contact hello@bluewaveit.pt. Updates to this list are communicated to clients via email at least 14 days before a new sub-processor is engaged.</p>
+          <p>To receive a complete and current list of sub-processors, including specific vendor names, contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="355d5059595a7557594050425443505c411b4541">[email&#160;protected]</a>. Updates to this list are communicated to clients via email at least 14 days before a new sub-processor is engaged.</p>
         </div>
       </div>
 
@@ -708,7 +707,7 @@
       <div class="section reveal" id="s9">
         <div class="sec-label">
           <span class="sec-num">09</span>
-          <h2>International Data Transfers</h2>
+          <h2 data-i18n="gdpr_h2_9">International Data Transfers</h2>
         </div>
         <div class="prose">
           <p>Chapter V GDPR restricts transfers of personal data to countries outside the EEA unless an appropriate safeguard is in place. BlueWave IT ensures that all international transfers of client data are covered by one of the following mechanisms:</p>
@@ -750,7 +749,7 @@
       <div class="section reveal" id="s10">
         <div class="sec-label">
           <span class="sec-num">10</span>
-          <h2>Your Obligations as a Client Controller</h2>
+          <h2 data-i18n="gdpr_h2_10">Your Obligations as a Client Controller</h2>
         </div>
         <div class="prose">
           <p>As the data controller for your business, you retain responsibility for your own GDPR compliance. BlueWave IT supports you technically and contractually, but the following obligations remain yours:</p>
@@ -808,7 +807,7 @@
       <div class="section reveal" id="s11">
         <div class="sec-label">
           <span class="sec-num">11</span>
-          <h2>Supervisory Authority — CNPD</h2>
+          <h2 data-i18n="gdpr_h2_11">Supervisory Authority — CNPD</h2>
         </div>
         <div class="prose">
           <p>The competent data protection supervisory authority in Portugal is the <strong>Comissão Nacional de Proteção de Dados (CNPD)</strong>. Every individual has the right to lodge a complaint with the CNPD at any time, regardless of whether they have first raised the matter with BlueWave IT (Art. 77 GDPR).</p>
@@ -827,7 +826,7 @@
             </div>
             <div class="cnpd-row">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:geral@cnpd.pt">geral@cnpd.pt</a>
+              <a href="/cdn-cgi/l/email-protection#0f686a7d6e634f6c617f6b217f7b"><span class="__cf_email__" data-cfemail="25424057444965464b55410b5551">[email&#160;protected]</span></a>
             </div>
             <div class="cnpd-row">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -855,7 +854,7 @@
       <div class="section reveal" id="s12">
         <div class="sec-label">
           <span class="sec-num">12</span>
-          <h2>Contact &amp; Data Protection Queries</h2>
+          <h2 data-i18n="gdpr_h2_12">Contact &amp; Data Protection Queries</h2>
         </div>
         <div class="prose">
           <p>For any GDPR-related queries, DPA requests, or data subject rights exercises, please contact us. We aim to acknowledge all privacy queries within <strong>2 business days</strong> and resolve them within the statutory timeframes.</p>
@@ -865,7 +864,7 @@
           <span class="callout-icon">✉️</span>
           <p>
             <strong>BlueWave IT — Data Protection</strong><br>
-            Email: hello@bluewaveit.pt<br>
+            Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b1bcb5b5b699bbb5acbcaeb8afbcb0adf7a9ad">[email&#160;protected]</a><br>
             Post: Av. 25 de Abril 6, 8500-511 Portimão, Algarve, Portugal<br><br>
             Please mark the subject line <strong>"GDPR Request"</strong> or <strong>"Data Subject Rights Request"</strong> to ensure prompt routing.
           </p>
@@ -880,13 +879,13 @@
       <!-- CTA -->
       <div class="cta-section reveal">
         <div class="cta-body">
-          <h3>Need a Data Processing Agreement?</h3>
-          <p>All BlueWave IT managed service clients receive a GDPR-compliant DPA as standard. If you're not yet a client, contact us to discuss your IT and compliance needs.</p>
+          <h3 data-i18n="gdpr_cta_h3">Need a Data Processing Agreement?</h3>
+          <p data-i18n="gdpr_cta_p">All BlueWave IT managed service clients receive a GDPR-compliant DPA as standard. If you're not yet a client, contact us to discuss your IT and compliance needs.</p>
         </div>
         <div class="cta-actions">
           <a href="contact.html" class="btn btn-primary">Request a DPA</a>
           <a href="privacy.html" class="btn btn-ghost">Privacy Policy →</a>
-          <a href="terms.html" data-i18n="footer_terms">Terms and Conditions</a>
+          <a href="terms.html" data-i18n="footer_terms" data-i18n="footer_terms">Terms and Conditions</a>
         </div>
       </div>
 
@@ -894,24 +893,26 @@
   </main>
 
   <!-- ── FOOTER ── -->
+
+  <!-- ── FOOTER ── -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-copy">© 2026 BlueWave IT. All rights reserved.</span>
+      <span class="footer-copy" data-i18n="footer_copy">© 2026 BlueWave IT. All rights reserved.</span>
       <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms and Conditions</a>
-        <a href="gdpr.html" style="color:var(--cyan-2);">GDPR</a>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+        <a href="terms.html" data-i18n="footer_terms">Terms and Conditions</a>
+        <a href="gdpr.html" style="color:var(--cyan-2);" data-i18n="footer_gdpr">GDPR</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="services.html" data-i18n="nav_services">Services</a>
+        <a href="about.html" data-i18n="nav_about">About</a>
+        <a href="contact.html" data-i18n="nav_contact">Contact</a>
       </div>
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></button>
 
-    <script src="js/pages/gdpr.js"></script>
-      <script src="js/nav.js" defer></script>
+  <script src="js/nav.js"></script>
+  <script src="js/pages/gdpr.js"></script>
 </body>
 </html>
