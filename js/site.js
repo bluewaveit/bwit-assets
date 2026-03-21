@@ -501,12 +501,6 @@ const translations = {
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Element references ── */
-  const header     = document.getElementById('siteHeader');
-  const backToTop  = document.getElementById('backToTop');
-  const navToggle  = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const langBtns   = document.querySelectorAll('[data-lang]');
-  const themeBtns  = document.querySelectorAll('[data-theme]');
 
   let currentLang = 'en';
 
@@ -515,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
      1. LANGUAGE / i18n
      ================================================================ */
 
-  function setLanguage(lang) {
+  window.setLanguage = function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
 
@@ -537,66 +531,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* Sync active button state */
-    langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 
     /* Re-calculate any live outputs that depend on language */
     updatePricing?.();
   }
-
-  langBtns.forEach(b => b.addEventListener('click', () => setLanguage(b.dataset.lang)));
-
-
-  /* ================================================================
-     2. THEME TOGGLE
-     ================================================================ */
-
-  function setTheme(theme) {
-    document.body.classList.toggle('theme-light', theme === 'light');
-
-    /* Swap logo images for light/dark variants */
-    document.querySelectorAll('.logo-img').forEach(img => {
-      img.src = (theme === 'light') ? img.dataset.light : img.dataset.dark;
-    });
-
-    /* Sync active button state */
-    themeBtns.forEach(b => b.classList.toggle('active', b.dataset.theme === theme));
-  }
-
-  themeBtns.forEach(b => b.addEventListener('click', () => setTheme(b.dataset.theme)));
-
-
-  /* ================================================================
-     3. MOBILE NAV
-     ================================================================ */
-
-  navToggle?.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    navToggle.textContent = isOpen ? '✕' : '☰';
-    navToggle.setAttribute('aria-expanded', isOpen);
-  });
-
-  /* Close mobile menu when a link is clicked */
-  document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      navToggle.textContent = '☰';
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-
-  /* ================================================================
-     4. SCROLL — header shadow + back-to-top
-     ================================================================ */
-
-  window.addEventListener('scroll', () => {
-    header?.classList.toggle('scrolled', window.scrollY > 16);
-    backToTop?.classList.toggle('show',  window.scrollY > 500);
-  }, { passive: true });
-
-  backToTop?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 
 
   /* ================================================================
@@ -767,7 +706,6 @@ document.addEventListener('DOMContentLoaded', () => {
      INIT — set defaults
      ================================================================ */
 
-  setTheme('dark');
-  setLanguage('en');
+  window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
 
 }); /* end DOMContentLoaded */
