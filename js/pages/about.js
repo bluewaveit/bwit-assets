@@ -202,7 +202,7 @@ const T = {
 
   let currentLang = 'en';
 
-  function setLanguage(lang) {
+  window.setLanguage = function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -216,25 +216,10 @@ const T = {
     filterStack(document.querySelector('.stack-tab.active')?.dataset.filter || 'all');
   }
 
-  document.querySelectorAll('[data-lang]').forEach(b =>
-    b.addEventListener('click', () => setLanguage(b.dataset.lang))
-  );
 
-  /* ── theme ── */
-  document.querySelectorAll('[data-theme]').forEach(b => {
-    b.addEventListener('click', () => {
-      const t = b.dataset.theme;
-      document.body.classList.toggle('theme-light', t === 'light');
-      document.querySelectorAll('.logo-img').forEach(function(img){
-        img.src = (t === 'light') ? img.dataset.light : img.dataset.dark;
-      });
-      document.querySelectorAll('[data-theme]').forEach(x =>
-        x.classList.toggle('active', x.dataset.theme === t)
-      );
-    });
-  });
-
-  /* ── mobile nav ── */
+  /* ── reveal on scroll ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
   }, { threshold: 0.10 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
@@ -328,7 +313,7 @@ const T = {
   );
 
   /* ── init ── */
-  setLanguage('en');
+  window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
   /* init logo */
   (function(){
     var isL = document.body.classList.contains('theme-light');
