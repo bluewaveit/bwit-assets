@@ -235,28 +235,6 @@ const T = {
   });
 
   /* ── mobile nav ── */
-  const navToggle  = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  navToggle?.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-    navToggle.textContent = mobileMenu.classList.contains('open') ? '✕' : '☰';
-  });
-  document.querySelectorAll('.mobile-menu a').forEach(l =>
-    l.addEventListener('click', () => { mobileMenu.classList.remove('open'); navToggle.textContent = '☰'; })
-  );
-
-  /* ── header scroll ── */
-  const header  = document.getElementById('siteHeader');
-  const backTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 16);
-    backTop.classList.toggle('show', window.scrollY > 500);
-  });
-  backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  /* ── reveal ── */
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
   }, { threshold: 0.10 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 

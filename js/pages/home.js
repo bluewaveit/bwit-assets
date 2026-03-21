@@ -74,10 +74,7 @@ const translations = {
       }
     };
 
-    const header      = document.getElementById('siteHeader');
     const backToTop   = document.getElementById('backToTop');
-    const navToggle   = document.getElementById('navToggle');
-    const mobileMenu  = document.getElementById('mobileMenu');
     const langBtns    = document.querySelectorAll('[data-lang]');
     const themeBtns   = document.querySelectorAll('[data-theme]');
     let currentLang   = 'en';
@@ -112,20 +109,7 @@ const translations = {
     themeBtns.forEach(b => b.addEventListener('click', () => setTheme(b.dataset.theme)));
 
     /* ── mobile menu ── */
-    navToggle?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      navToggle.textContent = mobileMenu.classList.contains('open') ? '✕' : '☰';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(l => {
-      l.addEventListener('click', () => { mobileMenu.classList.remove('open'); navToggle.textContent = '☰'; });
-    });
 
-    /* ── scroll ── */
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 16);
-      backToTop.classList.toggle('show', window.scrollY > 500);
-    });
-    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     /* ── reveal ── */
     const revealObs = new IntersectionObserver(entries => {

@@ -4,23 +4,10 @@
    Page-specific JS for services.html. Loads after site.js
    ================================================================ */
 /* ── header scroll ── */
-    const header   = document.getElementById('siteHeader');
-    const backTop  = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 16);
-      backTop.classList.toggle('show', window.scrollY > 500);
-    });
     backTop?.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 
     /* ── mobile nav ── */
-    const navToggle  = document.getElementById('navToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    navToggle?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      navToggle.textContent = mobileMenu.classList.contains('open') ? '✕' : '☰';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(l => {
-      l.addEventListener('click', () => { mobileMenu.classList.remove('open'); navToggle.textContent='☰'; });
+
     });
 
     /* ── theme ── */

@@ -1,41 +1,7 @@
-/* BlueWave IT — gdpr.js */
-
-/* ── theme ── */
-document.querySelectorAll('[data-theme]').forEach(b => {
-  b.addEventListener('click', () => {
-    const isLight = b.dataset.theme === 'light';
-    document.body.classList.toggle('theme-light', isLight);
-    document.querySelectorAll('[data-theme]').forEach(x =>
-      x.classList.toggle('active', x.dataset.theme === b.dataset.theme)
-    );
-    document.querySelectorAll('.logo-img').forEach(img => {
-      img.src = isLight ? img.dataset.light : img.dataset.dark;
-    });
-  });
-});
-
-/* ── lang ── */
-document.querySelectorAll('[data-lang]').forEach(b => {
-  b.addEventListener('click', () => {
-    document.querySelectorAll('[data-lang]').forEach(x =>
-      x.classList.toggle('active', x.dataset.lang === b.dataset.lang)
-    );
-    document.documentElement.lang = b.dataset.lang;
-  });
-});
-
-/* ── header scroll ── */
-const siteHeader = document.querySelector('.site-header');
-window.addEventListener('scroll', () => {
-  siteHeader?.classList.toggle('scrolled', window.scrollY > 16);
-}, { passive: true });
-
-/* ── back to top ── */
-const btn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-  btn?.classList.toggle('show', window.scrollY > 500);
-}, { passive: true });
-btn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+/* BlueWave IT — gdpr.js
+   nav.js handles: theme, lang, scroll/scrolled, backToTop, logo init.
+   This file handles only gdpr-page-specific behaviour.
+*/
 
 /* ── reveal on scroll ── */
 const revealObs = new IntersectionObserver(entries => {
@@ -57,11 +23,3 @@ const ioToc = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '-20% 0px -70% 0px' });
 sections.forEach(s => ioToc.observe(s));
-
-/* ── init logo ── */
-(function() {
-  const isLight = document.body.classList.contains('theme-light');
-  document.querySelectorAll('.logo-img').forEach(img => {
-    img.src = isLight ? img.dataset.light : img.dataset.dark;
-  });
-})();

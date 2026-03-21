@@ -100,10 +100,7 @@ const T = {
     }
   };
 
-  const header    = document.getElementById('siteHeader');
   const backToTop = document.getElementById('backToTop');
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu= document.getElementById('mobileMenu');
   const langBtns  = document.querySelectorAll('[data-lang]');
   const themeBtns = document.querySelectorAll('[data-theme]');
   let currentLang = 'en';
@@ -135,27 +132,9 @@ const T = {
   themeBtns.forEach(b => b.addEventListener('click', () => setTheme(b.dataset.theme)));
 
   /* ── mobile menu ── */
-  navToggle?.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen);
-    document.getElementById('navIconOpen').style.display  = isOpen ? 'none'  : 'block';
-    document.getElementById('navIconClose').style.display = isOpen ? 'block' : 'none';
-  });
-  document.querySelectorAll('.mobile-menu a').forEach(l => {
-    l.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      document.getElementById('navIconOpen').style.display  = 'block';
-      document.getElementById('navIconClose').style.display = 'none';
-    });
+
   });
 
-  /* ── scroll ── */
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 16);
-    backToTop.classList.toggle('show', window.scrollY > 500);
-  });
-  backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* ── reveal ── */
   const revealObs = new IntersectionObserver(entries => {
