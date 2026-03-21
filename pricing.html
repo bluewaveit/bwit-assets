@@ -79,875 +79,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* ── TOKENS ── */
-    :root {
-      --bg:        #060e1a;
-      --bg-alt:    #0a1523;
-      --bg-card:   rgba(255,255,255,0.038);
-      --bg-card-h: rgba(255,255,255,0.065);
-      --text:      #eef4fc;
-      --muted:     #7d9ab8;
-      --muted-2:   #a4bdd4;
-      --line:      rgba(255,255,255,0.09);
-      --line-s:    rgba(255,255,255,0.14);
-      --cyan:      #00c2cb;
-      --cyan-2:    #38d9e8;
-      --cyan-3:    #b2f5ff;
-      --blue:      #0f4c81;
-      --blue-m:    #1565a8;
-      --green:     #3ee89a;
-      --amber:     #ffcf4e;
-      --danger:    #ff5f5f;
-      --shadow:    0 20px 64px rgba(0,0,0,0.50);
-      --shadow-sm: 0 8px 28px rgba(0,0,0,0.30);
-      --shadow-c:  0 4px 24px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.12);
-      --r:         20px;
-      --r-sm:      13px;
-      --max:       1240px;
-      --hh:        72px;
-      --fd: 'Syne', sans-serif;
-      --fd-head: 'Questrial', sans-serif;
-      --fb: 'DM Sans', sans-serif;
-      --fm: 'DM Mono', monospace;
-    }
-    body.theme-light {
-      --bg:        #f3f8fd;
-      --bg-alt:    #e8f1fa;
-      --bg-card:   rgba(255,255,255,0.85);
-      --bg-card-h: rgba(255,255,255,0.98);
-      --text:      #0a1628;
-      --muted:     #4d6b88;
-      --muted-2:   #3d5a74;
-      --line:      rgba(10,22,40,0.09);
-      --line-s:    rgba(10,22,40,0.15);
-      --shadow:    0 20px 64px rgba(10,22,40,0.14);
-      --shadow-sm: 0 8px 28px rgba(10,22,40,0.10);
-      --shadow-c:  0 4px 24px rgba(10,22,40,0.10);
-    }
+    <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/pricing.css" />
 
-    /* ── RESET ── */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; font-family: var(--fb); font-size: 1rem;
-      line-height: 1.7; color: var(--text);
-      background:
-        radial-gradient(ellipse 80% 55% at 0% 0%,   rgba(0,194,203,0.12), transparent 50%),
-        radial-gradient(ellipse 60% 45% at 100% 5%,  rgba(15,76,129,0.11), transparent 50%),
-        linear-gradient(180deg, #060e1a 0%, #07101e 100%);
-      overflow-x: hidden; transition: background 250ms ease, color 250ms ease;
-    }
-    body.theme-light {
-      background:
-        radial-gradient(ellipse 80% 55% at 0% 0%,   rgba(0,194,203,0.07), transparent 50%),
-        radial-gradient(ellipse 60% 45% at 100% 5%,  rgba(15,76,129,0.06), transparent 50%),
-        linear-gradient(180deg, #f3f8fd 0%, #edf4fb 100%);
-    }
-    h1,h2,h3,h4 { font-family: var(--fd); margin: 0; }
-    h1 { font-family: var(--fd-head); font-weight: 400; letter-spacing: 0.01em; }
-    h2 { font-family: var(--fd-head); font-weight: 400; letter-spacing: 0.01em; }
-    h3 { font-family: var(--fd-head); font-weight: 600; letter-spacing: -0.01em; }
-    h3 { font-family: var(--fd-head); font-weight: 600; letter-spacing: -0.01em; }
-    h4 { font-weight: 600; letter-spacing: -0.01em; }
-    p  { margin: 0; }
-    a  { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
-    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-
-    /* ── REVEAL ── */
-    .reveal { opacity:0; transform:translateY(26px); transition:opacity 650ms cubic-bezier(0.16,1,0.3,1), transform 650ms cubic-bezier(0.16,1,0.3,1); }
-    .reveal.is-visible { opacity:1; transform:none; }
-    .d1{transition-delay:80ms} .d2{transition-delay:160ms} .d3{transition-delay:240ms}
-
-    /* ── HEADER ── */
-    .site-header { position:sticky; top:0; z-index:60; backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); background:rgba(6,14,26,0.72); border-bottom:1px solid var(--line); transition:background 200ms, box-shadow 200ms; }
-    body.theme-light .site-header { background:rgba(243,248,253,0.82); }
-    .site-header.scrolled { background:rgba(6,14,26,0.95); box-shadow:0 8px 32px rgba(0,0,0,0.30); border-bottom-color:var(--line-s); }
-    body.theme-light .site-header.scrolled { background:rgba(243,248,253,0.97); box-shadow:0 8px 32px rgba(10,22,40,0.10); }
-    .nav { min-height:var(--hh); display:flex; align-items:center; justify-content:space-between; gap:20px; }
-    .logo { display:flex; align-items:center; gap:12px; flex:0 0 auto; }
-    .logo-mark { width:42px; height:42px; border-radius:12px; flex:0 0 auto; background:transparent; border:none; box-shadow:none; display:grid; place-items:center; overflow:hidden; }
-    .logo-wordmark { display:flex; flex-direction:column; line-height:1.1; }
-    .logo-wordmark strong { font-family:var(--fd); font-size:1.08rem; font-weight:700; }
-    .logo-wordmark span { color:var(--muted); font-size:0.73rem; letter-spacing:0.09em; text-transform:uppercase; }
-    .nav-links { display:flex; gap:4px; align-items:center; }
-    .nav-links a { color:var(--muted-2); font-size:0.94rem; font-weight:500; padding:6px 12px; border-radius:8px; transition:color 160ms, background 160ms; }
-    .nav-links a:hover { color:var(--text); background:rgba(255,255,255,0.05); }
-    .nav-links a.active { color:var(--cyan-2); }
-    body.theme-light .nav-links a:hover { background:rgba(10,22,40,0.05); }
-    .nav-right { display:flex; gap:8px; align-items:center; flex-wrap:nowrap; }
-    .tog { display:inline-flex; gap:2px; padding:4px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid var(--line); }
-    body.theme-light .tog { background:rgba(10,22,40,0.04); }
-    .tog-btn { border:0; background:transparent; color:var(--muted); padding:6px 11px; border-radius:999px; font-size:0.83rem; font-weight:500; transition:all 180ms; }
-    .tog-btn.active { background:rgba(56,217,232,0.15); color:var(--text); }
-    .nav-toggle { display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--line-s); background:rgba(255,255,255,0.04); color:var(--text); font-size:1.2rem; align-items:center; justify-content:center; }
-    .mobile-menu { display:none; padding:0 0 14px; }
-    .mobile-menu.open { display:grid; gap:8px; }
-    .mobile-menu a, .mobile-menu .m-row, .mobile-menu .mobile-menu-theme { padding:11px 14px; border-radius:13px; background:var(--bg-card); border:1px solid var(--line); color:var(--text); font-size:0.95rem; font-weight:500; display:flex; align-items:center; gap:10px; }
-    .mobile-menu .m-row { flex-wrap:wrap; gap:8px; }
-
-    /* ── BUTTONS ── */
-    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 26px; border-radius:999px; border:1px solid transparent; font-family:var(--fd); font-size:0.93rem; font-weight:600; letter-spacing:0.01em; transition:transform 200ms, box-shadow 200ms, background 200ms, border-color 200ms; white-space:nowrap; }
-    .btn-primary { background:linear-gradient(130deg, #00c2cb, #38d9e8); color:#031922; box-shadow:0 6px 22px rgba(0,194,203,0.32), inset 0 1px 0 rgba(255,255,255,0.20); }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,194,203,0.42), inset 0 1px 0 rgba(255,255,255,0.20); }
-    .btn-secondary { background:rgba(255,255,255,0.04); border-color:var(--line-s); color:var(--text); }
-    .btn-secondary:hover { background:rgba(255,255,255,0.08); border-color:rgba(56,217,232,0.30); transform:translateY(-2px); }
-    body.theme-light .btn-secondary { background:rgba(10,22,40,0.04); }
-    body.theme-light .btn-secondary:hover { background:rgba(10,22,40,0.08); }
-
-    /* ── SHARED ── */
-    .section-label { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border-radius:999px; border:1px solid rgba(56,217,232,0.18); background:rgba(255,255,255,0.03); color:var(--cyan-3); font-size:0.79rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; }
-    .section-label::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--cyan-2); box-shadow:0 0 0 5px rgba(56,217,232,0.10); flex:0 0 auto; }
-    body.theme-light .section-label { background:rgba(10,22,40,0.04); color:var(--blue-m); }
-    .gradient-text { background:linear-gradient(105deg, #4beaf4 0%, #00c2cb 45%, #6af0fc 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    body.theme-light .gradient-text { background:linear-gradient(105deg, #006f80, #009ab0); -webkit-background-clip:text; background-clip:text; }
-    .icon-svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    section { padding:68px 0; }
-    .band { background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .feature-list { list-style:none; margin:0; padding:0; display:grid; gap:9px; }
-    .feature-list li { display:flex; gap:10px; align-items:flex-start; color:var(--muted-2); font-size:0.95rem; }
-    .feature-list li::before { content:""; width:18px; height:18px; margin-top:2px; flex:0 0 auto; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338d9e8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat; }
-
-    /* ── PAGE HERO ── */
-    .page-hero { position:relative; overflow:hidden; padding:88px 0 72px; isolation:isolate; }
-    .page-hero::before { content:""; position:absolute; inset:0; z-index:-1; background-image:linear-gradient(rgba(255,255,255,0.030) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.030) 1px, transparent 1px); background-size:52px 52px; mask-image:radial-gradient(ellipse 80% 70% at 50% 0%, rgba(0,0,0,0.6), transparent 70%); }
-    body.theme-light .page-hero::before { background-image:linear-gradient(rgba(10,22,40,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(10,22,40,0.03) 1px, transparent 1px); }
-    .page-hero::after { content:""; position:absolute; z-index:-1; width:600px; height:600px; border-radius:50%; right:-200px; top:-200px; background:radial-gradient(circle, rgba(0,194,203,0.13), transparent 65%); filter:blur(40px); animation:floatGlow 12s ease-in-out infinite; }
-    @keyframes floatGlow { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(0,-20px) scale(1.04)} }
-    .hero-breadcrumb { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:0.85rem; margin-bottom:24px; }
-    .hero-breadcrumb a { transition:color 160ms; }
-    .hero-breadcrumb a:hover { color:var(--text); }
-    .hero-breadcrumb .sep { opacity:0.4; }
-    .hero-breadcrumb .current { color:var(--cyan-2); }
-    .hero-layout { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-    .page-hero h1 { font-size:clamp(3rem, 6vw, 5.2rem); line-height:0.92; margin-bottom:24px; }
-    .page-hero p  { color:var(--muted-2); max-width:58ch; font-size:1.08rem; margin:0 0 32px; }
-
-    /* Hero price display */
-    .hero-price-display {
-      background:linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
-      border:1px solid var(--line-s); border-radius:26px;
-      padding:32px; box-shadow:var(--shadow); position:relative; overflow:hidden;
-    }
-    .hero-price-display::before { content:""; position:absolute; inset:auto -20% -20% auto; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(0,194,203,0.16), transparent 65%); pointer-events:none; }
-    .hpd-label { font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
-    .hpd-price { display:flex; align-items:baseline; gap:10px; margin-bottom:6px; }
-    .hpd-price strong { font-family:var(--fm); font-size:4.5rem; font-weight:500; line-height:1; background:linear-gradient(135deg, var(--cyan), var(--cyan-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .hpd-price span { color:var(--muted-2); font-size:1rem; }
-    .hpd-note { color:var(--muted); font-size:0.84rem; margin-bottom:24px; }
-    .hpd-includes { display:grid; gap:8px; margin-bottom:24px; }
-    .hpd-item { display:flex; align-items:center; gap:10px; font-size:0.90rem; color:var(--muted-2); }
-    .hpd-item::before { content:""; width:16px; height:16px; margin-right:2px; flex:0 0 auto; display:inline-block; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ee89a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat; vertical-align:middle; }
-    .hpd-divider { height:1px; background:var(--line); margin:16px 0; }
-    .hpd-total-row { display:flex; justify-content:space-between; align-items:center; }
-    .hpd-total-label { color:var(--muted); font-size:0.84rem; }
-    .hpd-total-val { font-family:var(--fd); font-size:1.4rem; font-weight:700; color:var(--text); }
-
-    /* ── INTERACTIVE CALCULATOR ── */
-    .calc-section { padding:0 0 72px; }
-    .calc-wrap {
-      background:var(--bg-card); border:1px solid var(--line); border-radius:28px;
-      overflow:hidden; box-shadow:var(--shadow);
-    }
-    .calc-header { padding:28px 32px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    .calc-header h2 { font-size:clamp(1.6rem, 2.5vw, 2.2rem); }
-    .calc-header p  { color:var(--muted-2); font-size:0.94rem; margin-top:6px; max-width:50ch; }
-    .calc-live-badge { display:inline-flex; align-items:center; gap:7px; padding:7px 14px; border-radius:999px; background:rgba(56,217,232,0.08); border:1px solid rgba(56,217,232,0.20); color:var(--cyan-3); font-size:0.78rem; font-weight:600; white-space:nowrap; }
-    .calc-live-dot { width:7px; height:7px; border-radius:50%; background:var(--cyan-2); animation:cldot 2s infinite; }
-    @keyframes cldot { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    .calc-body { display:grid; grid-template-columns:1fr 1fr; }
-    .calc-inputs { padding:32px; border-right:1px solid var(--line); }
-    .calc-output { padding:32px; }
-
-    /* Slider groups */
-    .slider-group { margin-bottom:28px; }
-    .slider-group:last-child { margin-bottom:0; }
-    .slider-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-    .slider-label { font-weight:600; font-size:0.97rem; }
-    .slider-val { font-family:var(--fm); font-size:1rem; color:var(--cyan-2); padding:5px 12px; border-radius:8px; background:rgba(56,217,232,0.08); border:1px solid rgba(56,217,232,0.16); }
-    .slider-desc { color:var(--muted); font-size:0.82rem; margin-bottom:12px; }
-    input[type=range] { width:100%; -webkit-appearance:none; height:6px; border-radius:999px; background:rgba(255,255,255,0.10); outline:none; }
-    body.theme-light input[type=range] { background:rgba(10,22,40,0.12); }
-    input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, var(--cyan), var(--cyan-2)); cursor:pointer; box-shadow:0 2px 10px rgba(0,194,203,0.40); border:2px solid rgba(255,255,255,0.15); }
-    input[type=range]::-moz-range-thumb { width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, var(--cyan), var(--cyan-2)); cursor:pointer; border:2px solid rgba(255,255,255,0.15); }
-
-    /* Output side */
-    .calc-out-total { text-align:center; padding:24px; background:linear-gradient(135deg, rgba(0,194,203,0.09), rgba(15,76,129,0.12)); border:1px solid rgba(56,217,232,0.18); border-radius:18px; margin-bottom:20px; }
-    .calc-out-label { font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px; }
-    .calc-out-num { font-family:var(--fm); font-size:3.2rem; font-weight:500; line-height:1; background:linear-gradient(135deg, var(--cyan), var(--cyan-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .calc-out-period { color:var(--muted-2); font-size:0.88rem; margin-top:4px; }
-
-    .calc-breakdown { display:grid; gap:10px; margin-bottom:20px; }
-    .calc-row { display:flex; justify-content:space-between; align-items:center; padding:12px 14px; background:rgba(255,255,255,0.025); border:1px solid var(--line); border-radius:12px; }
-    body.theme-light .calc-row { background:rgba(10,22,40,0.03); }
-    .calc-row-label { font-size:0.88rem; color:var(--muted-2); }
-    .calc-row-val { font-family:var(--fm); font-size:0.92rem; color:var(--text); font-weight:500; }
-    .calc-row-val.highlight { color:var(--cyan-2); }
-
-    .calc-savings { padding:16px; background:rgba(62,232,154,0.06); border:1px solid rgba(62,232,154,0.18); border-radius:14px; }
-    .calc-savings-head { display:flex; align-items:center; gap:8px; font-size:0.86rem; font-weight:600; color:#a8ffd6; margin-bottom:6px; }
-    .calc-savings-head::before { content:""; width:16px; height:16px; flex:0 0 auto; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ee89a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3Cpath d='M12 2a7 7 0 0 1 7 7c0 2.5-1 4.5-3 6l-1 1H9l-1-1C6 13.5 5 11.5 5 9a7 7 0 0 1 7-7z'/%3E%3C/svg%3E") center/contain no-repeat; }
-    .calc-savings-body { font-size:0.82rem; color:var(--muted-2); line-height:1.5; }
-
-    /* ── PLAN CARD ── */
-    .plan-section { padding:72px 0; }
-    .plan-grid { display:grid; grid-template-columns:1.15fr 0.85fr; gap:24px; }
-    .plan-card {
-      background:linear-gradient(160deg, rgba(0,194,203,0.07), rgba(15,76,129,0.05), rgba(255,255,255,0.025));
-      border:1px solid rgba(56,217,232,0.22); border-radius:28px;
-      padding:36px; position:relative; overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-    .plan-card::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,194,203,0.10), transparent 60%); pointer-events:none; }
-    .plan-badge { display:inline-flex; align-items:center; gap:8px; padding:7px 16px; border-radius:999px; background:linear-gradient(130deg, var(--cyan), var(--cyan-2)); color:#031922; font-size:0.80rem; font-weight:700; font-family:var(--fd); letter-spacing:0.04em; margin-bottom:20px; }
-    .plan-name { font-size:1.3rem; font-weight:700; margin-bottom:8px; }
-    .plan-desc { color:var(--muted-2); font-size:0.96rem; margin-bottom:24px; max-width:48ch; line-height:1.65; }
-    .plan-price-row { display:flex; align-items:baseline; gap:10px; margin-bottom:6px; }
-    .plan-price-row strong { font-family:var(--fm); font-size:4rem; font-weight:500; line-height:1; background:linear-gradient(135deg, var(--cyan), var(--cyan-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .plan-price-row span { color:var(--muted-2); font-size:0.97rem; }
-    .plan-sub { color:var(--muted); font-size:0.84rem; margin-bottom:28px; }
-    .plan-divider { height:1px; background:var(--line); margin:24px 0; }
-
-    .includes-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:28px; }
-    .inc-item { display:flex; align-items:flex-start; gap:9px; padding:12px; background:rgba(255,255,255,0.025); border:1px solid var(--line); border-radius:12px; transition:border-color 200ms, background 200ms; }
-    .inc-item:hover { border-color:rgba(56,217,232,0.22); background:rgba(255,255,255,0.045); }
-    .inc-icon { width:30px; height:30px; border-radius:8px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(0,194,203,0.15), rgba(15,76,129,0.20)); border:1px solid rgba(56,217,232,0.16); color:var(--cyan-3); flex:0 0 auto; }
-    .inc-icon svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-    .inc-name { font-size:0.86rem; font-weight:600; color:var(--text); line-height:1.3; }
-    .inc-sub  { font-size:0.76rem; color:var(--muted); line-height:1.3; }
-
-    /* Side card */
-    .side-cards { display:grid; gap:18px; }
-    .side-card { background:var(--bg-card); border:1px solid var(--line); border-radius:20px; padding:24px; }
-    .side-card h3 { font-size:1.05rem; margin-bottom:10px; }
-    .side-card p  { color:var(--muted-2); font-size:0.92rem; line-height:1.6; margin-bottom:14px; }
-    .free-badge { display:inline-flex; align-items:baseline; gap:8px; margin-bottom:10px; }
-    .free-badge strong { font-family:var(--fm); font-size:2.2rem; font-weight:500; background:linear-gradient(135deg, var(--green), #5af0b2); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .free-badge span { color:var(--muted-2); font-size:0.88rem; }
-
-    /* ── SERVICE MATRIX ── */
-    .matrix-section { padding:72px 0; }
-    .matrix-wrap { overflow-x:auto; border-radius:var(--r); border:1px solid var(--line); }
-    .matrix-table { width:100%; border-collapse:collapse; min-width:640px; }
-    .matrix-table thead th { padding:18px 20px; text-align:left; font-family:var(--fd); font-size:0.80rem; font-weight:700; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; background:var(--bg-alt); border-bottom:1px solid var(--line-s); }
-    .matrix-table thead th:first-child { width:40%; }
-    .matrix-table thead th.col-managed { color:var(--cyan-2); }
-    .matrix-table tbody tr { border-bottom:1px solid var(--line); transition:background 150ms; }
-    .matrix-table tbody tr:last-child { border-bottom:0; }
-    .matrix-table tbody tr:hover { background:rgba(255,255,255,0.02); }
-    body.theme-light .matrix-table tbody tr:hover { background:rgba(10,22,40,0.02); }
-    .matrix-table td { padding:14px 20px; font-size:0.92rem; vertical-align:middle; }
-    .matrix-table td:first-child { color:var(--text); font-weight:500; }
-    .matrix-table td:not(:first-child) { text-align:center; }
-    .col-managed { background:rgba(0,194,203,0.03); }
-    .m-check { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:rgba(62,232,154,0.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ee89a' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/14px no-repeat; border:1px solid rgba(62,232,154,0.22); font-size:0; color:transparent; }
-    .m-dash  { color:var(--muted); opacity:0.35; font-size:1.2rem; }
-    .m-part  { font-size:0.78rem; color:var(--amber); font-style:italic; }
-    .matrix-cat { background:var(--bg-alt) !important; }
-    .matrix-cat td { padding:10px 20px; color:var(--muted); font-size:0.76rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; border-bottom:1px solid var(--line) !important; }
-
-    /* ── ROI ESTIMATOR ── */
-    .roi-section { padding:72px 0; }
-    .roi-hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:36px; }
-    .roi-hero-stat { background:var(--bg-card); border:1px solid var(--line); border-radius:18px; padding:20px 22px; text-align:center; position:relative; overflow:hidden; transition:border-color 200ms, transform 200ms; }
-    .roi-hero-stat:hover { border-color:rgba(56,217,232,0.22); transform:translateY(-2px); }
-    .roi-hero-stat::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,194,203,0.07), transparent 65%); pointer-events:none; }
-    .rhs-icon { width:36px; height:36px; border-radius:10px; display:grid; place-items:center; margin:0 auto 10px; background:linear-gradient(135deg,rgba(0,194,203,0.15),rgba(15,76,129,0.20)); border:1px solid rgba(56,217,232,0.18); color:var(--cyan-3); }
-    .rhs-val  { font-family:var(--fm); font-size:1.7rem; font-weight:500; line-height:1; background:linear-gradient(135deg,var(--cyan),var(--cyan-2)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:4px; }
-    .rhs-label{ font-size:0.76rem; color:var(--muted); line-height:1.4; }
-    .roi-wrap { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; }
-    .roi-inputs { background:var(--bg-card); border:1px solid var(--line); border-radius:24px; overflow:hidden; }
-    .roi-inputs-head { padding:22px 26px 18px; border-bottom:1px solid var(--line); }
-    .roi-inputs-head h3 { font-size:1.1rem; margin-bottom:3px; }
-    .roi-inputs-head p  { color:var(--muted-2); font-size:0.85rem; line-height:1.5; margin:0; }
-    .roi-inputs-body { padding:18px 26px 26px; }
-    .roi-section-head { display:flex; align-items:center; gap:8px; font-size:0.70rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin:20px 0 13px; padding-bottom:8px; border-bottom:1px solid var(--line); }
-    .roi-section-head:first-child { margin-top:0; }
-    .roi-section-head svg { color:var(--cyan-2); }
-    .roi-input-group { margin-bottom:14px; }
-    .roi-input-group:last-child { margin-bottom:0; }
-    .roi-input-label { font-size:0.83rem; font-weight:600; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
-    .roi-input-hint { font-size:0.73rem; font-weight:400; color:var(--muted); font-style:italic; }
-    .roi-slider-row { display:flex; align-items:center; gap:12px; }
-    .roi-slider-row input[type=range] { flex:1; }
-    .roi-slider-val { font-family:var(--fm); font-size:0.90rem; color:var(--cyan-2); padding:4px 10px; border-radius:8px; background:rgba(56,217,232,0.08); border:1px solid rgba(56,217,232,0.16); min-width:52px; text-align:center; white-space:nowrap; }
-    .roi-input-row { display:flex; align-items:stretch; }
-    .roi-prefix { font-family:var(--fm); font-size:0.82rem; color:var(--muted); padding:8px 10px; background:rgba(255,255,255,0.03); border:1px solid var(--line); border-radius:var(--r-sm) 0 0 var(--r-sm); border-right:0; white-space:nowrap; display:flex; align-items:center; }
-    body.theme-light .roi-prefix { background:rgba(10,22,40,0.04); }
-    .roi-input-row input[type=number] { flex:1; padding:8px 12px; border-radius:0 var(--r-sm) var(--r-sm) 0; border:1px solid var(--line); background:rgba(255,255,255,0.04); color:var(--text); font:inherit; font-family:var(--fm); font-size:0.92rem; outline:none; transition:border-color 180ms, box-shadow 180ms; min-width:0; }
-    .roi-input-row input[type=number]:focus { border-color:rgba(56,217,232,0.38); box-shadow:0 0 0 3px rgba(56,217,232,0.09); }
-    body.theme-light .roi-input-row input[type=number] { background:rgba(255,255,255,0.70); }
-    .roi-licence-note { display:flex; align-items:flex-start; gap:9px; padding:10px 13px; background:rgba(56,217,232,0.05); border:1px solid rgba(56,217,232,0.14); border-radius:10px; margin-top:10px; }
-    .roi-licence-note svg { flex:0 0 auto; margin-top:1px; color:var(--cyan-2); }
-    .roi-licence-note span { font-size:0.78rem; color:var(--muted-2); line-height:1.5; }
-    .roi-licence-note strong { color:var(--cyan-3); }
-    .roi-results { background:var(--bg-card); border:1px solid var(--line); border-radius:24px; overflow:hidden; }
-    .roi-results-head { padding:22px 26px 18px; border-bottom:1px solid var(--line); }
-    .roi-results-head h3 { font-size:1.1rem; margin-bottom:0; }
-    .roi-saving-hero { padding:22px 26px; background:linear-gradient(135deg,rgba(62,232,154,0.08),rgba(0,194,203,0.06)); border-bottom:1px solid rgba(62,232,154,0.14); }
-    .roi-saving-label { font-size:0.70rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--green); margin-bottom:5px; opacity:0.85; }
-    .roi-saving-num { font-family:var(--fm); font-size:3.2rem; font-weight:500; line-height:1; color:var(--green); margin-bottom:4px; transition:color 300ms; }
-    .roi-saving-sub { font-size:0.82rem; color:var(--muted-2); }
-    .roi-meta-strip { display:grid; grid-template-columns:1fr 1fr; gap:0; border-bottom:1px solid var(--line); }
-    .roi-meta-item { padding:13px 20px; }
-    .roi-meta-item:first-child { border-right:1px solid var(--line); }
-    .roi-meta-lbl { font-size:0.68rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
-    .roi-meta-val { font-family:var(--fm); font-size:1.05rem; font-weight:500; color:var(--text); }
-    .roi-bar-chart { padding:18px 26px 12px; display:flex; flex-direction:column; gap:6px; }
-    .roi-bar-row { display:flex; align-items:center; gap:10px; }
-    .roi-bar-lbl { width:100px; font-size:0.74rem; color:var(--muted-2); flex:0 0 auto; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .roi-bar-track { flex:1; height:7px; background:rgba(255,255,255,0.06); border-radius:999px; overflow:hidden; }
-    body.theme-light .roi-bar-track { background:rgba(10,22,40,0.08); }
-    .roi-bar-fill { height:100%; border-radius:999px; transition:width 600ms cubic-bezier(0.16,1,0.3,1); }
-    .roi-bar-fill.bar-prod   { background:linear-gradient(90deg,var(--cyan),var(--cyan-2)); }
-    .roi-bar-fill.bar-outage { background:linear-gradient(90deg,#1565a8,#2980d4); }
-    .roi-bar-fill.bar-sw     { background:linear-gradient(90deg,#7c3aed,#a78bfa); }
-    .roi-bar-fill.bar-adhoc  { background:linear-gradient(90deg,var(--amber),#ffd970); }
-    .roi-bar-fill.bar-infra  { background:linear-gradient(90deg,#475569,#94a3b8); }
-    .roi-bar-fill.bar-msp    { background:linear-gradient(90deg,var(--green),#5af0b2); }
-    .roi-bar-val { font-family:var(--fm); font-size:0.74rem; color:var(--muted-2); white-space:nowrap; width:50px; text-align:right; flex:0 0 auto; }
-    .roi-bar-section-head { font-size:0.67rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--muted); margin-top:8px; padding-bottom:4px; }
-    .roi-breakdown { padding:0 26px 16px; display:flex; flex-direction:column; gap:7px; }
-    .roi-bk-row { display:flex; align-items:center; gap:11px; padding:11px 13px; background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:11px; transition:background 150ms; }
-    .roi-bk-row:hover { background:rgba(255,255,255,0.04); }
-    body.theme-light .roi-bk-row { background:rgba(10,22,40,0.025); }
-    .roi-bk-icon { width:26px; height:26px; border-radius:7px; display:grid; place-items:center; flex:0 0 auto; }
-    .roi-bk-icon.loss { background:rgba(0,194,203,0.10); border:1px solid rgba(0,194,203,0.18); color:var(--cyan-2); }
-    .roi-bk-icon.cost { background:rgba(255,255,255,0.04); border:1px solid var(--line); color:var(--muted-2); }
-    .roi-bk-icon.msp  { background:rgba(62,232,154,0.10); border:1px solid rgba(62,232,154,0.20); color:var(--green); }
-    .roi-bk-text { flex:1; min-width:0; }
-    .roi-bk-name { font-size:0.82rem; font-weight:600; color:var(--text); line-height:1.2; }
-    .roi-bk-note { font-size:0.72rem; color:var(--muted); line-height:1.3; margin-top:1px; }
-    .roi-bk-amt { font-family:var(--fm); font-size:0.94rem; font-weight:500; color:var(--text); white-space:nowrap; }
-    .roi-bk-tag { font-family:var(--fb); font-size:0.70rem; color:var(--cyan-3); background:rgba(56,217,232,0.08); border:1px solid rgba(56,217,232,0.16); border-radius:999px; padding:2px 8px; white-space:nowrap; }
-    .roi-total-row { display:flex; justify-content:space-between; align-items:center; padding:13px 26px; border-top:1px solid var(--line-s); border-bottom:1px solid var(--line); background:rgba(255,255,255,0.02); }
-    .roi-total-row-lbl { font-size:0.78rem; font-weight:700; color:var(--muted-2); }
-    .roi-total-row-val { font-family:var(--fm); font-size:1.25rem; font-weight:500; color:var(--text); }
-    .roi-disclaimer { font-size:0.73rem; color:var(--muted); opacity:0.65; text-align:center; padding:10px 26px 22px; line-height:1.5; }
-
-    /* ── COMPARISON TABLE ── */
-    .compare-section { padding:72px 0; }
-    .compare-wrap { overflow-x:auto; margin-top:36px; }
-    .compare-table { width:100%; border-collapse:collapse; min-width:580px; }
-    .compare-table thead th { padding:18px 20px; text-align:left; font-family:var(--fd); font-size:0.82rem; font-weight:700; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; border-bottom:1px solid var(--line-s); }
-    .compare-table thead th.col-bw { color:var(--cyan-2); background:rgba(0,194,203,0.04); border-radius:var(--r-sm) var(--r-sm) 0 0; }
-    .compare-table tbody tr { border-bottom:1px solid var(--line); transition:background 150ms; }
-    .compare-table tbody tr:hover { background:rgba(255,255,255,0.02); }
-    .compare-table tbody tr:last-child { border-bottom:0; }
-    .compare-table td { padding:14px 20px; font-size:0.92rem; color:var(--muted-2); vertical-align:middle; }
-    .compare-table td:first-child { color:var(--text); font-weight:500; }
-    .compare-table td.col-bw { background:rgba(0,194,203,0.03); }
-    .chk { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:rgba(62,232,154,0.10) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ee89a' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat; border:1px solid rgba(62,232,154,0.20); font-size:0; color:transparent; vertical-align:middle; }
-    .dsh { color:var(--muted); opacity:0.35; }
-    .prt { font-size:0.80rem; color:var(--amber); font-style:italic; }
-
-    /* ── FAQ ── */
-    .faq-section { padding:72px 0; }
-    .faq-list { display:grid; gap:10px; max-width:800px; margin:36px auto 0; }
-    .faq-item { background:var(--bg-card); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; transition:border-color 200ms; }
-    .faq-item.open { border-color:rgba(56,217,232,0.22); }
-    .faq-q { width:100%; text-align:left; background:transparent; border:0; padding:20px 22px; font-family:var(--fd); font-size:1rem; font-weight:600; color:var(--text); display:flex; justify-content:space-between; align-items:center; gap:14px; }
-    .faq-chevron { width:24px; height:24px; border-radius:50%; border:1px solid rgba(56,217,232,0.20); background:rgba(56,217,232,0.06); display:grid; place-items:center; color:var(--cyan-2); font-size:0.92rem; transition:transform 260ms, background 200ms; flex:0 0 auto; }
-    .faq-item.open .faq-chevron { transform:rotate(45deg); background:rgba(56,217,232,0.14); }
-    .faq-a { max-height:0; overflow:hidden; transition:max-height 280ms ease, padding 280ms ease; color:var(--muted-2); font-size:0.97rem; line-height:1.65; padding:0 22px; }
-    .faq-item.open .faq-a { max-height:600px; padding:0 22px 22px; }
-
-    /* ── CTA ── */
-    .cta-section { padding:0 0 80px; }
-    .cta-box { padding:64px 52px; background:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(0,194,203,0.14), transparent 60%), linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border:1px solid rgba(56,217,232,0.18); border-radius:28px; text-align:center; position:relative; overflow:hidden; }
-    .cta-box::before { content:""; position:absolute; width:400px; height:400px; left:-150px; top:-150px; border-radius:50%; background:radial-gradient(circle, rgba(0,194,203,0.10), transparent 60%); pointer-events:none; }
-    .cta-box::after  { content:""; position:absolute; width:300px; height:300px; right:-100px; bottom:-100px; border-radius:50%; background:radial-gradient(circle, rgba(15,76,129,0.12), transparent 60%); pointer-events:none; }
-    .cta-box h2 { font-size:clamp(2rem,3.5vw,3rem); margin-bottom:16px; position:relative; z-index:1; }
-    .cta-box p  { max-width:56ch; margin:0 auto 32px; color:var(--muted-2); font-size:1.05rem; position:relative; z-index:1; }
-    .cta-btns   { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; position:relative; z-index:1; }
-
-    /* ── FOOTER ── */
-    .site-footer { border-top:1px solid var(--line); background:var(--bg-alt); padding:44px 0 32px; }
-    .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:36px; }
-    .footer-brand p { color:var(--muted); font-size:0.90rem; margin-top:12px; max-width:34ch; line-height:1.6; }
-    .footer-col h4 { font-size:0.80rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
-    .footer-col ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; }
-    .footer-col ul a { color:var(--muted-2); font-size:0.91rem; transition:color 160ms; }
-    .footer-col ul a:hover { color:var(--text); }
-    .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding-top:22px; border-top:1px solid var(--line); color:var(--muted); font-size:0.87rem; }
-    .footer-legal { display:flex; gap:18px; }
-    .footer-legal a { color:var(--muted); transition:color 160ms; }
-    .footer-legal a:hover { color:var(--text); }
-    .footer-logo-row { display:flex; align-items:center; gap:10px; }
-    .footer-logo-row strong { font-family:var(--fd); font-size:1rem; font-weight:700; }
-    .back-to-top { position:fixed; right:20px; bottom:20px; width:44px; height:44px; border-radius:13px; border:1px solid var(--line-s); background:rgba(6,14,26,0.88); backdrop-filter:blur(10px); color:var(--text); display:grid; place-items:center; font-size:1rem; opacity:0; transform:translateY(12px); pointer-events:none; transition:all 200ms; box-shadow:var(--shadow-sm); z-index:70; }
-    .back-to-top.show { opacity:1; transform:none; pointer-events:auto; }
-    body.theme-light .back-to-top { background:rgba(255,255,255,0.92); }
-
-    /* ── BACKUP PRICING ── */
-    .backup-section { padding:72px 0; }
-
-    /* Storage selector toggle */
-    .storage-toggle {
-      display:inline-flex; gap:2px; padding:4px;
-      border-radius:999px; background:rgba(255,255,255,0.04);
-      border:1px solid var(--line); margin-bottom:36px;
-    }
-    body.theme-light .storage-toggle { background:rgba(10,22,40,0.04); }
-    .storage-toggle-btn {
-      border:0; background:transparent; color:var(--muted-2);
-      padding:8px 18px; border-radius:999px; font-size:0.88rem;
-      font-weight:600; font-family:var(--fd); cursor:pointer;
-      transition:all 200ms;
-    }
-    .storage-toggle-btn.active {
-      background:linear-gradient(130deg, var(--cyan), var(--cyan-2));
-      color:#031922; box-shadow:0 4px 14px rgba(0,194,203,0.28);
-    }
-
-    /* Plan cards grid */
-    .backup-grid {
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:16px;
-      margin-bottom:28px;
-    }
-    .bk-card {
-      background:var(--bg-card); border:1px solid var(--line);
-      border-radius:var(--r); padding:26px 22px;
-      display:flex; flex-direction:column;
-      transition:transform 220ms cubic-bezier(0.16,1,0.3,1),
-                 border-color 220ms, background 220ms, box-shadow 220ms;
-      position:relative; overflow:hidden; cursor:default;
-    }
-    .bk-card::before {
-      content:""; position:absolute; inset:0;
-      background:radial-gradient(circle at top right, rgba(0,194,203,0.07), transparent 55%);
-      opacity:0; transition:opacity 300ms;
-    }
-    .bk-card:hover { transform:translateY(-5px); border-color:rgba(56,217,232,0.26); background:var(--bg-card-h); box-shadow:0 16px 48px rgba(0,0,0,0.28); }
-    .bk-card:hover::before { opacity:1; }
-    .bk-card.featured {
-      border-color:rgba(56,217,232,0.28);
-      background:linear-gradient(160deg, rgba(0,194,203,0.08), rgba(15,76,129,0.06), rgba(255,255,255,0.03));
-    }
-    .bk-card.archive {
-      border-color:rgba(255,207,78,0.20);
-      background:linear-gradient(160deg, rgba(255,207,78,0.05), rgba(255,255,255,0.025));
-    }
-    .bk-card.archive:hover { border-color:rgba(255,207,78,0.38); }
-
-    /* Badge */
-    .bk-badge {
-      display:inline-flex; align-items:center; gap:6px;
-      padding:5px 12px; border-radius:999px; font-size:0.74rem;
-      font-weight:700; font-family:var(--fd); letter-spacing:0.04em;
-      margin-bottom:16px; align-self:flex-start;
-    }
-    .bk-badge.popular {
-      background:linear-gradient(130deg, var(--cyan), var(--cyan-2));
-      color:#031922;
-    }
-    .bk-badge.archive-badge {
-      background:rgba(255,207,78,0.15);
-      border:1px solid rgba(255,207,78,0.28);
-      color:var(--amber);
-    }
-    .bk-badge.new-badge {
-      background:rgba(62,232,154,0.12);
-      border:1px solid rgba(62,232,154,0.24);
-      color:var(--green);
-    }
-
-    .bk-icon {
-      width:48px; height:48px; border-radius:14px;
-      display:grid; place-items:center; margin-bottom:16px;
-      background:linear-gradient(135deg, rgba(0,194,203,0.15), rgba(15,76,129,0.22));
-      border:1px solid rgba(56,217,232,0.20); color:var(--cyan-3);
-    }
-    .bk-card.archive .bk-icon {
-      background:linear-gradient(135deg, rgba(255,207,78,0.12), rgba(255,150,30,0.10));
-      border-color:rgba(255,207,78,0.22); color:var(--amber);
-    }
-    .bk-icon svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-
-    .bk-name { font-size:1.05rem; font-weight:700; margin-bottom:4px; }
-    .bk-storage { font-family:var(--fm); font-size:0.84rem; color:var(--muted); margin-bottom:16px; }
-
-    .bk-price-row { display:flex; align-items:baseline; gap:6px; margin-bottom:4px; }
-    .bk-price-row strong {
-      font-family:var(--fm); font-size:2.6rem; font-weight:500; line-height:1;
-      background:linear-gradient(135deg, var(--cyan), var(--cyan-2));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .bk-card.archive .bk-price-row strong {
-      background:linear-gradient(135deg, var(--amber), #ffdf80);
-      -webkit-background-clip:text; background-clip:text;
-    }
-    .bk-price-row span { color:var(--muted-2); font-size:0.84rem; }
-    .bk-price-note { color:var(--muted); font-size:0.78rem; margin-bottom:20px; }
-
-    .bk-divider { height:1px; background:var(--line); margin:16px 0; }
-
-    .bk-features { list-style:none; margin:0; padding:0; display:grid; gap:8px; flex:1; align-content:start; }
-    .bk-features li {
-      display:flex; align-items:flex-start; gap:9px;
-      font-size:0.87rem; color:var(--muted-2); line-height:1.4;
-    }
-    .bk-features li::before {
-      content:""; width:16px; height:16px; margin-top:1px; flex:0 0 auto;
-      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338d9e8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
-    .bk-card.archive .bk-features li::before {
-      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffcf4e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
-
-    /* Spacer pushes CTA to bottom regardless of feature count */
-    .bk-spacer { flex: 1; }
-
-    .bk-cta {
-      display:block; width:100%; margin-top:20px; padding:11px;
-      border-radius:12px; text-align:center; font-size:0.88rem;
-      font-weight:600; font-family:var(--fd); border:1px solid var(--line-s);
-      background:rgba(255,255,255,0.04); color:var(--muted-2);
-      transition:all 200ms; cursor:pointer;
-    }
-    .bk-cta:hover { background:rgba(56,217,232,0.10); border-color:rgba(56,217,232,0.28); color:var(--text); }
-    .bk-card.featured .bk-cta {
-      background:linear-gradient(130deg, #00c2cb, #38d9e8); color:#031922;
-      border-color:transparent; box-shadow:0 4px 18px rgba(0,194,203,0.28);
-    }
-    .bk-card.featured .bk-cta:hover { box-shadow:0 8px 24px rgba(0,194,203,0.40); transform:translateY(-1px); }
-    body.theme-light .bk-cta { background:rgba(10,22,40,0.04); }
-
-    /* Overage table */
-    .overage-wrap {
-      background:var(--bg-card); border:1px solid var(--line);
-      border-radius:var(--r); padding:28px 32px;
-    }
-    .overage-head {
-      display:flex; align-items:center; gap:14px; margin-bottom:20px;
-      flex-wrap:wrap;
-    }
-    .overage-head h3 { font-size:1.1rem; margin:0; }
-    .overage-head p  { color:var(--muted-2); font-size:0.90rem; margin:0; }
-    .overage-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
-    .overage-item {
-      padding:16px; background:rgba(255,255,255,0.025);
-      border:1px solid var(--line); border-radius:14px;
-    }
-    body.theme-light .overage-item { background:rgba(10,22,40,0.03); }
-    .overage-type { font-size:0.76rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin-bottom:6px; }
-    .overage-price { font-family:var(--fm); font-size:1.3rem; font-weight:500; color:var(--text); margin-bottom:3px; }
-    .overage-unit  { font-size:0.78rem; color:var(--muted); }
-
-    .restore-row {
-      display:flex; align-items:center; justify-content:space-between;
-      flex-wrap:wrap; gap:12px; padding:14px 16px;
-      background:rgba(62,232,154,0.05); border:1px solid rgba(62,232,154,0.16);
-      border-radius:12px;
-    }
-    .restore-row-left { font-size:0.88rem; color:var(--muted-2); }
-    .restore-row-right { font-size:0.84rem; font-weight:600; color:var(--green); }
-
-    /* Interactive storage usage bar */
-    .storage-vis {
-      background:var(--bg-card); border:1px solid var(--line);
-      border-radius:var(--r); padding:24px 28px; margin-top:20px;
-    }
-    .storage-vis h4 { font-size:0.92rem; margin-bottom:18px; }
-    .sv-row { display:flex; align-items:center; gap:16px; margin-bottom:12px; }
-    .sv-label { width:120px; font-size:0.82rem; color:var(--muted-2); flex:0 0 auto; }
-    .sv-bar-wrap { flex:1; height:10px; background:rgba(255,255,255,0.08); border-radius:999px; overflow:hidden; position:relative; }
-    body.theme-light .sv-bar-wrap { background:rgba(10,22,40,0.10); }
-    .sv-fill { height:100%; border-radius:999px; transition:width 600ms cubic-bezier(0.16,1,0.3,1); }
-    .sv-fill.hot     { background:linear-gradient(90deg, var(--cyan), var(--cyan-2)); }
-    .sv-fill.cool    { background:linear-gradient(90deg, #1565a8, var(--blue-m)); }
-    .sv-fill.archive { background:linear-gradient(90deg, #ffcf4e, #ffdf80); }
-    .sv-price { width:80px; text-align:right; font-family:var(--fm); font-size:0.84rem; color:var(--text); flex:0 0 auto; }
-    .sv-note  { width:120px; font-size:0.74rem; color:var(--muted); text-align:right; flex:0 0 auto; }
-
-    /* ── ON-SITE BACKUP ── */
-    .onsite-section {
-      margin-top: 56px;
-      padding-top: 52px;
-      border-top: 1px solid var(--line);
-    }
-
-    .onsite-header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: start;
-      margin-bottom: 32px;
-    }
-    .onsite-header h3 { font-size: clamp(1.6rem, 2.4vw, 2.2rem); margin-bottom: 10px; }
-    .onsite-header p  { color: var(--muted-2); font-size: 0.97rem; line-height: 1.65; max-width: 58ch; }
-
-    /* On-site cards grid — 3 cols */
-    .onsite-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 18px;
-    }
-
-    /* Shared onsite card */
-    .os-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      padding: 26px 22px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      transition: transform 220ms cubic-bezier(0.16,1,0.3,1),
-                  border-color 220ms, background 220ms, box-shadow 220ms;
-    }
-    .os-card::before {
-      content: ""; position: absolute; inset: 0;
-      opacity: 0; transition: opacity 300ms;
-    }
-    .os-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(56,217,232,0.26);
-      background: var(--bg-card-h);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.28);
-    }
-    .os-card:hover::before { opacity: 1; }
-
-    /* Entry card */
-    .os-card.os-entry::before {
-      background: radial-gradient(circle at top right, rgba(0,194,203,0.07), transparent 55%);
-    }
-
-    /* Business card */
-    .os-card.os-business::before {
-      background: radial-gradient(circle at top right, rgba(21,101,168,0.10), transparent 55%);
-    }
-
-    /* Hybrid — recommended accent */
-    .os-card.os-hybrid {
-      border-color: rgba(62,232,154,0.24);
-      background: linear-gradient(160deg, rgba(62,232,154,0.06), rgba(0,194,203,0.04), rgba(255,255,255,0.025));
-    }
-    .os-card.os-hybrid:hover { border-color: rgba(62,232,154,0.40); }
-    .os-card.os-hybrid::before {
-      background: radial-gradient(circle at top right, rgba(62,232,154,0.08), transparent 55%);
-    }
-
-    /* Card icon */
-    .os-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      display: grid; place-items: center; margin-bottom: 16px;
-      border: 1px solid rgba(56,217,232,0.20);
-      background: linear-gradient(135deg, rgba(0,194,203,0.15), rgba(15,76,129,0.22));
-      color: var(--cyan-3);
-    }
-    .os-card.os-hybrid .os-icon {
-      background: linear-gradient(135deg, rgba(62,232,154,0.15), rgba(0,194,203,0.15));
-      border-color: rgba(62,232,154,0.24);
-      color: var(--green);
-    }
-    .os-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* Badge */
-    .os-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 12px; border-radius: 999px;
-      font-size: 0.73rem; font-weight: 700; font-family: var(--fd);
-      letter-spacing: 0.04em; margin-bottom: 14px; align-self: flex-start;
-    }
-    .os-badge.recommended {
-      background: rgba(62,232,154,0.14);
-      border: 1px solid rgba(62,232,154,0.28);
-      color: var(--green);
-    }
-
-    .os-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
-
-    /* Price block — hardware + monthly */
-    .os-price-block { margin-bottom: 18px; }
-    .os-price-hw {
-      display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px;
-    }
-    .os-price-hw strong {
-      font-family: var(--fm); font-size: 1.9rem; font-weight: 500; line-height: 1;
-      background: linear-gradient(135deg, var(--cyan), var(--cyan-2));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .os-card.os-hybrid .os-price-hw strong {
-      background: linear-gradient(135deg, var(--green), #5af0b2);
-      -webkit-background-clip: text; background-clip: text;
-    }
-    .os-price-hw span { color: var(--muted-2); font-size: 0.84rem; }
-    .os-price-mgmt {
-      font-size: 0.84rem; color: var(--muted); padding-left: 2px;
-    }
-    .os-price-mgmt strong { color: var(--muted-2); font-family: var(--fm); }
-
-    /* Divider */
-    .os-divider { height: 1px; background: var(--line); margin: 16px 0; }
-
-    /* Includes + suitable columns */
-    .os-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
-    .os-col-head {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
-    }
-    .os-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
-    .os-list li {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: 0.84rem; color: var(--muted-2); line-height: 1.35;
-    }
-    .os-list li.include::before {
-      content: ""; width: 15px; height: 15px; margin-top: 1px; flex: 0 0 auto;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338d9e8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
-    .os-card.os-hybrid .os-list li.include::before {
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ee89a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
-    .os-list li.suitable::before {
-      content: ""; width: 7px; height: 7px; margin-top: 5px; flex: 0 0 auto;
-      border-radius: 50%; background: var(--muted);
-    }
-
-    /* Hybrid benefits — single wider col */
-    .os-card.os-hybrid .os-cols { grid-template-columns: 1fr; }
-
-    /* CTA */
-    .os-cta {
-      display: block; width: 100%; margin-top: 20px; padding: 11px;
-      border-radius: 12px; text-align: center; font-size: 0.88rem;
-      font-weight: 600; font-family: var(--fd); border: 1px solid var(--line-s);
-      background: rgba(255,255,255,0.04); color: var(--muted-2);
-      transition: all 200ms; cursor: pointer; text-decoration: none;
-    }
-    .os-cta:hover { background: rgba(56,217,232,0.10); border-color: rgba(56,217,232,0.28); color: var(--text); }
-    .os-card.os-hybrid .os-cta {
-      background: rgba(62,232,154,0.10); border-color: rgba(62,232,154,0.28);
-      color: var(--green);
-    }
-    .os-card.os-hybrid .os-cta:hover {
-      background: rgba(62,232,154,0.18); border-color: rgba(62,232,154,0.44); color: #c8fff0;
-    }
-    body.theme-light .os-cta { background: rgba(10,22,40,0.04); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width:1080px) { .nav-links{display:none;} .nav-toggle{display:inline-flex;} .nav-cta{display:none;} }
-    @media (max-width: 600px) {
-      /* Hide theme toggle from nav bar at mobile */
-      .nav-theme-tog { display: none; }
-
-      .tog .tog-btn, .toggle-group .toggle-btn {
-        padding: 5px 8px;
-        font-size: 0.76rem;
-      }
-      .tog, .toggle-group {
-        padding: 3px;
-      }
-      .nav-right { gap: 5px; }
-      /* Hide logo subtitle on mobile */
-      .logo-wordmark span { display: none; }
-      /* Shrink nav toggles */
-      .tog .tog-btn { padding: 5px 8px; font-size: 0.76rem; }
-      .tog { padding: 3px; }
-      .nav-right { gap: 6px; }
-    }
-    @media (max-width:980px) {
-      section { padding:52px 0; }
-      .hero-layout, .plan-grid, .roi-wrap { grid-template-columns:1fr; gap:28px; }
-      .roi-hero-stats { grid-template-columns:1fr 1fr; }
-      .calc-body { grid-template-columns:1fr; }
-      .calc-inputs { border-right:0; border-bottom:1px solid var(--line); }
-      .footer-grid { grid-template-columns:1fr 1fr; }
-      .cta-box { padding:44px 30px; }
-      .includes-grid { grid-template-columns:1fr; }
-      .backup-grid { grid-template-columns:repeat(2,1fr); }
-      .overage-grid { grid-template-columns:repeat(2,1fr); }
-      .onsite-grid { grid-template-columns:1fr 1fr; }
-      .onsite-header { grid-template-columns:1fr; }
-    }
-    @media (max-width:640px) {
-      .roi-hero-stats { grid-template-columns:1fr; }
-      .footer-grid { grid-template-columns:1fr; }
-      .includes-grid { grid-template-columns:1fr; }
-      .cta-box { padding:36px 22px; }
-      .backup-grid { grid-template-columns:1fr; }
-      .overage-grid { grid-template-columns:1fr; }
-      .overage-wrap { padding:20px; }
-      .sv-note { display:none; }
-      .onsite-grid { grid-template-columns:1fr; }
-      .os-cols { grid-template-columns:1fr; }
-    }
-
-    /* -- HERO BACKGROUND IMAGE -- */
-    .hero-bg-img {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background-image: url('images/hero_dark_bg.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      opacity: 0.18;
-      mix-blend-mode: luminosity;
-      pointer-events: none;
-      transition: opacity 300ms ease;
-    }
-    .hero-bg-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 0%, transparent 50%, var(--bg) 100%);
-      pointer-events: none;
-    }
-    body.theme-light .hero-bg-img {
-      background-image: url('images/hero_light_bg.jpg');
-      opacity: 0.22;
-      mix-blend-mode: multiply;
-    }
-
-    /* ── CONTACT MODAL ── */
-    .cmodal-overlay {
-      position:fixed; inset:0; z-index:200;
-      background:rgba(4,9,18,0.78); backdrop-filter:blur(8px) saturate(140%);
-      display:flex; align-items:center; justify-content:center; padding:20px;
-      opacity:0; pointer-events:none;
-      transition:opacity 280ms cubic-bezier(0.16,1,0.3,1);
-    }
-    .cmodal-overlay.open { opacity:1; pointer-events:all; }
-    body.theme-light .cmodal-overlay { background:rgba(10,22,40,0.55); }
-    .cmodal {
-      background:var(--bg-alt); border:1px solid var(--line-s);
-      border-radius:28px; padding:36px; width:100%; max-width:500px;
-      box-shadow:0 32px 80px rgba(0,0,0,0.55);
-      transform:translateY(20px) scale(0.97);
-      transition:transform 320ms cubic-bezier(0.16,1,0.3,1);
-      position:relative; overflow:hidden;
-    }
-    .cmodal-overlay.open .cmodal { transform:none; }
-    .cmodal::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,194,203,0.09), transparent 60%); pointer-events:none; }
-    .cmodal-close { position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; border:1px solid var(--line-s); background:rgba(255,255,255,0.04); color:var(--muted); display:grid; place-items:center; cursor:pointer; transition:background 180ms, color 180ms; font-size:0.9rem; line-height:1; }
-    .cmodal-close:hover { background:rgba(255,255,255,0.10); color:var(--text); }
-    body.theme-light .cmodal-close { background:rgba(10,22,40,0.04); }
-    .cmodal-icon { width:48px; height:48px; border-radius:14px; display:grid; place-items:center; margin-bottom:18px; background:linear-gradient(135deg,rgba(0,194,203,0.15),rgba(15,76,129,0.22)); border:1px solid rgba(56,217,232,0.22); color:var(--cyan-3); }
-    .cmodal h3  { font-size:1.35rem; margin-bottom:6px; }
-    .cmodal-sub { color:var(--muted-2); font-size:0.93rem; margin-bottom:8px; line-height:1.55; }
-    .cmodal-plan-tag { display:inline-flex; align-items:center; gap:7px; padding:5px 12px; border-radius:999px; background:rgba(56,217,232,0.09); border:1px solid rgba(56,217,232,0.20); color:var(--cyan-3); font-size:0.80rem; font-weight:600; margin-bottom:22px; }
-    .cmodal-fields { display:grid; gap:12px; margin-bottom:18px; }
-    .cmodal-field { display:flex; flex-direction:column; gap:5px; }
-    .cmodal-label { font-size:0.82rem; font-weight:600; color:var(--muted-2); }
-    .cmodal-input { padding:10px 14px; border-radius:var(--r-sm); border:1px solid var(--line); background:rgba(255,255,255,0.04); color:var(--text); font:inherit; font-size:0.94rem; outline:none; transition:border-color 180ms, box-shadow 180ms; }
-    .cmodal-input:focus { border-color:rgba(56,217,232,0.38); box-shadow:0 0 0 3px rgba(56,217,232,0.09); }
-    body.theme-light .cmodal-input { background:rgba(255,255,255,0.80); }
-    .cmodal-input::placeholder { color:var(--muted); }
-    textarea.cmodal-input { resize:vertical; min-height:80px; line-height:1.55; }
-    .cmodal-submit { width:100%; padding:13px; border-radius:999px; border:0; cursor:pointer; background:linear-gradient(130deg,#00c2cb,#38d9e8); color:#031922; font-family:var(--fd); font-size:0.95rem; font-weight:700; box-shadow:0 6px 22px rgba(0,194,203,0.32); transition:transform 200ms, box-shadow 200ms; }
-    .cmodal-submit:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,194,203,0.42); }
-    .cmodal-success { text-align:center; padding:24px 0 8px; display:none; }
-    .cmodal-success-icon { width:56px; height:56px; border-radius:50%; background:rgba(62,232,154,0.12); border:1px solid rgba(62,232,154,0.28); display:grid; place-items:center; margin:0 auto 16px; color:var(--green); }
-    .cmodal-success h4 { font-size:1.2rem; margin-bottom:8px; }
-    .cmodal-success p  { color:var(--muted-2); font-size:0.92rem; line-height:1.6; }
-    .cmodal-note { font-size:0.76rem; color:var(--muted); text-align:center; margin-top:12px; line-height:1.5; }
-  </style>
 </head>
 <body>
 
@@ -956,7 +91,7 @@
     <div class="container nav">
       <a href="index.html" class="logo" aria-label="BlueWave IT Home">
         <div class="logo-mark">
-          <img src="https://www.bluewaveit.pt/images/logo_dark.png" data-dark="" data-light="https://www.bluewaveit.pt/images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
+          <img src="images/logo_dark.png" data-dark="" data-light="images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
         </div>
         <div class="logo-wordmark">
           <strong>BlueWave IT</strong>
@@ -995,7 +130,6 @@
           <button class="tog-btn"        data-theme="light" data-i18n="theme_light">Light</button>
         </div>
       </div>
-    </div>
     </div>
   </header>
 
@@ -1199,7 +333,7 @@
               </div>
             </div>
           </div>
-          <a href="index.html#contact" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="plan_cta">Get Started — Book a Consultation</a>
+          <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="event.preventDefault();openModal('Managed IT Plan—€60/user')" data-i18n="plan_cta">Get Started — Book a Consultation</a>
         </div>
 
         <!-- Side cards -->
@@ -1217,13 +351,13 @@
               <li data-i18n="free_f3">Backup status check</li>
               <li data-i18n="free_f4">Written recommendations</li>
             </ul>
-            <a href="index.html#contact" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:18px;" data-i18n="free_cta">Request Free Assessment</a>
+            <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:18px;" onclick="event.preventDefault();openModal('IT Assessment &amp; Enquiry')" data-i18n="free_cta">Request Free Assessment</a>
           </div>
 
           <div class="side-card">
             <h3 data-i18n="addon_h">Need something specific?</h3>
             <p data-i18n="addon_p">For larger environments, multi-site deployments, or specialist project work — infrastructure design, server builds, office relocations — we scope bespoke engagements. Contact us to discuss.</p>
-            <a href="index.html#contact" class="btn btn-secondary" style="width:100%;justify-content:center;" data-i18n="addon_cta">Discuss a Custom Scope</a>
+            <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="event.preventDefault();openModal('IT Assessment &amp; Enquiry')" data-i18n="addon_cta">Discuss a Custom Scope</a>
           </div>
         </div>
       </div>
@@ -1301,7 +435,7 @@
       <div class="roi-hero-stats">
         <div class="roi-hero-stat">
           <div class="rhs-icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <div class="rhs-val" id="rhsSMB">€13,140</div>
+          <div class="rhs-val" id="rhsSMB">€18,960</div>
           <div class="rhs-label">Estimated annual<br>IT burden</div>
         </div>
         <div class="roi-hero-stat">
@@ -1311,7 +445,7 @@
         </div>
         <div class="roi-hero-stat" style="border-color:rgba(62,232,154,0.22);background:linear-gradient(160deg,rgba(62,232,154,0.06),rgba(0,194,203,0.04),rgba(255,255,255,0.025));">
           <div class="rhs-icon" style="background:rgba(62,232,154,0.15);border-color:rgba(62,232,154,0.24);color:var(--green);"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-          <div class="rhs-val" id="rhsSaving" style="background:linear-gradient(135deg,var(--green),#5af0b2);-webkit-background-clip:text;background-clip:text;">+€5,940</div>
+          <div class="rhs-val" id="rhsSaving" style="background:linear-gradient(135deg,var(--green),#5af0b2);-webkit-background-clip:text;background-clip:text;">+€11,760</div>
           <div class="rhs-label">Estimated net<br>annual benefit</div>
         </div>
       </div>
@@ -1350,8 +484,8 @@
             <div class="roi-input-group">
               <div class="roi-input-label" data-i18n="roi_lbl_hours">Hours lost to IT issues / employee / month <span class="roi-input-hint" data-i18n="roi_hint_hours">avg SMB: 3–6 hrs</span></div>
               <div class="roi-slider-row">
-                <input type="range" id="roiHours" value="4" min="0" max="20" step="0.5"/>
-                <span class="roi-slider-val" id="roiHoursVal">4 hrs</span>
+                <input type="range" id="roiHours" value="6" min="0" max="20" step="0.5"/>
+                <span class="roi-slider-val" id="roiHoursVal">6 hrs</span>
               </div>
             </div>
             <div class="roi-input-group">
@@ -1365,7 +499,7 @@
               <div class="roi-input-label" data-i18n="roi_lbl_outagecost">Estimated cost per outage (€) <span class="roi-input-hint" data-i18n="roi_hint_outagecost">productivity + recovery</span></div>
               <div class="roi-input-row">
                 <span class="roi-prefix">€</span>
-                <input type="number" id="roiOutageCost" value="1500" min="0" max="20000" step="100"/>
+                <input type="number" id="roiOutageCost" value="2000" min="0" max="20000" step="100"/>
               </div>
             </div>
 
@@ -1470,7 +604,25 @@
           <!-- Big savings number -->
           <div class="roi-saving-hero">
             <div class="roi-saving-label" data-i18n="roi_saving_label">Estimated net annual benefit</div>
-            <div class="roi-saving-num" id="roiSaving">+€5,940</div>
+            <div class="roi-saving-num" id="roiSaving">+€6,672</div>
+              <!-- ── Gross value + ROI % + 3-year (new) ── -->
+              <div class="roi-gross-value" style="margin-top:16px;">
+                <div class="roi-gross-label" data-i18n="roi_gross_label">Gross value delivered per year</div>
+                <div class="roi-gross-num" id="roiGrossValue">€13,872</div>
+                <div class="roi-pct-row">
+                  <span class="roi-pct-item"><strong id="roiPctVal">93%</strong> <span data-i18n="roi_roi_pct">ROI in year 1</span></span>
+                  <span class="roi-pct-item">·</span>
+                  <span class="roi-pct-item"><strong id="roiPaybackVal2">~6.2 months</strong> <span data-i18n="roi_payback2">payback</span></span>
+                </div>
+              </div>
+              <div style="margin-top:14px;">
+                <div style="font-size:0.79rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:10px;" data-i18n="roi_3yr_label">3-year net benefit projection</div>
+                <div class="roi-year-grid">
+                  <div class="roi-year-card"><div class="roi-year-lbl" data-i18n="roi_yr1">Year 1</div><div class="roi-year-val" id="roiYr1">+€6,672</div></div>
+                  <div class="roi-year-card"><div class="roi-year-lbl" data-i18n="roi_yr2">Year 2</div><div class="roi-year-val" id="roiYr2">+€7,673</div></div>
+                  <div class="roi-year-card"><div class="roi-year-lbl" data-i18n="roi_yr3">Year 3</div><div class="roi-year-val" id="roiYr3">+€8,824</div></div>
+                </div>
+              </div>
             <div class="roi-saving-sub" data-i18n="roi_saving_sub">What switching to BlueWave IT puts back in your business each year</div>
           </div>
 
@@ -1667,7 +819,7 @@
               <li data-i18n="bk_e_f4">Restore support (business hours)</li>
             </ul>
             <div class="bk-spacer"></div>
-            <a href="index.html#contact" class="bk-cta" data-i18n="bk_cta_start">Get Started</a>
+            <a href="#" class="bk-cta" data-i18n="bk_cta_start" onclick="event.preventDefault();openModal('Cloud Backup — Get Started')">Get Started</a>
           </div>
 
           <!-- Standard — featured -->
@@ -1687,7 +839,7 @@
               <li data-i18n="bk_s_f5">Monthly backup health report</li>
             </ul>
             <div class="bk-spacer"></div>
-            <a href="index.html#contact" class="bk-cta" data-i18n="bk_cta_recommended">Get Standard Plan</a>
+            <a href="#" class="bk-cta" data-i18n="bk_cta_recommended" onclick="event.preventDefault();openModal('Cloud Backup Standard')">Get Standard Plan</a>
           </div>
 
           <!-- Plus -->
@@ -1708,7 +860,7 @@
               <li data-i18n="bk_p_f6">Quarterly backup review</li>
             </ul>
             <div class="bk-spacer"></div>
-            <a href="index.html#contact" class="bk-cta" data-i18n="bk_cta_start">Get Started</a>
+            <a href="#" class="bk-cta" data-i18n="bk_cta_start" onclick="event.preventDefault();openModal('Cloud Backup — Get Started')">Get Started</a>
           </div>
 
           <!-- Archive -->
@@ -1727,7 +879,7 @@
               <li data-i18n="bk_a_f4">Retrieval billed separately</li>
             </ul>
             <div class="bk-spacer"></div>
-            <a href="index.html#contact" class="bk-cta" data-i18n="bk_cta_start">Get Started</a>
+            <a href="#" class="bk-cta" data-i18n="bk_cta_start" onclick="event.preventDefault();openModal('Cloud Backup — Get Started')">Get Started</a>
           </div>
 
         </div>
@@ -1863,7 +1015,7 @@
               </ul>
             </div>
           </div>
-          <a href="index.html#contact" class="os-cta" data-i18n="os_cta_enquire">Enquire About This Plan</a>
+          <a href="#" class="os-cta" onclick="event.preventDefault();openModal('On-Site Backup — Enquire')" data-i18n="os_cta_enquire">Enquire About This Plan</a>
         </div>
 
         <!-- Business Appliance -->
@@ -1900,7 +1052,7 @@
               </ul>
             </div>
           </div>
-          <a href="index.html#contact" class="os-cta" data-i18n="os_cta_enquire">Enquire About This Plan</a>
+          <a href="#" class="os-cta" onclick="event.preventDefault();openModal('On-Site Backup — Enquire')" data-i18n="os_cta_enquire">Enquire About This Plan</a>
         </div>
 
         <!-- Hybrid — recommended -->
@@ -1961,7 +1113,7 @@
             </div>
           </div>
 
-          <a href="index.html#contact" class="os-cta" style="margin-top:18px;" data-i18n="os_cta_hybrid">Get Hybrid Backup</a>
+          <a href="#" class="os-cta" onclick="event.preventDefault();openModal('On-Site Backup — Enquire')" style="margin-top:18px;" data-i18n="os_cta_hybrid">Get Hybrid Backup</a>
         </div>
 
       </div>
@@ -1971,6 +1123,115 @@
         <span style="flex:0 0 auto;margin-top:1px;width:18px;height:18px;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
         <div style="font-size:0.84rem;color:var(--muted-2);line-height:1.6;" data-i18n="os_hw_note">Hardware pricing is indicative and depends on storage capacity, RAID configuration, and final specification. All appliances are sourced, configured, and deployed by BlueWave IT. Monthly management fees cover monitoring, firmware updates, health checks, and restore support.</div>
       </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── WEB PRESENCE PRICING ── -->
+  <section class="wp-section band" id="web-presence">
+    <div class="container">
+
+      <div class="wp-intro-grid reveal">
+        <div class="wp-intro-text">
+          <div class="section-label" data-i18n="wp_section_label">Web Presence Pricing</div>
+          <h2>
+            Fast, affordable<br>
+            <em data-i18n="wp_subhead">web presence packages</em><br>
+            for businesses with<br>
+            little or no online visibility.
+          </h2>
+        </div>
+        <div>
+          <p data-i18n="wp_intro_p">This service is designed for speed, clarity, and results. The goal is not a large custom website project. The goal is to get a business online quickly with a polished presence, better credibility, and a clear path for customer inquiries.</p>
+        </div>
+      </div>
+
+      <div class="wp-cards-grid">
+
+        <!-- Starter Presence -->
+        <div class="wp-card reveal">
+          <div class="wp-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <h3 data-i18n="wp_c1_name">Starter Presence</h3>
+          <p class="wp-desc" data-i18n="wp_c1_desc">Best for businesses with no website or a very weak online presence that need something clean, credible, and live quickly.</p>
+          <ul class="wp-feat-list">
+            <li data-i18n="wp_c1_f1">1–3 page polished website</li>
+            <li data-i18n="wp_c1_f2">Mobile-friendly design</li>
+            <li data-i18n="wp_c1_f3">Contact form and WhatsApp button</li>
+            <li data-i18n="wp_c1_f4">Google Business setup or cleanup</li>
+            <li data-i18n="wp_c1_f5">Hosting and basic updates</li>
+          </ul>
+          <div class="wp-tags">
+            <span class="wp-tag" data-i18n="wp_c1_setup">€300–€800 setup</span>
+            <span class="wp-tag" data-i18n="wp_c1_mo">€39–€79/mo</span>
+            <span class="wp-tag highlight" data-i18n="wp_c1_tag">Fast Launch</span>
+          </div>
+          <a href="#" class="wp-cta-btn" onclick="event.preventDefault();openModal('Starter Presence')">
+            <span data-i18n="wp_c1_cta">See Starter Details</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Growth Presence -->
+        <div class="wp-card featured reveal d1">
+          <div class="wp-card-icon">
+            <svg viewBox="0 0 24 24"><polyline points="17 11 21 7 17 3"/><line x1="21" y1="7" x2="9" y2="7"/><path d="M3 21v-4a4 4 0 0 1 4-4h14"/></svg>
+          </div>
+          <h3 data-i18n="wp_c2_name">Growth Presence</h3>
+          <p class="wp-desc" data-i18n="wp_c2_desc">For businesses that want a stronger lead flow, clearer service pages, and a more active online presence without moving into a high-end custom build.</p>
+          <ul class="wp-feat-list">
+            <li data-i18n="wp_c2_f1">Everything in Starter Presence</li>
+            <li data-i18n="wp_c2_f2">Extra landing pages or service pages</li>
+            <li data-i18n="wp_c2_f3">Lead capture improvements</li>
+            <li data-i18n="wp_c2_f4">Review and trust-building elements</li>
+            <li data-i18n="wp_c2_f5">Monthly content and visibility improvements</li>
+          </ul>
+          <div class="wp-tags">
+            <span class="wp-tag" data-i18n="wp_c2_setup">€800–€1,500 setup</span>
+            <span class="wp-tag" data-i18n="wp_c2_mo">€99–€199/mo</span>
+            <span class="wp-tag highlight" data-i18n="wp_c2_tag">Lead Focused</span>
+          </div>
+          <a href="#" class="wp-cta-btn" onclick="event.preventDefault();openModal('Growth Presence')">
+            <span data-i18n="wp_c2_cta">See Growth Details</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Presence + AI Boost -->
+        <div class="wp-card reveal d2">
+          <div class="wp-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          </div>
+          <h3 data-i18n="wp_c3_name">Presence + AI Boost</h3>
+          <p class="wp-desc" data-i18n="wp_c3_desc">For organizations that want a stronger web presence plus practical AI-assisted enhancements for content, lead handling, and workflow support.</p>
+          <ul class="wp-feat-list">
+            <li data-i18n="wp_c3_f1">Everything in Growth Presence</li>
+            <li data-i18n="wp_c3_f2">AI-assisted content refinement</li>
+            <li data-i18n="wp_c3_f3">Smarter inquiry and form workflows</li>
+            <li data-i18n="wp_c3_f4">Basic automation guidance</li>
+            <li data-i18n="wp_c3_f5">Ongoing optimization support</li>
+          </ul>
+          <div class="wp-tags">
+            <span class="wp-tag" data-i18n="wp_c3_setup">€1,200–€2,000 setup</span>
+            <span class="wp-tag" data-i18n="wp_c3_mo">€149–€299/mo</span>
+            <span class="wp-tag highlight" data-i18n="wp_c3_tag">AI Enhanced</span>
+          </div>
+          <a href="#" class="wp-cta-btn" onclick="event.preventDefault();openModal('Presence + AI Boost')">
+            <span data-i18n="wp_c3_cta">See AI Boost Details</span>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+      </div><!-- /wp-cards-grid -->
+
+      <p class="wp-note reveal">
+        All packages are designed to get your business online quickly and professionally.
+        Setup fees vary based on complexity and existing content.
+        Monthly fees cover hosting, support, and ongoing improvements.
+        <strong>Contact us to discuss which package fits your situation.</strong>
+      </p>
 
     </div>
   </section>
@@ -2027,7 +1288,7 @@
         <h2 data-i18n="cta_h">Ready to put a number on it?</h2>
         <p data-i18n="cta_p">Book a free consultation. We'll assess your environment, confirm your user count, and provide a precise written proposal — usually within 48 hours.</p>
         <div class="cta-btns">
-          <a href="index.html#contact" class="btn btn-primary"   data-i18n="cta_btn1">Book a Free Consultation</a>
+          <a href="contact.html" class="btn btn-primary" data-i18n="cta_btn1">Book a Free Consultation</a>
           <a href="services.html"      class="btn btn-secondary" data-i18n="cta_btn2">Explore Services</a>
         </div>
       </div>
@@ -2041,7 +1302,7 @@
         <div class="footer-brand">
           <div class="footer-logo-row">
             <div class="logo-mark" style="width:36px;height:36px;border-radius:10px;background:transparent;border:none;box-shadow:none;">
-          <img src="https://www.bluewaveit.pt/images/logo_dark.png" data-dark="https://www.bluewaveit.pt/images/logo_dark.png" data-light="https://www.bluewaveit.pt/images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
+          <img src="images/logo_dark.png" data-dark="images/logo_dark.png" data-light="images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
         </div>
             <strong>BlueWave IT</strong>
           </div>
@@ -2064,7 +1325,7 @@
             <li><a href="index.html"         data-i18n="ft_c1">Home</a></li>
             <li><a href="about.html"         data-i18n="ft_c2">About</a></li>
             <li><a href="pricing.html"       data-i18n="ft_c3">Pricing</a></li>
-            <li><a href="index.html#faq"     data-i18n="ft_c4">FAQ</a></li>
+            <li><a href="pricing.html#faq"     data-i18n="ft_c4">FAQ</a></li>
             <li><a href="contact.html" data-i18n="ft_c5">Contact</a></li>
           </ul>
         </div>
@@ -2135,825 +1396,9 @@
     </div>
   </div>
 
-  <script>
-  /* ── TRANSLATIONS ── */
-  const T = {
-    en: {
-      nav_label:'Managed IT Services', nav_home:'Home', nav_services:'Services', nav_about:'About', nav_pricing:'Pricing', nav_contact:'Contact', cta_book:'Book a Consultation',
-      theme_dark:'Dark', theme_light:'Light',
-      bc_home:'Home', bc_current:'Pricing',
-      hero_label:'Simple Pricing',
-      hero_h1_a:'One price.', hero_h1_b:'Everything included.', hero_h1_c:'Zero surprises.',
-      hero_p:'No tiered features, no bolt-on extras, no surprise invoices. Every BlueWave IT client gets all six service areas for one flat, per-user monthly fee — predictable costs, enterprise-grade IT.',
-      hero_cta_1:'Calculate Your Cost', hero_cta_2:"See What's Included",
-      hpd_label:'Standard Managed Plan', hpd_unit:'per user / month',
-      hpd_note:'All services. All users. One invoice.',
-      hpd_f1:'Managed IT helpdesk & monitoring', hpd_f2:'Endpoint protection & patch management',
-      hpd_f3:'Cybersecurity — EDR, email security, MFA', hpd_f4:'Microsoft 365 administration',
-      hpd_f5:'Backup monitoring & verification', hpd_f6:'Network health & support',
-      hpd_eg_label:'Example — 10 users', hpd_month:'month',
-      calc_h:'Cost calculator', calc_p:'Adjust the sliders to model your environment. Pricing updates in real time.',
-      calc_live:'Live estimate',
-      sl_users_label:'Number of users', sl_users_desc:'Staff members who need IT support, email, and device management',
-      sl_backup_plan_label:'Cloud backup plan', sl_backup_plan_desc:'Optional add-on — select the plan that fits your data volume',
-      sl_bp_none:'None',
-      sl_backup_label:'Estimated data volume (GB)', sl_backup_desc:'Business data across local storage and Microsoft 365',
-      calc_monthly_label:'Estimated monthly investment', calc_year:'year',
-      cb_users_label:'Managed users', cb_backup_plan_label:'Cloud backup plan',
-      cb_backup_label:'Estimated data volume', cb_total_label:'Total monthly',
-      calc_tip_head:'Why this model saves money',
-      calc_tip_base:'Ad-hoc IT support in the Algarve costs €75–€120/hr with no proactive coverage. The managed model delivers monitoring, security, backups, and helpdesk for a flat monthly fee — predictable budgeting, no surprise invoices.',
-      plan_label:'The Plan', plan_h:'One plan, fully loaded',
-      plan_p:'All six service areas are active for every managed client from day one. There are no starter tiers or upgrade paths — just complete, proactive IT management.',
-      plan_badge:'Standard Managed Plan', plan_name:'Complete Managed IT',
-      plan_desc:"Everything your business needs to run reliably, stay secure, and scale with confidence — managed proactively by BlueWave IT.",
-      plan_unit:'per user / month', plan_sub:'Billed monthly. Minimum 5 users. No lock-in contracts.',
-      inc_1_name:'Managed IT & Helpdesk',  inc_1_sub:'24/7 monitoring, fast response',
-      inc_2_name:'Cybersecurity',           inc_2_sub:'EDR, email filter, MFA',
-      inc_3_name:'Cloud & Microsoft 365',   inc_3_sub:'Admin, Teams, SharePoint',
-      inc_4_name:'Backup & Recovery',       inc_4_sub:'Daily verification, DR planning',
-      inc_5_name:'Network Management',      inc_5_sub:'UniFi, firewall, VPN',
-      inc_6_name:'IT Consulting',           inc_6_sub:'Roadmaps, GDPR, strategy',
-      plan_cta:'Get Started — Book a Consultation',
-      free_val:'Free', free_unit:'IT assessment',
-      free_h:'Start with a free review',
-      free_p:"Not ready to commit? We'll review your current IT environment, identify gaps, and give you a clear, written summary of risks and opportunities — at no cost and no obligation.",
-      free_f1:'Full environment audit', free_f2:'Security gap identification',
-      free_f3:'Backup status check', free_f4:'Written recommendations',
-      free_cta:'Request Free Assessment',
-      addon_h:'Need something specific?',
-      addon_p:'For larger environments, multi-site deployments, or specialist project work — infrastructure design, server builds, office relocations — we scope bespoke engagements. Contact us to discuss.',
-      addon_cta:'Discuss a Custom Scope',
-      matrix_label:"What's Included", matrix_h:'Every feature, mapped to every service area',
-      matrix_p:'A full breakdown of what comes with your managed plan — compared to what businesses typically get on a break-fix or ad-hoc IT model.',
-      mx_th1:'Service & Feature', mx_th2:'Break-Fix / Ad Hoc', mx_th3:'BlueWave IT Managed (€60/user)',
-      mx_cat1:'Managed IT & Helpdesk', mx_cat2:'Cybersecurity', mx_cat3:'Cloud & Microsoft 365', mx_cat4:'Backup & Recovery', mx_cat5:'Network & Consulting',
-      mx_r1:'24/7 endpoint monitoring', mx_r2:'Patch management (OS & apps)', mx_r3:'Remote helpdesk support',
-      mx_r4:'Device onboarding & offboarding', mx_r5:'Asset inventory & health scoring',
-      mx_r6:'Endpoint detection & response (EDR)', mx_r7:'Email security & anti-phishing',
-      mx_r8:'Multi-factor authentication (MFA)', mx_r9:'Firewall management', mx_r10:'Security posture reporting',
-      mx_r11:'M365 user & licence management', mx_r12:'Teams & SharePoint administration',
-      mx_r13:'Defender for Business configuration', mx_r14:'Conditional access & Secure Score',
-      mx_r15:'Automated cloud backup', mx_r16:'Microsoft 365 data backup',
-      mx_r17:'Regular restore testing', mx_r18:'Disaster recovery planning',
-      mx_r19:'Network & Wi-Fi monitoring', mx_r20:'VPN deployment & management',
-      mx_r21:'Annual IT roadmap & planning', mx_r22:'GDPR IT guidance',
-      mx_manual:'Manual', mx_perhour:'Per hour', mx_reactive:'Reactive only', mx_unverified:'Unverified',
-      roi_label:'ROI Estimator', roi_h:'See what managed IT is worth to your business',
-      roi_p:'Enter your current IT situation to calculate your total annual burden — and see exactly how a managed service stacks up. Licences are always client-paid; BlueWave IT eliminates the hidden costs around them.',
-      roi_inputs_h:'Your current situation',
-      roi_inputs_p:'Fill in what your business currently spends. Licences you already pay stay yours — BlueWave eliminates the labour, risk, and hidden overhead around them.',
-      roi_sec_staff:'Staff & Downtime', roi_sec_software:'Software & Licences', roi_sec_adhoc:'Ad-Hoc Support & Security Risk', roi_sec_infra:'Infrastructure & Hardware',
-      roi_licence_note:'Licence costs remain ', roi_licence_note_strong:'yours to pay',
-      roi_lbl_users:'Number of users', roi_hint_users:'headcount on IT',
-      roi_lbl_wage:'Avg hourly cost per employee', roi_hint_wage:'€/hr incl. oncosts',
-      roi_lbl_hours:'Hours lost to IT issues / employee / month', roi_hint_hours:'avg SMB: 3–6 hrs',
-      roi_lbl_outages:'Major IT outages per year',
-      roi_lbl_outagecost:'Estimated cost per outage (€)', roi_hint_outagecost:'productivity + recovery',
-      roi_lbl_m365:'Microsoft 365 licences / year (€)', roi_hint_m365:'current annual total',
-      roi_lbl_av:'Antivirus / endpoint security / year (€)',
-      roi_lbl_saas:'Other SaaS & software subscriptions / year (€)',
-      roi_lbl_adhoc:'Ad-hoc IT callouts per year', roi_hint_adhoc:'€75–€120/hr typical Algarve',
-      roi_prefix_visits:'visits',
-      roi_lbl_adhocrate:'Average cost per callout (€)',
-      roi_lbl_breach:'Security incident / breach cost past 3 yrs (€)', roi_hint_breach:'amortised annually',
-      roi_lbl_hardware:'Hardware replacement & repairs / year (€)',
-      roi_lbl_backup:'Backup storage & services / year (€)',
-      roi_lbl_network:'Network & connectivity costs / year (€)',
-      roi_results_h2:'Annual cost analysis',
-      roi_saving_label:'Estimated net annual benefit',
-      roi_saving_sub:'What switching to BlueWave IT puts back in your business each year',
-      roi_meta_payback:'Payback period', roi_meta_peruser:'Cost per user / month',
-      roi_bar_current:'Your current annual IT costs', roi_bar_msp:'BlueWave IT managed service',
-      roi_bar_prod:'Productivity lost', roi_bar_outage:'Outage cost', roi_bar_sw:'Software licences', roi_bar_adhoc:'Ad-hoc + breaches', roi_bar_infra:'Infrastructure', roi_bar_msp_cost:'BlueWave IT cost',
-      roi_bk_prod_name:'Productivity lost to IT friction', roi_bk_prod_note:'hrs × wage × users × 12 — 70% recoverable under managed model',
-      roi_bk_outage_name:'Unplanned outage cost', roi_bk_outage_note:'outages × cost per event — 80% prevented proactively',
-      roi_bk_sw_name:'Software & licences', roi_bk_sw_note:'M365 + AV + SaaS — client-paid, BlueWave managed',
-      roi_bk_managed_tag:'Managed by us',
-      roi_bk_adhoc_name:'Ad-hoc support & security incidents', roi_bk_adhoc_note:'callouts × rate + breach amortisation — 85% eliminated',
-      roi_bk_infra_name:'Infrastructure & hardware', roi_bk_infra_note:'hardware + backup + network — better managed, ~10% optimised',
-      roi_total_lbl:'Total current annual IT burden',
-      roi_bk_msp_name:'BlueWave IT — annual investment', roi_bk_msp_note:'€60 × users × 12 months — all 6 service areas included',
-      roi_disclaimer:'Indicative estimates based on typical Algarve SMB data. Productivity and outage savings modelled at 70% / 80% reduction. Licence costs remain client-paid and are excluded from savings calculation — BlueWave IT manages them as part of the service. Actual results will vary.',
-      cm_title:'Get in touch', cm_sub:"Tell us a bit about your business and we'll get back to you within one business day — no obligation.",
-      cm_lbl_name:'Full name', cm_ph_name:'João Silva',
-      cm_lbl_email:'Work email', cm_ph_email:'joao@yourcompany.pt',
-      cm_lbl_company:'Company & approximate number of users', cm_ph_company:'e.g. Acme Lda — 12 users',
-      cm_lbl_msg:"Anything else you'd like us to know?", cm_optional:'(optional)', cm_ph_msg:'Current IT setup, main pain points, questions…',
-      cm_submit:'Send Enquiry',
-      cm_note:"We'll reply within one business day. No sales pressure — just a straight conversation about whether we're a good fit.",
-      cm_success_h:'Enquiry sent', cm_success_p:"Thanks — we'll be in touch within one business day. Check your inbox (and spam folder just in case).",
-      cmp_label:'Comparison', cmp_h:'Managed vs. Break-Fix vs. In-House IT',
-      cmp_p:'Three ways to handle IT. Only one delivers proactive coverage, predictable cost, and enterprise tooling at SMB scale.',
-      cth1:'Factor', cth2:'Break-Fix', cth3:'In-House IT', cth4:'BlueWave IT',
-      cr1:'Monthly cost', cr1b:'Unpredictable', cr1c:'€2,500–€4,000+', cr1d:'€60 / user',
-      cr2:'Proactive monitoring', cr2c:'Depends on person', cr2d:'24/7 automated',
-      cr3:'Cybersecurity tools', cr3c:'Extra licence cost', cr3d:'Included',
-      cr4:'Backup verification', cr4c:'Often overlooked', cr4d:'Daily tested',
-      cr5:'M365 administration', cr5b:'Per hour', cr5d:'Included',
-      cr6:'Response when on leave', cr6d:'Always covered',
-      cr7:'IT strategy & roadmap', cr7c:'Varies', cr7d:'Annual review',
-      cr8:'GDPR IT guidance', cr8c:'Not typically', cr8d:'Included',
-      cr9:'Scales with headcount', cr9d:'Per-user model',
-      faq_label:'FAQ', faq_h:'Pricing questions answered',
-      faq_p:"Everything you need to know about how the managed service model works, what's included, and how billing is handled.",
-      fq1_q:"What's included in the €60 per user per month?",
-      fq1_a:"Everything. Managed IT helpdesk, 24/7 monitoring, patch management, endpoint protection, cybersecurity tools (EDR, email security, MFA), Microsoft 365 administration, backup monitoring and verification, network health monitoring, and an annual IT consulting review. There are no add-ons required to get complete coverage.",
-      fq2_q:'Is there a minimum number of users?',
-      fq2_a:'Yes — the minimum is 5 users. This reflects the minimum environment size needed to deliver a properly managed service at the tooling and monitoring depth BlueWave IT operates at. Most clients start between 8 and 20 users.',
-      fq3_q:'Are there any setup or onboarding fees?',
-      fq3_a:'In most cases, no. For standard SMB environments, onboarding is included in the managed service. For more complex environments — multiple sites, legacy systems, or significant remediation work — a one-time project fee may apply, which will always be clearly scoped before any commitment.',
-      fq4_q:'What if I add or remove users mid-month?',
-      fq4_a:'Billing is adjusted on a pro-rated basis at the next invoice. When someone joins, their user is activated immediately and billed from that date. When someone leaves, their user is offboarded and billing stops. Simple, transparent, and always aligned with your actual headcount.',
-      fq5_q:'Is there a long-term contract or lock-in?',
-      fq5_a:'No multi-year lock-in. BlueWave IT operates on a monthly rolling basis after a standard initial term. The relationship works because it delivers value — not because of contract penalty clauses.',
-      fq6_q:'Do hardware and software licences cost extra?',
-      fq6_a:'Hardware (workstations, servers, switches, APs) is procured separately at cost. Microsoft 365 licences are billed at Microsoft\'s published rates. The management, administration, and support of all hardware and software is included in the €60/user/month fee.',
-      fq7_q:'Can I get a quote before committing?',
-      fq7_a:"Absolutely. Book a free consultation — we'll review your environment, scope the right engagement, and provide a clear written proposal. The free IT assessment is exactly that: free, with no obligation to proceed.",
-      fq8_q:'Can I add cloud backup to my managed IT plan?',
-      fq8_a:"Yes — backup plans are designed to complement the managed IT service seamlessly. The €60/user/month plan includes backup monitoring and verification for any backup system you already have. Adding a Cloud Backup plan gives you the managed offsite storage, retention policy, reporting, and restore handling on top of that. Most clients running a managed IT plan choose Cloud Backup Standard (€119/month) as their storage layer.",
-      cta_h:'Ready to put a number on it?',
-      cta_p:"Book a free consultation. We'll assess your environment, confirm your user count, and provide a precise written proposal — usually within 48 hours.",
-      cta_btn1:'Book a Free Consultation', cta_btn2:'Explore Services',
-      ft_tagline:'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
-      ft_svc_h:'Services', ft_co_h:'Company',
-      ft_s1:'Managed IT', ft_s2:'Cybersecurity', ft_s3:'Cloud & M365', ft_s4:'Backup & Recovery', ft_s5:'Network Management', ft_s6:'IT Consulting',
-      ft_c1:'Home', ft_c2:'About', ft_c3:'Pricing', ft_c4:'FAQ', ft_c5:'Contact',
-      ft_copy:'© 2026 BlueWave IT. Reliable technology for growing businesses.',
-      footer_privacy:'Privacy Policy', footer_gdpr:'GDPR',footer_terms:'Terms and Conditions',
-      /* backup pricing */
-      bk_label:'Cloud Backup & Storage',
-      bk_h:'Managed cloud backup pricing',
-      bk_p:'Predictable, packaged backup plans with managed storage, daily monitoring, and tested restores. Add to any managed IT plan or run standalone.',
-      bk_toggle_plans:'Storage Plans', bk_toggle_overage:'Overage & Restores',
-      bk_month:'/month', bk_popular:'Most Popular', bk_plus_badge:'Full Coverage',
-      bk_arc_badge:'Long-Term',
-      bk_e_name:'Cloud Backup Essentials', bk_e_storage:'Up to 500 GB included',
-      bk_e_note:'Ideal for small teams with moderate data needs',
-      bk_e_f1:'Managed backup storage', bk_e_f2:'Daily backup checks',
-      bk_e_f3:'Basic retention policy', bk_e_f4:'Restore support (business hours)',
-      bk_s_name:'Cloud Backup Standard', bk_s_storage:'Up to 2 TB included',
-      bk_s_note:'Best fit for most Algarve SMBs',
-      bk_s_f1:'Managed backup storage', bk_s_f2:'Daily backup monitoring',
-      bk_s_f3:'30–90 day retention', bk_s_f4:'Priority restore support',
-      bk_s_f5:'Monthly backup health report',
-      bk_p_name:'Cloud Backup Plus', bk_p_storage:'Up to 5 TB included',
-      bk_p_note:'For data-heavy operations and full DR coverage',
-      bk_p_f1:'Managed backup storage', bk_p_f2:'Monitoring and alerting',
-      bk_p_f3:'Long-term retention options', bk_p_f4:'Priority restores',
-      bk_p_f5:'Monthly backup health report', bk_p_f6:'Quarterly backup review',
-      bk_a_name:'Archive Retention', bk_a_storage:'Up to 5 TB archived',
-      bk_a_note:'Retrieval billed separately if needed',
-      bk_a_f1:'Long-term archive storage', bk_a_f2:'Compliance-style retention',
-      bk_a_f3:'Low-cost cold storage design', bk_a_f4:'Retrieval billed separately',
-      bk_cta_start:'Get Started', bk_cta_recommended:'Get Standard Plan',
-      sv_h:'Storage tier cost comparison — price per GB at included capacity',
-      sv_hot:'Hot (active)', sv_overhot:'Hot overage', sv_cool:'Cool storage', sv_archive:'Archive',
-      sv_standard_note:'Standard plan avg.', sv_overage_note:'Beyond plan limit',
-      sv_cool_note:'Infrequent access', sv_archive_note:'Long-term cold',
-      ov_h:'Overage & restore pricing',
-      ov_p:'All plans include storage up to the stated limit. Usage above the included capacity is billed at the rates below, keeping plan fees predictable.',
-      ov_hot_type:'Hot Storage', ov_cool_type:'Cool Storage', ov_archive_type:'Archive Storage',
-      ov_per_gb:'per GB / month',
-      ov_restore_std:'Standard restore request (fair use)', ov_restore_std_val:'✓ Included in all plans',
-      ov_restore_large:'Large restore or urgent out-of-hours recovery', ov_restore_large_val:'Scoped & billed separately',
-      ov_tip_h:'Best-practice structure for most clients',
-      ov_tip_body:'The packaged plan fee covers the non-storage work: setup, monitoring, support, retention policy management, reporting, and restore handling. Raw storage overages are billed at cost. This keeps billing transparent and aligned with actual usage.',
-      /* on-site backup */
-      os_label:'On-Site Backup Solutions',
-      os_h:'Local backup appliances — deployed and managed on your premises',
-      os_p:'For organisations that prefer local backup infrastructure instead of cloud storage. We deploy and manage dedicated backup appliances installed at your office — providing high-speed local backups, rapid restore capability, and full data control within your premises.',
-      os_tip:'Hybrid backup is our recommended default for most clients',
-      os_recommended:'Recommended',
-      os_includes_head:'Includes', os_suitable_head:'Suitable for', os_benefits_head:'Benefits',
-      os_hw_label:'hardware', os_month_mgmt:'/month management',
-      os_e_name:'Local Backup Appliance — Entry',
-      os_e_hw_price:'From €499',
-      os_e_f1:'On-site backup device', os_e_f2:'Automated backups',
-      os_e_f3:'Monitoring and alerts', os_e_f4:'Restore assistance', os_e_f5:'Health checks',
-      os_e_s1:'Small offices', os_e_s2:'Workstations', os_e_s3:'Small file servers',
-      os_b_name:'Local Backup Appliance — Business',
-      os_b_hw_price:'From €899',
-      os_b_f1:'Larger storage capacity', os_b_f2:'Automated backups',
-      os_b_f3:'Monitoring and alerts', os_b_f4:'Backup integrity verification',
-      os_b_f5:'Priority restore support',
-      os_b_s1:'Business servers', os_b_s2:'Shared storage', os_b_s3:'Multi-user environments',
-      os_h_name:'Hybrid Backup',
-      os_h_price:'From €79', os_h_unit:'/month',
-      os_h_sub:'Local backup + secure off-site replication',
-      os_h_f1:'Fast local restores',
-      os_h_f2:'Protected against fire, theft, or ransomware',
-      os_h_f3:'Off-site disaster recovery',
-      os_h_f4:'Automated monitoring',
-      os_h_f5:'Best of local and cloud in one plan',
-      os_diag_devices:'Devices', os_diag_local:'Local NAS', os_diag_cloud:'Off-site',
-      os_cta_enquire:'Enquire About This Plan',
-      os_cta_hybrid:'Get Hybrid Backup',
-      os_hw_note:'Hardware pricing is indicative and depends on storage capacity, RAID configuration, and final specification. All appliances are sourced, configured, and deployed by BlueWave IT. Monthly management fees cover monitoring, firmware updates, health checks, and restore support.',
-    },
-    pt: {
-      nav_label:'Serviços IT Geridos', nav_home:'Início', nav_services:'Serviços', nav_about:'Sobre', nav_pricing:'Preços', nav_contact:'Contacto', cta_book:'Marcar Consulta',
-      theme_dark:'Escuro', theme_light:'Claro',
-      bc_home:'Início', bc_current:'Preços',
-      hero_label:'Preços Simples',
-      hero_h1_a:'Um preço.', hero_h1_b:'Tudo incluído.', hero_h1_c:'Zero surpresas.',
-      hero_p:'Sem funcionalidades por níveis, sem extras, sem faturas surpresa. Cada cliente BlueWave IT tem acesso às seis áreas de serviço por uma tarifa mensal fixa por utilizador — custos previsíveis, IT de nível empresarial.',
-      hero_cta_1:'Calcule o Seu Custo', hero_cta_2:'Ver O Que Está Incluído',
-      hpd_label:'Plano Gerido Standard', hpd_unit:'por utilizador / mês',
-      hpd_note:'Todos os serviços. Todos os utilizadores. Uma fatura.',
-      hpd_f1:'Helpdesk IT gerido e monitorização', hpd_f2:'Proteção de endpoints e gestão de patches',
-      hpd_f3:'Cibersegurança — EDR, segurança de email, MFA', hpd_f4:'Administração Microsoft 365',
-      hpd_f5:'Monitorização e verificação de backups', hpd_f6:'Saúde e suporte de rede',
-      hpd_eg_label:'Exemplo — 10 utilizadores', hpd_month:'mês',
-      calc_h:'Calculadora de custos', calc_p:'Ajuste os controlos para modelar o seu ambiente. O preço atualiza em tempo real.',
-      calc_live:'Estimativa em direto',
-      sl_users_label:'Número de utilizadores', sl_users_desc:'Colaboradores que precisam de suporte IT, email e gestão de dispositivos',
-      sl_backup_plan_label:'Plano de backup cloud', sl_backup_plan_desc:'Extra opcional — selecione o plano adequado ao seu volume de dados',
-      sl_bp_none:'Nenhum',
-      sl_backup_label:'Volume de dados estimado (GB)', sl_backup_desc:'Dados empresariais em armazenamento local e Microsoft 365',
-      calc_monthly_label:'Investimento mensal estimado', calc_year:'ano',
-      cb_users_label:'Utilizadores geridos', cb_backup_plan_label:'Plano de backup cloud',
-      cb_backup_label:'Volume de dados estimado', cb_total_label:'Total mensal',
-      calc_tip_head:'Porque este modelo poupa dinheiro',
-      calc_tip_base:'O suporte IT pontual no Algarve custa €75–€120/hora sem cobertura proativa. O modelo gerido oferece monitorização, segurança, backups e helpdesk por uma mensalidade fixa — orçamento previsível, sem faturas surpresa.',
-      plan_label:'O Plano', plan_h:'Um plano, completo',
-      plan_p:'As seis áreas de serviço estão ativas para todos os clientes geridos desde o primeiro dia. Não há níveis iniciais nem caminhos de upgrade — apenas gestão IT completa e proativa.',
-      plan_badge:'Plano Gerido Standard', plan_name:'IT Gerido Completo',
-      plan_desc:'Tudo o que a sua empresa precisa para funcionar de forma fiável, manter-se segura e crescer com confiança — gerido proativamente pela BlueWave IT.',
-      plan_unit:'por utilizador / mês', plan_sub:'Faturação mensal. Mínimo 5 utilizadores. Sem contratos com penalizações.',
-      inc_1_name:'IT Gerido e Helpdesk',    inc_1_sub:'Monitorização 24/7, resposta rápida',
-      inc_2_name:'Cibersegurança',           inc_2_sub:'EDR, filtragem de email, MFA',
-      inc_3_name:'Cloud e Microsoft 365',    inc_3_sub:'Admin, Teams, SharePoint',
-      inc_4_name:'Backup e Recuperação',     inc_4_sub:'Verificação diária, plano DR',
-      inc_5_name:'Gestão de Rede',           inc_5_sub:'UniFi, firewall, VPN',
-      inc_6_name:'Consultoria IT',           inc_6_sub:'Roadmaps, RGPD, estratégia',
-      plan_cta:'Começar — Marcar uma Consulta',
-      free_val:'Grátis', free_unit:'avaliação IT',
-      free_h:'Comece com uma avaliação gratuita',
-      free_p:'Não está pronto para se comprometer? Revemos o seu ambiente IT atual, identificamos lacunas e fornecemos um resumo escrito claro de riscos e oportunidades — sem custos e sem obrigações.',
-      free_f1:'Auditoria completa do ambiente', free_f2:'Identificação de lacunas de segurança',
-      free_f3:'Verificação do estado dos backups', free_f4:'Recomendações escritas',
-      free_cta:'Pedir Avaliação Gratuita',
-      addon_h:'Precisa de algo específico?',
-      addon_p:'Para ambientes maiores, implementações multi-sede ou trabalho de projeto especializado — design de infraestrutura, construção de servidores, mudanças de escritório — elaboramos propostas personalizadas. Contacte-nos.',
-      addon_cta:'Discutir um Âmbito Personalizado',
-      matrix_label:'O Que Está Incluído', matrix_h:'Cada funcionalidade, mapeada para cada área de serviço',
-      matrix_p:'Uma análise completa do que vem com o seu plano gerido — comparado com o que as empresas normalmente obtêm num modelo break-fix ou ad-hoc.',
-      mx_th1:'Serviço e Funcionalidade', mx_th2:'Break-Fix / Ad Hoc', mx_th3:'BlueWave IT Gerido (€60/utilizador)',
-      mx_cat1:'IT Gerido e Helpdesk', mx_cat2:'Cibersegurança', mx_cat3:'Cloud e Microsoft 365', mx_cat4:'Backup e Recuperação', mx_cat5:'Rede e Consultoria',
-      mx_r1:'Monitorização 24/7 de endpoints', mx_r2:'Gestão de patches (SO e apps)', mx_r3:'Suporte helpdesk remoto',
-      mx_r4:'Integração e saída de dispositivos', mx_r5:'Inventário de ativos e avaliação de saúde',
-      mx_r6:'Deteção e resposta de endpoints (EDR)', mx_r7:'Segurança de email e anti-phishing',
-      mx_r8:'Autenticação multi-fator (MFA)', mx_r9:'Gestão de firewall', mx_r10:'Relatório de postura de segurança',
-      mx_r11:'Gestão de utilizadores e licenças M365', mx_r12:'Administração Teams e SharePoint',
-      mx_r13:'Configuração do Defender for Business', mx_r14:'Acesso condicional e Secure Score',
-      mx_r15:'Backup cloud automático', mx_r16:'Backup de dados Microsoft 365',
-      mx_r17:'Testes regulares de restauro', mx_r18:'Planeamento de disaster recovery',
-      mx_r19:'Monitorização de rede e Wi-Fi', mx_r20:'Implementação e gestão de VPN',
-      mx_r21:'Roadmap IT anual e planeamento', mx_r22:'Orientação IT RGPD',
-      mx_manual:'Manual', mx_perhour:'Por hora', mx_reactive:'Apenas reativo', mx_unverified:'Não verificado',
-      roi_label:'Estimador de ROI', roi_h:'Veja quanto vale o IT gerido para o seu negócio',
-      roi_p:'Introduza a sua situação atual de IT para calcular o encargo anual total — e veja exatamente como um serviço gerido se compara. As licenças são sempre pagas pelo cliente; a BlueWave IT elimina os custos ocultos à sua volta.',
-      roi_inputs_h:'A sua situação atual',
-      roi_inputs_p:'Preencha o que a sua empresa gasta atualmente. As licenças que já paga continuam suas — a BlueWave elimina o trabalho, o risco e os encargos ocultos em torno delas.',
-      roi_sec_staff:'Equipa e Tempo Perdido', roi_sec_software:'Software e Licenças', roi_sec_adhoc:'Suporte Pontual e Risco de Segurança', roi_sec_infra:'Infraestrutura e Hardware',
-      roi_licence_note:'Os custos das licenças continuam ', roi_licence_note_strong:'a seu cargo',
-      roi_lbl_users:'Número de utilizadores', roi_hint_users:'pessoas com acesso a IT',
-      roi_lbl_wage:'Custo médio horário por colaborador', roi_hint_wage:'€/h incl. encargos',
-      roi_lbl_hours:'Horas perdidas com IT / colaborador / mês', roi_hint_hours:'média PME: 3–6 h',
-      roi_lbl_outages:'Grandes falhas de IT por ano',
-      roi_lbl_outagecost:'Custo estimado por falha (€)', roi_hint_outagecost:'produtividade perdida + recuperação',
-      roi_lbl_m365:'Licenças Microsoft 365 / ano (€)', roi_hint_m365:'total anual atual',
-      roi_lbl_av:'Antivírus / segurança de endpoint / ano (€)',
-      roi_lbl_saas:'Outras subscrições SaaS e software / ano (€)',
-      roi_lbl_adhoc:'Chamadas IT pontuais por ano', roi_hint_adhoc:'€75–€120/h típico no Algarve',
-      roi_prefix_visits:'chamadas',
-      roi_lbl_adhocrate:'Custo médio por chamada (€)',
-      roi_lbl_breach:'Custo de incidente de segurança nos últimos 3 anos (€)', roi_hint_breach:'amortizado anualmente',
-      roi_lbl_hardware:'Substituição e reparação de hardware / ano (€)',
-      roi_lbl_backup:'Armazenamento e serviços de backup / ano (€)',
-      roi_lbl_network:'Custos de rede e conectividade / ano (€)',
-      roi_results_h2:'Análise de custos anual',
-      roi_saving_label:'Benefício líquido anual estimado',
-      roi_saving_sub:'O que a mudança para a BlueWave IT devolve ao seu negócio por ano',
-      roi_meta_payback:'Período de retorno', roi_meta_peruser:'Custo por utilizador / mês',
-      roi_bar_current:'Os seus custos anuais de IT atuais', roi_bar_msp:'Serviço gerido BlueWave IT',
-      roi_bar_prod:'Produtividade perdida', roi_bar_outage:'Custo de falhas', roi_bar_sw:'Licenças de software', roi_bar_adhoc:'Ad-hoc + incidentes', roi_bar_infra:'Infraestrutura', roi_bar_msp_cost:'Custo BlueWave IT',
-      roi_bk_prod_name:'Produtividade perdida com problemas de IT', roi_bk_prod_note:'h × custo × utilizadores × 12 — 70% recuperável com modelo gerido',
-      roi_bk_outage_name:'Custo de falhas não planeadas', roi_bk_outage_note:'falhas × custo por evento — 80% prevenidas proativamente',
-      roi_bk_sw_name:'Software e licenças', roi_bk_sw_note:'M365 + AV + SaaS — pagas pelo cliente, geridas pela BlueWave',
-      roi_bk_managed_tag:'Gerido por nós',
-      roi_bk_adhoc_name:'Suporte pontual e incidentes de segurança', roi_bk_adhoc_note:'chamadas × custo + amortização de incidentes — 85% eliminadas',
-      roi_bk_infra_name:'Infraestrutura e hardware', roi_bk_infra_note:'hardware + backup + rede — melhor gestão, ~10% otimizado',
-      roi_total_lbl:'Encargo total anual de IT atual',
-      roi_bk_msp_name:'BlueWave IT — investimento anual', roi_bk_msp_note:'€60 × utilizadores × 12 meses — todas as 6 áreas de serviço incluídas',
-      roi_disclaimer:'Estimativas indicativas baseadas em dados típicos de PMEs do Algarve. Poupanças em produtividade e falhas modeladas a 70% / 80% de redução. Os custos de licenças continuam a ser pagos pelo cliente e excluídos do cálculo de poupança — a BlueWave IT gere-os como parte do serviço. Os resultados reais podem variar.',
-      cm_title:'Entrar em contacto', cm_sub:'Diga-nos um pouco sobre a sua empresa e responderemos dentro de um dia útil — sem compromisso.',
-      cm_lbl_name:'Nome completo', cm_ph_name:'João Silva',
-      cm_lbl_email:'Email profissional', cm_ph_email:'joao@suaempresa.pt',
-      cm_lbl_company:'Empresa e número aproximado de utilizadores', cm_ph_company:'ex: Acme Lda — 12 utilizadores',
-      cm_lbl_msg:'Mais alguma coisa que queira partilhar?', cm_optional:'(opcional)', cm_ph_msg:'Configuração atual de IT, principais problemas, questões…',
-      cm_submit:'Enviar Pedido',
-      cm_note:'Respondemos dentro de um dia útil. Sem pressão comercial — apenas uma conversa direta sobre se somos a escolha certa para si.',
-      cm_success_h:'Pedido enviado', cm_success_p:'Obrigado — entraremos em contacto dentro de um dia útil. Verifique a sua caixa de entrada (e a pasta de spam, por precaução).',
-      cmp_label:'Comparação', cmp_h:'Gerido vs. Break-Fix vs. IT Interno',
-      cmp_p:'Três formas de gerir o IT. Apenas uma oferece cobertura proativa, custo previsível e ferramentas empresariais à escala das PMEs.',
-      cth1:'Fator', cth2:'Break-Fix', cth3:'IT Interno', cth4:'BlueWave IT',
-      cr1:'Custo mensal', cr1b:'Imprevisível', cr1c:'€2.500–€4.000+', cr1d:'€60 / utilizador',
-      cr2:'Monitorização proativa', cr2c:'Depende da pessoa', cr2d:'24/7 automatizado',
-      cr3:'Ferramentas de cibersegurança', cr3c:'Custo extra de licenças', cr3d:'Incluído',
-      cr4:'Verificação de backups', cr4c:'Frequentemente ignorado', cr4d:'Testado diariamente',
-      cr5:'Administração M365', cr5b:'Por hora', cr5d:'Incluído',
-      cr6:'Resposta durante ausências', cr6d:'Sempre coberto',
-      cr7:'Estratégia IT e roadmap', cr7c:'Variável', cr7d:'Revisão anual',
-      cr8:'Orientação IT RGPD', cr8c:'Normalmente não', cr8d:'Incluído',
-      cr9:'Escala com a equipa', cr9d:'Modelo por utilizador',
-      faq_label:'FAQ', faq_h:'Perguntas sobre preços respondidas',
-      faq_p:'Tudo o que precisa de saber sobre como funciona o modelo de serviço gerido, o que está incluído e como é feita a faturação.',
-      fq1_q:'O que está incluído nos €60 por utilizador por mês?',
-      fq1_a:'Tudo. Helpdesk IT gerido, monitorização 24/7, gestão de patches, proteção de endpoints, ferramentas de cibersegurança (EDR, segurança de email, MFA), administração Microsoft 365, monitorização e verificação de backups, monitorização de saúde de rede e uma revisão anual de consultoria IT. Não são necessários extras para obter cobertura completa.',
-      fq2_q:'Existe um número mínimo de utilizadores?',
-      fq2_a:'Sim — o mínimo é 5 utilizadores. Reflete o tamanho mínimo de ambiente necessário para prestar um serviço gerido adequadamente com a profundidade de ferramentas e monitorização com que a BlueWave IT opera. A maioria dos clientes começa entre 8 e 20 utilizadores.',
-      fq3_q:'Existem taxas de instalação ou integração?',
-      fq3_a:'Na maioria dos casos, não. Para ambientes PME standard, a integração está incluída no serviço gerido. Para ambientes mais complexos — múltiplas sedes, sistemas legados ou trabalho significativo de remediação — pode aplicar-se uma taxa de projeto única, que será sempre claramente definida antes de qualquer compromisso.',
-      fq4_q:'E se adicionar ou remover utilizadores a meio do mês?',
-      fq4_a:'A faturação é ajustada pro-rata na próxima fatura. Quando alguém entra, o utilizador é ativado de imediato e faturado a partir dessa data. Quando alguém sai, o utilizador é desativado e a faturação cessa. Simples, transparente e sempre alinhado com o número real de colaboradores.',
-      fq5_q:'Existe contrato de longo prazo ou clausulas de fidelização?',
-      fq5_a:'Não há fidelização plurianual. A BlueWave IT opera numa base mensal renovável após um prazo inicial standard. A relação funciona porque gera valor — não por cláusulas de penalização contratuais.',
-      fq6_q:'Hardware e licenças de software têm custo adicional?',
-      fq6_a:"Hardware (workstations, servidores, switches, APs) é adquirido separadamente ao custo. As licenças Microsoft 365 são faturadas às tarifas publicadas pela Microsoft. A gestão, administração e suporte de todo o hardware e software está incluído na tarifa de €60/utilizador/mês.",
-      fq7_q:'Posso obter uma proposta antes de me comprometer?',
-      fq7_a:'Claro. Marque uma consulta gratuita — revemos o seu ambiente, definimos o âmbito correto e fornecemos uma proposta escrita clara. A avaliação IT gratuita é exatamente isso: gratuita, sem obrigação de prosseguir.',
-      fq8_q:'Posso adicionar backup cloud ao meu plano IT gerido?',
-      fq8_a:'Sim — os planos de backup foram concebidos para complementar o serviço IT gerido de forma integrada. O plano de €60/utilizador/mês inclui monitorização e verificação de backups para qualquer sistema de backup que já tenha. Adicionar um plano Cloud Backup dá-lhe o armazenamento offsite gerido, política de retenção, relatórios e gestão de restauros adicionalmente. A maioria dos clientes com plano IT gerido escolhe o Cloud Backup Standard (€119/mês) como camada de armazenamento.',
-      cta_h:'Pronto para colocar um número nisso?',
-      cta_p:'Marque uma consulta gratuita. Avaliamos o seu ambiente, confirmamos o número de utilizadores e fornecemos uma proposta escrita precisa — normalmente em 48 horas.',
-      cta_btn1:'Marcar uma Consulta Gratuita', cta_btn2:'Explorar Serviços',
-      ft_tagline:'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
-      ft_svc_h:'Serviços', ft_co_h:'Empresa',
-      ft_s1:'IT Gerido', ft_s2:'Cibersegurança', ft_s3:'Cloud e M365', ft_s4:'Backup e Recuperação', ft_s5:'Gestão de Rede', ft_s6:'Consultoria IT',
-      ft_c1:'Início', ft_c2:'Sobre', ft_c3:'Preços', ft_c4:'FAQ', ft_c5:'Contacto',
-      ft_copy:'© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
-      footer_privacy:'Política de Privacidade', footer_gdpr:'RGPD', footer_terms:'Termos e Condições', 
-      /* backup pricing */
-      bk_label:'Backup e Armazenamento Cloud',
-      bk_h:'Preços de backup cloud gerido',
-      bk_p:'Planos de backup previsíveis e estruturados com armazenamento gerido, monitorização diária e restauros testados. Adicione a qualquer plano IT gerido ou utilize de forma independente.',
-      bk_toggle_plans:'Planos de Armazenamento', bk_toggle_overage:'Excedentes e Restauros',
-      bk_month:'/mês', bk_popular:'Mais Popular', bk_plus_badge:'Cobertura Total',
-      bk_arc_badge:'Longo Prazo',
-      bk_e_name:'Cloud Backup Essentials', bk_e_storage:'Até 500 GB incluído',
-      bk_e_note:'Ideal para equipas pequenas com necessidades moderadas de dados',
-      bk_e_f1:'Armazenamento de backup gerido', bk_e_f2:'Verificações diárias de backup',
-      bk_e_f3:'Política de retenção básica', bk_e_f4:'Suporte de restauro (horário comercial)',
-      bk_s_name:'Cloud Backup Standard', bk_s_storage:'Até 2 TB incluído',
-      bk_s_note:'Melhor opção para a maioria das PMEs do Algarve',
-      bk_s_f1:'Armazenamento de backup gerido', bk_s_f2:'Monitorização diária de backups',
-      bk_s_f3:'Retenção de 30 a 90 dias', bk_s_f4:'Suporte prioritário de restauro',
-      bk_s_f5:'Relatório mensal de saúde dos backups',
-      bk_p_name:'Cloud Backup Plus', bk_p_storage:'Até 5 TB incluído',
-      bk_p_note:'Para operações com muitos dados e cobertura DR completa',
-      bk_p_f1:'Armazenamento de backup gerido', bk_p_f2:'Monitorização e alertas',
-      bk_p_f3:'Opções de retenção a longo prazo', bk_p_f4:'Restauros prioritários',
-      bk_p_f5:'Relatório mensal de saúde dos backups', bk_p_f6:'Revisão trimestral de backups',
-      bk_a_name:'Retenção de Arquivo', bk_a_storage:'Até 5 TB arquivado',
-      bk_a_note:'Recuperação faturada separadamente se necessário',
-      bk_a_f1:'Armazenamento de arquivo a longo prazo', bk_a_f2:'Retenção para conformidade',
-      bk_a_f3:'Design de armazenamento frio de baixo custo', bk_a_f4:'Recuperação faturada separadamente',
-      bk_cta_start:'Começar', bk_cta_recommended:'Obter Plano Standard',
-      sv_h:'Comparação de custos por camada — preço por GB na capacidade incluída',
-      sv_hot:'Quente (ativo)', sv_overhot:'Excedente quente', sv_cool:'Armazenamento cool', sv_archive:'Arquivo',
-      sv_standard_note:'Média plano Standard', sv_overage_note:'Acima do limite do plano',
-      sv_cool_note:'Acesso pouco frequente', sv_archive_note:'Frio a longo prazo',
-      ov_h:'Preços de excedente e restauro',
-      ov_p:'Todos os planos incluem armazenamento até ao limite indicado. O uso acima da capacidade incluída é faturado às tarifas abaixo, mantendo as mensalidades previsíveis.',
-      ov_hot_type:'Armazenamento Quente', ov_cool_type:'Armazenamento Cool', ov_archive_type:'Armazenamento Arquivo',
-      ov_per_gb:'por GB / mês',
-      ov_restore_std:'Pedido de restauro standard (uso justo)', ov_restore_std_val:'✓ Incluído em todos os planos',
-      ov_restore_large:'Restauro grande ou recuperação urgente fora do horário', ov_restore_large_val:'Definido e faturado separadamente',
-      ov_tip_h:'Estrutura de boas práticas para a maioria dos clientes',
-      ov_tip_body:'A mensalidade do plano cobre o trabalho não relacionado com armazenamento: configuração, monitorização, suporte, gestão de políticas de retenção, relatórios e gestão de restauros. Os excedentes de armazenamento são faturados ao custo. Mantém a faturação transparente e alinhada com o uso real.',
-      /* on-site backup */
-      os_label:'Soluções de Backup Local',
-      os_h:'Appliances de backup local — implementados e geridos nas suas instalações',
-      os_p:'Para organizações que preferem infraestrutura de backup local em vez de armazenamento cloud. Implementamos e gerimos appliances de backup dedicados instalados no seu escritório — proporcionando backups locais de alta velocidade, capacidade de restauro rápido e controlo total dos dados nas suas instalações.',
-      os_tip:'O backup híbrido é a nossa recomendação padrão para a maioria dos clientes',
-      os_recommended:'Recomendado',
-      os_includes_head:'Inclui', os_suitable_head:'Adequado para', os_benefits_head:'Benefícios',
-      os_hw_label:'hardware', os_month_mgmt:'/mês gestão',
-      os_e_name:'Appliance de Backup Local — Entry',
-      os_e_hw_price:'A partir de €499',
-      os_e_f1:'Dispositivo de backup local', os_e_f2:'Backups automáticos',
-      os_e_f3:'Monitorização e alertas', os_e_f4:'Assistência de restauro', os_e_f5:'Verificações de saúde',
-      os_e_s1:'Escritórios pequenos', os_e_s2:'Workstations', os_e_s3:'Pequenos servidores de ficheiros',
-      os_b_name:'Appliance de Backup Local — Business',
-      os_b_hw_price:'A partir de €899',
-      os_b_f1:'Maior capacidade de armazenamento', os_b_f2:'Backups automáticos',
-      os_b_f3:'Monitorização e alertas', os_b_f4:'Verificação de integridade dos backups',
-      os_b_f5:'Suporte prioritário de restauro',
-      os_b_s1:'Servidores empresariais', os_b_s2:'Armazenamento partilhado', os_b_s3:'Ambientes multi-utilizador',
-      os_h_name:'Backup Híbrido',
-      os_h_price:'A partir de €79', os_h_unit:'/mês',
-      os_h_sub:'Backup local + replicação off-site segura',
-      os_h_f1:'Restauros locais rápidos',
-      os_h_f2:'Proteção contra incêndio, roubo ou ransomware',
-      os_h_f3:'Recuperação de desastres off-site',
-      os_h_f4:'Monitorização automática',
-      os_h_f5:'O melhor do local e cloud num único plano',
-      os_diag_devices:'Dispositivos', os_diag_local:'NAS Local', os_diag_cloud:'Off-site',
-      os_cta_enquire:'Pedir Informação Sobre Este Plano',
-      os_cta_hybrid:'Obter Backup Híbrido',
-      os_hw_note:'O preço do hardware é indicativo e depende da capacidade de armazenamento, configuração RAID e especificação final. Todos os appliances são fornecidos, configurados e implementados pela BlueWave IT. As mensalidades de gestão cobrem monitorização, atualizações de firmware, verificações de saúde e suporte de restauro.',
-    }
-  };
+  
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="js/pages/pricing.js"></script>
 
-  let lang = 'en';
-
-  function setLanguage(l) {
-    lang = l;
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const k = el.dataset.i18n;
-      if (T[l][k] !== undefined) el.textContent = T[l][k];
-    });
-    // Translate input/textarea placeholders
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const k = el.dataset.i18nPlaceholder;
-      if (T[l][k] !== undefined) el.placeholder = T[l][k];
-    });
-    document.querySelectorAll('[data-lang]').forEach(b =>
-      b.classList.toggle('active', b.dataset.lang === l)
-    );
-    updateCalc();
-    updateROI();
-  }
-  document.querySelectorAll('[data-lang]').forEach(b =>
-    b.addEventListener('click', () => setLanguage(b.dataset.lang))
-  );
-
-  /* ── theme ── */
-  document.querySelectorAll('[data-theme]').forEach(b => {
-    b.addEventListener('click', () => {
-      const isLight = b.dataset.theme === 'light';
-      document.body.classList.toggle('theme-light', isLight);
-      document.querySelectorAll('.logo-img').forEach(img => {
-        img.src = isLight ? img.dataset.light : img.dataset.dark;
-      });
-      document.querySelectorAll('[data-theme]').forEach(x =>
-        x.classList.toggle('active', x.dataset.theme === b.dataset.theme)
-      );
-    });
-  });
-
-  /* ── mobile nav ── */
-  const navToggle  = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  navToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('open');
-    navToggle.textContent = mobileMenu?.classList.contains('open') ? '✕' : '☰';
-  });
-  document.querySelectorAll('.mobile-menu a').forEach(l =>
-    l.addEventListener('click', () => {
-      mobileMenu?.classList.remove('open');
-      if (navToggle) navToggle.textContent = '☰';
-    })
-  );
-
-  /* ── header scroll ── */
-  const header  = document.getElementById('siteHeader');
-  const backTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (header)  header.classList.toggle('scrolled', window.scrollY > 16);
-    if (backTop) backTop.classList.toggle('show', window.scrollY > 500);
-  });
-  backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  /* ── reveal ── */
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-  }, { threshold: 0.10 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  /* ── CALCULATOR ── */
-  const usersRange      = document.getElementById('usersRange');
-  const backupPlanRange = document.getElementById('backupPlanRange');
-  const backupRange     = document.getElementById('backupRange');
-
-  // Backup plan data — index maps to slider position 0–4
-  const backupPlans = [
-    { nameEn: 'None',                  namePt: 'Nenhum',                   price: 0   },
-    { nameEn: 'Essentials — 500 GB',   namePt: 'Essentials — 500 GB',      price: 39  },
-    { nameEn: 'Standard — 2 TB',       namePt: 'Standard — 2 TB',          price: 119 },
-    { nameEn: 'Plus — 5 TB',           namePt: 'Plus — 5 TB',              price: 249 },
-    { nameEn: 'Archive Retention',     namePt: 'Retenção de Arquivo',       price: 79  },
-  ];
-
-  function fmt(n) { return n.toLocaleString(lang === 'pt' ? 'pt-PT' : 'en-GB'); }
-
-  function updateCalc() {
-    const users      = parseInt(usersRange.value);
-    const planIdx    = parseInt(backupPlanRange.value);
-    const backup     = parseInt(backupRange.value);
-    const plan       = backupPlans[planIdx];
-    const mspCost    = users * 60;
-    const totalMonthly = mspCost + plan.price;
-    const annual     = totalMonthly * 12;
-
-    // Slider display values
-    document.getElementById('usersVal').textContent  = users;
-    document.getElementById('backupVal').textContent = fmt(backup) + ' GB';
-
-    // Backup plan label on slider
-    const planLabel = lang === 'pt' ? plan.namePt : plan.nameEn;
-    document.getElementById('backupPlanVal').textContent = plan.price > 0
-      ? planLabel + ' — €' + plan.price
-      : (lang === 'pt' ? 'Sem backup cloud' : 'No cloud backup');
-
-    // Main output totals
-    document.getElementById('calcTotal').textContent  = '€' + fmt(totalMonthly);
-    document.getElementById('calcAnnual').textContent = '€' + fmt(annual) + ' / ' + (T[lang].calc_year || 'year');
-
-    // Breakdown rows
-    document.getElementById('cbUsers').textContent   = users + ' ' + (lang === 'pt' ? 'utilizadores' : 'users') + ' × €60';
-    document.getElementById('cbBackup').textContent  = fmt(backup) + ' GB';
-    document.getElementById('cbTotal').textContent   = '€' + fmt(totalMonthly);
-
-    // Backup plan row — show/hide based on selection
-    const backupRow = document.getElementById('cbBackupRow');
-    if (plan.price > 0) {
-      backupRow.style.display = 'flex';
-      document.getElementById('cbBackupPlan').textContent = planLabel + ' — €' + plan.price + (lang === 'pt' ? '/mês' : '/mo');
-    } else {
-      backupRow.style.display = 'none';
-    }
-
-    // Contextual savings tip — updated with current Portugal market data
-    const tipEl = document.getElementById('calcTip');
-    const inHouseLow  = 28000;   // junior IT technician, Portugal, 2024
-    const inHouseHigh = 45000;   // mid-level IT administrator
-    const toolsEst    = 4000;    // RMM + AV + backup tooling per year
-
-    if (users >= 25) {
-      tipEl.textContent = lang === 'pt'
-        ? `Para ${users} utilizadores, o investimento anual é €${fmt(annual)}. Um técnico IT sénior em Portugal custa €${fmt(inHouseLow)}–€${fmt(inHouseHigh)}/ano em salário bruto, sem contar com ferramentas (~€${fmt(toolsEst)}/ano), formação ou cobertura de férias. A poupança típica com o modelo gerido é de €${fmt(Math.round(((inHouseLow + inHouseHigh) / 2 + toolsEst) - annual))} /ano.`
-        : `For ${users} users, annual investment is €${fmt(annual)}. A senior IT technician in Portugal costs €${fmt(inHouseLow)}–€${fmt(inHouseHigh)}/yr gross — before tools (~€${fmt(toolsEst)}/yr), training, or holiday cover. Typical savings with the managed model: ~€${fmt(Math.round(((inHouseLow + inHouseHigh) / 2 + toolsEst) - annual))}/yr.`;
-    } else if (users >= 10) {
-      tipEl.textContent = lang === 'pt'
-        ? `Para ${users} utilizadores, o investimento anual é €${fmt(annual)}. Um técnico IT júnior a tempo inteiro em Portugal custa €${fmt(inHouseLow)}–€${fmt(32000)}/ano — sem ferramentas de monitorização (RMM, AV, backup), que acrescentam tipicamente €${fmt(toolsEst)}/ano.`
-        : `For ${users} users, annual investment is €${fmt(annual)}. A full-time junior IT hire in Portugal costs €${fmt(inHouseLow)}–€${fmt(32000)}/yr — without monitoring tools (RMM, AV, backup), which typically add another €${fmt(toolsEst)}/yr.`;
-    } else if (users >= 5) {
-      tipEl.textContent = lang === 'pt'
-        ? `Para ${users} utilizadores, o investimento mensal é €${fmt(totalMonthly)}. Para equipas desta dimensão, contratar IT interno não é viável — e as chamadas pontuais de um técnico externo custam tipicamente €75–€120/hora sem qualquer cobertura proativa.`
-        : `For ${users} users, monthly investment is €${fmt(totalMonthly)}. At this team size, in-house IT isn't viable — and ad-hoc callout support in the Algarve typically costs €75–€120/hr with no proactive coverage.`;
-    } else {
-      tipEl.textContent = T[lang].calc_tip_base;
-    }
-  }
-
-  [usersRange, backupPlanRange, backupRange].forEach(r =>
-    r?.addEventListener('input', updateCalc)
-  );
-
-  /* ── ROI ESTIMATOR ── */
-  function updateROI() {
-    // ── Read inputs ──
-    const users      = parseFloat(document.getElementById('roiUsers2').value)        || 10;
-    const wage       = parseFloat(document.getElementById('roiWage').value)           || 18;
-    const hours      = parseFloat(document.getElementById('roiHours').value)          || 4;
-    const outages    = parseFloat(document.getElementById('roiOutage').value)         || 3;
-    const osCost     = parseFloat(document.getElementById('roiOutageCost').value)     || 1500;
-    const m365       = parseFloat(document.getElementById('roiM365').value)           || 0;
-    const antivirus  = parseFloat(document.getElementById('roiAntivirus').value)      || 0;
-    const otherSw    = parseFloat(document.getElementById('roiOtherSoftware').value)  || 0;
-    const adHocCalls = parseFloat(document.getElementById('roiAdHocCalls').value)     || 0;
-    const adHocRate  = parseFloat(document.getElementById('roiAdHocRate').value)      || 150;
-    const breach     = parseFloat(document.getElementById('roiSecurityBreach').value) || 0;
-    const hardware   = parseFloat(document.getElementById('roiHardware').value)       || 0;
-    const backup     = parseFloat(document.getElementById('roiBackupCost').value)     || 0;
-    const network    = parseFloat(document.getElementById('roiNetworkCost').value)    || 0;
-
-    // ── Update slider display labels ──
-    document.getElementById('roiUsers2Val').textContent = users;
-    document.getElementById('roiWageVal').textContent   = '€' + wage;
-    document.getElementById('roiHoursVal').textContent  = hours + ' hrs';
-    document.getElementById('roiOutageVal').textContent = outages;
-
-    // ── Calculated cost buckets ──
-    const prodLost    = hours * wage * users * 12;
-    const outageTot   = outages * osCost;
-    const softwareTot = m365 + antivirus + otherSw;            // client-paid, stays with client
-    const adHocTot    = (adHocCalls * adHocRate) + breach;
-    const infraTot    = hardware + backup + network;
-
-    // Burden includes ALL current costs (licences are a real cost the client has)
-    const burdenTot   = prodLost + outageTot + softwareTot + adHocTot + infraTot;
-
-    const mspCost     = users * 60 * 12;
-
-    // ── Savings model ──
-    // Licences: client STILL pays them under BlueWave — no saving on the licence itself.
-    // BlueWave value: saves the admin/management overhead around licences (~25% of sw spend)
-    // rather than the licence cost itself (which stays with the client).
-    const saving = Math.round(
-      (prodLost    * 0.70) +   // proactive monitoring + faster helpdesk
-      (outageTot   * 0.80) +   // prevents most outages before they happen
-      (softwareTot * 0.25) +   // admin overhead eliminated; licence cost remains client-paid
-      (adHocTot    * 0.85) +   // ad-hoc callouts nearly eliminated under managed model
-      (infraTot    * 0.10) -   // better management, not replacement
-      mspCost
-    );
-
-    // ── Payback period ──
-    const paybackMonths = mspCost > 0 && saving > 0 ? (mspCost / (saving / 12)) : null;
-    const paybackStr = paybackMonths === null ? 'N/A'
-      : paybackMonths < 1   ? '< 1 month'
-      : paybackMonths < 1.5 ? '~1 month'
-      : `~${paybackMonths.toFixed(1)} months`;
-
-    // ── Per-user monthly ──
-    const perUser = users > 0 ? (mspCost / users / 12).toFixed(2) : '60.00';
-
-    // ── Bar chart max ──
-    const maxBar = Math.max(prodLost, outageTot, softwareTot, adHocTot, infraTot, mspCost, 1);
-    function barPct(v) { return Math.round(Math.max(v / maxBar * 100, v > 0 ? 3 : 0)) + '%'; }
-
-    // ── DOM updates ──
-    // Hero strip
-    document.getElementById('rhsSMB').textContent    = '€' + fmt(Math.round(burdenTot));
-    document.getElementById('rhsMSP').textContent    = '€' + fmt(Math.round(mspCost));
-    const savEl = document.getElementById('rhsSaving');
-    savEl.textContent = (saving > 0 ? '+' : '') + '€' + fmt(saving);
-
-    // Breakdown rows
-    document.getElementById('roiLost').textContent        = '€' + fmt(Math.round(prodLost));
-    document.getElementById('roiOutageTot').textContent   = '€' + fmt(Math.round(outageTot));
-    document.getElementById('roiSoftwareTot').textContent = '€' + fmt(Math.round(softwareTot));
-    document.getElementById('roiAdHocTot').textContent    = '€' + fmt(Math.round(adHocTot));
-    document.getElementById('roiInfraTot').textContent    = '€' + fmt(Math.round(infraTot));
-    document.getElementById('roiBurdenTot').textContent   = '€' + fmt(Math.round(burdenTot));
-    document.getElementById('roiMspCost').textContent     = '€' + fmt(Math.round(mspCost));
-
-    // Big saving number + colour
-    const savingEl = document.getElementById('roiSaving');
-    savingEl.textContent  = (saving > 0 ? '+' : '') + '€' + fmt(saving);
-    savingEl.style.color  = saving > 0 ? 'var(--green)' : 'var(--danger)';
-
-    // Meta strip
-    document.getElementById('roiPayback').textContent  = paybackStr;
-    document.getElementById('roiPerUser').textContent  = '€' + perUser;
-
-    // Bar chart fills
-    document.getElementById('barProd').style.width    = barPct(prodLost);
-    document.getElementById('barOutage').style.width  = barPct(outageTot);
-    document.getElementById('barSw').style.width      = barPct(softwareTot);
-    document.getElementById('barAdHoc').style.width   = barPct(adHocTot);
-    document.getElementById('barInfra').style.width   = barPct(infraTot);
-    document.getElementById('barMsp').style.width     = barPct(mspCost);
-
-    // Bar chart value labels
-    document.getElementById('barProdVal').textContent   = '€' + fmt(Math.round(prodLost));
-    document.getElementById('barOutageVal').textContent = '€' + fmt(Math.round(outageTot));
-    document.getElementById('barSwVal').textContent     = '€' + fmt(Math.round(softwareTot));
-    document.getElementById('barAdHocVal').textContent  = '€' + fmt(Math.round(adHocTot));
-    document.getElementById('barInfraVal').textContent  = '€' + fmt(Math.round(infraTot));
-    document.getElementById('barMspVal').textContent    = '€' + fmt(Math.round(mspCost));
-  }
-
-  ['roiUsers2','roiWage','roiHours','roiOutage','roiOutageCost',
-   'roiM365','roiAntivirus','roiOtherSoftware',
-   'roiAdHocCalls','roiAdHocRate','roiSecurityBreach',
-   'roiHardware','roiBackupCost','roiNetworkCost'
-  ].forEach(id => document.getElementById(id)?.addEventListener('input', updateROI));
-
-  /* ── FAQ ── */
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      item.parentElement.querySelectorAll('.faq-item.open').forEach(f => {
-        if (f !== item) f.classList.remove('open');
-      });
-      item.classList.toggle('open');
-    });
-  });
-
-  /* ── BACKUP VIEW TOGGLE ── */
-  document.querySelectorAll('.storage-toggle-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.storage-toggle-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const view = btn.dataset.view;
-      document.getElementById('bkPlansView').style.display   = view === 'plans'   ? 'block' : 'none';
-      document.getElementById('bkOverageView').style.display = view === 'overage' ? 'block' : 'none';
-    });
-  });
-
-  /* ── init ── */
-  setLanguage('en');
-  /* logo: set correct src for initial theme */
-  (function(){
-    var dark  = 'https://www.bluewaveit.pt/images/logo_dark.png';
-    var light = 'https://www.bluewaveit.pt/images/logo_light.png';
-    var isL = document.body.classList.contains('theme-light');
-    document.querySelectorAll('.logo-img').forEach(function(img){
-      img.src = isL ? light : dark;
-    });
-  })();
-  /* ── initialise both calculators so values display correctly on first load */
-  updateCalc();
-  updateROI();
-
-  /* ── CONTACT MODAL ── */
-  (function(){
-    const overlay  = document.getElementById('cmodalOverlay');
-    const closeBtn = document.getElementById('cmodalClose');
-    const planTag  = document.getElementById('cmodalPlanName');
-    const form     = document.getElementById('cmodalForm');
-    const success  = document.getElementById('cmodalSuccess');
-    const submitBtn= document.getElementById('cmodalSubmit');
-
-    function openModal(planName) {
-      planTag.textContent = planName || 'BlueWave IT Enquiry';
-      form.style.display    = '';
-      success.style.display = 'none';
-      submitBtn.disabled    = false;
-      submitBtn.textContent = T[lang] && T[lang].cm_submit ? T[lang].cm_submit : 'Send Enquiry';
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      // Focus first input after transition
-      setTimeout(function(){ document.getElementById('cmodalName').focus(); }, 320);
-    }
-
-    function closeModal() {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Intercept ALL index.html#contact links on this page
-    document.querySelectorAll('a[href="index.html#contact"]').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Detect plan name from nearest heading/name context
-        var planName = 'BlueWave IT Enquiry';
-        var card = link.closest('.bk-card, .os-card, .plan-card, .side-card, .cta-box');
-        if (card) {
-          var nameEl = card.querySelector('.bk-name, .os-name, .plan-name, h3, h2');
-          if (nameEl) planName = nameEl.textContent.trim();
-        }
-        // Use data-plan override if present
-        if (link.dataset.plan) planName = link.dataset.plan;
-        // Use button text as fallback label
-        if (planName === 'BlueWave IT Enquiry' && link.textContent.trim()) {
-          planName = link.textContent.trim();
-        }
-        openModal(planName);
-      });
-    });
-
-    // Close on overlay click
-    overlay.addEventListener('click', function(e) {
-      if (e.target === overlay) closeModal();
-    });
-
-    // Close on X button
-    closeBtn.addEventListener('click', closeModal);
-
-    // Close on Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
-    });
-
-    // Submit handler — mailto fallback (replace with actual form endpoint when deploying)
-    submitBtn.addEventListener('click', function() {
-      var name    = document.getElementById('cmodalName').value.trim();
-      var email   = document.getElementById('cmodalEmail').value.trim();
-      var company = document.getElementById('cmodalCompany').value.trim();
-      var msg     = document.getElementById('cmodalMsg').value.trim();
-
-      // Basic validation
-      if (!name) { document.getElementById('cmodalName').focus(); return; }
-      if (!email || !email.includes('@')) { document.getElementById('cmodalEmail').focus(); return; }
-
-      // Build mailto as a working fallback until a backend is connected
-      var subject = encodeURIComponent('BlueWave IT Enquiry — ' + planTag.textContent);
-      var body    = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Company / Users: ' + (company || '—') + '\n' +
-        'Plan of interest: ' + planTag.textContent + '\n\n' +
-        (msg || '(No additional message)')
-      );
-      window.location.href = 'mailto:hello@bluewaveit.pt?subject=' + subject + '&body=' + body;
-
-      // Show success state
-      submitBtn.disabled    = true;
-      form.style.display    = 'none';
-      success.style.display = 'block';
-
-      // Auto-close after 4s
-      setTimeout(closeModal, 4000);
-    });
-  })();</script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

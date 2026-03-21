@@ -1,0 +1,61 @@
+BlueWave IT — Recommended Static Site Folder Structure
+=======================================================
+
+/                              ← site root (Netlify deploy folder)
+│
+├── index.html                 ← Homepage (uses: theme.css, components.css, pages/home.css)
+├── services.html              ← Services page
+├── about.html                 ← About page
+├── pricing.html               ← Pricing page
+├── contact.html               ← Contact page (also loads: js/pages/contact.js)
+├── terms.html                 ← Terms & Conditions
+├── privacy.html               ← Privacy Policy
+├── gdpr.html                  ← GDPR page
+├── site.webmanifest           ← PWA manifest
+│
+├── css/
+│   ├── theme.css              ← LOAD FIRST — tokens, reset, body, header, footer, layout
+│   ├── components.css         ← LOAD SECOND — buttons, cards, icons, FAQs, forms, process
+│   └── pages/
+│       ├── home.css           ← Homepage-only: hero, hero-card, proof-bar, services tabs
+│       ├── services.css       ← Services page specific styles
+│       ├── about.css          ← About page specific styles
+│       ├── pricing.css        ← Pricing page: pricing card, calculator, tier table
+│       └── contact.css        ← Contact page: form layout, two-col wrap, chips
+│
+├── js/
+│   ├── site.js                ← LOAD ON ALL PAGES — theme, i18n, nav, reveal, FAQ, tabs, calc
+│   └── pages/
+│       ├── home.js            ← Homepage extras (if split from site.js later)
+│       └── contact.js         ← Cloudflare Turnstile + form submission fetch
+│
+└── images/
+    ├── logo_dark.png          ← Dark theme logo (default)
+    ├── logo_light.png         ← Light theme logo
+    ├── favicon.png            ← Used for all favicon sizes
+    ├── og-image.jpg           ← 1200×630 Open Graph image
+    ├── hero_dark_bg.jpg       ← Hero background (dark theme)
+    └── hero_light_bg.jpg      ← Hero background (light theme)
+
+
+LOAD ORDER ON EVERY PAGE
+------------------------
+<head>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/[pagename].css" />  <!-- page-specific only -->
+</head>
+<body>
+  ...
+  <script src="js/site.js"></script>
+  <script src="js/pages/[pagename].js"></script>  <!-- page-specific only, if needed -->
+</body>
+
+
+REUSE RULES
+-----------
+- HEADER block: copy verbatim to every page. Change active class on matching nav link.
+- FOOTER block: copy verbatim to every page. No changes needed.
+- .back-to-top button: copy verbatim to every page.
+- Inner pages: replace .hero section with <section class="page-hero band"> from components.css.
+- All section patterns (.band, .container, .reveal, .section-head, .section-label) work on any page.

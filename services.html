@@ -16,11 +16,14 @@
   <link rel="icon" type="image/png" sizes="192x192" href="https://www.bluewaveit.pt/images/favicon.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="https://www.bluewaveit.pt/images/favicon.png" />
   <link rel="manifest" href="site.webmanifest" />
+  <link rel="canonical" href="https://www.bluewaveit.pt/services.html" />
+  <meta name="geo.region" content="PT-08" />
+  <meta name="geo.placename" content="Algarve, Portugal" />
 
 
     <!-- ── OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ─────────────────── -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.bluewaveit.pt/" />
+  <meta property="og:url" content="https://www.bluewaveit.pt/services.html" />
   <meta property="og:title" content="BlueWave IT | Managed IT Services – Algarve, Portugal" />
   <meta property="og:description" content="Reliable IT support, cybersecurity, and cloud services for small businesses in the Algarve. Flat monthly pricing. No surprises." />
   <meta property="og:image" content="https://www.bluewaveit.pt/images/og-image.png" />
@@ -32,720 +35,10 @@
   <meta property="og:locale:alternate" content="pt_PT" />
 
   
-  <style>
-    /* ─── DESIGN TOKENS ───────────────────────────────────────── */
-    :root {
-      --bg:           #060e1a;
-      --bg-alt:       #0a1523;
-      --bg-card:      rgba(255,255,255,0.038);
-      --bg-card-h:    rgba(255,255,255,0.065);
-      --text:         #eef4fc;
-      --muted:        #7d9ab8;
-      --muted-2:      #a4bdd4;
-      --line:         rgba(255,255,255,0.09);
-      --line-s:       rgba(255,255,255,0.14);
-      --cyan:         #00c2cb;
-      --cyan-2:       #38d9e8;
-      --cyan-3:       #b2f5ff;
-      --blue:         #0f4c81;
-      --blue-m:       #1565a8;
-      --green:        #3ee89a;
-      --amber:        #ffcf4e;
-      --danger:       #ff5f5f;
-      --shadow:       0 20px 64px rgba(0,0,0,0.50);
-      --shadow-sm:    0 8px 28px rgba(0,0,0,0.30);
-      --shadow-c:     0 4px 24px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.12);
-      --r:            20px;
-      --r-sm:         13px;
-      --max:          1240px;
-      --hh:           72px;
-      --fd:           'Questrial', sans-serif;
-      --fb:           'DM Sans', sans-serif;
-      --fm:           'DM Mono', monospace;
-    }
-    body.theme-light {
-      --bg:          #f3f8fd;
-      --bg-alt:      #e8f1fa;
-      --bg-card:     rgba(255,255,255,0.85);
-      --bg-card-h:   rgba(255,255,255,0.98);
-      --text:        #0a1628;
-      --muted:       #4d6b88;
-      --muted-2:     #3d5a74;
-      --line:        rgba(10,22,40,0.09);
-      --line-s:      rgba(10,22,40,0.15);
-      --shadow:      0 20px 64px rgba(10,22,40,0.14);
-      --shadow-sm:   0 8px 28px rgba(10,22,40,0.10);
-      --shadow-c:    0 4px 24px rgba(10,22,40,0.10), 0 1px 4px rgba(10,22,40,0.06);
-    }
+    <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/services.css" />
 
-    /* ─── RESET ───────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--fb);
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--text);
-      background:
-        radial-gradient(ellipse 80% 55% at 0% 0%,   rgba(0,194,203,0.12), transparent 50%),
-        radial-gradient(ellipse 60% 45% at 100% 5%,  rgba(15,76,129,0.11), transparent 50%),
-        linear-gradient(180deg, #060e1a 0%, #07101e 100%);
-      overflow-x: hidden;
-      transition: background 250ms ease, color 250ms ease;
-    }
-    body.theme-light {
-      background:
-        radial-gradient(ellipse 80% 55% at 0% 0%,   rgba(0,194,203,0.07), transparent 50%),
-        radial-gradient(ellipse 60% 45% at 100% 5%,  rgba(15,76,129,0.06), transparent 50%),
-        linear-gradient(180deg, #f3f8fd 0%, #edf4fb 100%);
-    }
-    h1,h2,h3,h4 { font-family: var(--fd); margin: 0; }
-    h1 { font-family: var(--fd-head); font-weight: 400; letter-spacing: 0.01em; }
-    h2 { font-family: var(--fd-head); font-weight: 400; letter-spacing: 0.01em; }
-    h3 { font-family: var(--fd-head); font-weight: 600; letter-spacing: -0.01em; }
-    h4 { font-weight: 600; letter-spacing: -0.01em; }
-    p  { margin: 0; }
-    a  { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(calc(100% - 40px), var(--max));
-      margin: 0 auto;
-    }
-
-    /* ─── REVEAL ──────────────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 650ms cubic-bezier(0.16,1,0.3,1), transform 650ms cubic-bezier(0.16,1,0.3,1);
-    }
-    .reveal.is-visible { opacity: 1; transform: none; }
-    .d1 { transition-delay: 80ms; }
-    .d2 { transition-delay: 160ms; }
-    .d3 { transition-delay: 240ms; }
-    .d4 { transition-delay: 320ms; }
-
-    /* ─── HEADER ──────────────────────────────────────────────── */
-    .site-header {
-      position: sticky; top: 0; z-index: 60;
-      backdrop-filter: blur(18px) saturate(160%);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      background: rgba(6,14,26,0.72);
-      border-bottom: 1px solid var(--line);
-      transition: background 200ms ease, box-shadow 200ms ease;
-    }
-    body.theme-light .site-header { background: rgba(243,248,253,0.82); }
-    .site-header.scrolled {
-      background: rgba(6,14,26,0.95);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.30);
-      border-bottom-color: var(--line-s);
-    }
-    body.theme-light .site-header.scrolled { background: rgba(243,248,253,0.97); box-shadow: 0 8px 32px rgba(10,22,40,0.10); }
-
-    .nav {
-      min-height: var(--hh);
-      display: flex; align-items: center; justify-content: space-between; gap: 20px;
-    }
-    .logo { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
-    .logo-mark {
-      width: 42px; height: 42px; border-radius: 12px; flex: 0 0 auto;
-      background: linear-gradient(135deg, rgba(0,194,203,0.25), rgba(15,76,129,0.30));
-      border: 1px solid rgba(56,217,232,0.24);
-      box-shadow: 0 0 26px rgba(0,194,203,0.15);
-      display: grid; place-items: center; overflow: hidden;
-    }
-    .logo-wordmark { display: flex; flex-direction: column; line-height: 1.1; }
-    .logo-wordmark strong { font-family: var(--fd); font-size: 1.08rem; font-weight: 700; }
-    .logo-wordmark span   { color: var(--muted); font-size: 0.73rem; letter-spacing: 0.09em; text-transform: uppercase; }
-
-    .nav-links { display: flex; gap: 4px; align-items: center; }
-    .nav-links a {
-      color: var(--muted-2); font-size: 0.94rem; font-weight: 500;
-      padding: 6px 12px; border-radius: 8px;
-      transition: color 160ms, background 160ms;
-    }
-    .nav-links a:hover    { color: var(--text); background: rgba(255,255,255,0.05); }
-    .nav-links a.active   { color: var(--cyan-2); }
-    body.theme-light .nav-links a:hover { background: rgba(10,22,40,0.05); }
-
-    .nav-right { display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; }
-    .tog {
-      display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--line);
-    }
-    body.theme-light .tog { background: rgba(10,22,40,0.04); }
-    .tog-btn {
-      border: 0; background: transparent; color: var(--muted);
-      padding: 6px 11px; border-radius: 999px; font-size: 0.83rem; font-weight: 500;
-      transition: all 180ms;
-    }
-    .tog-btn.active { background: rgba(56,217,232,0.15); color: var(--text); }
-    .nav-toggle {
-      display: none; width: 42px; height: 42px; border-radius: 12px;
-      border: 1px solid var(--line-s); background: rgba(255,255,255,0.04);
-      color: var(--text); font-size: 1.2rem; align-items: center; justify-content: center;
-    }
-    .mobile-menu { display: none; padding: 0 0 14px; }
-    .mobile-menu.open { display: grid; gap: 8px; }
-    .mobile-menu a, .mobile-menu .m-row, .mobile-menu .mobile-menu-theme {
-      padding: 11px 14px; border-radius: 13px;
-      background: var(--bg-card); border: 1px solid var(--line);
-      color: var(--text); font-size: 0.95rem; font-weight: 500;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .mobile-menu .m-row { flex-wrap: wrap; gap: 8px; }
-
-    /* ─── BUTTONS ─────────────────────────────────────────────── */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 13px 26px; border-radius: 999px; border: 1px solid transparent;
-      font-family: var(--fd); font-size: 0.93rem; font-weight: 600; letter-spacing: 0.01em;
-      transition: transform 200ms, box-shadow 200ms, background 200ms, border-color 200ms;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: linear-gradient(130deg, #00c2cb, #38d9e8);
-      color: #031922;
-      box-shadow: 0 6px 22px rgba(0,194,203,0.32), inset 0 1px 0 rgba(255,255,255,0.20);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,194,203,0.42), inset 0 1px 0 rgba(255,255,255,0.20); }
-    .btn-secondary { background: rgba(255,255,255,0.04); border-color: var(--line-s); color: var(--text); }
-    .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(56,217,232,0.30); transform: translateY(-2px); }
-    body.theme-light .btn-secondary { background: rgba(10,22,40,0.04); }
-    body.theme-light .btn-secondary:hover { background: rgba(10,22,40,0.08); }
-    .btn-ghost {
-      background: transparent; border-color: transparent;
-      color: var(--cyan-2); font-size: 0.88rem; padding: 8px 0; gap: 6px;
-    }
-    .btn-ghost:hover { color: var(--text); gap: 10px; }
-    .btn-ghost svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 200ms; }
-    .btn-ghost:hover svg { transform: translateX(4px); }
-
-    /* ─── SHARED COMPONENTS ───────────────────────────────────── */
-    .section-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 14px; border-radius: 999px;
-      border: 1px solid rgba(56,217,232,0.18); background: rgba(255,255,255,0.03);
-      color: var(--cyan-3); font-size: 0.79rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px;
-    }
-    .section-label::before {
-      content: ""; width: 7px; height: 7px; border-radius: 50%;
-      background: var(--cyan-2); box-shadow: 0 0 0 5px rgba(56,217,232,0.10); flex: 0 0 auto;
-    }
-    body.theme-light .section-label { background: rgba(10,22,40,0.04); color: var(--blue-m); }
-
-    .gradient-text {
-      background: linear-gradient(105deg, #4beaf4 0%, #00c2cb 45%, #6af0fc 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    body.theme-light .gradient-text {
-      background: linear-gradient(105deg, #006f80, #009ab0);
-      -webkit-background-clip: text; background-clip: text;
-    }
-
-    .icon-svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-    .feature-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
-    .feature-list li {
-      display: flex; gap: 10px; align-items: flex-start;
-      color: var(--muted-2); font-size: 0.95rem;
-    }
-    .feature-list li::before {
-      content: ""; width: 18px; height: 18px; margin-top: 2px; flex: 0 0 auto;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338d9e8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
-
-    section { padding: 68px 0; }
-    .band { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-
-    /* ─── PAGE HERO ───────────────────────────────────────────── */
-    .page-hero {
-      position: relative; overflow: hidden;
-      padding: 88px 0 64px; isolation: isolate;
-    }
-    .page-hero::before {
-      content: ""; position: absolute; inset: 0; z-index: -1;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.030) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.030) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(0,0,0,0.6), transparent 70%);
-    }
-    body.theme-light .page-hero::before {
-      background-image:
-        linear-gradient(rgba(10,22,40,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(10,22,40,0.03) 1px, transparent 1px);
-    }
-    .page-hero::after {
-      content: ""; position: absolute; z-index: -1;
-      width: 600px; height: 600px; border-radius: 50%;
-      right: -200px; top: -200px;
-      background: radial-gradient(circle, rgba(0,194,203,0.13), transparent 65%);
-      filter: blur(40px);
-      animation: floatGlow 12s ease-in-out infinite;
-    }
-    @keyframes floatGlow { 0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(0,-20px) scale(1.04)} }
-
-    .hero-breadcrumb {
-      display: flex; align-items: center; gap: 8px;
-      color: var(--muted); font-size: 0.85rem; margin-bottom: 24px;
-    }
-    .hero-breadcrumb a { transition: color 160ms; }
-    .hero-breadcrumb a:hover { color: var(--text); }
-    .hero-breadcrumb .sep { opacity: 0.4; }
-    .hero-breadcrumb .current { color: var(--cyan-2); }
-
-    .page-hero h1 {
-      font-size: clamp(3rem, 6vw, 5.2rem);
-      line-height: 0.92; max-width: 14ch; margin-bottom: 24px;
-    }
-    .page-hero p {
-      color: var(--muted-2); max-width: 60ch; font-size: 1.1rem; margin: 0 0 36px;
-    }
-    .hero-stats {
-      display: flex; gap: 36px; flex-wrap: wrap; margin-top: 44px;
-      padding-top: 36px; border-top: 1px solid var(--line);
-    }
-    .hero-stat strong {
-      display: block; font-family: var(--fm); font-size: 2.2rem;
-      font-weight: 500; color: var(--text); line-height: 1;
-      background: linear-gradient(105deg,#4beaf4,#00c2cb);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .hero-stat span { color: var(--muted); font-size: 0.88rem; }
-
-    /* ─── STICKY SERVICE NAV ──────────────────────────────────── */
-    .service-nav-wrap {
-      position: sticky; top: var(--hh); z-index: 40;
-      background: rgba(6,14,26,0.88);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-      transition: background 200ms;
-    }
-    body.theme-light .service-nav-wrap { background: rgba(243,248,253,0.90); }
-    .service-nav {
-      display: flex; gap: 0; overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .service-nav::-webkit-scrollbar { display: none; }
-    .svc-nav-btn {
-      display: flex; align-items: center; gap: 9px;
-      padding: 16px 22px; border: 0; background: transparent;
-      color: var(--muted-2); font-size: 0.88rem; font-weight: 500;
-      white-space: nowrap; border-bottom: 2px solid transparent;
-      transition: color 180ms, border-color 180ms;
-    }
-    .svc-nav-btn:hover { color: var(--text); }
-    .svc-nav-btn.active { color: var(--cyan-2); border-bottom-color: var(--cyan-2); }
-    .svc-nav-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* ─── SERVICE CARDS (overview grid) ──────────────────────── */
-    .svc-overview { padding: 72px 0; }
-    .svc-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 20px;
-    }
-    .svc-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      padding: 28px;
-      cursor: pointer;
-      transition: transform 220ms cubic-bezier(0.16,1,0.3,1), border-color 220ms, background 220ms, box-shadow 220ms;
-      position: relative;
-      overflow: hidden;
-    }
-    .svc-card::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(circle at top right, rgba(0,194,203,0.08), transparent 55%);
-      opacity: 0; transition: opacity 300ms;
-    }
-    .svc-card:hover { transform: translateY(-5px); border-color: rgba(56,217,232,0.26); background: var(--bg-card-h); box-shadow: 0 16px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(56,217,232,0.10); }
-    .svc-card:hover::before { opacity: 1; }
-    .svc-card.featured { border-color: rgba(56,217,232,0.22); background: linear-gradient(160deg, rgba(0,194,203,0.07), rgba(255,255,255,0.03)); }
-
-    .svc-card-icon {
-      width: 56px; height: 56px; border-radius: 16px;
-      display: grid; place-items: center; margin-bottom: 20px;
-      background: linear-gradient(135deg, rgba(0,194,203,0.16), rgba(15,76,129,0.24));
-      border: 1px solid rgba(56,217,232,0.22); color: var(--cyan-3);
-      position: relative; z-index: 1;
-    }
-    .svc-card-icon .icon-svg { width: 26px; height: 26px; }
-    .svc-card h3 { font-size: 1.15rem; margin-bottom: 10px; position: relative; z-index: 1; }
-    .svc-card p  { color: var(--muted-2); font-size: 0.93rem; line-height: 1.6; margin-bottom: 20px; position: relative; z-index: 1; }
-    .svc-tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; position: relative; z-index: 1; }
-    .svc-tag {
-      padding: 5px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 500;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--line); color: var(--muted);
-    }
-
-    /* ─── SERVICE DETAIL SECTIONS ─────────────────────────────── */
-    .svc-detail {
-      padding: 80px 0;
-      border-top: 1px solid var(--line);
-      scroll-margin-top: calc(var(--hh) + 52px);
-    }
-    .svc-detail:nth-child(even) { background: var(--bg-alt); }
-    body.theme-light .svc-detail:nth-child(even) { background: var(--bg-alt); }
-
-    .svc-detail-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
-    }
-    .svc-detail-grid.flip { direction: rtl; }
-    .svc-detail-grid.flip > * { direction: ltr; }
-
-    .svc-detail-copy .section-label { margin-bottom: 16px; }
-    .svc-detail-copy h2 { font-size: clamp(2rem,3.2vw,2.9rem); margin-bottom: 16px; line-height: 1.05; }
-    .svc-detail-copy > p { color: var(--muted-2); font-size: 1.03rem; margin-bottom: 28px; line-height: 1.7; }
-
-    /* Sub-features accordion */
-    .sub-features { display: grid; gap: 0; margin-bottom: 28px; }
-    .sub-feat {
-      border-bottom: 1px solid var(--line);
-      overflow: hidden;
-    }
-    .sub-feat:last-child { border-bottom: 0; }
-    .sub-feat-head {
-      display: flex; align-items: center; justify-content: space-between; gap: 14px;
-      padding: 15px 0; cursor: pointer; background: transparent; border: 0;
-      color: var(--text); width: 100%; text-align: left;
-    }
-    .sub-feat-head-left { display: flex; align-items: center; gap: 12px; }
-    .sub-feat-icon {
-      width: 36px; height: 36px; border-radius: 10px; flex: 0 0 auto;
-      display: grid; place-items: center;
-      background: linear-gradient(135deg, rgba(0,194,203,0.13), rgba(15,76,129,0.18));
-      border: 1px solid rgba(56,217,232,0.16); color: var(--cyan-3);
-    }
-    .sub-feat-icon .icon-svg { width: 18px; height: 18px; }
-    .sub-feat-title { font-family: var(--fd); font-size: 0.97rem; font-weight: 600; }
-    .sf-chevron {
-      width: 22px; height: 22px; border-radius: 50%; flex: 0 0 auto;
-      background: rgba(56,217,232,0.08); border: 1px solid rgba(56,217,232,0.18);
-      display: grid; place-items: center; color: var(--cyan-2); font-size: 0.82rem;
-      transition: transform 260ms;
-    }
-    .sub-feat.open .sf-chevron { transform: rotate(45deg); }
-    .sub-feat-body {
-      max-height: 0; overflow: hidden; transition: max-height 280ms ease, padding 280ms ease;
-      color: var(--muted-2); font-size: 0.93rem; line-height: 1.65;
-      padding: 0 0 0 48px;
-    }
-    .sub-feat.open .sub-feat-body { max-height: 400px; padding: 0 0 14px 48px; }
-
-    /* Detail visual panel */
-    .svc-visual {
-      position: sticky; top: calc(var(--hh) + 60px);
-    }
-    .svc-visual-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    .svc-visual-header {
-      padding: 20px 22px 0;
-      display: flex; justify-content: space-between; align-items: center; gap: 12px;
-      margin-bottom: 18px;
-    }
-    .svc-visual-header h4 { font-size: 0.92rem; font-weight: 600; }
-    .live-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 11px; border-radius: 999px; font-size: 0.76rem;
-      background: rgba(62,232,154,0.10); border: 1px solid rgba(62,232,154,0.20); color: #a8ffd6;
-    }
-    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-    /* Metric rows in visual cards */
-    .metric-rows { display: grid; gap: 10px; padding: 0 22px 20px; }
-    .metric-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 14px;
-    }
-    .metric-label { color: var(--muted); font-size: 0.85rem; }
-    .metric-val   { font-family: var(--fm); font-size: 0.88rem; color: var(--text); }
-    .metric-bar-wrap { flex: 1; }
-    .m-bar { height: 5px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; }
-    .m-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg,var(--cyan),var(--cyan-2)); }
-    .m-fill.warn { background: linear-gradient(90deg,#e8a532,#ffcf4e); }
-    .m-fill.good { background: linear-gradient(90deg,#22c97a,var(--green)); }
-
-    /* Shield ring graphic */
-    .shield-ring-wrap {
-      padding: 28px 22px 22px; display: flex; justify-content: center;
-    }
-    .shield-outer {
-      position: relative; width: 180px; height: 180px;
-    }
-    .shield-svg { position: absolute; inset: 0; animation: spinRing 20s linear infinite; }
-    .shield-inner {
-      position: absolute; inset: 22px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,194,203,0.18), rgba(0,194,203,0.04));
-      border: 1px solid rgba(56,217,232,0.20);
-      display: grid; place-items: center;
-    }
-    .shield-score {
-      text-align: center;
-    }
-    .shield-score strong {
-      display: block; font-family: var(--fm); font-size: 2.2rem; line-height: 1;
-      background: linear-gradient(135deg,var(--cyan),var(--cyan-2));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .shield-score span { color: var(--muted); font-size: 0.78rem; }
-    @keyframes spinRing { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
-
-    /* Backup timeline visual */
-    .backup-timeline { padding: 0 22px 22px; display: grid; gap: 9px; }
-    .bt-row {
-      display: grid; grid-template-columns: 70px 1fr auto;
-      gap: 12px; align-items: center; font-size: 0.85rem;
-    }
-    .bt-time { color: var(--muted); font-family: var(--fm); font-size: 0.80rem; }
-    .bt-bar-wrap { position: relative; height: 28px; }
-    .bt-bar {
-      position: absolute; inset: 4px 0;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(0,194,203,0.22), rgba(56,217,232,0.35));
-      border: 1px solid rgba(56,217,232,0.18);
-    }
-    .bt-bar.partial { width: 60%; }
-    .bt-label { font-family: var(--fm); font-size: 0.78rem; }
-    .bt-label.ok   { color: var(--green); }
-    .bt-label.warn { color: var(--amber); }
-
-    /* Network topology visual */
-    .net-topo { padding: 16px 22px 22px; }
-    .net-topo svg { width: 100%; height: auto; }
-
-    /* Cloud dashboard visual */
-    .cloud-dash { padding: 0 22px 22px; display: grid; gap: 10px; }
-    .cd-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 14px; border-radius: 12px; background: rgba(255,255,255,0.025); border: 1px solid var(--line); }
-    .cd-left { display: flex; align-items: center; gap: 10px; }
-    .cd-icon { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: rgba(0,194,203,0.10); color: var(--cyan-2); }
-    .cd-icon svg { width: 16px; height: 16px; }
-    .cd-name { font-size: 0.88rem; font-weight: 500; }
-    .cd-status { font-size: 0.78rem; padding: 4px 9px; border-radius: 999px; font-weight: 500; }
-    .cd-status.ok   { background: rgba(62,232,154,0.10); border: 1px solid rgba(62,232,154,0.20); color: #a8ffd6; }
-    .cd-status.warn { background: rgba(255,207,78,0.10); border: 1px solid rgba(255,207,78,0.20); color: #ffe0a0; }
-    .cd-status.info { background: rgba(56,217,232,0.10); border: 1px solid rgba(56,217,232,0.20); color: var(--cyan-3); }
-
-    /* Consulting roadmap visual */
-    .roadmap { padding: 0 22px 22px; display: grid; gap: 0; }
-    .rm-item {
-      display: grid; grid-template-columns: 36px 1fr; gap: 14px;
-      padding: 12px 0;
-    }
-    .rm-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .rm-dot-col { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .rm-dot {
-      width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto;
-      display: grid; place-items: center; font-family: var(--fm); font-size: 0.78rem; font-weight: 500;
-      background: linear-gradient(135deg,var(--cyan),var(--cyan-2)); color: #031922;
-    }
-    .rm-dot.future { background: rgba(255,255,255,0.06); border: 1px solid var(--line); color: var(--muted); }
-    .rm-line { flex: 1; width: 1px; background: var(--line); }
-    .rm-content h5 { font-size: 0.88rem; font-weight: 600; margin-bottom: 3px; }
-    .rm-content p  { color: var(--muted); font-size: 0.82rem; }
-
-    /* ─── COMPARISON TABLE ────────────────────────────────────── */
-    .compare-section { padding: 80px 0; }
-    .compare-table-wrap { overflow-x: auto; margin-top: 36px; }
-    .compare-table {
-      width: 100%; border-collapse: collapse; min-width: 660px;
-    }
-    .compare-table thead th {
-      padding: 18px 20px; text-align: left;
-      font-family: var(--fd); font-size: 0.88rem; font-weight: 700;
-      color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase;
-      border-bottom: 1px solid var(--line-s);
-    }
-    .compare-table thead th:first-child { width: 35%; }
-    .compare-table thead th.featured-col {
-      color: var(--cyan-2);
-      background: rgba(0,194,203,0.04);
-      border-radius: var(--r-sm) var(--r-sm) 0 0;
-    }
-    .compare-table tbody tr {
-      border-bottom: 1px solid var(--line);
-      transition: background 160ms;
-    }
-    .compare-table tbody tr:hover { background: rgba(255,255,255,0.02); }
-    .compare-table tbody tr:last-child { border-bottom: 0; }
-    .compare-table td {
-      padding: 14px 20px; font-size: 0.93rem; color: var(--muted-2);
-      vertical-align: middle;
-    }
-    .compare-table td:first-child { color: var(--text); font-weight: 500; }
-    .compare-table td.featured-col { background: rgba(0,194,203,0.03); }
-    .check { color: var(--green); font-size: 1rem; }
-    .dash  { color: var(--muted); opacity: 0.4; }
-    .partial { color: var(--amber); font-size: 0.80rem; font-style: italic; }
-
-    /* ─── PRICING SUMMARY ─────────────────────────────────────── */
-    .pricing-section { padding: 0 0 80px; }
-    .pricing-card-wrap {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px;
-    }
-    .p-card {
-      background: var(--bg-card); border: 1px solid var(--line);
-      border-radius: var(--r); padding: 32px;
-      position: relative; overflow: hidden;
-      transition: border-color 200ms;
-    }
-    .p-card.highlight {
-      border-color: rgba(56,217,232,0.28);
-      background: linear-gradient(160deg, rgba(0,194,203,0.07), rgba(255,255,255,0.03));
-    }
-    .p-card-label {
-      font-size: 0.79rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 18px;
-    }
-    .p-card.highlight .p-card-label { color: var(--cyan-2); }
-    .p-price {
-      display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;
-    }
-    .p-price strong { font-family: var(--fd); font-size: 3.2rem; font-weight: 800; line-height: 1; }
-    .p-price span   { color: var(--muted-2); font-size: 0.93rem; }
-    .p-desc { color: var(--muted-2); font-size: 0.93rem; margin-bottom: 24px; }
-    .p-card .feature-list { margin-bottom: 28px; }
-
-    /* ─── CTA SECTION ─────────────────────────────────────────── */
-    .cta-section { padding: 0 0 80px; }
-    .cta-box {
-      padding: 64px 52px;
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(0,194,203,0.14), transparent 60%),
-        linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border: 1px solid rgba(56,217,232,0.18);
-      border-radius: 28px;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .cta-box::before {
-      content: ""; position: absolute; width: 400px; height: 400px;
-      left: -150px; top: -150px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,194,203,0.10), transparent 60%);
-      pointer-events: none;
-    }
-    .cta-box::after {
-      content: ""; position: absolute; width: 300px; height: 300px;
-      right: -100px; bottom: -100px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(15,76,129,0.12), transparent 60%);
-      pointer-events: none;
-    }
-    .cta-box h2 { font-size: clamp(2rem,3.5vw,3rem); margin-bottom: 16px; position: relative; z-index: 1; }
-    .cta-box p  { max-width: 56ch; margin: 0 auto 32px; color: var(--muted-2); font-size: 1.05rem; position: relative; z-index: 1; }
-    .cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
-
-    /* ─── FOOTER ──────────────────────────────────────────────── */
-    .site-footer {
-      border-top: 1px solid var(--line); background: var(--bg-alt); padding: 44px 0 32px;
-    }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
-    .footer-brand p { color: var(--muted); font-size: 0.90rem; margin-top: 12px; max-width: 34ch; line-height: 1.6; }
-    .footer-col h4 { font-size: 0.80rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
-    .footer-col ul a { color: var(--muted-2); font-size: 0.91rem; transition: color 160ms; }
-    .footer-col ul a:hover { color: var(--text); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
-      padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.87rem;
-    }
-    .footer-legal { display: flex; gap: 18px; }
-    .footer-legal a { color: var(--muted); transition: color 160ms; }
-    .footer-legal a:hover { color: var(--text); }
-    .footer-logo-row { display: flex; align-items: center; gap: 10px; }
-    .footer-logo-row strong { font-family: var(--fd); font-size: 1rem; font-weight: 700; }
-
-    .back-to-top {
-      position: fixed; right: 20px; bottom: 20px; width: 44px; height: 44px;
-      border-radius: 13px; border: 1px solid var(--line-s);
-      background: rgba(6,14,26,0.88); backdrop-filter: blur(10px);
-      color: var(--text); display: grid; place-items: center; font-size: 1rem;
-      opacity: 0; transform: translateY(12px); pointer-events: none;
-      transition: all 200ms; box-shadow: var(--shadow-sm); z-index: 70;
-    }
-    .back-to-top.show { opacity: 1; transform: none; pointer-events: auto; }
-    body.theme-light .back-to-top { background: rgba(255,255,255,0.92); }
-
-    /* ─── RESPONSIVE ──────────────────────────────────────────── */
-    @media (max-width: 1080px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: inline-flex; }
-      .nav-cta { display: none; }
-    }
-    @media (max-width: 600px) {
-      /* Hide theme toggle from nav bar at mobile */
-      .nav-theme-tog { display: none; }
-
-      .tog .tog-btn, .toggle-group .toggle-btn {
-        padding: 5px 8px;
-        font-size: 0.76rem;
-      }
-      .tog, .toggle-group {
-        padding: 3px;
-      }
-      .nav-right { gap: 5px; }
-      /* Hide logo subtitle on mobile */
-      .logo-wordmark span { display: none; }
-      /* Shrink nav toggles */
-      .tog .tog-btn { padding: 5px 8px; font-size: 0.76rem; }
-      .tog { padding: 3px; }
-      .nav-right { gap: 6px; }
-    }
-    @media (max-width: 980px) {
-      .svc-grid         { grid-template-columns: repeat(2, 1fr); }
-      .svc-detail-grid  { grid-template-columns: 1fr; gap: 36px; }
-      .svc-detail-grid.flip { direction: ltr; }
-      .svc-visual       { position: static; }
-      .compare-table thead th, .compare-table td { padding: 12px 14px; }
-      .pricing-card-wrap { grid-template-columns: 1fr; }
-      .footer-grid      { grid-template-columns: 1fr 1fr; }
-      .cta-box          { padding: 44px 30px; }
-    }
-    @media (max-width: 640px) {
-      .svc-grid         { grid-template-columns: 1fr; }
-      .hero-stats       { gap: 24px; }
-      .footer-grid      { grid-template-columns: 1fr; }
-      .cta-box          { padding: 36px 22px; }
-      section           { padding: 52px 0; }
-    }
-
-    /* -- HERO BACKGROUND IMAGE -- */
-    .hero-bg-img {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background-image: url('https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/hero_dark_bg_.png');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      opacity: 0.18;
-      mix-blend-mode: luminosity;
-      pointer-events: none;
-      transition: opacity 300ms ease;
-    }
-    .hero-bg-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 0%, transparent 50%, var(--bg) 100%);
-      pointer-events: none;
-    }
-    body.theme-light .hero-bg-img {
-      background-image: url('https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/hero_light_bg_.png');
-      opacity: 0.22;
-      mix-blend-mode: multiply;
-    }
-  </style>
 </head>
 <body>
 
@@ -754,7 +47,7 @@
     <div class="container nav">
       <a href="index.html" class="logo" aria-label="BlueWave IT Home">
         <div class="logo-mark">
-          <img src="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-dark="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-light="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
+          <img src="images/logo_dark.png" data-dark="images/logo_dark.png" data-light="images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
         </div>
         <div class="logo-wordmark">
           <strong>BlueWave IT</strong>
@@ -796,7 +89,6 @@
           <button class="tog-btn"        data-theme="light" data-i18n="theme_light">Light</button>
         </div>
       </div>
-    </div>
     </div>
   </header>
 
@@ -938,6 +230,88 @@
           <a class="btn-ghost btn" href="#consulting" onclick="event.stopPropagation()"><span data-i18n="see_details">See full details</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── AI-OPTIMIZED SERVICES SECTION ───────────────────────── -->
+  <section class="ai-services-section band" id="ai-services">
+    <div class="container">
+      <div class="ai-hero-grid reveal">
+        <div class="ai-hero-text">
+          <div class="section-label" data-i18n="ai_label">AI-Optimized Services for Algarve Businesses</div>
+          <h2>
+            <span data-i18n="ai_h2_a">Modern IT, web,</span><br>
+            <span data-i18n="ai_h2_b">and <span class="gradient-text">AI workflow</span></span><br>
+            <span data-i18n="ai_h2_c">services for your organization.</span>
+          </h2>
+        </div>
+        <div>
+          <p data-i18n="ai_intro_p">BlueWave IT helps businesses improve visibility, strengthen security, and reduce manual work with practical technology services. From websites and lead capture to managed IT and AI-assisted workflow implementation, we focus on solutions that make your organization faster, clearer, and easier to run.</p>
+        </div>
+      </div>
+      <div class="ai-cards-grid">
+        <div class="ai-card reveal">
+          <div class="ai-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <h3 data-i18n="ai_c1_h">Web Presence &amp; Digital Experience</h3>
+          <p data-i18n="ai_c1_p">Professional websites and customer-facing digital tools designed to help your business look credible, rank better, and convert more visitors into real inquiries.</p>
+          <ul class="ai-feat-list">
+            <li data-i18n="ai_c1_f1">Website design, refresh, and landing pages</li>
+            <li data-i18n="ai_c1_f2">Multilingual content structure for PT, EN, and major EU languages, with localization-ready design</li>
+            <li data-i18n="ai_c1_f3">Google Business Profile and local visibility improvements</li>
+            <li data-i18n="ai_c1_f4">Quote forms, booking flows, contact funnels, and WhatsApp integration</li>
+          </ul>
+          <div class="ai-tag-row">
+            <span class="ai-tag" data-i18n="ai_c1_t1">Web Design</span>
+            <span class="ai-tag" data-i18n="ai_c1_t2">Lead Capture</span>
+            <span class="ai-tag" data-i18n="ai_c1_t3">Local SEO</span>
+            <span class="ai-tag" data-i18n="ai_c1_t4">Conversion Focused</span>
+          </div>
+          <a href="index.html#contact" class="btn-ghost"><span data-i18n="ai_view_details">View Details</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="ai-card reveal d1">
+          <div class="ai-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M9 19h6"/><path d="M12 16v3"/></svg>
+          </div>
+          <h3 data-i18n="ai_c2_h">Managed IT &amp; Secure Operations</h3>
+          <p data-i18n="ai_c2_p">Reliable support, proactive monitoring, and practical cybersecurity to keep your systems stable, your users productive, and your data protected.</p>
+          <ul class="ai-feat-list">
+            <li data-i18n="ai_c2_f1">Managed IT support, patching, and endpoint oversight</li>
+            <li data-i18n="ai_c2_f2">Email security, MFA, Microsoft 365 hardening, and backup strategy</li>
+            <li data-i18n="ai_c2_f3">Network, Wi-Fi, firewall, and remote access management</li>
+            <li data-i18n="ai_c2_f4">Clear standards, documentation, and ongoing operational support</li>
+          </ul>
+          <div class="ai-tag-row">
+            <span class="ai-tag" data-i18n="ai_c2_t1">Managed IT</span>
+            <span class="ai-tag" data-i18n="ai_c2_t2">Cybersecurity</span>
+            <span class="ai-tag" data-i18n="ai_c2_t3">M365</span>
+            <span class="ai-tag" data-i18n="ai_c2_t4">Backup &amp; Network</span>
+          </div>
+          <a href="#managed-it" class="btn-ghost"><span data-i18n="ai_view_details">View Details</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="ai-card reveal d2">
+          <div class="ai-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          </div>
+          <h3 data-i18n="ai_c3_h">AI Workflow Implementation</h3>
+          <p data-i18n="ai_c3_p">We help your organization use AI in a practical, controlled way by improving repetitive processes, internal workflows, and team efficiency without overcomplicating your stack.</p>
+          <ul class="ai-feat-list">
+            <li data-i18n="ai_c3_f1">AI-assisted workflow reviews for admin, service, and internal processes</li>
+            <li data-i18n="ai_c3_f2">Guidance on where AI can reduce repetitive work and improve response times</li>
+            <li data-i18n="ai_c3_f3">Implementation support for safer, more structured AI usage inside your organization</li>
+            <li data-i18n="ai_c3_f4">Process design that keeps human oversight, security, and business value in focus</li>
+          </ul>
+          <div class="ai-tag-row">
+            <span class="ai-tag" data-i18n="ai_c3_t1">AI Workflows</span>
+            <span class="ai-tag" data-i18n="ai_c3_t2">Process Improvement</span>
+            <span class="ai-tag" data-i18n="ai_c3_t3">Team Efficiency</span>
+            <span class="ai-tag" data-i18n="ai_c3_t4">Practical AI</span>
+          </div>
+          <a href="index.html#contact" class="btn-ghost"><span data-i18n="ai_view_details">View Details</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
     </div>
   </section>
@@ -1588,7 +962,7 @@
         <div class="footer-brand">
           <div class="footer-logo-row">
             <div class="logo-mark" style="width:36px;height:36px;border-radius:10px;background:transparent;border:none;box-shadow:none;">
-          <img src="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-dark="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-light="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
+          <img src="images/logo_dark.png" data-dark="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png" data-light="https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
         </div>
             <strong>BlueWave IT</strong>
           </div>
@@ -1609,9 +983,9 @@
           <h4 data-i18n="ft_co_h">Company</h4>
           <ul>
             <li><a href="index.html" data-i18n="ft_c1">Home</a></li>
-            <li><a href="index.html#about" data-i18n="ft_c2">About</a></li>
+            <li><a href="about.html" data-i18n="ft_c2">About</a></li>
             <li><a href="pricing.html" data-i18n="ft_c3">Pricing</a></li>
-            <li><a href="index.html#faq" data-i18n="ft_c4">FAQ</a></li>
+            <li><a href="pricing.html#faq" data-i18n="ft_c4">FAQ</a></li>
             <li><a href="contact.html" data-i18n="ft_c5">Contact</a></li>
           </ul>
         </div>
@@ -1629,521 +1003,7 @@
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-  <script>
-    /* ── header scroll ── */
-    const header   = document.getElementById('siteHeader');
-    const backTop  = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 16);
-      backTop.classList.toggle('show', window.scrollY > 500);
-    });
-    backTop?.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+    <script src="js/pages/services.js"></script>
 
-    /* ── mobile nav ── */
-    const navToggle  = document.getElementById('navToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    navToggle?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      navToggle.textContent = mobileMenu.classList.contains('open') ? '✕' : '☰';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(l => {
-      l.addEventListener('click', () => { mobileMenu.classList.remove('open'); navToggle.textContent='☰'; });
-    });
-
-    /* ── theme ── */
-    document.querySelectorAll('[data-theme]').forEach(b => {
-      b.addEventListener('click', () => {
-        const t = b.dataset.theme;
-        document.body.classList.toggle('theme-light', t==='light');
-      document.querySelectorAll('.logo-img').forEach(function(img){
-        img.src = (t === 'light') ? img.dataset.light : img.dataset.dark;
-      });
-        document.querySelectorAll('[data-theme]').forEach(x => x.classList.toggle('active', x.dataset.theme===t));
-      });
-    });
-
-    /* ── full i18n engine ── */
-    const T = {
-      en: {
-        /* meta */
-        page_title: 'Services | BlueWave IT — Managed IT Services, Algarve',
-        /* nav */
-        nav_home: 'Home', nav_services: 'Services', nav_about: 'About',
-        nav_pricing: 'Pricing', nav_contact: 'Contact',
-        nav_label: 'Managed IT Services',
-        cta_book: 'Book a Consultation',
-        /* breadcrumb */
-        bc_home: 'Home', bc_current: 'Services',
-        /* hero */
-        hero_label: 'What We Deliver',
-        hero_h1_a: 'Every service your',
-        hero_h1_b: 'business needs to',
-        hero_h1_c: 'run without IT stress.',
-        hero_p: 'Six focused service areas — each designed to remove a specific layer of IT risk, cost, or complexity for small and midsize businesses across the Algarve.',
-        hero_cta_1: 'Explore All Services',
-        hero_cta_2: 'Request a Consultation',
-        stat_1_val: '€60', stat_1_lbl: 'per user / month',
-        stat_2_val: '6',   stat_2_lbl: 'core service areas',
-        stat_3_val: '24/7',stat_3_lbl: 'monitoring coverage',
-        stat_4_val: '1',   stat_4_lbl: 'dedicated MSP partner',
-        /* sticky nav */
-        snav_managed: 'Managed IT',
-        snav_cyber:   'Cybersecurity',
-        snav_cloud:   'Cloud & M365',
-        snav_backup:  'Backup & Recovery',
-        snav_net:     'Networking',
-        snav_consult: 'IT Consulting',
-        /* overview cards */
-        ov_label: 'Our Services',
-        ov_managed_h: 'Managed IT Services',
-        ov_managed_p: 'Your complete IT department — monitoring, helpdesk, patch management, and endpoint management under one monthly plan.',
-        ov_managed_t1:'Helpdesk', ov_managed_t2:'Monitoring', ov_managed_t3:'Patch Mgmt',
-        ov_cyber_h: 'Cybersecurity',
-        ov_cyber_p: 'Layered protection for your users, devices, and data — from endpoint security to email filtering and MFA deployment.',
-        ov_cyber_t1:'Endpoint', ov_cyber_t2:'Email Security', ov_cyber_t3:'MFA',
-        ov_cloud_h: 'Cloud & Microsoft 365',
-        ov_cloud_p: 'Microsoft 365 administration, cloud migrations, SharePoint, Teams, and email — all managed and supported for your team.',
-        ov_cloud_t1:'M365', ov_cloud_t2:'Teams', ov_cloud_t3:'Migrations',
-        ov_backup_h: 'Backup & Recovery',
-        ov_backup_p: 'Automated, verified, and tested backups — so you know exactly what happens if things go wrong, and recovery is measured in hours not days.',
-        ov_backup_t1:'Cloud Backup', ov_backup_t2:'NAS Backup', ov_backup_t3:'DR Planning',
-        ov_net_h: 'Network Management',
-        ov_net_p: 'Reliable infrastructure from firewall to Wi-Fi — with ongoing monitoring, UniFi management, and network health visibility.',
-        ov_net_t1:'UniFi', ov_net_t2:'Firewall', ov_net_t3:'VPN',
-        ov_consult_h: 'IT Consulting',
-        ov_consult_p: 'Strategic guidance for technology decisions — budgeting, infrastructure planning, vendor selection, and growth roadmaps.',
-        ov_consult_t1:'Roadmaps', ov_consult_t2:'Budgeting', ov_consult_t3:'Strategy',
-        see_details: 'See full details',
-        /* managed IT detail */
-        d_mit_label: 'Managed IT Services',
-        d_mit_h: 'Your complete IT team — without the overhead.',
-        d_mit_p: 'BlueWave IT acts as your outsourced IT department. We handle the day-to-day so your team can stay focused on work — not tech problems.',
-        d_mit_f1_t: '24/7 Monitoring & Alerting',
-        d_mit_f1_b: 'Continuous monitoring of endpoints, servers, and services. Automated alerts when something needs attention — often before you even notice a problem.',
-        d_mit_f2_t: 'Helpdesk Support',
-        d_mit_f2_b: 'Fast, friendly support for your team via remote connection, email, or phone. Issues are triaged, tracked, and resolved — with clear communication throughout.',
-        d_mit_f3_t: 'Patch & Update Management',
-        d_mit_f3_b: 'Scheduled deployment of OS and software patches across all managed devices. Tested before rollout to avoid disruption, with compliance reporting available.',
-        d_mit_f4_t: 'Endpoint Management',
-        d_mit_f4_b: 'Full lifecycle management of workstations and laptops — asset inventory, health scoring, remote access, and onboarding/offboarding for new team members.',
-        d_mit_cta: 'Get Managed IT Support',
-        d_mit_vis_h: 'Environment Health Overview',
-        d_mit_m1: 'Patch compliance', d_mit_m2: 'Devices online', d_mit_m3: 'Avg. response time',
-        d_mit_m4: 'Open tickets', d_mit_m5: 'This month resolved',
-        d_mit_ok: '✓ All systems operational', d_mit_ok2: 'Last check: 2 minutes ago',
-        /* cybersecurity detail */
-        d_sec_label: 'Cybersecurity',
-        d_sec_h: 'Security that actually fits a small business.',
-        d_sec_p: 'Enterprise-level protection, tuned for the reality of SMBs — without complexity or bloat. We handle the security stack so you don\'t have to think about it.',
-        d_sec_f1_t: 'Endpoint Detection & Protection',
-        d_sec_f1_b: 'Next-generation antivirus and EDR deployed to every managed device. Behavioural detection catches threats that signature-based tools miss — including ransomware.',
-        d_sec_f2_t: 'Email Security & Anti-Phishing',
-        d_sec_f2_b: 'Email filtering that blocks phishing, malicious attachments, and spoofing before they reach your inbox — integrated with Microsoft 365 mail flow.',
-        d_sec_f3_t: 'Multi-Factor Authentication',
-        d_sec_f3_b: 'MFA deployment and enforcement across Microsoft 365, VPN, and business applications. Reduces account takeover risk by over 99% for covered accounts.',
-        d_sec_f4_t: 'Firewall & Network Security',
-        d_sec_f4_b: 'Managed firewall rules, regular policy reviews, DNS filtering, and traffic visibility — keeping threats out at the perimeter before they touch your devices.',
-        d_sec_cta: 'Improve Your Security Posture',
-        d_sec_vis_h: 'Security Posture Score',
-        d_sec_grade: 'Security Grade',
-        d_sec_m1: 'Endpoint protection', d_sec_m2: 'Email filtering',
-        d_sec_m3: 'MFA coverage', d_sec_m4: 'Threats blocked (30d)',
-        d_sec_v1: 'Active', d_sec_v2: 'Active', d_sec_v3: '91%', d_sec_v4: '143',
-        /* cloud detail */
-        d_cld_label: 'Cloud & Microsoft 365',
-        d_cld_h: 'Cloud tools, properly configured and continuously managed.',
-        d_cld_p: 'Microsoft 365 is powerful — but misconfigured M365 is a security risk and a productivity drain. We make sure it\'s set up right, licensed correctly, and supported for your team.',
-        d_cld_f1_t: 'Microsoft 365 Administration',
-        d_cld_f1_b: 'User management, license assignment, mailbox configuration, and security settings — all maintained as part of your managed service. New hires and departures handled cleanly.',
-        d_cld_f2_t: 'Teams & SharePoint Support',
-        d_cld_f2_b: 'Setting up Teams structure, SharePoint sites, shared drives, and access permissions that match how your business actually works — not just defaults.',
-        d_cld_f3_t: 'Cloud Migrations',
-        d_cld_f3_b: 'Moving from on-premise file servers, legacy email systems, or other cloud providers to Microsoft 365 — with minimal disruption and proper data validation.',
-        d_cld_f4_t: 'M365 Security Configuration',
-        d_cld_f4_b: 'Conditional access policies, Defender for Business setup, Secure Score improvement, and ongoing security posture monitoring within your tenant.',
-        d_cld_cta: 'Talk About Your Cloud Setup',
-        d_cld_vis_h: 'Microsoft 365 Tenant Overview',
-        d_cld_r1: 'Exchange Online', d_cld_r2: 'Microsoft Teams', d_cld_r3: 'SharePoint / OneDrive',
-        d_cld_r4: 'Defender for Business', d_cld_r5: 'Secure Score', d_cld_r6: 'Unlicensed Users',
-        d_cld_s1: 'Healthy', d_cld_s2: 'Healthy', d_cld_s3: 'Healthy',
-        d_cld_s4: 'Active', d_cld_s5: '78 / 100', d_cld_s6: '2 flagged',
-        /* backup detail */
-        d_bak_label: 'Backup & Disaster Recovery',
-        d_bak_h: 'Know exactly what happens when something goes wrong.',
-        d_bak_p: 'Most businesses assume their backups work. We verify it. Tested, documented, and monitored backup systems — so recovery is a controlled process, not a crisis.',
-        d_bak_f1_t: 'Cloud Backup',
-        d_bak_f1_b: 'Automated offsite backups of critical data to encrypted cloud storage. Retention policies configured to match your business requirements — daily, weekly, and monthly restore points.',
-        d_bak_f2_t: 'NAS / Local Backup',
-        d_bak_f2_b: 'On-premises Synology NAS backup for fast local restores — reducing recovery time for large datasets. Configured in a 3-2-1 backup strategy for maximum resilience.',
-        d_bak_f3_t: 'Microsoft 365 Backup',
-        d_bak_f3_b: 'Microsoft does not back up your M365 mailboxes or SharePoint data by default. We deploy third-party backup to ensure your cloud data has independent protection.',
-        d_bak_f4_t: 'Restore Testing & DR Planning',
-        d_bak_f4_b: 'Regular restore drills, documented recovery procedures, and RTO/RPO targets agreed for your key systems. You\'ll know exactly how long recovery takes before you ever need it.',
-        d_bak_cta: 'Review Your Backup Strategy',
-        d_bak_vis_h: 'Backup Job Status',
-        d_bak_ok: '✓ Full', d_bak_ok2: '✓ Incremental', d_bak_ok3: '✓ Incremental', d_bak_warn: '⚠ Review',
-        d_bak_m1: 'Overall success rate', d_bak_m2: 'Last restore test', d_bak_m3: 'Data protected',
-        d_bak_v1: '99.8%', d_bak_v2: '7 days ago', d_bak_v3: '2.4 TB',
-        /* networking detail */
-        d_net_label: 'Network Management',
-        d_net_h: 'A network that works quietly in the background — always.',
-        d_net_p: 'Poor networking is the root cause of more productivity loss than any other IT issue. We build, monitor, and maintain reliable infrastructure so connectivity is never the bottleneck.',
-        d_net_f1_t: 'Firewall Management',
-        d_net_f1_b: 'Rule set maintenance, firmware updates, traffic policy reviews, and intrusion detection tuning — keeping the perimeter hardened without blocking legitimate business traffic.',
-        d_net_f2_t: 'UniFi Wi-Fi Management',
-        d_net_f2_b: 'Full UniFi controller management — SSID segmentation, guest network isolation, coverage optimization, and access point health monitoring. Proper business Wi-Fi, not consumer kit.',
-        d_net_f3_t: 'VPN & Remote Access',
-        d_net_f3_b: 'Site-to-site and client VPN for secure remote access. Deployed and managed for home offices, multi-site businesses, and travelling staff — with device-level enforcement.',
-        d_net_f4_t: 'Network Monitoring & Health',
-        d_net_f4_b: 'Continuous visibility into switch ports, access points, and uplinks. Bandwidth trending, anomaly detection, and proactive alerts before outages affect your team.',
-        d_net_cta: 'Review Your Network Setup',
-        d_net_vis_h: 'Network Topology',
-        d_net_m1: 'Uptime (30d)', d_net_m2: 'Active devices',
-        d_net_v1: '99.9%', d_net_v2: '22',
-        /* consulting detail */
-        d_con_label: 'IT Consulting',
-        d_con_h: 'Technology decisions that actually align with your business.',
-        d_con_p: 'No vendor bias. No unnecessary complexity. Just honest guidance on what your business needs — with a roadmap to get there at a pace that works for your budget.',
-        d_con_f1_t: 'IT Roadmap Planning',
-        d_con_f1_b: 'A structured, prioritised plan for your IT over the next 12–36 months — hardware refresh cycles, software upgrades, security improvements, and budget allocation.',
-        d_con_f2_t: 'Vendor & Procurement Guidance',
-        d_con_f2_b: 'Recommendations on hardware, software, and SaaS tools that are right for your size and industry — avoiding vendor lock-in and overpriced enterprise tools that SMBs don\'t need.',
-        d_con_f3_t: 'Infrastructure Design',
-        d_con_f3_b: 'Design of scalable infrastructure for office moves, new locations, or business growth — including networking, server environments, and cloud architecture.',
-        d_con_f4_t: 'GDPR & Compliance Guidance',
-        d_con_f4_b: 'Practical IT guidance around GDPR obligations for Algarve businesses — data handling, access controls, retention policies, and documentation requirements.',
-        d_con_cta: 'Start a Consulting Conversation',
-        d_con_vis_h: 'Sample IT Roadmap',
-        d_con_vis_period: 'Q1–Q4 2026',
-        d_con_rm1_h: 'Security Baseline Audit', d_con_rm1_p: 'MFA, endpoint review, firewall assessment — Q1 2026',
-        d_con_rm2_h: 'M365 Security Hardening', d_con_rm2_p: 'Conditional access, Secure Score improvements — Q1 2026',
-        d_con_rm3_h: 'Backup Strategy Upgrade', d_con_rm3_p: 'Cloud + NAS 3-2-1 setup, restore testing — Q2 2026',
-        d_con_rm4_h: 'Hardware Refresh',         d_con_rm4_p: 'Workstation lifecycle review, 3 replacements planned — Q3 2026',
-        d_con_rm5_h: 'Network Upgrade',           d_con_rm5_p: 'UniFi rollout, Wi-Fi 6 APs, new core switch — Q4 2026',
-        /* comparison table */
-        cmp_label: 'Service Comparison',
-        cmp_h: 'Reactive IT vs. Managed IT',
-        cmp_p: 'See how BlueWave IT\'s managed service model compares to the traditional break-fix approach that most small businesses are still using.',
-        cmp_th1: 'What you get', cmp_th2: 'Break-Fix / Ad Hoc', cmp_th3: 'BlueWave IT Managed',
-        cmp_r1: 'Monitoring & alerting',        cmp_r1b: '—', cmp_r1m: '✓ 24/7 automated',
-        cmp_r2: 'Patch management',             cmp_r2b: 'Manual / inconsistent', cmp_r2m: '✓ Scheduled & tested',
-        cmp_r3: 'Helpdesk support',             cmp_r3b: 'Pay per incident', cmp_r3m: '✓ Included, fast response',
-        cmp_r4: 'Cybersecurity tools',          cmp_r4b: '—', cmp_r4m: '✓ EDR, email, MFA',
-        cmp_r5: 'Backup monitoring',            cmp_r5b: '—', cmp_r5m: '✓ Daily verification',
-        cmp_r6: 'M365 administration',          cmp_r6b: 'Per-hour, reactive', cmp_r6m: '✓ Ongoing management',
-        cmp_r7: 'Network management',           cmp_r7b: '—', cmp_r7m: '✓ Monitored & supported',
-        cmp_r8: 'IT strategy & roadmap',        cmp_r8b: '—', cmp_r8m: '✓ Annual review',
-        cmp_r9: 'Predictable monthly cost',     cmp_r9b: '—', cmp_r9m: '✓ €60 per user/month',
-        cmp_r10:'GDPR IT guidance',             cmp_r10b:'—', cmp_r10m:'✓ Included',
-        /* pricing */
-        prc_label: 'Pricing',
-        prc_h: 'One plan. Everything included.',
-        prc_p: 'No tiered features, no surprise add-ons. All six service areas are covered under a single per-user monthly fee.',
-        prc_plan_lbl: 'Standard Managed Plan',
-        prc_val: '€60', prc_unit: 'per user / month',
-        prc_desc: 'Everything your business needs to run reliably, stay secure, and scale with confidence.',
-        prc_f1:'Managed IT helpdesk & monitoring', prc_f2:'Endpoint protection & patch management',
-        prc_f3:'Cybersecurity — EDR, email, MFA',  prc_f4:'Microsoft 365 administration',
-        prc_f5:'Backup monitoring & verification',  prc_f6:'Network health & support',
-        prc_f7:'Annual IT consulting review',       prc_f8:'GDPR IT guidance',
-        prc_cta: 'Get Started — Book a Consultation',
-        prc_free_lbl:  'Free Before You Commit',
-        prc_free_val:  'Free', prc_free_unit: 'IT assessment',
-        prc_free_desc: 'Not sure where to start? We\'ll review your current environment, identify risks, and give you a clear picture of where you stand — no strings attached.',
-        prc_ff1:'Full environment review',   prc_ff2:'Security gap identification',
-        prc_ff3:'Backup status assessment',  prc_ff4:'Network health check',
-        prc_ff5:'Clear written summary',     prc_ff6:'Prioritised recommendations',
-        prc_free_cta: 'Request Free Assessment',
-        /* CTA */
-        cta_h: 'Ready to stop reacting and start managing?',
-        cta_p: 'Talk to BlueWave IT about how managed services can eliminate the IT stress that\'s costing your business time and money every week.',
-        cta_btn1: 'Book a Free Consultation',
-        cta_btn2: 'Request IT Assessment',
-        /* footer */
-        ft_tagline: 'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
-        ft_svc_h: 'Services', ft_co_h: 'Company',
-        ft_s1:'Managed IT', ft_s2:'Cybersecurity', ft_s3:'Cloud & M365',
-        ft_s4:'Backup & Recovery', ft_s5:'Network Management', ft_s6:'IT Consulting',
-        ft_c1:'Home', ft_c2:'About', ft_c3:'Pricing', ft_c4:'FAQ', ft_c5:'Contact',
-        ft_copy: '© 2026 BlueWave IT. Reliable technology for growing businesses.',
-        ft_privacy: 'Privacy Policy', ft_gdpr: 'GDPR',ft_terms:'Terms and Conditions',
-        theme_dark: 'Dark', theme_light: 'Light',
-      },
-      pt: {
-        page_title: 'Serviços | BlueWave IT — Serviços IT Geridos, Algarve',
-        nav_home: 'Início', nav_services: 'Serviços', nav_about: 'Sobre',
-        nav_pricing: 'Preços', nav_contact: 'Contacto',
-        nav_label: 'Serviços IT Geridos',
-        cta_book: 'Marcar Consulta',
-        bc_home: 'Início', bc_current: 'Serviços',
-        hero_label: 'O Que Entregamos',
-        hero_h1_a: 'Todos os serviços que',
-        hero_h1_b: 'a sua empresa precisa para',
-        hero_h1_c: 'funcionar sem stress de IT.',
-        hero_p: 'Seis áreas de serviço focadas — cada uma desenhada para eliminar uma camada específica de risco, custo ou complexidade de IT para pequenas e médias empresas no Algarve.',
-        hero_cta_1: 'Explorar Todos os Serviços',
-        hero_cta_2: 'Pedir uma Consulta',
-        stat_1_val: '€60', stat_1_lbl: 'por utilizador / mês',
-        stat_2_val: '6',   stat_2_lbl: 'áreas de serviço',
-        stat_3_val: '24/7',stat_3_lbl: 'cobertura de monitorização',
-        stat_4_val: '1',   stat_4_lbl: 'parceiro MSP dedicado',
-        snav_managed: 'IT Gerido',
-        snav_cyber:   'Cibersegurança',
-        snav_cloud:   'Cloud & M365',
-        snav_backup:  'Backup e Recuperação',
-        snav_net:     'Redes',
-        snav_consult: 'Consultoria IT',
-        ov_label: 'Os Nossos Serviços',
-        ov_managed_h: 'Serviços IT Geridos',
-        ov_managed_p: 'O seu departamento de IT completo — monitorização, helpdesk, gestão de patches e endpoints, num único plano mensal.',
-        ov_managed_t1:'Helpdesk', ov_managed_t2:'Monitorização', ov_managed_t3:'Patches',
-        ov_cyber_h: 'Cibersegurança',
-        ov_cyber_p: 'Proteção em camadas para utilizadores, dispositivos e dados — de segurança de endpoints a filtragem de email e implementação de MFA.',
-        ov_cyber_t1:'Endpoints', ov_cyber_t2:'Segurança Email', ov_cyber_t3:'MFA',
-        ov_cloud_h: 'Cloud e Microsoft 365',
-        ov_cloud_p: 'Administração Microsoft 365, migrações cloud, SharePoint, Teams e email — tudo gerido e suportado para a sua equipa.',
-        ov_cloud_t1:'M365', ov_cloud_t2:'Teams', ov_cloud_t3:'Migrações',
-        ov_backup_h: 'Backup e Recuperação',
-        ov_backup_p: 'Backups automáticos, verificados e testados — para saber exatamente o que acontece se algo correr mal, com recuperação em horas e não em dias.',
-        ov_backup_t1:'Backup Cloud', ov_backup_t2:'Backup NAS', ov_backup_t3:'Plano DR',
-        ov_net_h: 'Gestão de Rede',
-        ov_net_p: 'Infraestrutura fiável desde a firewall ao Wi-Fi — com monitorização contínua, gestão UniFi e visibilidade sobre a saúde da rede.',
-        ov_net_t1:'UniFi', ov_net_t2:'Firewall', ov_net_t3:'VPN',
-        ov_consult_h: 'Consultoria IT',
-        ov_consult_p: 'Orientação estratégica para decisões tecnológicas — orçamentação, planeamento de infraestrutura, seleção de fornecedores e roadmaps de crescimento.',
-        ov_consult_t1:'Roadmaps', ov_consult_t2:'Orçamentos', ov_consult_t3:'Estratégia',
-        see_details: 'Ver detalhes completos',
-        d_mit_label: 'Serviços IT Geridos',
-        d_mit_h: 'A sua equipa de IT completa — sem os custos fixos.',
-        d_mit_p: 'A BlueWave IT atua como o seu departamento de IT externalizado. Tratamos do dia-a-dia para que a sua equipa se foque no trabalho — e não nos problemas técnicos.',
-        d_mit_f1_t: 'Monitorização e Alertas 24/7',
-        d_mit_f1_b: 'Monitorização contínua de endpoints, servidores e serviços. Alertas automáticos quando algo precisa de atenção — muitas vezes antes de notar qualquer problema.',
-        d_mit_f2_t: 'Suporte Helpdesk',
-        d_mit_f2_b: 'Suporte rápido e eficaz para a sua equipa por ligação remota, email ou telefone. Os problemas são triados, acompanhados e resolvidos — com comunicação clara em todo o processo.',
-        d_mit_f3_t: 'Gestão de Patches e Atualizações',
-        d_mit_f3_b: 'Implementação programada de patches de SO e software em todos os dispositivos geridos. Testados antes da instalação para evitar interrupções, com relatórios de conformidade disponíveis.',
-        d_mit_f4_t: 'Gestão de Endpoints',
-        d_mit_f4_b: 'Gestão de ciclo de vida completa de workstations e portáteis — inventário de ativos, avaliação de saúde, acesso remoto e integração/saída de colaboradores.',
-        d_mit_cta: 'Obter Suporte IT Gerido',
-        d_mit_vis_h: 'Visão Geral da Saúde do Ambiente',
-        d_mit_m1: 'Conformidade de patches', d_mit_m2: 'Dispositivos online', d_mit_m3: 'Tempo médio de resposta',
-        d_mit_m4: 'Tickets abertos', d_mit_m5: 'Resolvidos este mês',
-        d_mit_ok: '✓ Todos os sistemas operacionais', d_mit_ok2: 'Última verificação: há 2 minutos',
-        d_sec_label: 'Cibersegurança',
-        d_sec_h: 'Segurança que realmente se adapta a uma pequena empresa.',
-        d_sec_p: 'Proteção de nível empresarial, calibrada para a realidade das PMEs — sem complexidade nem excesso. Gerimos a camada de segurança para que não precise de se preocupar com isso.',
-        d_sec_f1_t: 'Deteção e Proteção de Endpoints',
-        d_sec_f1_b: 'Antivírus de nova geração e EDR implementados em todos os dispositivos geridos. A deteção comportamental apanha ameaças que as ferramentas baseadas em assinaturas falham — incluindo ransomware.',
-        d_sec_f2_t: 'Segurança de Email e Anti-Phishing',
-        d_sec_f2_b: 'Filtragem de email que bloqueia phishing, anexos maliciosos e spoofing antes de chegarem à caixa de entrada — integrado com o fluxo de correio do Microsoft 365.',
-        d_sec_f3_t: 'Autenticação Multi-Fator',
-        d_sec_f3_b: 'Implementação e aplicação de MFA no Microsoft 365, VPN e aplicações empresariais. Reduz o risco de comprometimento de contas em mais de 99% nas contas abrangidas.',
-        d_sec_f4_t: 'Firewall e Segurança de Rede',
-        d_sec_f4_b: 'Gestão de regras de firewall, revisões periódicas de políticas, filtragem DNS e visibilidade do tráfego — mantendo as ameaças fora do perímetro antes de atingirem os dispositivos.',
-        d_sec_cta: 'Melhorar a Postura de Segurança',
-        d_sec_vis_h: 'Pontuação de Postura de Segurança',
-        d_sec_grade: 'Classificação de Segurança',
-        d_sec_m1: 'Proteção de endpoints', d_sec_m2: 'Filtragem de email',
-        d_sec_m3: 'Cobertura MFA', d_sec_m4: 'Ameaças bloqueadas (30d)',
-        d_sec_v1: 'Ativo', d_sec_v2: 'Ativo', d_sec_v3: '91%', d_sec_v4: '143',
-        d_cld_label: 'Cloud e Microsoft 365',
-        d_cld_h: 'Ferramentas cloud, bem configuradas e continuamente geridas.',
-        d_cld_p: 'O Microsoft 365 é poderoso — mas mal configurado é um risco de segurança e um bloqueio à produtividade. Garantimos que está configurado corretamente, com licenciamento adequado e suporte para a sua equipa.',
-        d_cld_f1_t: 'Administração Microsoft 365',
-        d_cld_f1_b: 'Gestão de utilizadores, atribuição de licenças, configuração de caixas de correio e definições de segurança — tudo mantido como parte do serviço gerido. Integrações e saídas tratadas de forma limpa.',
-        d_cld_f2_t: 'Suporte Teams e SharePoint',
-        d_cld_f2_b: 'Configuração da estrutura do Teams, sites SharePoint, drives partilhadas e permissões de acesso que correspondem ao funcionamento real da sua empresa — não apenas predefinições.',
-        d_cld_f3_t: 'Migrações Cloud',
-        d_cld_f3_b: 'Migração de servidores de ficheiros locais, sistemas de email legados ou outros fornecedores cloud para o Microsoft 365 — com disrupção mínima e validação adequada dos dados.',
-        d_cld_f4_t: 'Configuração de Segurança M365',
-        d_cld_f4_b: 'Políticas de acesso condicional, configuração do Defender for Business, melhoria do Secure Score e monitorização contínua da postura de segurança no seu tenant.',
-        d_cld_cta: 'Falar Sobre a Sua Configuração Cloud',
-        d_cld_vis_h: 'Visão Geral do Tenant M365',
-        d_cld_r1: 'Exchange Online', d_cld_r2: 'Microsoft Teams', d_cld_r3: 'SharePoint / OneDrive',
-        d_cld_r4: 'Defender for Business', d_cld_r5: 'Secure Score', d_cld_r6: 'Utilizadores sem Licença',
-        d_cld_s1: 'Saudável', d_cld_s2: 'Saudável', d_cld_s3: 'Saudável',
-        d_cld_s4: 'Ativo', d_cld_s5: '78 / 100', d_cld_s6: '2 sinalizados',
-        d_bak_label: 'Backup e Recuperação de Desastres',
-        d_bak_h: 'Saiba exatamente o que acontece quando algo corre mal.',
-        d_bak_p: 'A maioria das empresas assume que os backups funcionam. Nós verificamos. Sistemas de backup testados, documentados e monitorizados — para que a recuperação seja um processo controlado, não uma crise.',
-        d_bak_f1_t: 'Backup Cloud',
-        d_bak_f1_b: 'Backups automáticos offsite de dados críticos para armazenamento cloud encriptado. Políticas de retenção configuradas de acordo com os requisitos da sua empresa — pontos de restauro diários, semanais e mensais.',
-        d_bak_f2_t: 'Backup NAS / Local',
-        d_bak_f2_b: 'Backup NAS Synology local para restauros rápidos — reduzindo o tempo de recuperação de grandes volumes de dados. Configurado numa estratégia de backup 3-2-1 para máxima resiliência.',
-        d_bak_f3_t: 'Backup Microsoft 365',
-        d_bak_f3_b: 'A Microsoft não faz backup das caixas de correio M365 nem dos dados SharePoint por defeito. Implementamos backup de terceiros para garantir que os seus dados cloud têm proteção independente.',
-        d_bak_f4_t: 'Testes de Restauro e Plano DR',
-        d_bak_f4_b: 'Simulações regulares de restauro, procedimentos de recuperação documentados e objetivos RTO/RPO acordados para os sistemas críticos. Saberá exatamente quanto tempo demora a recuperação antes de precisar.',
-        d_bak_cta: 'Rever a Estratégia de Backup',
-        d_bak_vis_h: 'Estado dos Jobs de Backup',
-        d_bak_ok: '✓ Completo', d_bak_ok2: '✓ Incremental', d_bak_ok3: '✓ Incremental', d_bak_warn: '⚠ Rever',
-        d_bak_m1: 'Taxa de sucesso geral', d_bak_m2: 'Último teste de restauro', d_bak_m3: 'Dados protegidos',
-        d_bak_v1: '99,8%', d_bak_v2: 'há 7 dias', d_bak_v3: '2,4 TB',
-        d_net_label: 'Gestão de Rede',
-        d_net_h: 'Uma rede que funciona silenciosamente em segundo plano — sempre.',
-        d_net_p: 'A rede deficiente é a principal causa de perda de produtividade entre todos os problemas de IT. Construímos, monitorizamos e mantemos infraestrutura fiável para que a conectividade nunca seja o obstáculo.',
-        d_net_f1_t: 'Gestão de Firewall',
-        d_net_f1_b: 'Manutenção de regras, atualizações de firmware, revisões de políticas de tráfego e ajuste de deteção de intrusões — mantendo o perímetro protegido sem bloquear tráfego legítimo.',
-        d_net_f2_t: 'Gestão Wi-Fi UniFi',
-        d_net_f2_b: 'Gestão completa do controlador UniFi — segmentação de SSIDs, isolamento de rede de convidados, otimização de cobertura e monitorização de pontos de acesso. Wi-Fi empresarial real, não equipamento doméstico.',
-        d_net_f3_t: 'VPN e Acesso Remoto',
-        d_net_f3_b: 'VPN site-to-site e cliente para acesso remoto seguro. Implementado e gerido para escritórios domésticos, empresas multi-sede e colaboradores em viagem — com aplicação ao nível do dispositivo.',
-        d_net_f4_t: 'Monitorização e Saúde da Rede',
-        d_net_f4_b: 'Visibilidade contínua sobre portas de switch, pontos de acesso e uplinks. Análise de largura de banda, deteção de anomalias e alertas proativos antes de interrupções afetarem a sua equipa.',
-        d_net_cta: 'Rever a Configuração de Rede',
-        d_net_vis_h: 'Topologia de Rede',
-        d_net_m1: 'Disponibilidade (30d)', d_net_m2: 'Dispositivos ativos',
-        d_net_v1: '99,9%', d_net_v2: '22',
-        d_con_label: 'Consultoria IT',
-        d_con_h: 'Decisões tecnológicas que realmente se alinham com o seu negócio.',
-        d_con_p: 'Sem favoritismo de fornecedores. Sem complexidade desnecessária. Apenas orientação honesta sobre o que a sua empresa precisa — com um roadmap para lá chegar ao ritmo do seu orçamento.',
-        d_con_f1_t: 'Planeamento de Roadmap IT',
-        d_con_f1_b: 'Um plano estruturado e priorizado para o seu IT nos próximos 12 a 36 meses — ciclos de renovação de hardware, upgrades de software, melhorias de segurança e alocação de orçamento.',
-        d_con_f2_t: 'Orientação de Fornecedores e Compras',
-        d_con_f2_b: 'Recomendações de hardware, software e ferramentas SaaS adequadas ao seu tamanho e setor — evitando dependência de fornecedores e ferramentas empresariais sobrevalorizadas que as PMEs não precisam.',
-        d_con_f3_t: 'Desenho de Infraestrutura',
-        d_con_f3_b: 'Desenho de infraestrutura escalável para mudanças de escritório, novas localizações ou crescimento empresarial — incluindo redes, ambientes de servidor e arquitetura cloud.',
-        d_con_f4_t: 'Orientação RGPD e Conformidade',
-        d_con_f4_b: 'Orientação prática de IT sobre obrigações RGPD para empresas do Algarve — tratamento de dados, controlos de acesso, políticas de retenção e requisitos de documentação.',
-        d_con_cta: 'Iniciar uma Conversa de Consultoria',
-        d_con_vis_h: 'Exemplo de Roadmap IT',
-        d_con_vis_period: 'T1–T4 2026',
-        d_con_rm1_h: 'Auditoria de Segurança Base', d_con_rm1_p: 'MFA, revisão de endpoints, avaliação de firewall — T1 2026',
-        d_con_rm2_h: 'Reforço de Segurança M365', d_con_rm2_p: 'Acesso condicional, melhorias do Secure Score — T1 2026',
-        d_con_rm3_h: 'Upgrade da Estratégia de Backup', d_con_rm3_p: 'Configuração 3-2-1 cloud + NAS, testes de restauro — T2 2026',
-        d_con_rm4_h: 'Renovação de Hardware',         d_con_rm4_p: 'Revisão do ciclo de vida, 3 substituições planeadas — T3 2026',
-        d_con_rm5_h: 'Upgrade de Rede',               d_con_rm5_p: 'Instalação UniFi, APs Wi-Fi 6, novo switch core — T4 2026',
-        cmp_label: 'Comparação de Serviços',
-        cmp_h: 'IT Reativo vs. IT Gerido',
-        cmp_p: 'Veja como o modelo de serviço gerido da BlueWave IT se compara com a abordagem break-fix tradicional que a maioria das pequenas empresas ainda usa.',
-        cmp_th1: 'O que obtém', cmp_th2: 'Break-Fix / Ad Hoc', cmp_th3: 'BlueWave IT Gerido',
-        cmp_r1: 'Monitorização e alertas',      cmp_r1b: '—', cmp_r1m: '✓ 24/7 automatizado',
-        cmp_r2: 'Gestão de patches',            cmp_r2b: 'Manual / inconsistente', cmp_r2m: '✓ Programado e testado',
-        cmp_r3: 'Suporte helpdesk',             cmp_r3b: 'Pago por incidente', cmp_r3m: '✓ Incluído, resposta rápida',
-        cmp_r4: 'Ferramentas de cibersegurança',cmp_r4b: '—', cmp_r4m: '✓ EDR, email, MFA',
-        cmp_r5: 'Monitorização de backups',     cmp_r5b: '—', cmp_r5m: '✓ Verificação diária',
-        cmp_r6: 'Administração M365',           cmp_r6b: 'Por hora, reativo', cmp_r6m: '✓ Gestão contínua',
-        cmp_r7: 'Gestão de rede',               cmp_r7b: '—', cmp_r7m: '✓ Monitorizado e suportado',
-        cmp_r8: 'Estratégia IT e roadmap',      cmp_r8b: '—', cmp_r8m: '✓ Revisão anual',
-        cmp_r9: 'Custo mensal previsível',      cmp_r9b: '—', cmp_r9m: '✓ €60 por utilizador/mês',
-        cmp_r10:'Orientação IT RGPD',           cmp_r10b:'—', cmp_r10m:'✓ Incluído',
-        prc_label: 'Preços',
-        prc_h: 'Um plano. Tudo incluído.',
-        prc_p: 'Sem funcionalidades por níveis, sem custos surpresa. As seis áreas de serviço estão cobertas numa única tarifa mensal por utilizador.',
-        prc_plan_lbl: 'Plano Gerido Standard',
-        prc_val: '€60', prc_unit: 'por utilizador / mês',
-        prc_desc: 'Tudo o que a sua empresa precisa para funcionar de forma fiável, manter-se segura e crescer com confiança.',
-        prc_f1:'Helpdesk IT gerido e monitorização', prc_f2:'Proteção de endpoints e gestão de patches',
-        prc_f3:'Cibersegurança — EDR, email, MFA',   prc_f4:'Administração Microsoft 365',
-        prc_f5:'Monitorização e verificação de backups',prc_f6:'Saúde e suporte de rede',
-        prc_f7:'Revisão anual de consultoria IT',    prc_f8:'Orientação IT RGPD',
-        prc_cta: 'Começar — Marcar uma Consulta',
-        prc_free_lbl:  'Grátis Antes de Comprometer',
-        prc_free_val:  'Grátis', prc_free_unit: 'avaliação IT',
-        prc_free_desc: 'Não sabe por onde começar? Revemos o seu ambiente atual, identificamos riscos e damos-lhe uma visão clara de onde se encontra — sem compromissos.',
-        prc_ff1:'Revisão completa do ambiente', prc_ff2:'Identificação de lacunas de segurança',
-        prc_ff3:'Avaliação do estado dos backups',prc_ff4:'Verificação da saúde da rede',
-        prc_ff5:'Resumo escrito claro',          prc_ff6:'Recomendações prioritizadas',
-        prc_free_cta: 'Pedir Avaliação Gratuita',
-        cta_h: 'Pronto para parar de reagir e começar a gerir?',
-        cta_p: 'Fale com a BlueWave IT sobre como os serviços geridos podem eliminar o stress de IT que custa tempo e dinheiro à sua empresa todas as semanas.',
-        cta_btn1: 'Marcar uma Consulta Gratuita',
-        cta_btn2: 'Pedir Avaliação IT',
-        ft_tagline: 'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
-        ft_svc_h: 'Serviços', ft_co_h: 'Empresa',
-        ft_s1:'IT Gerido', ft_s2:'Cibersegurança', ft_s3:'Cloud e M365',
-        ft_s4:'Backup e Recuperação', ft_s5:'Gestão de Rede', ft_s6:'Consultoria IT',
-        ft_c1:'Início', ft_c2:'Sobre', ft_c3:'Preços', ft_c4:'FAQ', ft_c5:'Contacto',
-        ft_copy: '© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
-        ft_privacy: 'Política de Privacidade', ft_gdpr: 'RGPD',
-        theme_dark: 'Escuro', theme_light: 'Claro',
-      }
-    };
-
-    let currentLang = 'en';
-
-    function setLanguage(lang) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
-      document.title = T[lang].page_title;
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.dataset.i18n;
-        if (T[lang][k] !== undefined) el.textContent = T[lang][k];
-      });
-
-      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-        const k = el.dataset.i18nPh;
-        if (T[lang][k] !== undefined) el.placeholder = T[lang][k];
-      });
-
-      document.querySelectorAll('[data-lang]').forEach(b =>
-        b.classList.toggle('active', b.dataset.lang === lang)
-      );
-    }
-
-    document.querySelectorAll('[data-lang]').forEach(b => {
-      b.addEventListener('click', () => setLanguage(b.dataset.lang));
-    });
-
-    /* ── reveal ── */
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, {threshold: 0.10});
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    /* ── sub-feature accordions ── */
-    document.querySelectorAll('.sub-feat-head').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const feat = btn.parentElement;
-        // Close siblings
-        feat.parentElement.querySelectorAll('.sub-feat.open').forEach(f => {
-          if (f !== feat) f.classList.remove('open');
-        });
-        feat.classList.toggle('open');
-      });
-    });
-
-    /* ── sticky service nav active state on scroll ── */
-    const sections  = ['managed-it','cybersecurity','cloud','backup','networking','consulting'];
-    const navBtns   = document.querySelectorAll('.svc-nav-btn');
-    const navOffset = document.getElementById('svcNav').offsetHeight + 72 + 20;
-
-    function updateActiveNav() {
-      let current = sections[0];
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= navOffset + 40) current = id;
-      });
-      navBtns.forEach(b => b.classList.toggle('active', b.dataset.target === current));
-    }
-    window.addEventListener('scroll', updateActiveNav, {passive:true});
-
-    navBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const el = document.getElementById(btn.dataset.target);
-        if (el) { el.scrollIntoView({behavior:'smooth'}); }
-      });
-    });
-
-    /* ── init ── */
-    setLanguage('en');
-  /* init logo */
-  (function(){
-    var isL = document.body.classList.contains('theme-light');
-    document.querySelectorAll('.logo-img').forEach(function(img){
-      img.src = isL ? img.dataset.light : img.dataset.dark;
-    });
-  })();
-
-  /* logo: set correct src for initial theme */
-  (function(){
-    var dark  = 'https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_dark.png';
-    var light = 'https://raw.githubusercontent.com/astraseeker001-bot/bluewaveit/main/assests/logo_light.png';
-    var isL = document.body.classList.contains('theme-light');
-    document.querySelectorAll('.logo-img').forEach(function(img){
-      img.src = isL ? light : dark;
-    });
-  })();</script>
 </body>
 </html>
