@@ -1,4 +1,9 @@
-/* BlueWave IT — contact.js */
+/* BlueWave IT — contact.js
+   nav.js handles: theme, lang toggles, logo init, scroll, backToTop.
+   This file handles: contact-specific i18n, 2-step form, Turnstile, submit.
+   window.setLanguage exposed so nav.js lang switcher keeps form strings in sync.
+   ================================================================ */
+
 const T = {
     en: {
       managed_services_label:'Managed IT Services',
@@ -100,13 +105,10 @@ const T = {
     }
   };
 
-  const backToTop = document.getElementById('backToTop');
-  const langBtns  = document.querySelectorAll('[data-lang]');
-  const themeBtns = document.querySelectorAll('[data-theme]');
-  let currentLang = 'en';
+  let currentLang = localStorage.getItem('bwit-lang') || 'en';
 
   /* ── i18n ── */
-  function setLanguage(lang) {
+  window.setLanguage = function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -117,32 +119,17 @@ const T = {
     document.querySelectorAll('#serviceSelect option').forEach(opt => {
       if (opt.dataset[lang]) opt.textContent = opt.dataset[lang];
     });
-    langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   }
-  langBtns.forEach(b => b.addEventListener('click', () => setLanguage(b.dataset.lang)));
 
-  /* ── theme ── */
-  function setTheme(theme) {
-    document.body.classList.toggle('theme-light', theme === 'light');
-    document.querySelectorAll('.logo-img').forEach(img => {
-      img.src = (theme === 'light') ? img.dataset.light : img.dataset.dark;
-    });
-    themeBtns.forEach(b => b.classList.toggle('active', b.dataset.theme === theme));
-  }
-  themeBtns.forEach(b => b.addEventListener('click', () => setTheme(b.dataset.theme)));
-
-  /* ── mobile menu ── */
-
-  });
-
-
-  /* ── reveal ── */
+  /* ── reveal on scroll ── */
+/* ── reveal ── */
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
   }, { threshold: 0.10 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  /* ── char counter ── */
+/* ── char counter ── */
   const msgField  = document.getElementById('messageField');
   const charCount = document.getElementById('charCount');
   if (msgField && charCount) {
@@ -153,7 +140,7 @@ const T = {
     });
   }
 
-  /* ── quick chips ── */
+/* ── quick chips ── */
   document.querySelectorAll('.quick-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       if (!msgField) return;
@@ -168,13 +155,13 @@ const T = {
     });
   });
 
-  /* ── select colour state ── */
+/* ── select colour state ── */
   const serviceSelect = document.getElementById('serviceSelect');
   serviceSelect?.addEventListener('change', () => {
     serviceSelect.classList.toggle('has-value', serviceSelect.value !== '');
   });
 
-  /* ── 2-step progress ── */
+/* ── 2-step progress ── */
   function goToStep(n) {
     const s1 = document.getElementById('step1');
     const s2 = document.getElementById('step2');
@@ -239,7 +226,7 @@ const T = {
 
   document.getElementById('btnBack')?.addEventListener('click', () => goToStep(1));
 
-  /* ── form submit ── */
+/* ── form submit ── */
   document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -308,14 +295,5 @@ const T = {
     }
   });
 
-  /* ── init ── */
-  setTheme('dark');
-  setLanguage('en');
-
-  /* ── logo initial src ── */
-  (function(){
-    var isL = document.body.classList.contains('theme-light');
-    document.querySelectorAll('.logo-img').forEach(function(img){
-      img.src = isL ? img.dataset.light : img.dataset.dark;
-    });
-  })();
+  /* ── init: apply saved language ── */
+  setLanguage(localStorage.getItem('bwit-lang') || 'en');
