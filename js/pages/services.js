@@ -3,12 +3,6 @@
    BlueWave IT — services.js
    Page-specific JS for services.html. Loads after site.js
    ================================================================ */
-/* ── header scroll ── */
-    backTop?.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-
-    /* ── mobile nav ── */
-
-    });
 
     /* ── theme ── */
     document.querySelectorAll('[data-theme]').forEach(b => {
