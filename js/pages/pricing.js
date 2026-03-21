@@ -511,7 +511,7 @@
 
   let lang = 'en';
 
-  function setLanguage(l) {
+  window.setLanguage = function setLanguage(l) {
     lang = l;
     document.documentElement.lang = l;
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -529,23 +529,7 @@
     updateCalc();
     updateROI();
   }
-  document.querySelectorAll('[data-lang]').forEach(b =>
-    b.addEventListener('click', () => setLanguage(b.dataset.lang))
-  );
 
-  /* ── theme ── */
-  document.querySelectorAll('[data-theme]').forEach(b => {
-    b.addEventListener('click', () => {
-      const isLight = b.dataset.theme === 'light';
-      document.body.classList.toggle('theme-light', isLight);
-      document.querySelectorAll('.logo-img').forEach(img => {
-        img.src = isLight ? img.dataset.light : img.dataset.dark;
-      });
-      document.querySelectorAll('[data-theme]').forEach(x =>
-        x.classList.toggle('active', x.dataset.theme === b.dataset.theme)
-      );
-    });
-  });
 
   /* ── reveal on scroll ── */
   const obs = new IntersectionObserver(entries => {
@@ -786,7 +770,7 @@
   });
 
   /* ── init ── */
-  setLanguage('en');
+  window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
   
   /* ── initialise both calculators so values display correctly on first load */
   updateCalc();

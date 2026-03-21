@@ -4,17 +4,6 @@
    Page-specific JS for services.html. Loads after site.js
    ================================================================ */
 
-    /* ── theme ── */
-    document.querySelectorAll('[data-theme]').forEach(b => {
-      b.addEventListener('click', () => {
-        const t = b.dataset.theme;
-        document.body.classList.toggle('theme-light', t==='light');
-      document.querySelectorAll('.logo-img').forEach(function(img){
-        img.src = (t === 'light') ? img.dataset.light : img.dataset.dark;
-      });
-        document.querySelectorAll('[data-theme]').forEach(x => x.classList.toggle('active', x.dataset.theme===t));
-      });
-    });
 
     /* ── full i18n engine ── */
     const T = {
@@ -442,7 +431,7 @@
 
     let currentLang = 'en';
 
-    function setLanguage(lang) {
+    window.setLanguage = function setLanguage(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
       document.title = T[lang].page_title;
@@ -462,9 +451,6 @@
       );
     }
 
-    document.querySelectorAll('[data-lang]').forEach(b => {
-      b.addEventListener('click', () => setLanguage(b.dataset.lang));
-    });
 
     /* ── reveal ── */
     const obs = new IntersectionObserver(entries => {
@@ -507,7 +493,7 @@
     });
 
     /* ── init ── */
-    setLanguage('en');
+    window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
   /* init logo */
   (function(){
     var isL = document.body.classList.contains('theme-light');
