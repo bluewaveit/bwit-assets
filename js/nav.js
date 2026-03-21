@@ -227,35 +227,37 @@
   }
 
   /* ── Language toggle ───────────────────────────────────────── */
+  function applyLang(lang) {
+    syncLangButtons(lang);
+    document.documentElement.lang = lang;
+    // If page JS exposes setLanguage(), delegate fully to it
+    if (typeof window.setLanguage === 'function') {
+      window.setLanguage(lang);
+    } else if (window.T && window.T[lang]) {
+      // Fallback: translate any data-i18n elements using window.T
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var k = el.dataset.i18n;
+        if (window.T[lang][k] !== undefined) el.textContent = window.T[lang][k];
+      });
+      // Also handle data-i18n-html elements (e.g. h1 with inner markup)
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var k = el.dataset.i18nHtml;
+        if (window.T[lang][k] !== undefined) el.innerHTML = window.T[lang][k];
+      });
+    }
+  }
+
   function initLang() {
-    // If the page has its own full i18n engine (T object + setLanguage),
-    // nav.js just hooks into it rather than duplicating translation logic.
-    // The page JS reads T and applies translations — nav.js just keeps
-    // the toggle active-state in sync and exposes a hook.
     var savedLang = localStorage.getItem('bwit-lang') || 'en';
 
-    // Sync active states on nav lang buttons
-    syncLangButtons(savedLang);
+    // Apply saved language immediately after nav is injected
+    applyLang(savedLang);
 
     document.querySelectorAll('[data-lang]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var lang = btn.dataset.lang;
-        syncLangButtons(lang);
         localStorage.setItem('bwit-lang', lang);
-
-        // If page JS exposes setLanguage(), call it
-        if (typeof window.setLanguage === 'function') {
-          window.setLanguage(lang);
-        } else {
-          // Minimal fallback: update data-i18n text if T is available
-          if (window.T && window.T[lang]) {
-            document.documentElement.lang = lang;
-            document.querySelectorAll('[data-i18n]').forEach(function (el) {
-              var k = el.dataset.i18n;
-              if (window.T[lang][k] !== undefined) el.textContent = window.T[lang][k];
-            });
-          }
-        }
+        applyLang(lang);
       });
     });
   }
