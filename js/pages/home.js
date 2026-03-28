@@ -4,7 +4,7 @@
    Loads after site.js
    ================================================================ */
 
-    let currentLang   = 'en';
+    let currentLang = 'en';
 
     /* ── i18n ── */
     window.setLanguage = function setLanguage(lang) {
@@ -27,7 +27,6 @@
     /* ── theme ── */
 
     /* ── mobile menu ── */
-
 
     /* ── reveal ── */
     const revealObs = new IntersectionObserver(entries => {
@@ -98,14 +97,14 @@
     });
 
     /* ── pricing calculator ── */
-    const userRange  = document.getElementById('userRange');
-    const priceOut   = document.getElementById('monthlyPrice');
-    const userLabel  = document.getElementById('userCountLabel');
+    const userRange = document.getElementById('userRange');
+    const priceOut  = document.getElementById('monthlyPrice');
+    const userLabel = document.getElementById('userCountLabel');
     function updatePricing() {
       const u = Number(userRange.value);
       userLabel.textContent = currentLang === 'pt' ? `${u} utilizadores` : `${u} users`;
       const total = u * 60;
-      priceOut.textContent  = currentLang === 'pt'
+      priceOut.textContent = currentLang === 'pt'
         ? `€${total.toLocaleString('pt-PT')} / mês`
         : `€${total.toLocaleString()} / month`;
     }
@@ -128,76 +127,167 @@
       });
     });
 
-    /* ── form ── */
+    /* ── Turnstile — lazy load + programmatic execution ────────────────────
+       The Turnstile script is NOT loaded on page load. It is injected the
+       first time the user interacts with the contact form (focus or input).
+       This prevents the "preloaded but not used" browser warning that occurs
+       when the script loads eagerly but execution is deferred to submit time.
+    ─────────────────────────────────────────────────────────────────────── */
+    let turnstileLoaded   = false;
+    let turnstilePending  = false;
+    let turnstileRendered = false;
 
-document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
-  e.preventDefault();
+    function loadTurnstile() {
+      if (turnstileLoaded) return;
+      turnstileLoaded = true;
+      const s    = document.createElement('script');
+      s.src      = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      s.async    = true;
+      s.onload   = () => {
+        // Explicitly render the widget now that the script is ready
+        if (window.turnstile && !turnstileRendered) {
+          turnstile.render('#turnstileWidget', {
+            sitekey:          '0x4AAAAAACsPyae8CCOwYrCp',
+            execution:        'execute',
+            appearance:       'interaction-only',
+            callback:         onTurnstileSuccess,
+            'error-callback': onTurnstileError,
+            'expired-callback': onTurnstileExpired,
+          });
+          turnstileRendered = true;
+        }
+      };
+      document.body.appendChild(s);
+    }
 
-  const form = e.target;
-  const btn = document.getElementById('formSubmitBtn');
-  const status = document.getElementById('formStatus');
-
-  const turnstileToken = document.querySelector('input[name="cf-turnstile-response"]')?.value;
-
-  if (!turnstileToken) {
-    status.textContent = 'Please complete the security check.';
-    status.style.color = 'var(--danger)';
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-  status.textContent = '';
-  status.style.color = '';
-
-  try {
-    const payload = {
-      name: form.name.value,
-      company: form.company.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      service: form.service.value,
-      message: form.message.value,
-      turnstileToken
-    };
-
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+    // Load Turnstile on first form interaction (focus any field)
+    const contactForm = document.getElementById('contactForm');
+    contactForm?.querySelectorAll('input, textarea, select').forEach(el => {
+      el.addEventListener('focus', loadTurnstile, { once: true });
     });
 
-    const result = await res.json();
+    window.onTurnstileSuccess = function(token) {
+      if (turnstilePending) {
+        turnstilePending = false;
+        submitContactForm(token);
+      }
+    };
 
-    if (!res.ok || !result.ok) {
-      throw new Error(result.error || `HTTP ${res.status}`);
+    window.onTurnstileError = function(code) {
+      console.error('Turnstile error:', code);
+      turnstilePending = false;
+      const status = document.getElementById('formStatus');
+      if (status) {
+        status.textContent = 'Security check failed. Please refresh and try again.';
+        status.style.color = 'var(--danger)';
+      }
+      const btn = document.getElementById('formSubmitBtn');
+      if (btn) { btn.disabled = false; btn.textContent = 'Schedule a Consultation'; }
+      if (window.turnstile) setTimeout(() => turnstile.reset(), 1000);
+    };
+
+    window.onTurnstileExpired = function() {
+      if (window.turnstile) turnstile.reset();
+    };
+
+    async function submitContactForm(turnstileToken) {
+      const form   = document.getElementById('contactForm');
+      const btn    = document.getElementById('formSubmitBtn');
+      const status = document.getElementById('formStatus');
+
+      try {
+        const payload = {
+          name:          form.name.value,
+          company:       form.company.value,
+          email:         form.email.value,
+          phone:         form.phone.value,
+          service:       form.service.value,
+          message:       form.message.value,
+          turnstileToken
+        };
+
+        const res    = await fetch('/api/contact', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload)
+        });
+        const result = await res.json();
+
+        if (!res.ok || !result.ok) throw new Error(result.error || `HTTP ${res.status}`);
+
+        status.textContent = 'Message sent successfully.';
+        status.style.color = 'var(--green)';
+        form.reset();
+        if (window.turnstile) turnstile.reset();
+
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Submission failed. Please try again.';
+        status.style.color = 'var(--danger)';
+        if (window.turnstile) turnstile.reset();
+      } finally {
+        btn.disabled    = false;
+        btn.textContent = 'Schedule a Consultation';
+      }
     }
 
-    status.textContent = 'Message sent successfully.';
-    status.style.color = 'var(--green)';
-    form.reset();
+    /* ── form submit ── */
+    contactForm?.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    if (window.turnstile) {
-      turnstile.reset();
-    }
-  } catch (err) {
-    console.error(err);
-    status.textContent = 'Submission failed. Please try again.';
-    status.style.color = 'var(--danger)';
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Schedule a Consultation';
-  }
-});
+      const btn    = document.getElementById('formSubmitBtn');
+      const status = document.getElementById('formStatus');
 
+      btn.disabled       = true;
+      btn.textContent    = 'Verifying\u2026';
+      status.textContent = '';
+      status.style.color = '';
+
+      // If Turnstile hasn't loaded yet (user submitted without focusing a field),
+      // load it now and wait for the onload → render → execute chain to complete.
+      if (!turnstileLoaded) {
+        loadTurnstile();
+        // Script onload will render; we then need to call execute after a tick
+        const waitForRender = setInterval(() => {
+          if (turnstileRendered && window.turnstile) {
+            clearInterval(waitForRender);
+            turnstilePending = true;
+            turnstile.execute('#turnstileWidget');
+          }
+        }, 100);
+        // Timeout safety after 8 seconds
+        setTimeout(() => {
+          clearInterval(waitForRender);
+          if (turnstilePending) {
+            turnstilePending   = false;
+            status.textContent = 'Security check timed out. Please refresh.';
+            status.style.color = 'var(--danger)';
+            btn.disabled       = false;
+            btn.textContent    = 'Schedule a Consultation';
+          }
+        }, 8000);
+        return;
+      }
+
+      if (!window.turnstile) {
+        status.textContent = 'Security check not ready. Please refresh.';
+        status.style.color = 'var(--danger)';
+        btn.disabled       = false;
+        btn.textContent    = 'Schedule a Consultation';
+        return;
+      }
+
+      turnstilePending = true;
+      turnstile.execute('#turnstileWidget');
+    });
 
     /* ── init ── */
     window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
-  /* logo: set correct src for initial theme */
-  (function(){
-    var isL = document.body.classList.contains('theme-light');
-    document.querySelectorAll('.logo-img').forEach(function(img){
-      img.src = isL ? img.dataset.light : img.dataset.dark;
-    });
-  })();
 
+    /* logo: set correct src for initial theme */
+    (function() {
+      var isL = document.body.classList.contains('theme-light');
+      document.querySelectorAll('.logo-img').forEach(function(img) {
+        img.src = isL ? img.dataset.light : img.dataset.dark;
+      });
+    })();
