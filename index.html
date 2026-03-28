@@ -703,8 +703,11 @@
  
 <div class="turnstile-wrapper">
   <div
+    id="turnstileWidget"
     class="cf-turnstile"
     data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"
+    data-execution="execute"
+    data-appearance="interaction-only"
     data-callback="onTurnstileSuccess"
     data-error-callback="onTurnstileError"
     data-expired-callback="onTurnstileExpired"
@@ -775,30 +778,6 @@
 
 
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script>
-function onTurnstileSuccess(token) {
-  console.log("Turnstile token received:", token ? "yes" : "no");
-}
-
-function onTurnstileError(code) {
-  console.error("Turnstile error:", code);
-  const status = document.getElementById("formStatus");
-  if (status) {
-    status.textContent = "Security check failed. Please refresh and try again.";
-    status.style.color = "var(--danger)";
-  }
-
-  if (window.turnstile) {
-    setTimeout(() => turnstile.reset(), 1000);
-  }
-}
-
-function onTurnstileExpired() {
-  if (window.turnstile) {
-    turnstile.reset();
-  }
-}
-</script>
+<!-- Turnstile loaded lazily via home.js on first form interaction -->
 </body>
 </html>
