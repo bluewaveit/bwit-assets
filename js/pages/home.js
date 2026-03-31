@@ -110,14 +110,6 @@
     }
     userRange?.addEventListener('input', updatePricing);
 
-    /* ── FAQ ── */
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        item.classList.toggle('open');
-      });
-    });
-
     /* ── quick chips ── */
     const msgField = document.getElementById('messageField');
     document.querySelectorAll('.quick-chip').forEach(chip => {
