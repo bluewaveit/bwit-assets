@@ -25,12 +25,14 @@
  */
 
 /* ================================================================
-   TRANSLATIONS
-   Keys used across all pages live here (nav, footer, CTAs).
-   Homepage-specific keys are also included here until the
-   translations are split into per-page files.
+   TRANSLATIONS — moved to js/lang.js + js/pages/*.js
+   Homepage-specific strings live in window.PAGE_TRANSLATIONS
+   (set by home.js). Shared nav/footer in window.BWIT_TRANSLATIONS.
    ================================================================ */
 
+/* Legacy shim — keeps any remaining translations[lang] references
+   working during the transition (can be removed once all page JS
+   files have been updated to use window.PAGE_TRANSLATIONS).        */
 const translations = {
   en: {
     /* ── Nav & shared ── */
@@ -51,6 +53,8 @@ const translations = {
     footer_services_head: 'Services',
     footer_company_head:  'Company',
     footer_free_assessment: 'Free Assessment',
+    footer_s1: 'Managed IT', footer_s2: 'Cybersecurity', footer_s3: 'Cloud & M365',
+    footer_s4: 'Backup & Recovery', footer_s5: 'Network Management', footer_s6: 'IT Consulting',
     footer_privacy:       'Privacy Policy',
     footer_terms:         'Terms and Conditions',
     footer_gdpr:          'GDPR',
@@ -210,6 +214,7 @@ const translations = {
     pricing_plan_name:  'Standard Managed Plan',
     pricing_ribbon:     'Best for growing teams',
     pricing_unit:       'per user / month',
+    pricing_note:       'Starting from 1 user. No minimum seat requirement. Flexible monthly support for businesses of any size.',
     pricing_f1: 'Managed endpoint support',
     pricing_f2: 'Monitoring and routine maintenance',
     pricing_f3: 'Security baseline controls',
@@ -236,7 +241,7 @@ const translations = {
     faq_q2: 'Can you support Microsoft 365 and shared files?',
     faq_a2: 'Yes. Microsoft 365 administration, collaboration support, and file access workflows are part of the core managed service offering.',
     faq_q3: 'What size business is the best fit?',
-    faq_a3: 'BlueWave IT is ideal for small and midsize businesses that want dependable support, better security, and predictable monthly IT costs.',
+    faq_a3: 'BlueWave IT supports solo operators, small businesses, and growing teams — starting from just 1 user. There is no minimum seat requirement. Whether you need support for a single workstation or a 50-person office, we offer flexible monthly support that scales as you grow.',
 
     /* ── Assessment CTA ── */
     assessment_title: 'Free IT assessment',
@@ -281,6 +286,8 @@ const translations = {
     footer_services_head: 'Serviços',
     footer_company_head:  'Empresa',
     footer_free_assessment: 'Avaliação Gratuita',
+    footer_s1: 'IT Gerido', footer_s2: 'Cibersegurança', footer_s3: 'Cloud e M365',
+    footer_s4: 'Backup e Recuperação', footer_s5: 'Gestão de Rede', footer_s6: 'Consultoria IT',
     footer_privacy:       'Política de Privacidade',
     footer_terms:         'Termos e Condições',
     footer_gdpr:          'RGPD',
@@ -440,6 +447,7 @@ const translations = {
     pricing_plan_name:  'Plano Gerido Standard',
     pricing_ribbon:     'Ideal para equipas em crescimento',
     pricing_unit:       'por utilizador / mês',
+    pricing_note:       'A partir de 1 utilizador. Sem requisito mínimo de lugares. Suporte mensal flexível para empresas de qualquer dimensão.',
     pricing_f1: 'Suporte gerido a endpoints',
     pricing_f2: 'Monitorização e manutenção de rotina',
     pricing_f3: 'Controlos base de segurança',
@@ -466,7 +474,7 @@ const translations = {
     faq_q2: 'Podem dar suporte a Microsoft 365 e ficheiros partilhados?',
     faq_a2: 'Sim. Administração Microsoft 365, suporte à colaboração e fluxos de acesso a ficheiros fazem parte da oferta principal.',
     faq_q3: 'Qual o tamanho de empresa ideal?',
-    faq_a3: 'A BlueWave IT é ideal para pequenas e médias empresas que querem suporte fiável, melhor segurança e custos mensais previsíveis.',
+    faq_a3: 'A BlueWave IT suporta operadores individuais, pequenas empresas e equipas em crescimento — a partir de apenas 1 utilizador. Não existe requisito mínimo de lugares. Seja para uma única estação de trabalho ou para um escritório de 50 pessoas, oferecemos suporte mensal flexível que cresce consigo.',
 
     /* ── Assessment CTA ── */
     assessment_title: 'Avaliação IT gratuita',
@@ -491,7 +499,10 @@ const translations = {
     chip_backup:    'Backups',
     cta_schedule:   'Marcar Consulta',
   }
-};
+}
+/* Expose for lang.js fallback lookup */
+window.SITE_TRANSLATIONS = translations;
+;
 
 
 /* ================================================================
@@ -501,41 +512,8 @@ const translations = {
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Element references ── */
-
-  let currentLang = 'en';
-
-
-  /* ================================================================
-     1. LANGUAGE / i18n
-     ================================================================ */
-
-  window.setLanguage = function setLanguage(lang) {
-    currentLang = lang;
-    document.documentElement.lang = lang;
-
-    /* Update all data-i18n elements */
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
-      const val = translations[lang]?.[key];
-      if (val !== undefined) el.textContent = val;
-    });
-
-    /* Update placeholder attributes (data-ph-en / data-ph-pt) */
-    document.querySelectorAll('[data-ph-en], [data-ph-pt]').forEach(el => {
-      el.placeholder = el.dataset[lang === 'en' ? 'phEn' : 'phPt'] || '';
-    });
-
-    /* Update select option text (data-en / data-pt attributes on <option>) */
-    document.querySelectorAll('#serviceSelect option').forEach(opt => {
-      if (opt.dataset[lang]) opt.textContent = opt.dataset[lang];
-    });
-
-    /* Sync active button state */
-    document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-
-    /* Re-calculate any live outputs that depend on language */
-    updatePricing?.();
-  }
+  /* Language switching is handled by js/lang.js (loaded before this file).
+     setLanguage is already defined globally. No redefinition here. */
 
 
   /* ================================================================
@@ -686,26 +664,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!userRange || !priceOut) return;
     const u     = Number(userRange.value);
     const total = u * 60;
+    const lang = document.documentElement.lang || 'en';
     if (userLabel) {
-      userLabel.textContent = currentLang === 'pt'
+      userLabel.textContent = lang === 'pt'
         ? `${u} utilizadores`
         : `${u} users`;
     }
-    priceOut.textContent = currentLang === 'pt'
+    priceOut.textContent = lang === 'pt'
       ? `€${total.toLocaleString('pt-PT')} / mês`
       : `€${total.toLocaleString()} / month`;
   }
 
   userRange?.addEventListener('input', updatePricing);
 
-  /* Expose updatePricing so setLanguage() can call it */
+  /* Expose updatePricing + hook into lang.js _onLangChange */
   window.updatePricing = updatePricing;
+  window._onLangChange = function () { updatePricing && updatePricing(); };
 
 
   /* ================================================================
-     INIT — set defaults
+     INIT — language applied by lang.js DOMContentLoaded
      ================================================================ */
-
-  window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
 
 }); /* end DOMContentLoaded */

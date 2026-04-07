@@ -20,7 +20,7 @@
   // Pages in subdirectories would need a prefix like '../'
   var ROOT_PAGES = [
     'index.html', 'services.html', 'about.html', 'pricing.html',
-    'contact.html', 'gdpr.html', 'privacy.html', 'terms.html', ''
+    'faq.html', 'contact.html', 'gdpr.html', 'privacy.html', 'terms.html', ''
   ];
 
   // Map filename → data-nav-page slug for active highlighting
@@ -30,6 +30,7 @@
     'services.html':'services',
     'about.html':   'about',
     'pricing.html': 'pricing',
+    'faq.html':     'faq',
     'contact.html': 'contact',
     'gdpr.html':    'gdpr',
     'privacy.html': 'privacy',
@@ -46,8 +47,9 @@
   if (depth < 0) depth = 0;
   var prefix = depth > 0 ? '../'.repeat(depth) : '';
 
-  /* ── Resolve the nav include path ─────────────────────────── */
-  var NAV_PATH = prefix + 'includes/nav.html';
+  /* ── Resolve include paths ────────────────────────────────── */
+  var NAV_PATH    = prefix + 'includes/nav.html';
+  var FOOTER_PATH = prefix + 'includes/footer.html';
 
   /* ── Inject & initialise ───────────────────────────────────── */
   function loadNav() {
@@ -277,6 +279,53 @@
     });
   }
 
+  /* ── Footer loader ─────────────────────────────────────────── */
+  function loadFooter() {
+    var container = document.getElementById('site-footer');
+    if (!container) return;
+
+    fetch(FOOTER_PATH)
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status + ' loading ' + FOOTER_PATH);
+        return res.text();
+      })
+      .then(function (html) {
+        // Fix relative paths for pages in subdirectories
+        if (prefix) {
+          html = html.replace(/\bhref="(?!https?:\/\/|#|mailto:)([^"]+)"/g,
+            function (_, p) { return 'href="' + prefix + p + '"'; });
+          html = html.replace(/\bsrc="(?!https?:\/\/|data:)([^"]+)"/g,
+            function (_, p) { return 'src="' + prefix + p + '"'; });
+          html = html.replace(/\bdata-dark="(?!https?:\/\/|data:|")([^"]+)"/g,
+            function (_, p) { return 'data-dark="' + prefix + p + '"'; });
+          html = html.replace(/\bdata-light="(?!https?:\/\/|data:|")([^"]+)"/g,
+            function (_, p) { return 'data-light="' + prefix + p + '"'; });
+        }
+
+        container.innerHTML = html;
+
+        // Apply saved language to footer elements
+        var savedLang = localStorage.getItem('bwit-lang') || 'en';
+        if (typeof window.setLanguage === 'function') {
+          window.setLanguage(savedLang);
+        } else if (window.T && window.T[savedLang]) {
+          container.querySelectorAll('[data-i18n]').forEach(function (el) {
+            var k = el.dataset.i18n;
+            if (window.T[savedLang][k] !== undefined) el.textContent = window.T[savedLang][k];
+          });
+        }
+
+        // Apply current theme to footer logo
+        var isLight = document.body.classList.contains('theme-light');
+        container.querySelectorAll('.logo-img').forEach(function (img) {
+          img.src = isLight ? (img.dataset.light || '') : (img.dataset.dark || '');
+        });
+      })
+      .catch(function (err) {
+        console.warn('[nav.js] Failed to load footer:', err.message);
+      });
+  }
+
   /* ── Back-to-top (shared utility, benefits all pages) ──────── */
   function initBackToTop() {
     var btn = document.getElementById('backToTop');
@@ -293,11 +342,13 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       loadNav();
+      loadFooter();
       initBackToTop();
     });
   } else {
     // DOM already ready (script deferred or at bottom of body)
     loadNav();
+    loadFooter();
     initBackToTop();
   }
 
