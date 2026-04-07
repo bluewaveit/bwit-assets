@@ -4,25 +4,10 @@
    Loads after site.js
    ================================================================ */
 
-    let currentLang = 'en';
+    /* document.documentElement.lang removed */
 
     /* ── i18n ── */
-    window.setLanguage = function setLanguage(lang) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.dataset.i18n;
-        if (translations[lang][k]) el.textContent = translations[lang][k];
-      });
-      document.querySelectorAll('input[data-ph-en], textarea[data-ph-en]').forEach(el => {
-        el.placeholder = el.dataset[lang === 'en' ? 'phEn' : 'phPt'];
-      });
-      document.querySelectorAll('#serviceSelect option').forEach(opt => {
-        opt.textContent = opt.dataset[lang];
-      });
-      document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-      updatePricing();
-    }
+    /* lang.js handles setLanguage — no override needed */
 
     /* ── theme ── */
 
@@ -102,9 +87,9 @@
     const userLabel = document.getElementById('userCountLabel');
     function updatePricing() {
       const u = Number(userRange.value);
-      userLabel.textContent = currentLang === 'pt' ? `${u} utilizadores` : `${u} users`;
+      userLabel.textContent = document.documentElement.lang === 'pt' ? `${u} utilizadores` : `${u} users`;
       const total = u * 60;
-      priceOut.textContent = currentLang === 'pt'
+      priceOut.textContent = document.documentElement.lang === 'pt'
         ? `€${total.toLocaleString('pt-PT')} / mês`
         : `€${total.toLocaleString()} / month`;
     }
@@ -114,7 +99,7 @@
     const msgField = document.getElementById('messageField');
     document.querySelectorAll('.quick-chip').forEach(chip => {
       chip.addEventListener('click', () => {
-        msgField.value = chip.dataset[currentLang === 'en' ? 'messageEn' : 'messagePt'];
+        msgField.value = chip.dataset[document.documentElement.lang === 'en' ? 'messageEn' : 'messagePt'];
         msgField.focus();
       });
     });
@@ -274,7 +259,7 @@
     });
 
     /* ── init ── */
-    window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
+    /* lang.js applies saved language */
 
     /* logo: set correct src for initial theme */
     (function() {

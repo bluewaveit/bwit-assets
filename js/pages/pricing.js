@@ -1,48 +1,8 @@
 /* BlueWave IT — pricing.js — loads after site.js */
 /* ── TRANSLATIONS ── */
-  const T = {
-    en: {
+window.PAGE_TRANSLATIONS = {
+  en: {
 
-      /* ── Web Presence Pricing ── */
-      wp_section_label:'Web Presence Pricing',
-      wp_h:'Fast, affordable web presence packages for businesses with little or no online visibility.',
-      wp_subhead:'web presence packages',
-      wp_intro_p:'This service is designed for speed, clarity, and results. The goal is not a large custom website project. The goal is to get a business online quickly with a polished presence, better credibility, and a clear path for customer inquiries.',
-      wp_c1_name:'Starter Presence',
-      wp_c1_desc:'Best for businesses with no website or a very weak online presence that need something clean, credible, and live quickly.',
-      wp_c1_f1:'1–3 page polished website',
-      wp_c1_f2:'Mobile-friendly design',
-      wp_c1_f3:'Contact form and WhatsApp button',
-      wp_c1_f4:'Google Business setup or cleanup',
-      wp_c1_f5:'Hosting and basic updates',
-      wp_c1_setup:'€300–€800 setup', wp_c1_mo:'€39–€79/mo', wp_c1_tag:'Fast Launch',
-      wp_c1_cta:'See Starter Details',
-      wp_c2_name:'Growth Presence',
-      wp_c2_desc:'For businesses that want a stronger lead flow, clearer service pages, and a more active online presence without moving into a high-end custom build.',
-      wp_c2_f1:'Everything in Starter Presence',
-      wp_c2_f2:'Extra landing pages or service pages',
-      wp_c2_f3:'Lead capture improvements',
-      wp_c2_f4:'Review and trust-building elements',
-      wp_c2_f5:'Monthly content and visibility improvements',
-      wp_c2_setup:'€800–€1,500 setup', wp_c2_mo:'€99–€199/mo', wp_c2_tag:'Lead Focused',
-      wp_c2_cta:'See Growth Details',
-      wp_c3_name:'Presence + AI Boost',
-      wp_c3_desc:'For organizations that want a stronger web presence plus practical AI-assisted enhancements for content, lead handling, and workflow support.',
-      wp_c3_f1:'Everything in Growth Presence',
-      wp_c3_f2:'AI-assisted content refinement',
-      wp_c3_f3:'Smarter inquiry and form workflows',
-      wp_c3_f4:'Basic automation guidance',
-      wp_c3_f5:'Ongoing optimization support',
-      wp_c3_setup:'€1,200–€2,000 setup', wp_c3_mo:'€149–€299/mo', wp_c3_tag:'AI Enhanced',
-      wp_c3_cta:'See AI Boost Details',
-      wp_note:'All packages are designed to get your business online quickly and professionally. Setup fees vary based on complexity and existing content. Monthly fees cover hosting, support, and ongoing improvements. <strong>Contact us to discuss which package fits your situation.</strong>',
-      roi_gross_label:'Gross value delivered per year',
-      roi_roi_pct:'ROI in year 1',
-      roi_payback2:'Payback period (gross)',
-      roi_3yr_label:'3-year net benefit projection',
-      roi_yr1:'Year 1', roi_yr2:'Year 2', roi_yr3:'Year 3',
-      nav_label:'Managed IT Services', nav_home:'Home', nav_services:'Services', nav_about:'About', nav_pricing:'Pricing', nav_contact:'Contact', cta_book:'Book a Consultation',
-      theme_dark:'Dark', theme_light:'Light',
       bc_home:'Home', bc_current:'Pricing',
       hero_label:'Simple Pricing',
       hero_h1_a:'One price.', hero_h1_b:'Everything included.', hero_h1_c:'Zero surprises.',
@@ -54,38 +14,6 @@
       hpd_f3:'Cybersecurity — EDR, email security, MFA', hpd_f4:'Microsoft 365 administration',
       hpd_f5:'Backup monitoring & verification', hpd_f6:'Network health & support',
       hpd_eg_label:'Example — 10 users', hpd_month:'month',
-      calc_h:'Cost calculator', calc_p:'Adjust the sliders to model your environment. Pricing updates in real time.',
-      calc_live:'Live estimate',
-      sl_users_label:'Number of users', sl_users_desc:'Staff members who need IT support, email, and device management',
-      sl_backup_plan_label:'Cloud backup plan', sl_backup_plan_desc:'Optional add-on — select the plan that fits your data volume',
-      sl_bp_none:'None',
-      sl_backup_label:'Estimated data volume (GB)', sl_backup_desc:'Business data across local storage and Microsoft 365',
-      calc_monthly_label:'Estimated monthly investment', calc_year:'year',
-      cb_users_label:'Managed users', cb_backup_plan_label:'Cloud backup plan',
-      cb_backup_label:'Estimated data volume', cb_total_label:'Total monthly',
-      calc_tip_head:'Why this model saves money',
-      calc_tip_base:'Ad-hoc IT support in the Algarve costs €75–€120/hr with no proactive coverage. The managed model delivers monitoring, security, backups, and helpdesk for a flat monthly fee — predictable budgeting, no surprise invoices.',
-      plan_label:'The Plan', plan_h:'One plan, fully loaded',
-      plan_p:'All six service areas are active for every managed client from day one. There are no starter tiers or upgrade paths — just complete, proactive IT management.',
-      plan_badge:'Standard Managed Plan', plan_name:'Complete Managed IT',
-      plan_desc:"Everything your business needs to run reliably, stay secure, and scale with confidence — managed proactively by BlueWave IT.",
-      plan_unit:'per user / month', plan_sub:'Billed monthly. Minimum 5 users. No lock-in contracts.',
-      inc_1_name:'Managed IT & Helpdesk',  inc_1_sub:'24/7 monitoring, fast response',
-      inc_2_name:'Cybersecurity',           inc_2_sub:'EDR, email filter, MFA',
-      inc_3_name:'Cloud & Microsoft 365',   inc_3_sub:'Admin, Teams, SharePoint',
-      inc_4_name:'Backup & Recovery',       inc_4_sub:'Daily verification, DR planning',
-      inc_5_name:'Network Management',      inc_5_sub:'UniFi, firewall, VPN',
-      inc_6_name:'IT Consulting',           inc_6_sub:'Roadmaps, GDPR, strategy',
-      plan_cta:'Get Started — Book a Consultation',
-      free_val:'Free', free_unit:'IT assessment',
-      free_h:'Start with a free review',
-      free_p:"Not ready to commit? We'll review your current IT environment, identify gaps, and give you a clear, written summary of risks and opportunities — at no cost and no obligation.",
-      free_f1:'Full environment audit', free_f2:'Security gap identification',
-      free_f3:'Backup status check', free_f4:'Written recommendations',
-      free_cta:'Request Free Assessment',
-      addon_h:'Need something specific?',
-      addon_p:'For larger environments, multi-site deployments, or specialist project work — infrastructure design, server builds, office relocations — we scope bespoke engagements. Contact us to discuss.',
-      addon_cta:'Discuss a Custom Scope',
       matrix_label:"What's Included", matrix_h:'Every feature, mapped to every service area',
       matrix_p:'A full breakdown of what comes with your managed plan — compared to what businesses typically get on a break-fix or ad-hoc IT model.',
       mx_th1:'Service & Feature', mx_th2:'Break-Fix / Ad Hoc', mx_th3:'BlueWave IT Managed (€60/user)',
@@ -101,42 +29,6 @@
       mx_r19:'Network & Wi-Fi monitoring', mx_r20:'VPN deployment & management',
       mx_r21:'Annual IT roadmap & planning', mx_r22:'GDPR IT guidance',
       mx_manual:'Manual', mx_perhour:'Per hour', mx_reactive:'Reactive only', mx_unverified:'Unverified',
-      roi_label:'ROI Estimator', roi_h:'See what managed IT is worth to your business',
-      roi_p:'Enter your current IT situation to calculate your total annual burden — and see exactly how a managed service stacks up. Licences are always client-paid; BlueWave IT eliminates the hidden costs around them.',
-      roi_inputs_h:'Your current situation',
-      roi_inputs_p:'Fill in what your business currently spends. Licences you already pay stay yours — BlueWave eliminates the labour, risk, and hidden overhead around them.',
-      roi_sec_staff:'Staff & Downtime', roi_sec_software:'Software & Licences', roi_sec_adhoc:'Ad-Hoc Support & Security Risk', roi_sec_infra:'Infrastructure & Hardware',
-      roi_licence_note:'Licence costs remain ', roi_licence_note_strong:'yours to pay',
-      roi_lbl_users:'Number of users', roi_hint_users:'headcount on IT',
-      roi_lbl_wage:'Avg hourly cost per employee', roi_hint_wage:'€/hr incl. oncosts',
-      roi_lbl_hours:'Hours lost to IT issues / employee / month', roi_hint_hours:'avg SMB: 3–6 hrs',
-      roi_lbl_outages:'Major IT outages per year',
-      roi_lbl_outagecost:'Estimated cost per outage (€)', roi_hint_outagecost:'productivity + recovery',
-      roi_lbl_m365:'Microsoft 365 licences / year (€)', roi_hint_m365:'current annual total',
-      roi_lbl_av:'Antivirus / endpoint security / year (€)',
-      roi_lbl_saas:'Other SaaS & software subscriptions / year (€)',
-      roi_lbl_adhoc:'Ad-hoc IT callouts per year', roi_hint_adhoc:'€75–€120/hr typical Algarve',
-      roi_prefix_visits:'visits',
-      roi_lbl_adhocrate:'Average cost per callout (€)',
-      roi_lbl_breach:'Security incident / breach cost past 3 yrs (€)', roi_hint_breach:'amortised annually',
-      roi_lbl_hardware:'Hardware replacement & repairs / year (€)',
-      roi_lbl_backup:'Backup storage & services / year (€)',
-      roi_lbl_network:'Network & connectivity costs / year (€)',
-      roi_results_h2:'Annual cost analysis',
-      roi_saving_label:'Estimated net annual benefit',
-      roi_saving_sub:'What switching to BlueWave IT puts back in your business each year',
-      roi_meta_payback:'Payback period', roi_meta_peruser:'Cost per user / month',
-      roi_bar_current:'Your current annual IT costs', roi_bar_msp:'BlueWave IT managed service',
-      roi_bar_prod:'Productivity lost', roi_bar_outage:'Outage cost', roi_bar_sw:'Software licences', roi_bar_adhoc:'Ad-hoc + breaches', roi_bar_infra:'Infrastructure', roi_bar_msp_cost:'BlueWave IT cost',
-      roi_bk_prod_name:'Productivity lost to IT friction', roi_bk_prod_note:'hrs × wage × users × 12 — 70% recoverable under managed model',
-      roi_bk_outage_name:'Unplanned outage cost', roi_bk_outage_note:'outages × cost per event — 80% prevented proactively',
-      roi_bk_sw_name:'Software & licences', roi_bk_sw_note:'M365 + AV + SaaS — client-paid, BlueWave managed',
-      roi_bk_managed_tag:'Managed by us',
-      roi_bk_adhoc_name:'Ad-hoc support & security incidents', roi_bk_adhoc_note:'callouts × rate + breach amortisation — 85% eliminated',
-      roi_bk_infra_name:'Infrastructure & hardware', roi_bk_infra_note:'hardware + backup + network — better managed, ~10% optimised',
-      roi_total_lbl:'Total current annual IT burden',
-      roi_bk_msp_name:'BlueWave IT — annual investment', roi_bk_msp_note:'€60 × users × 12 months — all 6 service areas included',
-      roi_disclaimer:'Indicative estimates based on typical Algarve SMB data. Productivity and outage savings modelled at 70% / 80% reduction. Licence costs remain client-paid and are excluded from savings calculation — BlueWave IT manages them as part of the service. Actual results will vary.',
       cm_title:'Get in touch', cm_sub:"Tell us a bit about your business and we'll get back to you within one business day — no obligation.",
       cm_lbl_name:'Full name', cm_ph_name:'João Silva',
       cm_lbl_email:'Work email', cm_ph_email:'joao@yourcompany.pt',
@@ -162,7 +54,7 @@
       fq1_q:"What's included in the €60 per user per month?",
       fq1_a:"Everything. Managed IT helpdesk, 24/7 monitoring, patch management, endpoint protection, cybersecurity tools (EDR, email security, MFA), Microsoft 365 administration, backup monitoring and verification, network health monitoring, and an annual IT consulting review. There are no add-ons required to get complete coverage.",
       fq2_q:'Is there a minimum number of users?',
-      fq2_a:'Yes — the minimum is 5 users. This reflects the minimum environment size needed to deliver a properly managed service at the tooling and monitoring depth BlueWave IT operates at. Most clients start between 8 and 20 users.',
+      fq2_a:'No minimum. BlueWave IT supports solo operators, small teams, and growing businesses — starting from just 1 user. Plans scale as your team grows, with no minimum seat requirement and no lock-in contracts.',
       fq3_q:'Are there any setup or onboarding fees?',
       fq3_a:'In most cases, no. For standard SMB environments, onboarding is included in the managed service. For more complex environments — multiple sites, legacy systems, or significant remediation work — a one-time project fee may apply, which will always be clearly scoped before any commitment.',
       fq4_q:'What if I add or remove users mid-month?',
@@ -178,124 +70,182 @@
       cta_h:'Ready to put a number on it?',
       cta_p:"Book a free consultation. We'll assess your environment, confirm your user count, and provide a precise written proposal — usually within 48 hours.",
       cta_btn1:'Book a Free Consultation', cta_btn2:'Explore Services',
-      ft_tagline:'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
-      ft_svc_h:'Services', ft_co_h:'Company',
-      ft_s1:'Managed IT', ft_s2:'Cybersecurity', ft_s3:'Cloud & M365', ft_s4:'Backup & Recovery', ft_s5:'Network Management', ft_s6:'IT Consulting',
-      ft_c1:'Home', ft_c2:'About', ft_c3:'Pricing', ft_c4:'FAQ', ft_c5:'Contact',
-      ft_copy:'© 2026 BlueWave IT. Reliable technology for growing businesses.',
-      footer_privacy:'Privacy Policy', footer_gdpr:'GDPR',footer_terms:'Terms and Conditions',
-      /* backup pricing */
-      bk_label:'Cloud Backup & Storage',
-      bk_h:'Managed cloud backup pricing',
-      bk_p:'Predictable, packaged backup plans with managed storage, daily monitoring, and tested restores. Add to any managed IT plan or run standalone.',
-      bk_toggle_plans:'Storage Plans', bk_toggle_overage:'Overage & Restores',
-      bk_month:'/month', bk_popular:'Most Popular', bk_plus_badge:'Full Coverage',
-      bk_arc_badge:'Long-Term',
-      bk_e_name:'Cloud Backup Essentials', bk_e_storage:'Up to 500 GB included',
-      bk_e_note:'Ideal for small teams with moderate data needs',
-      bk_e_f1:'Managed backup storage', bk_e_f2:'Daily backup checks',
-      bk_e_f3:'Basic retention policy', bk_e_f4:'Restore support (business hours)',
-      bk_s_name:'Cloud Backup Standard', bk_s_storage:'Up to 2 TB included',
-      bk_s_note:'Best fit for most Algarve SMBs',
-      bk_s_f1:'Managed backup storage', bk_s_f2:'Daily backup monitoring',
-      bk_s_f3:'30–90 day retention', bk_s_f4:'Priority restore support',
-      bk_s_f5:'Monthly backup health report',
-      bk_p_name:'Cloud Backup Plus', bk_p_storage:'Up to 5 TB included',
-      bk_p_note:'For data-heavy operations and full DR coverage',
-      bk_p_f1:'Managed backup storage', bk_p_f2:'Monitoring and alerting',
-      bk_p_f3:'Long-term retention options', bk_p_f4:'Priority restores',
-      bk_p_f5:'Monthly backup health report', bk_p_f6:'Quarterly backup review',
-      bk_a_name:'Archive Retention', bk_a_storage:'Up to 5 TB archived',
-      bk_a_note:'Retrieval billed separately if needed',
-      bk_a_f1:'Long-term archive storage', bk_a_f2:'Compliance-style retention',
-      bk_a_f3:'Low-cost cold storage design', bk_a_f4:'Retrieval billed separately',
-      bk_cta_start:'Get Started', bk_cta_recommended:'Get Standard Plan',
-      sv_h:'Storage tier cost comparison — price per GB at included capacity',
-      sv_hot:'Hot (active)', sv_overhot:'Hot overage', sv_cool:'Cool storage', sv_archive:'Archive',
-      sv_standard_note:'Standard plan avg.', sv_overage_note:'Beyond plan limit',
-      sv_cool_note:'Infrequent access', sv_archive_note:'Long-term cold',
-      ov_h:'Overage & restore pricing',
-      ov_p:'All plans include storage up to the stated limit. Usage above the included capacity is billed at the rates below, keeping plan fees predictable.',
-      ov_hot_type:'Hot Storage', ov_cool_type:'Cool Storage', ov_archive_type:'Archive Storage',
-      ov_per_gb:'per GB / month',
-      ov_restore_std:'Standard restore request (fair use)', ov_restore_std_val:'✓ Included in all plans',
-      ov_restore_large:'Large restore or urgent out-of-hours recovery', ov_restore_large_val:'Scoped & billed separately',
-      ov_tip_h:'Best-practice structure for most clients',
-      ov_tip_body:'The packaged plan fee covers the non-storage work: setup, monitoring, support, retention policy management, reporting, and restore handling. Raw storage overages are billed at cost. This keeps billing transparent and aligned with actual usage.',
-      /* on-site backup */
-      os_label:'On-Site Backup Solutions',
-      os_h:'Local backup appliances — deployed and managed on your premises',
-      os_p:'For organisations that prefer local backup infrastructure instead of cloud storage. We deploy and manage dedicated backup appliances installed at your office — providing high-speed local backups, rapid restore capability, and full data control within your premises.',
-      os_tip:'Hybrid backup is our recommended default for most clients',
-      os_recommended:'Recommended',
-      os_includes_head:'Includes', os_suitable_head:'Suitable for', os_benefits_head:'Benefits',
-      os_hw_label:'hardware', os_month_mgmt:'/month management',
-      os_e_name:'Local Backup Appliance — Entry',
-      os_e_hw_price:'From €499',
-      os_e_f1:'On-site backup device', os_e_f2:'Automated backups',
-      os_e_f3:'Monitoring and alerts', os_e_f4:'Restore assistance', os_e_f5:'Health checks',
-      os_e_s1:'Small offices', os_e_s2:'Workstations', os_e_s3:'Small file servers',
-      os_b_name:'Local Backup Appliance — Business',
-      os_b_hw_price:'From €899',
-      os_b_f1:'Larger storage capacity', os_b_f2:'Automated backups',
-      os_b_f3:'Monitoring and alerts', os_b_f4:'Backup integrity verification',
-      os_b_f5:'Priority restore support',
-      os_b_s1:'Business servers', os_b_s2:'Shared storage', os_b_s3:'Multi-user environments',
-      os_h_name:'Hybrid Backup',
-      os_h_price:'From €79', os_h_unit:'/month',
-      os_h_sub:'Local backup + secure off-site replication',
-      os_h_f1:'Fast local restores',
-      os_h_f2:'Protected against fire, theft, or ransomware',
-      os_h_f3:'Off-site disaster recovery',
-      os_h_f4:'Automated monitoring',
-      os_h_f5:'Best of local and cloud in one plan',
-      os_diag_devices:'Devices', os_diag_local:'Local NAS', os_diag_cloud:'Off-site',
-      os_cta_enquire:'Enquire About This Plan',
-      os_cta_hybrid:'Get Hybrid Backup',
-      os_hw_note:'Hardware pricing is indicative and depends on storage capacity, RAID configuration, and final specification. All appliances are sourced, configured, and deployed by BlueWave IT. Monthly management fees cover monitoring, firmware updates, health checks, and restore support.',
+      /* ── Cost Estimator ── */
+      est_label:'Cost Estimator',
+      est_h:'Build your IT estimate',
+      est_p:'Select what your business needs and get an instant estimate — hardware, Microsoft 365 licences, setup services, and monthly managed costs combined.',
+      est_ms_head:'Microsoft 365',
+      est_users_label:'Number of users',
+      est_ms_plan_label:'Microsoft 365 plan',
+      est_net_head:'Managed Networking',
+      est_net_size_label:'Network size',
+      est_net_size_none:'No networking hardware',
+      est_net_size_small:'Small site — UDM (€295.81)',
+      est_net_size_standard:'Standard office — UniFi Express 7 (€175.47)',
+      est_net_size_advanced:'Larger office — UDM-SE (€465.49)',
+      est_extra_aps_label:'Extra Wi-Fi access points',
+      est_add_switch_label:'Add 8 port PoE switch (€229)',
+      est_add_install_label:'Add one-time network install',
+      est_managed_net_label:'Monthly managed networking (€35/month)',
+      est_cam_head:'Security Cameras',
+      est_cameras_label:'Number of cameras',
+      est_cam_type_label:'Camera type',
+      est_cam_type_essential:'Essential Coverage (€77.20 each)',
+      est_cam_type_advanced:'Advanced Coverage (€168.86 each)',
+      est_cam_rec_label:'Recording storage',
+      est_cam_rec_none:'No recording storage',
+      est_cam_rec_basic:'Basic recording (€274.70)',
+      est_cam_rec_advanced:'Advanced recording system (€599.00)',
+      est_managed_cam_label:'Monthly managed cameras (€25/month)',
+      est_setup_head:'Setup & Productivity Services',
+      est_email_label:'Email setup & migration (€120 one-time)',
+      est_sp_label:'SharePoint setup (€220 one-time)',
+      est_onboard_label:'Remote support onboarding (€95 one-time)',
+      est_it_head:'Managed IT Support',
+      est_managed_it_label:'Monthly managed IT support (€45 base + €12/user)',
+      est_out_hardware_label:'Hardware subtotal',
+      est_out_software_label:'Monthly Microsoft 365',
+      est_out_managed_label:'Monthly managed services',
+      est_out_setup_label:'One-time setup costs',
+      est_out_first_month_label:'Estimated first-month total',
+      est_summary_prefix:'Estimate based on',
+      est_summary_users:'users',
+      est_summary_cameras:'cameras',
+      est_summary_suffix:'and selected options.',
+      est_disclaimer:'This is an estimate only. Final pricing depends on site layout, coverage, cabling, storage, installation, migration, and support requirements.',
+      est_cta:'Request a Custom Quote',
+      est_ms_basic:'Business Basic — €6.24/user/mo',
+      est_ms_standard:'Business Standard — €12.96/user/mo',
+      est_ms_premium:'Business Premium — €22.92/user/mo',
+      est_ms_basic_eea:'Business Basic EEA — €4.56/user/mo (no Teams)',
+      est_ms_standard_eea:'Business Standard EEA — €9.60/user/mo (no Teams)',
+      est_ms_premium_eea:'Business Premium EEA — €19.56/user/mo (no Teams)',
+      est_ms_apps_smb:'Microsoft 365 Apps for SMB — €10.92/user/mo (no Teams)',
+      est_ms_teams_note:'Plans with Teams include video calls and meetings.',
+      est_ms_noteams_note:'EEA plans exclude Teams — ideal for businesses using WhatsApp instead.',
+      /* Microsoft 365 section — untranslated strings */
+      est_ms_sub:'Configured for email, file sharing, and real-world business communication — Teams is optional.',
+      est_ms_sharepoint_hint:'Share files securely with clients and vendors using SharePoint — no scattered email attachments',
+      /* Plan detail card labels */
+      est_ms_teams_tag:'Includes Microsoft Teams',
+      est_ms_noteams_tag:'No Teams — use WhatsApp or phone',
+      /* Plan descriptions (keyed as est_ms_desc_<planValue>) */
+      est_ms_desc_basic:'Business email, web & mobile Office apps, 1 TB OneDrive, and SharePoint for secure file sharing. Includes Microsoft Teams. Good starting point for most small businesses.',
+      est_ms_desc_standard:'Full desktop Office apps (Word, Excel, PowerPoint, Outlook) plus SharePoint and Teams. Share files securely with clients and staff — no more scattered email attachments.',
+      est_ms_desc_premium:'Everything in Standard with advanced security — Defender for Business, Intune device management, and Azure AD P1. Best protection for businesses handling sensitive data.',
+      est_ms_desc_basic_eea:'Business email, web & mobile Office apps, 1 TB OneDrive, and SharePoint for secure file sharing. No Teams — great if your team already uses WhatsApp.',
+      est_ms_desc_standard_eea:'Full desktop Office apps plus SharePoint — without Teams. Ideal if you use WhatsApp or phone and want to save on licence costs while keeping your files in the cloud.',
+      est_ms_desc_premium_eea:'Advanced security (Defender for Business, Intune, Azure AD P1) with SharePoint, without Teams. Best security for businesses that don\'t need video conferencing built in.',
+      est_ms_desc_apps_smb:'Desktop Office apps only (Word, Excel, PowerPoint, Outlook) — no email hosting. Good for businesses with existing email who just need the Office suite.',
+      /* Networking section */
+      est_net_sub:'Secure business Wi-Fi with no licensing fees and full remote visibility.',
+      est_net_b1:'Access your office network remotely',
+      est_net_b2:'Built-in firewall protection',
+      est_net_b3:'No recurring licensing fees — UniFi advantage',
+      est_net_helper:'Perfect for small offices, retail shops, and multi-room setups.',
+      /* Camera section */
+      est_cam_badge:'NO MONTHLY FEES',
+      est_cam_sub:'Check your business from anywhere using the UniFi app — simple, secure, and no subscriptions.',
+      est_cam_b1:'View live cameras from your phone',
+      est_cam_b2:'Instant alerts and playback',
+      est_cam_b3:'No monthly cloud fees',
+      est_cam_helper:'Ideal for entrances, offices, warehouses, and retail spaces.',
+      /* Summary panel */
+      est_summary_head:'Your estimated IT setup',
+      est_total_note:'Includes hardware, setup, and monthly services based on your selections.',
+      est_val_b1:'No licensing fees for networking',
+      est_val_b2:'No subscription required for camera access',
+      est_val_b3:'Secure remote access included',
+      /* Updated CTA and headline */
+      est_h:'Estimate your business IT setup',
+      est_p:'Get a quick estimate for your full IT setup — including Microsoft 365, networking, security cameras, and support.',
+      est_cta:'Get My Custom IT Plan',
+      est_psychology:'This is not just an estimate — it\'s a cleaner, more secure way to run your business.',
+      /* Cloud Backup section */
+      est_bk_head:'Cloud Backup',
+      est_bk_sub:'Protect your business data automatically — laptops, desktops, and servers.',
+      est_bk_b1:'Protect files from ransomware and accidental deletion',
+      est_bk_b2:'Automatic backups running silently in the background',
+      est_bk_b3:'Fast recovery when something goes wrong',
+      est_bk_plan_label:'Backup plan',
+      est_bk_plan_none:'No backup selected (not recommended)',
+      est_bk_plan_essentials:'Essentials — up to 500 GB · €39/month',
+      est_bk_plan_standard:'Standard — up to 2 TB · €119/month',
+      est_bk_plan_plus:'Plus — up to 5 TB · €249/month',
+      est_bk_plan_archive:'Archive Retention — up to 5 TB · €79/month',
+      est_bk_hint:'Daily backup checks, tested restores, and a monthly health report — included with every plan.',
+      est_bk_included:'included',
+      est_bk_info_essentials:'Daily backup checks · Basic retention policy · Restore support (business hours)',
+      est_bk_info_standard:'Daily monitoring · 30–90 day retention · Priority restore support · Monthly health report',
+      est_bk_info_plus:'Monitoring & alerting · Long-term retention options · Priority restores · Monthly report · Quarterly review',
+      est_bk_info_archive:'Long-term archive storage · Compliance-style retention · Low-cost cold storage · Retrieval billed separately',
+      est_out_backup_label:'Cloud backup',
+      est_out_defender_label:'Endpoint security',
+
+      /* ── Managed Networking — recommendation card ── */
+      est_net_recommended:'recommended',
+      est_net_desc_none:'No networking hardware selected. Suitable only if you already have a reliable business-grade network in place.',
+      est_net_device_small:'UniFi Dream Machine',
+      est_net_desc_small:'An all-in-one router, firewall, and Wi-Fi access point. Best for small businesses with 1–8 users in a single space — shops, studios, and compact single-floor offices. Managed remotely via the UniFi app.',
+      est_net_fit_small:'Best for: shops, studios, and small single-site offices',
+      est_net_device_standard:'UniFi Express 7',
+      est_net_desc_standard:'A compact router and Wi-Fi 7 access point in one unit. The right choice for most offices with 5–15 users — fast wireless coverage, integrated firewall, and no subscription licensing. Our most popular choice.',
+      est_net_fit_standard:'Best for: most small offices and professional workspaces',
+      est_net_device_advanced:'UniFi Dream Machine SE',
+      est_net_desc_advanced:'A rack-mount security gateway with a built-in PoE switch. Designed for larger or more complex environments with 15+ users, server rooms, or setups that need managed switching alongside routing.',
+      est_net_fit_advanced:'Best for: growing businesses, multi-room offices, and server environments',
+
+      /* ── Endpoint Security (Defender for Business) ── */
+      est_def_head:'Endpoint Security',
+      est_def_sub:'Enterprise-grade endpoint protection for every device — Windows, macOS, iOS, and Android.',
+      est_def_b1:'AI-powered threat detection and automatic attack interruption',
+      est_def_b2:'Vulnerability management and security posture reporting',
+      est_def_b3:'Up to 5 devices per user — no minimum device count',
+      est_def_plan_label:'Endpoint security plan',
+      est_def_included_note:'Microsoft Defender for Business is included with your Business Premium licence — no extra cost.',
+      est_def_hint:'Configured and monitored by BlueWave IT as part of your managed plan.',
+      est_def_users_label:'users',
+      est_def_detail_text:'AI threat detection · Vulnerability management · Next-gen antivirus · Automated investigation & remediation · Monthly security reports',
+
+      /* ── MSP Fit Calculator ── */
+      fit_label:'MSP Fit Check',
+      fit_h:'Is managed IT right for your business?',
+      fit_sub:'Answer six questions about how your business operates. Your result updates as you go.',
+      fit_trust:'This check is designed to be practical, not inflated. It reflects how your business operates, not worst-case assumptions.',
+      fitQ1_label:'How many people use IT in your business?',
+      fitQ2_label:'How often does a tech issue stop someone from working?',
+      fitQ3_label:'How is your IT currently handled?',
+      fitQ4_label:'Do any of your team work remotely or from multiple locations?',
+      fitQ5_label:'How concerned are you about cybersecurity and data protection?',
+      fitQ6_label:'How critical is your business data? (client records, financial data, operations)',
+      fit_score_label:'Your fit score',
+      fit_score_of:'out of 15',
+      fit_empty_msg:'Answer the questions to see your result.',
+      fit_reasons_head:'Why this matters for you',
+      fit_budget_head:'What to budget',
+      fit_cta_primary:'See My Setup Estimate',
+      fit_cta_secondary:'Talk Through My Options',
+      fit_r0_title:'Probably not needed yet',
+      fit_r0_desc:'Based on your answers, your current setup is likely manageable without a fully managed IT service. You may benefit from occasional ad-hoc support or a single consultation to tighten up security basics.',
+      fit_r1_title:'Worth considering',
+      fit_r1_desc:'There are signs that IT is starting to create friction in your business. A managed service could reduce that overhead — but it\'s not urgent. It\'s worth a conversation to see what fits.',
+      fit_r2_title:'Likely a strong fit',
+      fit_r2_desc:'Your business shows clear signs that unmanaged IT is costing you time and creating risk. A managed service would likely pay for itself through reduced downtime, better security, and less distraction for your team.',
+      fit_r3_title:'High-value fit for managed IT',
+      fit_r3_desc:'Based on your answers, managed IT would deliver meaningful value to your business. Your scale, security exposure, and reliance on IT make this a straightforward operational upgrade.',
+      fit_budget_r0:'Ad-hoc support or a one-off security review is likely sufficient at this stage.',
+      fit_budget_r1:'A managed plan from €60/user/month would cover the essentials without overcommitting.',
+      fit_budget_r2:'Budget for a full managed plan (€60/user/month). Factor in any hardware gaps identified in the Cost Estimator below.',
+      fit_budget_r3:'A full managed plan plus security-hardening is worth budgeting for. Use the Cost Estimator below to build out a complete picture.',
+      fit_why_users:'With your team size, coordinating IT without a structured service often leads to inconsistency.',
+      fit_why_downtime:'Frequent tech issues are a sign that reactive IT is costing your team more than it looks.',
+      fit_why_noit:'Without a dedicated IT resource, problems tend to compound quietly until they become expensive.',
+      fit_why_remote:'Remote and multi-location working increases your attack surface and support complexity.',
+      fit_why_security:'Cybersecurity concerns at your level warrant proactive management, not a wait-and-see approach.',
+      fit_why_data:'High-value business data without a managed backup and recovery plan is a serious operational risk.',
     },
     pt: {
 
-      /* ── Web Presence Pricing ── */
-      wp_section_label:'Preços Web Presence',
-      wp_h:'Pacotes web presence rápidos e acessíveis para empresas com pouca ou nenhuma visibilidade online.',
-      wp_subhead:'pacotes web presence',
-      wp_intro_p:'Este serviço é desenhado para velocidade, clareza e resultados. O objetivo não é um projeto de website personalizado. O objetivo é colocar uma empresa online rapidamente com uma presença cuidada, melhor credibilidade e um caminho claro para consultas de clientes.',
-      wp_c1_name:'Presença Starter',
-      wp_c1_desc:'Ideal para empresas sem website ou com uma presença online muito fraca que precisam de algo limpo, credível e rápido.',
-      wp_c1_f1:'Website polido de 1 a 3 páginas',
-      wp_c1_f2:'Design compatível com dispositivos móveis',
-      wp_c1_f3:'Formulário de contacto e botão WhatsApp',
-      wp_c1_f4:'Configuração ou limpeza do Google Business',
-      wp_c1_f5:'Alojamento e atualizações básicas',
-      wp_c1_setup:'€300–€800 setup', wp_c1_mo:'€39–€79/mês', wp_c1_tag:'Lançamento Rápido',
-      wp_c1_cta:'Ver Detalhes Starter',
-      wp_c2_name:'Presença Growth',
-      wp_c2_desc:'Para empresas que querem mais fluxo de leads, páginas de serviço mais claras e uma presença online mais ativa sem avançar para um build personalizado.',
-      wp_c2_f1:'Tudo na Presença Starter',
-      wp_c2_f2:'Páginas de serviço ou landing pages extra',
-      wp_c2_f3:'Melhorias na captura de leads',
-      wp_c2_f4:'Elementos de avaliação e credibilidade',
-      wp_c2_f5:'Melhorias mensais de conteúdo e visibilidade',
-      wp_c2_setup:'€800–€1.500 setup', wp_c2_mo:'€99–€199/mês', wp_c2_tag:'Foco em Leads',
-      wp_c2_cta:'Ver Detalhes Growth',
-      wp_c3_name:'Presença + AI Boost',
-      wp_c3_desc:'Para organizações que querem uma presença web mais forte e melhorias práticas com IA para conteúdo, gestão de leads e suporte a fluxos de trabalho.',
-      wp_c3_f1:'Tudo na Presença Growth',
-      wp_c3_f2:'Refinamento de conteúdo com IA',
-      wp_c3_f3:'Fluxos de formulários e consultas mais inteligentes',
-      wp_c3_f4:'Orientação básica de automação',
-      wp_c3_f5:'Suporte de otimização contínua',
-      wp_c3_setup:'€1.200–€2.000 setup', wp_c3_mo:'€149–€299/mês', wp_c3_tag:'IA Melhorado',
-      wp_c3_cta:'Ver Detalhes AI Boost',
-      wp_note:'Todos os pacotes são desenhados para colocar a sua empresa online rapidamente e profissionalmente. Os valores de setup variam conforme a complexidade e conteúdo existente. As mensalidades cobrem alojamento, suporte e melhorias contínuas. <strong>Contacte-nos para discutir qual pacote se adequa à sua situação.</strong>',
-      roi_gross_label:'Valor bruto entregue por ano',
-      roi_roi_pct:'ROI no ano 1',
-      roi_payback2:'Período de retorno (bruto)',
-      roi_3yr_label:'Projeção de benefício líquido a 3 anos',
-      roi_yr1:'Ano 1', roi_yr2:'Ano 2', roi_yr3:'Ano 3',
-      nav_label:'Serviços IT Geridos', nav_home:'Início', nav_services:'Serviços', nav_about:'Sobre', nav_pricing:'Preços', nav_contact:'Contacto', cta_book:'Marcar Consulta',
-      theme_dark:'Escuro', theme_light:'Claro',
       bc_home:'Início', bc_current:'Preços',
       hero_label:'Preços Simples',
       hero_h1_a:'Um preço.', hero_h1_b:'Tudo incluído.', hero_h1_c:'Zero surpresas.',
@@ -307,38 +257,6 @@
       hpd_f3:'Cibersegurança — EDR, segurança de email, MFA', hpd_f4:'Administração Microsoft 365',
       hpd_f5:'Monitorização e verificação de backups', hpd_f6:'Saúde e suporte de rede',
       hpd_eg_label:'Exemplo — 10 utilizadores', hpd_month:'mês',
-      calc_h:'Calculadora de custos', calc_p:'Ajuste os controlos para modelar o seu ambiente. O preço atualiza em tempo real.',
-      calc_live:'Estimativa em direto',
-      sl_users_label:'Número de utilizadores', sl_users_desc:'Colaboradores que precisam de suporte IT, email e gestão de dispositivos',
-      sl_backup_plan_label:'Plano de backup cloud', sl_backup_plan_desc:'Extra opcional — selecione o plano adequado ao seu volume de dados',
-      sl_bp_none:'Nenhum',
-      sl_backup_label:'Volume de dados estimado (GB)', sl_backup_desc:'Dados empresariais em armazenamento local e Microsoft 365',
-      calc_monthly_label:'Investimento mensal estimado', calc_year:'ano',
-      cb_users_label:'Utilizadores geridos', cb_backup_plan_label:'Plano de backup cloud',
-      cb_backup_label:'Volume de dados estimado', cb_total_label:'Total mensal',
-      calc_tip_head:'Porque este modelo poupa dinheiro',
-      calc_tip_base:'O suporte IT pontual no Algarve custa €75–€120/hora sem cobertura proativa. O modelo gerido oferece monitorização, segurança, backups e helpdesk por uma mensalidade fixa — orçamento previsível, sem faturas surpresa.',
-      plan_label:'O Plano', plan_h:'Um plano, completo',
-      plan_p:'As seis áreas de serviço estão ativas para todos os clientes geridos desde o primeiro dia. Não há níveis iniciais nem caminhos de upgrade — apenas gestão IT completa e proativa.',
-      plan_badge:'Plano Gerido Standard', plan_name:'IT Gerido Completo',
-      plan_desc:'Tudo o que a sua empresa precisa para funcionar de forma fiável, manter-se segura e crescer com confiança — gerido proativamente pela BlueWave IT.',
-      plan_unit:'por utilizador / mês', plan_sub:'Faturação mensal. Mínimo 5 utilizadores. Sem contratos com penalizações.',
-      inc_1_name:'IT Gerido e Helpdesk',    inc_1_sub:'Monitorização 24/7, resposta rápida',
-      inc_2_name:'Cibersegurança',           inc_2_sub:'EDR, filtragem de email, MFA',
-      inc_3_name:'Cloud e Microsoft 365',    inc_3_sub:'Admin, Teams, SharePoint',
-      inc_4_name:'Backup e Recuperação',     inc_4_sub:'Verificação diária, plano DR',
-      inc_5_name:'Gestão de Rede',           inc_5_sub:'UniFi, firewall, VPN',
-      inc_6_name:'Consultoria IT',           inc_6_sub:'Roadmaps, RGPD, estratégia',
-      plan_cta:'Começar — Marcar uma Consulta',
-      free_val:'Grátis', free_unit:'avaliação IT',
-      free_h:'Comece com uma avaliação gratuita',
-      free_p:'Não está pronto para se comprometer? Revemos o seu ambiente IT atual, identificamos lacunas e fornecemos um resumo escrito claro de riscos e oportunidades — sem custos e sem obrigações.',
-      free_f1:'Auditoria completa do ambiente', free_f2:'Identificação de lacunas de segurança',
-      free_f3:'Verificação do estado dos backups', free_f4:'Recomendações escritas',
-      free_cta:'Pedir Avaliação Gratuita',
-      addon_h:'Precisa de algo específico?',
-      addon_p:'Para ambientes maiores, implementações multi-sede ou trabalho de projeto especializado — design de infraestrutura, construção de servidores, mudanças de escritório — elaboramos propostas personalizadas. Contacte-nos.',
-      addon_cta:'Discutir um Âmbito Personalizado',
       matrix_label:'O Que Está Incluído', matrix_h:'Cada funcionalidade, mapeada para cada área de serviço',
       matrix_p:'Uma análise completa do que vem com o seu plano gerido — comparado com o que as empresas normalmente obtêm num modelo break-fix ou ad-hoc.',
       mx_th1:'Serviço e Funcionalidade', mx_th2:'Break-Fix / Ad Hoc', mx_th3:'BlueWave IT Gerido (€60/utilizador)',
@@ -354,42 +272,6 @@
       mx_r19:'Monitorização de rede e Wi-Fi', mx_r20:'Implementação e gestão de VPN',
       mx_r21:'Roadmap IT anual e planeamento', mx_r22:'Orientação IT RGPD',
       mx_manual:'Manual', mx_perhour:'Por hora', mx_reactive:'Apenas reativo', mx_unverified:'Não verificado',
-      roi_label:'Estimador de ROI', roi_h:'Veja quanto vale o IT gerido para o seu negócio',
-      roi_p:'Introduza a sua situação atual de IT para calcular o encargo anual total — e veja exatamente como um serviço gerido se compara. As licenças são sempre pagas pelo cliente; a BlueWave IT elimina os custos ocultos à sua volta.',
-      roi_inputs_h:'A sua situação atual',
-      roi_inputs_p:'Preencha o que a sua empresa gasta atualmente. As licenças que já paga continuam suas — a BlueWave elimina o trabalho, o risco e os encargos ocultos em torno delas.',
-      roi_sec_staff:'Equipa e Tempo Perdido', roi_sec_software:'Software e Licenças', roi_sec_adhoc:'Suporte Pontual e Risco de Segurança', roi_sec_infra:'Infraestrutura e Hardware',
-      roi_licence_note:'Os custos das licenças continuam ', roi_licence_note_strong:'a seu cargo',
-      roi_lbl_users:'Número de utilizadores', roi_hint_users:'pessoas com acesso a IT',
-      roi_lbl_wage:'Custo médio horário por colaborador', roi_hint_wage:'€/h incl. encargos',
-      roi_lbl_hours:'Horas perdidas com IT / colaborador / mês', roi_hint_hours:'média PME: 3–6 h',
-      roi_lbl_outages:'Grandes falhas de IT por ano',
-      roi_lbl_outagecost:'Custo estimado por falha (€)', roi_hint_outagecost:'produtividade perdida + recuperação',
-      roi_lbl_m365:'Licenças Microsoft 365 / ano (€)', roi_hint_m365:'total anual atual',
-      roi_lbl_av:'Antivírus / segurança de endpoint / ano (€)',
-      roi_lbl_saas:'Outras subscrições SaaS e software / ano (€)',
-      roi_lbl_adhoc:'Chamadas IT pontuais por ano', roi_hint_adhoc:'€75–€120/h típico no Algarve',
-      roi_prefix_visits:'chamadas',
-      roi_lbl_adhocrate:'Custo médio por chamada (€)',
-      roi_lbl_breach:'Custo de incidente de segurança nos últimos 3 anos (€)', roi_hint_breach:'amortizado anualmente',
-      roi_lbl_hardware:'Substituição e reparação de hardware / ano (€)',
-      roi_lbl_backup:'Armazenamento e serviços de backup / ano (€)',
-      roi_lbl_network:'Custos de rede e conectividade / ano (€)',
-      roi_results_h2:'Análise de custos anual',
-      roi_saving_label:'Benefício líquido anual estimado',
-      roi_saving_sub:'O que a mudança para a BlueWave IT devolve ao seu negócio por ano',
-      roi_meta_payback:'Período de retorno', roi_meta_peruser:'Custo por utilizador / mês',
-      roi_bar_current:'Os seus custos anuais de IT atuais', roi_bar_msp:'Serviço gerido BlueWave IT',
-      roi_bar_prod:'Produtividade perdida', roi_bar_outage:'Custo de falhas', roi_bar_sw:'Licenças de software', roi_bar_adhoc:'Ad-hoc + incidentes', roi_bar_infra:'Infraestrutura', roi_bar_msp_cost:'Custo BlueWave IT',
-      roi_bk_prod_name:'Produtividade perdida com problemas de IT', roi_bk_prod_note:'h × custo × utilizadores × 12 — 70% recuperável com modelo gerido',
-      roi_bk_outage_name:'Custo de falhas não planeadas', roi_bk_outage_note:'falhas × custo por evento — 80% prevenidas proativamente',
-      roi_bk_sw_name:'Software e licenças', roi_bk_sw_note:'M365 + AV + SaaS — pagas pelo cliente, geridas pela BlueWave',
-      roi_bk_managed_tag:'Gerido por nós',
-      roi_bk_adhoc_name:'Suporte pontual e incidentes de segurança', roi_bk_adhoc_note:'chamadas × custo + amortização de incidentes — 85% eliminadas',
-      roi_bk_infra_name:'Infraestrutura e hardware', roi_bk_infra_note:'hardware + backup + rede — melhor gestão, ~10% otimizado',
-      roi_total_lbl:'Encargo total anual de IT atual',
-      roi_bk_msp_name:'BlueWave IT — investimento anual', roi_bk_msp_note:'€60 × utilizadores × 12 meses — todas as 6 áreas de serviço incluídas',
-      roi_disclaimer:'Estimativas indicativas baseadas em dados típicos de PMEs do Algarve. Poupanças em produtividade e falhas modeladas a 70% / 80% de redução. Os custos de licenças continuam a ser pagos pelo cliente e excluídos do cálculo de poupança — a BlueWave IT gere-os como parte do serviço. Os resultados reais podem variar.',
       cm_title:'Entrar em contacto', cm_sub:'Diga-nos um pouco sobre a sua empresa e responderemos dentro de um dia útil — sem compromisso.',
       cm_lbl_name:'Nome completo', cm_ph_name:'João Silva',
       cm_lbl_email:'Email profissional', cm_ph_email:'joao@suaempresa.pt',
@@ -415,7 +297,7 @@
       fq1_q:'O que está incluído nos €60 por utilizador por mês?',
       fq1_a:'Tudo. Helpdesk IT gerido, monitorização 24/7, gestão de patches, proteção de endpoints, ferramentas de cibersegurança (EDR, segurança de email, MFA), administração Microsoft 365, monitorização e verificação de backups, monitorização de saúde de rede e uma revisão anual de consultoria IT. Não são necessários extras para obter cobertura completa.',
       fq2_q:'Existe um número mínimo de utilizadores?',
-      fq2_a:'Sim — o mínimo é 5 utilizadores. Reflete o tamanho mínimo de ambiente necessário para prestar um serviço gerido adequadamente com a profundidade de ferramentas e monitorização com que a BlueWave IT opera. A maioria dos clientes começa entre 8 e 20 utilizadores.',
+      fq2_a:'Não existe mínimo. A BlueWave IT suporta operadores individuais, pequenas equipas e empresas em crescimento — a partir de apenas 1 utilizador. Os planos crescem à medida que a sua equipa cresce, sem requisito mínimo de lugares e sem contratos com penalizações.',
       fq3_q:'Existem taxas de instalação ou integração?',
       fq3_a:'Na maioria dos casos, não. Para ambientes PME standard, a integração está incluída no serviço gerido. Para ambientes mais complexos — múltiplas sedes, sistemas legados ou trabalho significativo de remediação — pode aplicar-se uma taxa de projeto única, que será sempre claramente definida antes de qualquer compromisso.',
       fq4_q:'E se adicionar ou remover utilizadores a meio do mês?',
@@ -431,104 +313,319 @@
       cta_h:'Pronto para colocar um número nisso?',
       cta_p:'Marque uma consulta gratuita. Avaliamos o seu ambiente, confirmamos o número de utilizadores e fornecemos uma proposta escrita precisa — normalmente em 48 horas.',
       cta_btn1:'Marcar uma Consulta Gratuita', cta_btn2:'Explorar Serviços',
-      ft_tagline:'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
-      ft_svc_h:'Serviços', ft_co_h:'Empresa',
-      ft_s1:'IT Gerido', ft_s2:'Cibersegurança', ft_s3:'Cloud e M365', ft_s4:'Backup e Recuperação', ft_s5:'Gestão de Rede', ft_s6:'Consultoria IT',
-      ft_c1:'Início', ft_c2:'Sobre', ft_c3:'Preços', ft_c4:'FAQ', ft_c5:'Contacto',
-      ft_copy:'© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
-      footer_privacy:'Política de Privacidade', footer_gdpr:'RGPD', footer_terms:'Termos e Condições', 
-      /* backup pricing */
-      bk_label:'Backup e Armazenamento Cloud',
-      bk_h:'Preços de backup cloud gerido',
-      bk_p:'Planos de backup previsíveis e estruturados com armazenamento gerido, monitorização diária e restauros testados. Adicione a qualquer plano IT gerido ou utilize de forma independente.',
-      bk_toggle_plans:'Planos de Armazenamento', bk_toggle_overage:'Excedentes e Restauros',
-      bk_month:'/mês', bk_popular:'Mais Popular', bk_plus_badge:'Cobertura Total',
-      bk_arc_badge:'Longo Prazo',
-      bk_e_name:'Cloud Backup Essentials', bk_e_storage:'Até 500 GB incluído',
-      bk_e_note:'Ideal para equipas pequenas com necessidades moderadas de dados',
-      bk_e_f1:'Armazenamento de backup gerido', bk_e_f2:'Verificações diárias de backup',
-      bk_e_f3:'Política de retenção básica', bk_e_f4:'Suporte de restauro (horário comercial)',
-      bk_s_name:'Cloud Backup Standard', bk_s_storage:'Até 2 TB incluído',
-      bk_s_note:'Melhor opção para a maioria das PMEs do Algarve',
-      bk_s_f1:'Armazenamento de backup gerido', bk_s_f2:'Monitorização diária de backups',
-      bk_s_f3:'Retenção de 30 a 90 dias', bk_s_f4:'Suporte prioritário de restauro',
-      bk_s_f5:'Relatório mensal de saúde dos backups',
-      bk_p_name:'Cloud Backup Plus', bk_p_storage:'Até 5 TB incluído',
-      bk_p_note:'Para operações com muitos dados e cobertura DR completa',
-      bk_p_f1:'Armazenamento de backup gerido', bk_p_f2:'Monitorização e alertas',
-      bk_p_f3:'Opções de retenção a longo prazo', bk_p_f4:'Restauros prioritários',
-      bk_p_f5:'Relatório mensal de saúde dos backups', bk_p_f6:'Revisão trimestral de backups',
-      bk_a_name:'Retenção de Arquivo', bk_a_storage:'Até 5 TB arquivado',
-      bk_a_note:'Recuperação faturada separadamente se necessário',
-      bk_a_f1:'Armazenamento de arquivo a longo prazo', bk_a_f2:'Retenção para conformidade',
-      bk_a_f3:'Design de armazenamento frio de baixo custo', bk_a_f4:'Recuperação faturada separadamente',
-      bk_cta_start:'Começar', bk_cta_recommended:'Obter Plano Standard',
-      sv_h:'Comparação de custos por camada — preço por GB na capacidade incluída',
-      sv_hot:'Quente (ativo)', sv_overhot:'Excedente quente', sv_cool:'Armazenamento cool', sv_archive:'Arquivo',
-      sv_standard_note:'Média plano Standard', sv_overage_note:'Acima do limite do plano',
-      sv_cool_note:'Acesso pouco frequente', sv_archive_note:'Frio a longo prazo',
-      ov_h:'Preços de excedente e restauro',
-      ov_p:'Todos os planos incluem armazenamento até ao limite indicado. O uso acima da capacidade incluída é faturado às tarifas abaixo, mantendo as mensalidades previsíveis.',
-      ov_hot_type:'Armazenamento Quente', ov_cool_type:'Armazenamento Cool', ov_archive_type:'Armazenamento Arquivo',
-      ov_per_gb:'por GB / mês',
-      ov_restore_std:'Pedido de restauro standard (uso justo)', ov_restore_std_val:'✓ Incluído em todos os planos',
-      ov_restore_large:'Restauro grande ou recuperação urgente fora do horário', ov_restore_large_val:'Definido e faturado separadamente',
-      ov_tip_h:'Estrutura de boas práticas para a maioria dos clientes',
-      ov_tip_body:'A mensalidade do plano cobre o trabalho não relacionado com armazenamento: configuração, monitorização, suporte, gestão de políticas de retenção, relatórios e gestão de restauros. Os excedentes de armazenamento são faturados ao custo. Mantém a faturação transparente e alinhada com o uso real.',
-      /* on-site backup */
-      os_label:'Soluções de Backup Local',
-      os_h:'Appliances de backup local — implementados e geridos nas suas instalações',
-      os_p:'Para organizações que preferem infraestrutura de backup local em vez de armazenamento cloud. Implementamos e gerimos appliances de backup dedicados instalados no seu escritório — proporcionando backups locais de alta velocidade, capacidade de restauro rápido e controlo total dos dados nas suas instalações.',
-      os_tip:'O backup híbrido é a nossa recomendação padrão para a maioria dos clientes',
-      os_recommended:'Recomendado',
-      os_includes_head:'Inclui', os_suitable_head:'Adequado para', os_benefits_head:'Benefícios',
-      os_hw_label:'hardware', os_month_mgmt:'/mês gestão',
-      os_e_name:'Appliance de Backup Local — Entry',
-      os_e_hw_price:'A partir de €499',
-      os_e_f1:'Dispositivo de backup local', os_e_f2:'Backups automáticos',
-      os_e_f3:'Monitorização e alertas', os_e_f4:'Assistência de restauro', os_e_f5:'Verificações de saúde',
-      os_e_s1:'Escritórios pequenos', os_e_s2:'Workstations', os_e_s3:'Pequenos servidores de ficheiros',
-      os_b_name:'Appliance de Backup Local — Business',
-      os_b_hw_price:'A partir de €899',
-      os_b_f1:'Maior capacidade de armazenamento', os_b_f2:'Backups automáticos',
-      os_b_f3:'Monitorização e alertas', os_b_f4:'Verificação de integridade dos backups',
-      os_b_f5:'Suporte prioritário de restauro',
-      os_b_s1:'Servidores empresariais', os_b_s2:'Armazenamento partilhado', os_b_s3:'Ambientes multi-utilizador',
-      os_h_name:'Backup Híbrido',
-      os_h_price:'A partir de €79', os_h_unit:'/mês',
-      os_h_sub:'Backup local + replicação off-site segura',
-      os_h_f1:'Restauros locais rápidos',
-      os_h_f2:'Proteção contra incêndio, roubo ou ransomware',
-      os_h_f3:'Recuperação de desastres off-site',
-      os_h_f4:'Monitorização automática',
-      os_h_f5:'O melhor do local e cloud num único plano',
-      os_diag_devices:'Dispositivos', os_diag_local:'NAS Local', os_diag_cloud:'Off-site',
-      os_cta_enquire:'Pedir Informação Sobre Este Plano',
-      os_cta_hybrid:'Obter Backup Híbrido',
-      os_hw_note:'O preço do hardware é indicativo e depende da capacidade de armazenamento, configuração RAID e especificação final. Todos os appliances são fornecidos, configurados e implementados pela BlueWave IT. As mensalidades de gestão cobrem monitorização, atualizações de firmware, verificações de saúde e suporte de restauro.',
+      /* ── Cost Estimator ── */
+      est_label:'Calculadora de Custos',
+      est_h:'Construa a sua estimativa de IT',
+      est_p:'Selecione o que a sua empresa precisa e obtenha uma estimativa imediata — hardware, licenças Microsoft 365, serviços de configuração e custos mensais geridos combinados.',
+      est_ms_head:'Microsoft 365',
+      est_users_label:'Número de utilizadores',
+      est_ms_plan_label:'Plano Microsoft 365',
+      est_net_head:'Redes Geridas',
+      est_net_size_label:'Dimensão da rede',
+      est_net_size_none:'Sem hardware de rede',
+      est_net_size_small:'Local pequeno — UDM (€295,81)',
+      est_net_size_standard:'Escritório standard — UniFi Express 7 (€175,47)',
+      est_net_size_advanced:'Escritório maior — UDM-SE (€465,49)',
+      est_extra_aps_label:'Pontos de acesso Wi-Fi extra',
+      est_add_switch_label:'Adicionar switch PoE 8 porto (€229)',
+      est_add_install_label:'Adicionar instalação de rede única',
+      est_managed_net_label:'Rede gerida mensal (€35/mês)',
+      est_cam_head:'Câmaras de Segurança',
+      est_cameras_label:'Número de câmaras',
+      est_cam_type_label:'Tipo de câmara',
+      est_cam_type_essential:'Cobertura Essencial (€77,20 cada)',
+      est_cam_type_advanced:'Cobertura Avançada (€168,86 cada)',
+      est_cam_rec_label:'Armazenamento de gravação',
+      est_cam_rec_none:'Sem armazenamento de gravação',
+      est_cam_rec_basic:'Gravação básica (€274,70)',
+      est_cam_rec_advanced:'Sistema de gravação avançado (€599,00)',
+      est_managed_cam_label:'Câmaras geridas mensais (€25/mês)',
+      est_setup_head:'Serviços de Configuração',
+      est_email_label:'Configuração e migração de email (€120 único)',
+      est_sp_label:'Configuração SharePoint (€220 único)',
+      est_onboard_label:'Integração de suporte remoto (€95 único)',
+      est_it_head:'Suporte IT Gerido',
+      est_managed_it_label:'Suporte IT gerido mensal (€45 base + €12/utilizador)',
+      est_out_hardware_label:'Subtotal de hardware',
+      est_out_software_label:'Microsoft 365 mensal',
+      est_out_managed_label:'Serviços geridos mensais',
+      est_out_setup_label:'Custos de configuração únicos',
+      est_out_first_month_label:'Total estimado do primeiro mês',
+      est_summary_prefix:'Estimativa para',
+      est_summary_users:'utilizadores',
+      est_summary_cameras:'câmaras',
+      est_summary_suffix:'e opções selecionadas.',
+      est_disclaimer:'Esta é uma estimativa apenas. O preço final depende do layout do local, cobertura, cablagem, armazenamento, instalação, migração e requisitos de suporte.',
+      est_cta:'Pedir Orçamento Personalizado',
+      est_ms_basic:'Business Basic — €6,24/utilizador/mês',
+      est_ms_standard:'Business Standard — €12,96/utilizador/mês',
+      est_ms_premium:'Business Premium — €22,92/utilizador/mês',
+      est_ms_basic_eea:'Business Basic EEA — €4,56/utilizador/mês (sem Teams)',
+      est_ms_standard_eea:'Business Standard EEA — €9,60/utilizador/mês (sem Teams)',
+      est_ms_premium_eea:'Business Premium EEA — €19,56/utilizador/mês (sem Teams)',
+      est_ms_apps_smb:'Microsoft 365 Apps para PMEs — €10,92/utilizador/mês (sem Teams)',
+      est_ms_teams_note:'Os planos com Teams incluem videochamadas e reuniões.',
+      est_ms_noteams_note:'Os planos EEA excluem o Teams — ideais para empresas que usam o WhatsApp.',
+      /* Microsoft 365 section — strings previously hardcoded in EN */
+      est_ms_sub:'Configurado para email, partilha de ficheiros e comunicação empresarial real — Teams é opcional.',
+      est_ms_sharepoint_hint:'Partilhe ficheiros de forma segura com clientes e fornecedores através do SharePoint — sem anexos dispersos por email',
+      /* Plan detail card labels */
+      est_ms_teams_tag:'Inclui Microsoft Teams',
+      est_ms_noteams_tag:'Sem Teams — use WhatsApp ou telefone',
+      /* Plan descriptions */
+      est_ms_desc_basic:'Email profissional, apps Office para web e telemóvel, 1 TB OneDrive e SharePoint para partilha segura de ficheiros. Inclui Microsoft Teams. Bom ponto de partida para a maioria das pequenas empresas.',
+      est_ms_desc_standard:'Apps Office completas para desktop (Word, Excel, PowerPoint, Outlook) mais SharePoint e Teams. Partilhe ficheiros com clientes e colaboradores — sem mais anexos dispersos por email.',
+      est_ms_desc_premium:'Tudo do Standard com segurança avançada — Defender for Business, gestão de dispositivos com Intune e Azure AD P1. Melhor proteção para empresas que gerem dados sensíveis.',
+      est_ms_desc_basic_eea:'Email profissional, apps Office para web e telemóvel, 1 TB OneDrive e SharePoint para partilha segura de ficheiros. Sem Teams — ideal se a sua equipa já usa WhatsApp.',
+      est_ms_desc_standard_eea:'Apps Office completas para desktop mais SharePoint — sem Teams. Ideal se usa WhatsApp ou telefone e quer poupar nos custos de licenciamento mantendo os ficheiros na cloud.',
+      est_ms_desc_premium_eea:'Segurança avançada (Defender for Business, Intune, Azure AD P1) com SharePoint, sem Teams. Melhor segurança para empresas que não precisam de videoconferência integrada.',
+      est_ms_desc_apps_smb:'Apenas apps Office para desktop (Word, Excel, PowerPoint, Outlook) — sem alojamento de email. Indicado para empresas com email próprio que precisam só do pacote Office.',
+      /* Networking section */
+      est_net_sub:'Wi-Fi empresarial seguro sem taxas de licenciamento e com visibilidade remota total.',
+      est_net_b1:'Aceder à rede do escritório remotamente',
+      est_net_b2:'Proteção de firewall integrada',
+      est_net_b3:'Sem taxas de licenciamento recorrentes — vantagem UniFi',
+      est_net_helper:'Ideal para pequenos escritórios, lojas e espaços multi-divisão.',
+      /* Camera section */
+      est_cam_badge:'SEM TAXAS MENSAIS',
+      est_cam_sub:'Verifique o seu negócio a partir de qualquer lugar com a app UniFi — simples, seguro e sem subscrições.',
+      est_cam_b1:'Ver câmaras em tempo real no seu telemóvel',
+      est_cam_b2:'Alertas instantâneos e reprodução de gravações',
+      est_cam_b3:'Sem taxas mensais de cloud',
+      est_cam_helper:'Ideal para entradas, escritórios, armazéns e espaços comerciais.',
+      /* Summary panel */
+      est_summary_head:'Estimativa do seu setup IT',
+      est_total_note:'Inclui hardware, configuração e serviços mensais com base nas suas seleções.',
+      est_val_b1:'Sem taxas de licenciamento para redes',
+      est_val_b2:'Sem subscrição necessária para acesso a câmaras',
+      est_val_b3:'Acesso remoto seguro incluído',
+      /* Updated CTA and headline */
+      est_h:'Estime o seu setup IT empresarial',
+      est_p:'Obtenha uma estimativa rápida para o seu setup IT completo — incluindo Microsoft 365, redes, câmaras de segurança e suporte.',
+      est_cta:'Obter o Meu Plano IT Personalizado',
+      est_psychology:'Isto não é apenas uma estimativa — é uma forma mais limpa e segura de gerir o seu negócio.',
+      /* Cloud Backup section */
+      est_bk_head:'Backup na Cloud',
+      est_bk_sub:'Proteja os dados do seu negócio automaticamente — portáteis, computadores e servidores.',
+      est_bk_b1:'Proteja ficheiros contra ransomware e eliminação acidental',
+      est_bk_b2:'Backups automáticos a correr silenciosamente em segundo plano',
+      est_bk_b3:'Recuperação rápida quando algo corre mal',
+      est_bk_plan_label:'Plano de backup',
+      est_bk_plan_none:'Sem backup selecionado (não recomendado)',
+      est_bk_plan_essentials:'Essentials — até 500 GB · €39/mês',
+      est_bk_plan_standard:'Standard — até 2 TB · €119/mês',
+      est_bk_plan_plus:'Plus — até 5 TB · €249/mês',
+      est_bk_plan_archive:'Retenção de Arquivo — até 5 TB · €79/mês',
+      est_bk_hint:'Verificações diárias de backup, restauros testados e relatório mensal de estado — incluídos em todos os planos.',
+      est_bk_included:'incluídos',
+      est_bk_info_essentials:'Verificações diárias de backup · Política básica de retenção · Suporte de restauro (horário laboral)',
+      est_bk_info_standard:'Monitorização diária · Retenção de 30–90 dias · Suporte de restauro prioritário · Relatório mensal de estado',
+      est_bk_info_plus:'Monitorização e alertas · Opções de retenção a longo prazo · Restauros prioritários · Relatório mensal · Revisão trimestral',
+      est_bk_info_archive:'Armazenamento de arquivo a longo prazo · Retenção de conformidade · Armazenamento cold de baixo custo · Recuperação faturada separadamente',
+      est_out_backup_label:'Backup na cloud',
+      est_out_defender_label:'Segurança de endpoint',
+
+      /* ── Managed Networking — recommendation card ── */
+      est_net_recommended:'recomendado',
+      est_net_desc_none:'Nenhum hardware de rede selecionado. Adequado apenas se já tiver uma rede empresarial fiável instalada.',
+      est_net_device_small:'UniFi Dream Machine',
+      est_net_desc_small:'Um router, firewall e ponto de acesso Wi-Fi tudo-em-um. Ideal para pequenos negócios com 1–8 utilizadores num único espaço — lojas, estúdios e escritórios de um piso. Gerido remotamente através da app UniFi.',
+      est_net_fit_small:'Ideal para: lojas, estúdios e pequenos escritórios num único local',
+      est_net_device_standard:'UniFi Express 7',
+      est_net_desc_standard:'Um router compacto e ponto de acesso Wi-Fi 7 numa única unidade. A escolha certa para a maioria dos escritórios com 5–15 utilizadores — cobertura sem fios rápida, firewall integrada e sem licenciamento por subscrição. A nossa opção mais popular.',
+      est_net_fit_standard:'Ideal para: a maioria dos pequenos escritórios e espaços de trabalho profissionais',
+      est_net_device_advanced:'UniFi Dream Machine SE',
+      est_net_desc_advanced:'Uma gateway de segurança em rack com switch PoE integrado. Concebida para ambientes maiores ou mais complexos com 15+ utilizadores, salas de servidores ou setups que necessitem de switching gerido para além do routing.',
+      est_net_fit_advanced:'Ideal para: negócios em crescimento, escritórios multi-sala e ambientes com servidores',
+
+      /* ── Endpoint Security (Defender for Business) ── */
+      est_def_head:'Segurança de Endpoint',
+      est_def_sub:'Proteção de endpoint de nível empresarial para todos os dispositivos — Windows, macOS, iOS e Android.',
+      est_def_b1:'Deteção de ameaças por IA e interrupção automática de ataques',
+      est_def_b2:'Gestão de vulnerabilidades e relatórios de postura de segurança',
+      est_def_b3:'Até 5 dispositivos por utilizador — sem mínimo de dispositivos',
+      est_def_plan_label:'Plano de segurança de endpoint',
+      est_def_included_note:'O Microsoft Defender for Business está incluído na sua licença Business Premium — sem custo adicional.',
+      est_def_hint:'Configurado e monitorizado pela BlueWave IT como parte do seu plano gerido.',
+      est_def_users_label:'utilizadores',
+      est_def_detail_text:'Deteção de ameaças por IA · Gestão de vulnerabilidades · Antivírus de próxima geração · Investigação e remediação automáticas · Relatórios de segurança mensais',
+
+      /* ── MSP Fit Calculator ── */
+      fit_label:'Avaliação de Adequação MSP',
+      fit_h:'A gestão IT é adequada para o seu negócio?',
+      fit_sub:'Responda a seis questões sobre como a sua empresa opera. O resultado atualiza-se à medida que responde.',
+      fit_trust:'Esta avaliação foi concebida para ser prática e realista. Reflete como o seu negócio funciona, não pressupostos do pior cenário.',
+      fitQ1_label:'Quantas pessoas utilizam IT no seu negócio?',
+      fitQ2_label:'Com que frequência um problema técnico impede alguém de trabalhar?',
+      fitQ3_label:'Como é gerida a sua IT atualmente?',
+      fitQ4_label:'Algum elemento da sua equipa trabalha remotamente ou em vários locais?',
+      fitQ5_label:'Qual é o seu nível de preocupação com cibersegurança e proteção de dados?',
+      fitQ6_label:'Qual é a criticidade dos dados do seu negócio? (registos de clientes, dados financeiros, operações)',
+      fit_score_label:'A sua pontuação',
+      fit_score_of:'em 15',
+      fit_empty_msg:'Responda às questões para ver o seu resultado.',
+      fit_reasons_head:'Porque é que isto importa para si',
+      fit_budget_head:'O que orçamentar',
+      fit_cta_primary:'Ver a Minha Estimativa',
+      fit_cta_secondary:'Falar Sobre as Minhas Opções',
+      fit_r0_title:'Provavelmente ainda não é necessário',
+      fit_r0_desc:'Com base nas suas respostas, o seu setup atual é provavelmente gerível sem um serviço de IT totalmente gerido. Pode beneficiar de suporte pontual ou de uma consulta para reforçar o básico de segurança.',
+      fit_r1_title:'Vale a pena considerar',
+      fit_r1_desc:'Há sinais de que a IT está a começar a criar fricção no seu negócio. Um serviço gerido pode reduzir esse esforço — mas não é urgente. Vale a pena uma conversa para perceber o que se adequa.',
+      fit_r2_title:'Provavelmente uma boa opção',
+      fit_r2_desc:'O seu negócio mostra sinais claros de que a IT não gerida está a custar-lhe tempo e a criar riscos. Um serviço gerido provavelmente pagar-se-ia a si próprio através de menor inatividade, melhor segurança e menos distração para a sua equipa.',
+      fit_r3_title:'Elevado valor para IT gerida',
+      fit_r3_desc:'Com base nas suas respostas, a IT gerida entregaria valor significativo ao seu negócio. A sua dimensão, exposição de segurança e dependência de IT fazem desta uma melhoria operacional direta.',
+      fit_budget_r0:'Suporte pontual ou uma revisão de segurança única é provavelmente suficiente nesta fase.',
+      fit_budget_r1:'Um plano gerido a partir de €60/utilizador/mês cobriria o essencial sem sobrecarga.',
+      fit_budget_r2:'Orçamente para um plano gerido completo (€60/utilizador/mês). Considere lacunas de hardware identificadas no Estimador de Custos abaixo.',
+      fit_budget_r3:'Vale a pena orçamentar um plano gerido completo com reforço de segurança. Use o Estimador de Custos abaixo para ter uma visão completa.',
+      fit_why_users:'Com a dimensão da sua equipa, coordenar a IT sem um serviço estruturado tende a levar a inconsistências.',
+      fit_why_downtime:'Problemas técnicos frequentes são sinal de que a IT reativa está a custar mais à sua equipa do que parece.',
+      fit_why_noit:'Sem um recurso de IT dedicado, os problemas tendem a acumular-se silenciosamente até se tornarem dispendiosos.',
+      fit_why_remote:'O trabalho remoto e em vários locais aumenta a sua superfície de ataque e a complexidade de suporte.',
+      fit_why_security:'Preocupações de cibersegurança ao seu nível requerem gestão proativa, não uma abordagem de espera.',
+      fit_why_data:'Dados empresariais de elevado valor sem um plano gerido de backup e recuperação é um risco operacional sério.',
     }
   };
 
-  let lang = 'en';
+  /* lang via document.documentElement.lang */
 
-  window.setLanguage = function setLanguage(l) {
-    lang = l;
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const k = el.dataset.i18n;
-      if (T[l][k] !== undefined) el.textContent = T[l][k];
+  /* _onLangChange hook — registered inside DOMContentLoaded so it chains
+     AFTER site.js's DOMContentLoaded handler (site.js resets _onLangChange
+     to only call updatePricing, which would otherwise wipe this hook).
+     Capturing _prev at handler-run time picks up site.js's version cleanly. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var _prev = window._onLangChange;
+    window._onLangChange = function (lang) {
+      if (typeof _prev === 'function') _prev(lang);
+      if (typeof recalcEstimator === 'function') recalcEstimator();
+      if (typeof window._fitUpdateResult === 'function') window._fitUpdateResult();
+    };
+  });
+
+  /* ── MSP FIT CALCULATOR ── */
+  (function () {
+    /* Score values per question index (option value="0","1","2","3") */
+    var Q_SCORES = {
+      fitQ1: [0, 1, 2, 3],   /* team size */
+      fitQ2: [0, 2, 3],       /* downtime frequency */
+      fitQ3: [2, 1, 0],       /* current IT (inverted — more coverage = lower need) */
+      fitQ4: [0, 1, 2],       /* remote / multi-site */
+      fitQ5: [0, 2, 3],       /* security concern */
+      fitQ6: [0, 1, 2],       /* data criticality */
+    };
+
+    /* Which option indices trigger each reason string */
+    var REASON_CHECKS = [
+      { qid: 'fitQ1', trigger: [2, 3], key: 'fit_why_users'    },
+      { qid: 'fitQ2', trigger: [1, 2], key: 'fit_why_downtime' },
+      { qid: 'fitQ3', trigger: [2],    key: 'fit_why_noit'     },
+      { qid: 'fitQ4', trigger: [1, 2], key: 'fit_why_remote'   },
+      { qid: 'fitQ5', trigger: [1, 2], key: 'fit_why_security' },
+      { qid: 'fitQ6', trigger: [1, 2], key: 'fit_why_data'     },
+    ];
+
+    function getT(key) {
+      var lang = document.documentElement.lang || 'en';
+      var page = (window.PAGE_TRANSLATIONS || {})[lang] || {};
+      return page[key] !== undefined ? page[key] : key;
+    }
+
+    function calcScore() {
+      var total = 0, answered = 0;
+      var qids = Object.keys(Q_SCORES);
+      for (var i = 0; i < qids.length; i++) {
+        var sel = document.getElementById(qids[i]);
+        if (!sel) continue;
+        var idx = parseInt(sel.value, 10);
+        if (!isNaN(idx) && idx >= 0) {
+          total += Q_SCORES[qids[i]][idx];
+          answered++;
+        }
+      }
+      return { total: total, answered: answered };
+    }
+
+    function getBand(score) {
+      if (score <= 4)  return 0;
+      if (score <= 8)  return 1;
+      if (score <= 12) return 2;
+      return 3;
+    }
+
+    function getReasons() {
+      var reasons = [];
+      for (var i = 0; i < REASON_CHECKS.length; i++) {
+        var c = REASON_CHECKS[i];
+        var sel = document.getElementById(c.qid);
+        if (!sel) continue;
+        var idx = parseInt(sel.value, 10);
+        if (!isNaN(idx) && c.trigger.indexOf(idx) !== -1) {
+          reasons.push(getT(c.key));
+        }
+      }
+      return reasons.slice(0, 3);
+    }
+
+    window._fitUpdateResult = function () {
+      var res       = calcScore();
+      var scoreEl   = document.getElementById('fitScore');
+      var titleEl   = document.getElementById('fitResultTitle');
+      var descEl    = document.getElementById('fitResultDesc');
+      var reasonsEl = document.getElementById('fitReasonsList');
+      var reasonsWr = document.getElementById('fitReasonsWrap');
+      var budgetEl  = document.getElementById('fitBudgetText');
+      var emptyEl   = document.getElementById('fitEmptyMsg');
+      var resultWr  = document.getElementById('fitResultWrap');
+      var bandEl    = document.getElementById('fitBandBar');
+      if (!scoreEl) return;
+
+      /* Always update the score number */
+      scoreEl.textContent = res.total;
+
+      /* Band bar */
+      if (bandEl) {
+        bandEl.style.width = Math.round((res.total / 15) * 100) + '%';
+        bandEl.className = 'fit-band-fill fit-band-' + (res.answered > 0 ? getBand(res.total) : 'empty');
+      }
+
+      if (res.answered === 0) {
+        if (emptyEl)  emptyEl.style.display  = '';
+        if (resultWr) resultWr.style.display = 'none';
+        return;
+      }
+
+      if (emptyEl)  emptyEl.style.display  = 'none';
+      if (resultWr) resultWr.style.display = '';
+
+      var band = getBand(res.total);
+      var bk   = ['r0', 'r1', 'r2', 'r3'][band];
+
+      if (titleEl)  titleEl.textContent  = getT('fit_' + bk + '_title');
+      if (descEl)   descEl.textContent   = getT('fit_' + bk + '_desc');
+      if (budgetEl) budgetEl.textContent = getT('fit_budget_' + bk);
+
+      /* Dynamic reasons (up to 3) */
+      var reasons = getReasons();
+      if (reasonsEl) {
+        reasonsEl.innerHTML = reasons.map(function (r) {
+          return '<li>' + r + '</li>';
+        }).join('');
+      }
+      if (reasonsWr) reasonsWr.style.display = reasons.length ? '' : 'none';
+    };
+
+    /* Bind change events to all six selects */
+    var fitSelects = ['fitQ1','fitQ2','fitQ3','fitQ4','fitQ5','fitQ6'];
+    fitSelects.forEach(function (qid) {
+      var sel = document.getElementById(qid);
+      if (sel) sel.addEventListener('change', window._fitUpdateResult);
     });
-    // Translate input/textarea placeholders
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const k = el.dataset.i18nPlaceholder;
-      if (T[l][k] !== undefined) el.placeholder = T[l][k];
-    });
-    document.querySelectorAll('[data-lang]').forEach(b =>
-      b.classList.toggle('active', b.dataset.lang === l)
-    );
-    updateCalc();
-    updateROI();
-  }
+
+    /* Initialise result panel to empty state */
+    window._fitUpdateResult();
+  })();
 
 
   /* ── reveal on scroll ── */
@@ -537,215 +634,7 @@
   }, { threshold: 0.10 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  /* ── CALCULATOR ── */
-  const usersRange      = document.getElementById('usersRange');
-  const backupPlanRange = document.getElementById('backupPlanRange');
-  const backupRange     = document.getElementById('backupRange');
-
-  // Backup plan data — index maps to slider position 0–4
-  const backupPlans = [
-    { nameEn: 'None',                  namePt: 'Nenhum',                   price: 0   },
-    { nameEn: 'Essentials — 500 GB',   namePt: 'Essentials — 500 GB',      price: 39  },
-    { nameEn: 'Standard — 2 TB',       namePt: 'Standard — 2 TB',          price: 119 },
-    { nameEn: 'Plus — 5 TB',           namePt: 'Plus — 5 TB',              price: 249 },
-    { nameEn: 'Archive Retention',     namePt: 'Retenção de Arquivo',       price: 79  },
-  ];
-
-  function fmt(n) { return n.toLocaleString(lang === 'pt' ? 'pt-PT' : 'en-GB'); }
-
-  function updateCalc() {
-    const users      = parseInt(usersRange.value);
-    const planIdx    = parseInt(backupPlanRange.value);
-    const backup     = parseInt(backupRange.value);
-    const plan       = backupPlans[planIdx];
-    const mspCost    = users * 60;
-    const totalMonthly = mspCost + plan.price;
-    const annual     = totalMonthly * 12;
-
-    // Slider display values
-    document.getElementById('usersVal').textContent  = users;
-    document.getElementById('backupVal').textContent = fmt(backup) + ' GB';
-
-    // Backup plan label on slider
-    const planLabel = lang === 'pt' ? plan.namePt : plan.nameEn;
-    document.getElementById('backupPlanVal').textContent = plan.price > 0
-      ? planLabel + ' — €' + plan.price
-      : (lang === 'pt' ? 'Sem backup cloud' : 'No cloud backup');
-
-    // Main output totals
-    document.getElementById('calcTotal').textContent  = '€' + fmt(totalMonthly);
-    document.getElementById('calcAnnual').textContent = '€' + fmt(annual) + ' / ' + (T[lang].calc_year || 'year');
-
-    // Breakdown rows
-    document.getElementById('cbUsers').textContent   = users + ' ' + (lang === 'pt' ? 'utilizadores' : 'users') + ' × €60';
-    document.getElementById('cbBackup').textContent  = fmt(backup) + ' GB';
-    document.getElementById('cbTotal').textContent   = '€' + fmt(totalMonthly);
-
-    // Backup plan row — show/hide based on selection
-    const backupRow = document.getElementById('cbBackupRow');
-    if (plan.price > 0) {
-      backupRow.style.display = 'flex';
-      document.getElementById('cbBackupPlan').textContent = planLabel + ' — €' + plan.price + (lang === 'pt' ? '/mês' : '/mo');
-    } else {
-      backupRow.style.display = 'none';
-    }
-
-    // Contextual savings tip — updated with current Portugal market data
-    const tipEl = document.getElementById('calcTip');
-    const inHouseLow  = 28000;   // junior IT technician, Portugal, 2024
-    const inHouseHigh = 45000;   // mid-level IT administrator
-    const toolsEst    = 4000;    // RMM + AV + backup tooling per year
-
-    if (users >= 25) {
-      tipEl.textContent = lang === 'pt'
-        ? `Para ${users} utilizadores, o investimento anual é €${fmt(annual)}. Um técnico IT sénior em Portugal custa €${fmt(inHouseLow)}–€${fmt(inHouseHigh)}/ano em salário bruto, sem contar com ferramentas (~€${fmt(toolsEst)}/ano), formação ou cobertura de férias. A poupança típica com o modelo gerido é de €${fmt(Math.round(((inHouseLow + inHouseHigh) / 2 + toolsEst) - annual))} /ano.`
-        : `For ${users} users, annual investment is €${fmt(annual)}. A senior IT technician in Portugal costs €${fmt(inHouseLow)}–€${fmt(inHouseHigh)}/yr gross — before tools (~€${fmt(toolsEst)}/yr), training, or holiday cover. Typical savings with the managed model: ~€${fmt(Math.round(((inHouseLow + inHouseHigh) / 2 + toolsEst) - annual))}/yr.`;
-    } else if (users >= 10) {
-      tipEl.textContent = lang === 'pt'
-        ? `Para ${users} utilizadores, o investimento anual é €${fmt(annual)}. Um técnico IT júnior a tempo inteiro em Portugal custa €${fmt(inHouseLow)}–€${fmt(32000)}/ano — sem ferramentas de monitorização (RMM, AV, backup), que acrescentam tipicamente €${fmt(toolsEst)}/ano.`
-        : `For ${users} users, annual investment is €${fmt(annual)}. A full-time junior IT hire in Portugal costs €${fmt(inHouseLow)}–€${fmt(32000)}/yr — without monitoring tools (RMM, AV, backup), which typically add another €${fmt(toolsEst)}/yr.`;
-    } else if (users >= 5) {
-      tipEl.textContent = lang === 'pt'
-        ? `Para ${users} utilizadores, o investimento mensal é €${fmt(totalMonthly)}. Para equipas desta dimensão, contratar IT interno não é viável — e as chamadas pontuais de um técnico externo custam tipicamente €75–€120/hora sem qualquer cobertura proativa.`
-        : `For ${users} users, monthly investment is €${fmt(totalMonthly)}. At this team size, in-house IT isn't viable — and ad-hoc callout support in the Algarve typically costs €75–€120/hr with no proactive coverage.`;
-    } else {
-      tipEl.textContent = T[lang].calc_tip_base;
-    }
-  }
-
-  [usersRange, backupPlanRange, backupRange].forEach(r =>
-    r?.addEventListener('input', updateCalc)
-  );
-
-  /* ── ROI ESTIMATOR ── */
-  function updateROI() {
-    // ── Read inputs ──
-    const users      = parseFloat(document.getElementById('roiUsers2').value)        || 10;
-    const wage       = parseFloat(document.getElementById('roiWage').value)           || 18;
-    const hours      = parseFloat(document.getElementById('roiHours').value)          || 6;
-    const outages    = parseFloat(document.getElementById('roiOutage').value)         || 3;
-    const osCost     = parseFloat(document.getElementById('roiOutageCost').value)     || 2000;
-    const m365       = parseFloat(document.getElementById('roiM365').value)           || 0;
-    const antivirus  = parseFloat(document.getElementById('roiAntivirus').value)      || 0;
-    const otherSw    = parseFloat(document.getElementById('roiOtherSoftware').value)  || 0;
-    const adHocCalls = parseFloat(document.getElementById('roiAdHocCalls').value)     || 0;
-    const adHocRate  = parseFloat(document.getElementById('roiAdHocRate').value)      || 150;
-    const breach     = parseFloat(document.getElementById('roiSecurityBreach').value) || 0;
-    const hardware   = parseFloat(document.getElementById('roiHardware').value)       || 0;
-    const backup     = parseFloat(document.getElementById('roiBackupCost').value)     || 0;
-    const network    = parseFloat(document.getElementById('roiNetworkCost').value)    || 0;
-
-    // ── Update slider display labels ──
-    document.getElementById('roiUsers2Val').textContent = users;
-    document.getElementById('roiWageVal').textContent   = '€' + wage;
-    document.getElementById('roiHoursVal').textContent  = hours + ' hrs';
-    document.getElementById('roiOutageVal').textContent = outages;
-
-    // ── Cost buckets ──
-    const prodLost    = hours * wage * users * 12;
-    const outageTot   = outages * osCost;
-    const softwareTot = m365 + antivirus + otherSw;
-    const adHocTot    = (adHocCalls * adHocRate) + breach;
-    const infraTot    = hardware + backup + network;
-    const burdenTot   = prodLost + outageTot + softwareTot + adHocTot + infraTot;
-    const mspCost     = users * 60 * 12;
-
-    // ── Value model ──
-    // grossValue = what BlueWave IT actually prevents/recovers each year
-    // Licences stay client-paid; BlueWave saves only the admin overhead (~25%)
-    const grossValue = Math.round(
-      (prodLost    * 0.70) +   // 70% of productivity losses recovered via proactive IT
-      (outageTot   * 0.80) +   // 80% of outages prevented via monitoring & patching
-      (softwareTot * 0.25) +   // admin overhead saved; licence cost stays with client
-      (adHocTot    * 0.85) +   // ad-hoc callouts nearly eliminated under managed model
-      (infraTot    * 0.10)     // better management extends hardware & infrastructure life
-    );
-
-    // Net benefit = gross value delivered minus MSP cost
-    const saving = grossValue - mspCost;
-
-    // ── ROI % ──
-    const roiPct = (mspCost > 0 && saving > 0) ? Math.round(saving / mspCost * 100) : 0;
-
-    // ── Payback: months until MSP pays for itself in gross value delivered ──
-    const paybackMonths = (mspCost > 0 && grossValue > 0) ? (mspCost / (grossValue / 12)) : null;
-    const paybackStr = paybackMonths === null ? 'N/A'
-      : paybackMonths < 1   ? '< 1 month'
-      : paybackMonths < 1.5 ? '~1 month'
-      : `~${paybackMonths.toFixed(1)} months`;
-
-    // ── 3-year projection (value compounds as environment matures) ──
-    const yr2 = Math.round(saving * 1.15);
-    const yr3 = Math.round(saving * 1.32);
-
-    // ── Per-user monthly ──
-    const perUser = users > 0 ? (mspCost / users / 12).toFixed(2) : '60.00';
-
-    // ── Bar chart max ──
-    const maxBar = Math.max(prodLost, outageTot, softwareTot, adHocTot, infraTot, mspCost, 1);
-    function barPct(v) { return Math.round(Math.max(v / maxBar * 100, v > 0 ? 3 : 0)) + '%'; }
-
-    // ── DOM updates ──
-    // Hero strip
-    document.getElementById('rhsSMB').textContent    = '€' + fmt(Math.round(burdenTot));
-    document.getElementById('rhsMSP').textContent    = '€' + fmt(Math.round(mspCost));
-    const savEl = document.getElementById('rhsSaving');
-    savEl.textContent = (saving > 0 ? '+' : '') + '€' + fmt(saving);
-
-    // Breakdown rows
-    document.getElementById('roiLost').textContent        = '€' + fmt(Math.round(prodLost));
-    document.getElementById('roiOutageTot').textContent   = '€' + fmt(Math.round(outageTot));
-    document.getElementById('roiSoftwareTot').textContent = '€' + fmt(Math.round(softwareTot));
-    document.getElementById('roiAdHocTot').textContent    = '€' + fmt(Math.round(adHocTot));
-    document.getElementById('roiInfraTot').textContent    = '€' + fmt(Math.round(infraTot));
-    document.getElementById('roiBurdenTot').textContent   = '€' + fmt(Math.round(burdenTot));
-    document.getElementById('roiMspCost').textContent     = '€' + fmt(Math.round(mspCost));
-
-    // ── Gross value + ROI % + 3-year projection (new elements) ──
-    const grossEl = document.getElementById('roiGrossValue');
-    if (grossEl) grossEl.textContent = '€' + fmt(grossValue);
-    const roiPctEl = document.getElementById('roiPctVal');
-    if (roiPctEl) roiPctEl.textContent = roiPct + '%';
-    const paybackEl2 = document.getElementById('roiPaybackVal2');
-    if (paybackEl2) paybackEl2.textContent = paybackStr;
-    const yr1El = document.getElementById('roiYr1');
-    if (yr1El) yr1El.textContent = (saving > 0 ? '+' : '') + '€' + fmt(saving);
-    const yr2El = document.getElementById('roiYr2');
-    if (yr2El) yr2El.textContent = (yr2 > 0 ? '+' : '') + '€' + fmt(yr2);
-    const yr3El = document.getElementById('roiYr3');
-    if (yr3El) yr3El.textContent = (yr3 > 0 ? '+' : '') + '€' + fmt(yr3);
-
-    // Big saving number + colour
-    const savingEl = document.getElementById('roiSaving');
-    savingEl.textContent  = (saving > 0 ? '+' : '') + '€' + fmt(saving);
-    savingEl.style.color  = saving > 0 ? 'var(--green)' : 'var(--danger)';
-
-    // Meta strip
-    document.getElementById('roiPayback').textContent  = paybackStr;
-    document.getElementById('roiPerUser').textContent  = '€' + perUser;
-
-    // Bar chart fills
-    document.getElementById('barProd').style.width    = barPct(prodLost);
-    document.getElementById('barOutage').style.width  = barPct(outageTot);
-    document.getElementById('barSw').style.width      = barPct(softwareTot);
-    document.getElementById('barAdHoc').style.width   = barPct(adHocTot);
-    document.getElementById('barInfra').style.width   = barPct(infraTot);
-    document.getElementById('barMsp').style.width     = barPct(mspCost);
-
-    // Bar chart value labels
-    document.getElementById('barProdVal').textContent   = '€' + fmt(Math.round(prodLost));
-    document.getElementById('barOutageVal').textContent = '€' + fmt(Math.round(outageTot));
-    document.getElementById('barSwVal').textContent     = '€' + fmt(Math.round(softwareTot));
-    document.getElementById('barAdHocVal').textContent  = '€' + fmt(Math.round(adHocTot));
-    document.getElementById('barInfraVal').textContent  = '€' + fmt(Math.round(infraTot));
-    document.getElementById('barMspVal').textContent    = '€' + fmt(Math.round(mspCost));
-  }
-
-  ['roiUsers2','roiWage','roiHours','roiOutage','roiOutageCost',
-   'roiM365','roiAntivirus','roiOtherSoftware',
-   'roiAdHocCalls','roiAdHocRate','roiSecurityBreach',
-   'roiHardware','roiBackupCost','roiNetworkCost'
-  ].forEach(id => document.getElementById(id)?.addEventListener('input', updateROI));
+  function fmt(n) { var _l = document.documentElement.lang; return n.toLocaleString(_l === 'pt' ? 'pt-PT' : 'en-GB'); }
 
   /* ── FAQ ── */
   document.querySelectorAll('.faq-q').forEach(btn => {
@@ -757,24 +646,6 @@
       item.classList.toggle('open');
     });
   });
-
-  /* ── BACKUP VIEW TOGGLE ── */
-  document.querySelectorAll('.storage-toggle-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.storage-toggle-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const view = btn.dataset.view;
-      document.getElementById('bkPlansView').style.display   = view === 'plans'   ? 'block' : 'none';
-      document.getElementById('bkOverageView').style.display = view === 'overage' ? 'block' : 'none';
-    });
-  });
-
-  /* ── init ── */
-  window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
-  
-  /* ── initialise both calculators so values display correctly on first load */
-  updateCalc();
-  updateROI();
 
   /* ── CONTACT MODAL ── */
   let openModal;
@@ -791,7 +662,7 @@
       form.style.display    = '';
       success.style.display = 'none';
       submitBtn.disabled    = false;
-      submitBtn.textContent = T[lang] && T[lang].cm_submit ? T[lang].cm_submit : 'Send Enquiry';
+      submitBtn.textContent = window.PAGE_TRANSLATIONS[document.documentElement.lang] && window.PAGE_TRANSLATIONS[document.documentElement.lang].cm_submit ? window.PAGE_TRANSLATIONS[document.documentElement.lang].cm_submit : 'Send Enquiry';
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
       // Focus first input after transition

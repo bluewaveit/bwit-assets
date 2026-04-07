@@ -4,7 +4,7 @@
    window.setLanguage exposed so nav.js lang switcher keeps form strings in sync.
    ================================================================ */
 
-const T = {
+window.PAGE_TRANSLATIONS = {
     en: {
       managed_services_label:'Managed IT Services',
       nav_services:'Services', nav_about:'About', nav_pricing:'Pricing', nav_faq:'FAQ', nav_contact:'Contact',
@@ -14,7 +14,7 @@ const T = {
       contact_hero_1:'Let\'s talk about your', contact_hero_2:'IT environment',
       contact_hero_body:'Request a free assessment, ask about a service, or tell us about your business. We\'ll come back to you with a straightforward answer and no sales pressure.',
       info_card_1_title:'Schedule a Call',   info_card_1_body:'Book a short discovery call to discuss your IT needs and get a clear view of how we can help.',   info_card_1_cta:'Book now →',
-      info_card_2_title:'Send an Email',     info_card_2_body:'Prefer to write it out? Use the form below or reach us directly by email for any questions.',
+      info_card_2_title:'Send an Email',     info_card_2_body:'Prefer to write it out? Use the form below or reach us directly by email for any questions.',     info_card_2_link:'info@bluewaveit.pt',
       info_card_3_title:'Algarve-Based',     info_card_3_body:'We are based in the Algarve and serve businesses throughout the region — on-site visits available.', info_card_3_region:'Portimão, Algarve, Portugal',
       contact_title:'Let\'s talk about your IT environment',
       contact_body:'Use the form below to request a consultation, ask a question, or start a conversation about managed support for your business.',
@@ -50,7 +50,8 @@ const T = {
       proc_4_title:'Ongoing Support', proc_4_body:'We keep systems healthy, reduce downtime, and help plan ahead.',
       footer_tagline:'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
       footer_services_head:'Services', footer_company_head:'Company',
-      svc_it_title:'Managed IT', svc_sec_title:'Cybersecurity', svc_cloud_title:'Cloud Services', svc_net_title:'Network Management', svc_backup_title:'Backup & Recovery',
+      footer_s1:'Managed IT', footer_s2:'Cybersecurity', footer_s3:'Cloud & M365',
+      footer_s4:'Backup & Recovery', footer_s5:'Network Management', footer_s6:'IT Consulting',
       footer_privacy:'Privacy Policy', footer_terms:'Terms and Conditions', footer_gdpr:'GDPR',
       footer_copy:'© 2026 BlueWave IT. Reliable technology for growing businesses.',
     },
@@ -63,7 +64,7 @@ const T = {
       contact_hero_1:'Vamos falar sobre o seu', contact_hero_2:'ambiente IT',
       contact_hero_body:'Peça uma avaliação gratuita, pergunte sobre um serviço ou conte-nos sobre a sua empresa. Respondemos de forma clara e sem pressão comercial.',
       info_card_1_title:'Marcar uma Chamada',    info_card_1_body:'Reserve uma chamada curta para discutir as suas necessidades IT e perceber como podemos ajudar.',           info_card_1_cta:'Marcar agora →',
-      info_card_2_title:'Enviar Email',           info_card_2_body:'Prefere escrever? Use o formulário abaixo ou contacte-nos diretamente por email para qualquer questão.',
+      info_card_2_title:'Enviar Email',           info_card_2_body:'Prefere escrever? Use o formulário abaixo ou contacte-nos diretamente por email para qualquer questão.',   info_card_2_link:'info@bluewaveit.pt',
       info_card_3_title:'Baseados no Algarve',   info_card_3_body:'Estamos no Algarve e apoiamos empresas em toda a região — visitas presenciais disponíveis.',                info_card_3_region:'Portimão, Algarve, Portugal',
       contact_title:'Vamos falar sobre o seu ambiente IT',
       contact_body:'Use o formulário abaixo para pedir uma consulta, colocar uma questão ou iniciar uma conversa sobre suporte gerido para a sua empresa.',
@@ -99,37 +100,55 @@ const T = {
       proc_4_title:'Suporte Contínuo', proc_4_body:'Mantemos os sistemas saudáveis, reduzimos paragens e ajudamos a planear o futuro.',
       footer_tagline:'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
       footer_services_head:'Serviços', footer_company_head:'Empresa',
-      svc_it_title:'IT Gerido', svc_sec_title:'Cibersegurança', svc_cloud_title:'Serviços Cloud', svc_net_title:'Gestão de Rede', svc_backup_title:'Backup e Recuperação',
+      footer_s1:'IT Gerido', footer_s2:'Cibersegurança', footer_s3:'Cloud e M365',
+      footer_s4:'Backup e Recuperação', footer_s5:'Gestão de Rede', footer_s6:'Consultoria IT',
       footer_privacy:'Política de Privacidade', footer_terms:'Termos e Condições', footer_gdpr:'RGPD',
       footer_copy:'© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
     }
   };
 
-  let currentLang = localStorage.getItem('bwit-lang') || 'en';
-
-  /* ── i18n ── */
-  window.setLanguage = function setLanguage(lang) {
-    currentLang = lang;
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const k = el.dataset.i18n;
-      if (T[lang][k]) el.textContent = T[lang][k];
-    });
-    // Translate select options
-    document.querySelectorAll('#serviceSelect option').forEach(opt => {
-      if (opt.dataset[lang]) opt.textContent = opt.dataset[lang];
-    });
-    document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  /* ── Lang helpers ────────────────────────────────────────────── */
+  function getLang() {
+    return window.currentLang || localStorage.getItem('bwit_lang') || 'en';
   }
 
-  /* ── reveal on scroll ── */
-/* ── reveal ── */
+  function t(key) {
+    const lang = getLang();
+    const page = (window.PAGE_TRANSLATIONS[lang]) || {};
+    const site = ((window.BWIT_TRANSLATIONS || {})[lang]) || {};
+    return page[key] || site[key] || key;
+  }
+
+  /* ── Field error helpers ─────────────────────────────────────── */
+  function showFieldError(errId, msg) {
+    const errEl = document.getElementById(errId);
+    if (!errEl) return;
+    errEl.textContent = msg;
+    const ctrl = errEl.closest('.field')?.querySelector('input, select, textarea');
+    if (ctrl) {
+      ctrl.classList.add('is-invalid');
+      ctrl.setAttribute('aria-invalid', 'true');
+    }
+  }
+
+  function clearFieldError(errId) {
+    const errEl = document.getElementById(errId);
+    if (!errEl) return;
+    errEl.textContent = '';
+    const ctrl = errEl.closest('.field')?.querySelector('input, select, textarea');
+    if (ctrl) {
+      ctrl.classList.remove('is-invalid');
+      ctrl.removeAttribute('aria-invalid');
+    }
+  }
+
+  /* ── Reveal on scroll ────────────────────────────────────────── */
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
   }, { threshold: 0.10 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-/* ── char counter ── */
+  /* ── Char counter ────────────────────────────────────────────── */
   const msgField  = document.getElementById('messageField');
   const charCount = document.getElementById('charCount');
   if (msgField && charCount) {
@@ -140,14 +159,15 @@ const T = {
     });
   }
 
-/* ── quick chips ── */
+  /* ── Quick chips ─────────────────────────────────────────────── */
   document.querySelectorAll('.quick-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       if (!msgField) return;
-      msgField.value = chip.dataset[currentLang === 'en' ? 'messageEn' : 'messagePt'];
+      msgField.value = chip.dataset[getLang() === 'pt' ? 'messagePt' : 'messageEn'];
       msgField.dispatchEvent(new Event('input'));
+      clearFieldError('err-message');
       // If on step 1, advance to step 2 first
-      if (document.getElementById('step1').classList.contains('active')) {
+      if (document.getElementById('step1')?.classList.contains('active')) {
         goToStep(2);
       }
       msgField.focus();
@@ -155,16 +175,48 @@ const T = {
     });
   });
 
-/* ── select colour state ── */
+  /* ── Turnstile — lazy load ───────────────────────────────────────
+     The Turnstile script is NOT loaded on page load. It is injected
+     the first time the user interacts with a step-1 field (focus).
+  ─────────────────────────────────────────────────────────────────── */
+  let turnstileLoaded = false;
+
+  function loadTurnstile() {
+    if (turnstileLoaded) return;
+    turnstileLoaded = true;
+    const s = document.createElement('script');
+    s.src   = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    s.async = true;
+    document.body.appendChild(s);
+  }
+
+  // Pre-load on first interaction with step-1 fields
+  document.getElementById('step1')?.querySelectorAll('input').forEach(el => {
+    el.addEventListener('focus', loadTurnstile, { once: true });
+  });
+
+  /* ── Select colour state ─────────────────────────────────────── */
   const serviceSelect = document.getElementById('serviceSelect');
   serviceSelect?.addEventListener('change', () => {
     serviceSelect.classList.toggle('has-value', serviceSelect.value !== '');
+    clearFieldError('err-service');
   });
 
-/* ── 2-step progress ── */
+  /* ── Clear errors on user input ──────────────────────────────── */
+  const fieldErrMap = {
+    fieldName:    'err-name',
+    fieldCompany: 'err-company',
+    fieldEmail:   'err-email',
+    messageField: 'err-message',
+  };
+  Object.entries(fieldErrMap).forEach(([fieldId, errId]) => {
+    document.getElementById(fieldId)?.addEventListener('input', () => clearFieldError(errId));
+  });
+
+  /* ── 2-step progress ─────────────────────────────────────────── */
   function goToStep(n) {
-    const s1 = document.getElementById('step1');
-    const s2 = document.getElementById('step2');
+    const s1   = document.getElementById('step1');
+    const s2   = document.getElementById('step2');
     const dot1 = document.getElementById('progDot1');
     const dot2 = document.getElementById('progDot2');
     const conn = document.getElementById('progConnector');
@@ -179,7 +231,9 @@ const T = {
       dot2.classList.add('active');
       conn.classList.add('filled');
       ps1.classList.remove('is-active'); ps2.classList.add('is-active');
-      // Trigger Turnstile now that the container is visible
+      // Ensure Turnstile script is loaded (fallback if user skipped step-1 focus)
+      loadTurnstile();
+      // If already rendered, execute the challenge
       if (window.turnstile) {
         try { turnstile.execute(); } catch(e) { /* already executed */ }
       }
@@ -194,30 +248,61 @@ const T = {
     }
   }
 
-  /* Validate step 1 fields before advancing */
+  /* ── Step validation ─────────────────────────────────────────── */
   function validateStep1() {
     const name    = document.getElementById('fieldName');
     const company = document.getElementById('fieldCompany');
     const email   = document.getElementById('fieldEmail');
-    const isPt    = currentLang === 'pt';
+
+    clearFieldError('err-name');
+    clearFieldError('err-company');
+    clearFieldError('err-email');
+
+    let valid = true;
+    let first = null;
 
     if (!name.value.trim()) {
-      name.focus(); name.style.borderColor = 'rgba(255,95,95,0.55)';
-      name.addEventListener('input', () => name.style.borderColor = '', { once: true });
-      return false;
+      showFieldError('err-name', t('err_name'));
+      first = first || name;
+      valid = false;
     }
     if (!company.value.trim()) {
-      company.focus(); company.style.borderColor = 'rgba(255,95,95,0.55)';
-      company.addEventListener('input', () => company.style.borderColor = '', { once: true });
-      return false;
+      showFieldError('err-company', t('err_company'));
+      first = first || company;
+      valid = false;
     }
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
     if (!emailOk) {
-      email.focus(); email.style.borderColor = 'rgba(255,95,95,0.55)';
-      email.addEventListener('input', () => email.style.borderColor = '', { once: true });
-      return false;
+      showFieldError('err-email', t('err_email'));
+      first = first || email;
+      valid = false;
     }
-    return true;
+    if (first) first.focus();
+    return valid;
+  }
+
+  function validateStep2() {
+    const service = document.getElementById('serviceSelect');
+    const message = document.getElementById('messageField');
+
+    clearFieldError('err-service');
+    clearFieldError('err-message');
+
+    let valid = true;
+    let first = null;
+
+    if (!service.value) {
+      showFieldError('err-service', t('err_service'));
+      first = first || service;
+      valid = false;
+    }
+    if (!message.value.trim()) {
+      showFieldError('err-message', t('err_message'));
+      first = first || message;
+      valid = false;
+    }
+    if (first) first.focus();
+    return valid;
   }
 
   document.getElementById('btnNext')?.addEventListener('click', () => {
@@ -226,14 +311,16 @@ const T = {
 
   document.getElementById('btnBack')?.addEventListener('click', () => goToStep(1));
 
-/* ── form submit ── */
+  /* ── Form submit ─────────────────────────────────────────────── */
   document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const form   = e.target;
+    // Validate step 2 fields before proceeding
+    if (!validateStep2()) return;
+
     const btn    = document.getElementById('formSubmitBtn');
     const status = document.getElementById('formStatus');
-    const isPt   = currentLang === 'pt';
+    const isPt   = getLang() === 'pt';
 
     const turnstileToken = document.querySelector('input[name="cf-turnstile-response"]')?.value;
     if (!turnstileToken) {
@@ -251,13 +338,13 @@ const T = {
 
     try {
       const payload = {
-        name:          form.name.value,
-        company:       form.company.value,
-        email:         form.email.value,
-        phone:         form.phone.value,
-        business_size: form.business_size.value,
-        service:       form.service.value,
-        message:       form.message.value,
+        name:          document.getElementById('fieldName').value,
+        company:       document.getElementById('fieldCompany').value,
+        email:         document.getElementById('fieldEmail').value,
+        phone:         document.getElementById('fieldPhone').value,
+        business_size: document.getElementById('fieldSize').value,
+        service:       document.getElementById('serviceSelect').value,
+        message:       document.getElementById('messageField').value,
         turnstileToken
       };
 
@@ -277,7 +364,7 @@ const T = {
         ? '✓ Mensagem enviada. Entraremos em contacto em breve.'
         : "✓ Message sent. We'll be in touch shortly.";
       status.style.color = 'var(--green)';
-      form.reset();
+      e.target.reset();
       serviceSelect?.classList.remove('has-value');
       if (charCount) charCount.textContent = '0';
       goToStep(1);
@@ -286,14 +373,11 @@ const T = {
     } catch (err) {
       console.error('Form submission error:', err);
       status.textContent = isPt
-        ? '⚠ Erro ao enviar. Por favor tente novamente ou envie email para hello@bluewaveit.pt.'
-        : '⚠ Submission failed. Please try again or email hello@bluewaveit.pt.';
+        ? '⚠ Erro ao enviar. Por favor tente novamente ou envie email para info@bluewaveit.pt.'
+        : '⚠ Submission failed. Please try again or email info@bluewaveit.pt.';
       status.style.color = 'var(--danger)';
     } finally {
       btn.disabled    = false;
       btn.textContent = isPt ? 'Marcar Consulta' : 'Schedule a Consultation';
     }
   });
-
-  /* ── init: apply saved language ── */
-  setLanguage(localStorage.getItem('bwit-lang') || 'en');

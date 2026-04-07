@@ -6,8 +6,8 @@
 
 
     /* ── full i18n engine ── */
-    const T = {
-      en: {
+window.PAGE_TRANSLATIONS = {
+  en: {
         ai_label: 'AI-Optimized Services for Algarve Businesses',
         ai_h2_a: 'Modern IT, web,', ai_h2_b: 'and AI workflow', ai_h2_c: 'services for your organization.',
         ai_intro_p: 'BlueWave IT helps businesses improve visibility, strengthen security, and reduce manual work with practical technology services. From websites and lead capture to managed IT and AI-assisted workflow implementation, we focus on solutions that make your organization faster, clearer, and easier to run.',
@@ -42,6 +42,14 @@
         stat_2_val: '6',   stat_2_lbl: 'core service areas',
         stat_3_val: '24/7',stat_3_lbl: 'monitoring coverage',
         stat_4_val: '1',   stat_4_lbl: 'dedicated MSP partner',
+        /* hero panel */
+        panel_nav_title: 'Jump to a service',
+        panel_inc_title: "What's included",
+        panel_inc_1: '24/7 monitoring & alerting',
+        panel_inc_2: 'Same-day helpdesk support',
+        panel_inc_3: 'Flat monthly pricing — from €29/user',
+        panel_inc_4: 'No contracts, cancel anytime',
+        panel_inc_5: 'AI-assisted monitoring & automation',
         /* sticky nav */
         snav_managed: 'Managed IT',
         snav_cyber:   'Cybersecurity',
@@ -64,7 +72,7 @@
         ov_backup_p: 'Automated, verified, and tested backups — so you know exactly what happens if things go wrong, and recovery is measured in hours not days.',
         ov_backup_t1:'Cloud Backup', ov_backup_t2:'NAS Backup', ov_backup_t3:'DR Planning',
         ov_net_h: 'Network Management',
-        ov_net_p: 'Reliable infrastructure from firewall to Wi-Fi — with ongoing monitoring, UniFi management, and network health visibility.',
+        ov_net_p: 'Reliable infrastructure from firewall to Wi-Fi — with ongoing monitoring, enterprise management, and network health visibility.',
         ov_net_t1:'UniFi', ov_net_t2:'Firewall', ov_net_t3:'VPN',
         ov_consult_h: 'IT Consulting',
         ov_consult_p: 'Strategic guidance for technology decisions — budgeting, infrastructure planning, vendor selection, and growth roadmaps.',
@@ -146,7 +154,7 @@
         d_net_p: 'Poor networking is the root cause of more productivity loss than any other IT issue. We build, monitor, and maintain reliable infrastructure so connectivity is never the bottleneck.',
         d_net_f1_t: 'Firewall Management',
         d_net_f1_b: 'Rule set maintenance, firmware updates, traffic policy reviews, and intrusion detection tuning — keeping the perimeter hardened without blocking legitimate business traffic.',
-        d_net_f2_t: 'UniFi Wi-Fi Management',
+        d_net_f2_t: 'Enterprise Wi-Fi Management',
         d_net_f2_b: 'Full UniFi controller management — SSID segmentation, guest network isolation, coverage optimization, and access point health monitoring. Proper business Wi-Fi, not consumer kit.',
         d_net_f3_t: 'VPN & Remote Access',
         d_net_f3_b: 'Site-to-site and client VPN for secure remote access. Deployed and managed for home offices, multi-site businesses, and travelling staff — with device-level enforcement.',
@@ -215,14 +223,38 @@
         cta_p: 'Talk to BlueWave IT about how managed services can eliminate the IT stress that\'s costing your business time and money every week.',
         cta_btn1: 'Book a Free Consultation',
         cta_btn2: 'Request IT Assessment',
+        /* SEO & Web Presence — overview */
+        snav_seo:   'SEO & Web',
+        ov_seo_h:   'SEO & Web Presence',
+        ov_seo_p:   'Most businesses in the Algarve are hard to find online. We fix that — from Google Maps visibility and Business Profile setup to fast, professional websites.',
+        ov_seo_t1:  'Local SEO', ov_seo_t2: 'Google Maps', ov_seo_t3: 'Web Design',
+        /* SEO & Web Presence — detail */
+        d_seo_label: 'SEO & Web Presence',
+        d_seo_h:     'Get found online. Turn visibility into customers.',
+        d_seo_p:     'Most businesses in the Algarve are hard to find online — or worse, they don\'t show up at all. We fix that. We help your business appear clearly on Google Search and Google Maps, so customers can find you, trust you, and contact you easily.',
+        d_seo_f1_t:  'Google Visibility & Local Search',
+        d_seo_f1_b:  'Improve your ranking on Google Search and Google Maps. Optimize or create your Google Business Profile. Ensure your business name, address, and contact details are consistent across the internet — so Google trusts your listing and customers can reach you.',
+        d_seo_f2_t:  'Website SEO & Structure',
+        d_seo_f2_b:  'Already have a website? We fix technical SEO issues, improve site structure and content, add the right keywords for real local searches, and improve page speed and mobile experience — making it easier for Google to understand what your business does and where you operate.',
+        d_seo_f3_t:  'Professional Website Build',
+        d_seo_f3_b:  'No website yet? We build a simple, clean, fast-loading site designed to work perfectly on mobile, clearly explain what you do, and convert visitors into calls or messages. No overcomplicated design. No unnecessary features. Just what your business actually needs.',
+        d_seo_f4_t:  'Reviews & Reputation Management',
+        d_seo_f4_b:  'Help you collect and manage customer reviews on Google and key directories. More genuine reviews improve your local ranking and build immediate trust with new customers searching for your services in the Algarve.',
+        d_seo_cta:   'Improve Your Online Visibility',
+        d_seo_vis_h: 'Local Search Visibility',
+        d_seo_gbp:   'Google Business Profile',
+        d_seo_gbp_status: 'Active & Verified',
+        d_seo_m1: 'Google impressions (mo.)', d_seo_m2: 'Profile views',
+        d_seo_m3: 'Direction requests',       d_seo_m4: 'Website clicks',
+        d_seo_v1: '2,840', d_seo_v2: '318', d_seo_v3: '47', d_seo_v4: '94',
+        d_seo_goal: 'More visibility → More calls → More customers',
         /* footer */
-        ft_tagline: 'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
-        ft_svc_h: 'Services', ft_co_h: 'Company',
-        ft_s1:'Managed IT', ft_s2:'Cybersecurity', ft_s3:'Cloud & M365',
-        ft_s4:'Backup & Recovery', ft_s5:'Network Management', ft_s6:'IT Consulting',
-        ft_c1:'Home', ft_c2:'About', ft_c3:'Pricing', ft_c4:'FAQ', ft_c5:'Contact',
-        ft_copy: '© 2026 BlueWave IT. Reliable technology for growing businesses.',
-        ft_privacy: 'Privacy Policy', ft_gdpr: 'GDPR',ft_terms:'Terms and Conditions',
+        footer_tagline: 'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
+        footer_services_head: 'Services', footer_company_head: 'Company',
+        footer_s1:'Managed IT', footer_s2:'Cybersecurity', footer_s3:'Cloud & M365',
+        footer_s4:'Backup & Recovery', footer_s5:'Network Management', footer_s6:'IT Consulting',
+        footer_copy: '© 2026 BlueWave IT. Reliable technology for growing businesses.',
+        footer_privacy: 'Privacy Policy', footer_terms: 'Terms and Conditions', footer_gdpr: 'GDPR',
         theme_dark: 'Dark', theme_light: 'Light',
       },
       pt: {
@@ -418,38 +450,47 @@
         cta_p: 'Fale com a BlueWave IT sobre como os serviços geridos podem eliminar o stress de IT que custa tempo e dinheiro à sua empresa todas as semanas.',
         cta_btn1: 'Marcar uma Consulta Gratuita',
         cta_btn2: 'Pedir Avaliação IT',
-        ft_tagline: 'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
-        ft_svc_h: 'Serviços', ft_co_h: 'Empresa',
-        ft_s1:'IT Gerido', ft_s2:'Cibersegurança', ft_s3:'Cloud e M365',
-        ft_s4:'Backup e Recuperação', ft_s5:'Gestão de Rede', ft_s6:'Consultoria IT',
-        ft_c1:'Início', ft_c2:'Sobre', ft_c3:'Preços', ft_c4:'FAQ', ft_c5:'Contacto',
-        ft_copy: '© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
-        ft_privacy: 'Política de Privacidade', ft_gdpr: 'RGPD',
+        footer_tagline: 'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
+        footer_services_head: 'Serviços', footer_company_head: 'Empresa',
+        footer_s1:'IT Gerido', footer_s2:'Cibersegurança', footer_s3:'Cloud e M365',
+        footer_s4:'Backup e Recuperação', footer_s5:'Gestão de Rede', footer_s6:'Consultoria IT',
+        footer_copy: '© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
+        footer_privacy: 'Política de Privacidade', footer_terms: 'Termos e Condições', footer_gdpr: 'RGPD',
         theme_dark: 'Escuro', theme_light: 'Claro',
+        /* SEO & Web Presence — overview */
+        snav_seo:   'SEO & Web',
+        ov_seo_h:   'SEO e Presença Web',
+        ov_seo_p:   'A maioria das empresas do Algarve é difícil de encontrar online. Resolvemos isso — desde a visibilidade no Google Maps e Google Business Profile até websites rápidos e profissionais.',
+        ov_seo_t1:  'SEO Local', ov_seo_t2: 'Google Maps', ov_seo_t3: 'Web Design',
+        /* SEO & Web Presence — detail */
+        d_seo_label: 'SEO e Presença Web',
+        d_seo_h:     'Seja encontrado online. Converta visibilidade em clientes.',
+        d_seo_p:     'A maioria das empresas do Algarve é difícil de encontrar online — ou, pior, não aparece de todo. Resolvemos isso. Ajudamos a sua empresa a aparecer claramente no Google Search e Google Maps, para que os clientes o encontrem, confiem em si e o contactem facilmente.',
+        d_seo_f1_t:  'Visibilidade no Google e Pesquisa Local',
+        d_seo_f1_b:  'Melhoramos o seu posicionamento no Google Search e Google Maps. Otimizamos ou criamos o seu Google Business Profile. Garantimos que o nome, morada e contactos da sua empresa são consistentes em toda a internet — para que o Google confie na sua ficha e os clientes o encontrem.',
+        d_seo_f2_t:  'SEO e Estrutura do Website',
+        d_seo_f2_b:  'Já tem website? Corrigimos problemas técnicos de SEO, melhoramos a estrutura e o conteúdo do site, adicionamos as palavras-chave certas para pesquisas locais reais e melhoramos a velocidade e a experiência mobile — facilitando ao Google compreender o que a sua empresa faz e onde opera.',
+        d_seo_f3_t:  'Criação de Website Profissional',
+        d_seo_f3_b:  'Ainda sem website? Criamos um site simples, limpo e rápido, pensado para funcionar na perfeição no mobile, explicar claramente o que faz e converter visitantes em chamadas ou mensagens. Sem design desnecessariamente complexo. Sem funcionalidades a mais. Apenas o que a sua empresa precisa.',
+        d_seo_f4_t:  'Avaliações e Gestão de Reputação',
+        d_seo_f4_b:  'Ajudamos a recolher e gerir avaliações de clientes no Google e principais diretórios. Mais avaliações genuínas melhoram o seu posicionamento local e criam confiança imediata com novos clientes a pesquisar os seus serviços no Algarve.',
+        d_seo_cta:   'Melhorar a Visibilidade Online',
+        d_seo_vis_h: 'Visibilidade na Pesquisa Local',
+        d_seo_gbp:   'Google Business Profile',
+        d_seo_gbp_status: 'Ativo e Verificado',
+        d_seo_m1: 'Impressões Google (mês)', d_seo_m2: 'Visualizações do perfil',
+        d_seo_m3: 'Pedidos de direções',      d_seo_m4: 'Cliques no website',
+        d_seo_v1: '2.840', d_seo_v2: '318', d_seo_v3: '47', d_seo_v4: '94',
+        d_seo_goal: 'Mais visibilidade → Mais contactos → Mais clientes',
       }
-    };
-
-    let currentLang = 'en';
-
-    window.setLanguage = function setLanguage(lang) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
-      document.title = T[lang].page_title;
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.dataset.i18n;
-        if (T[lang][k] !== undefined) el.textContent = T[lang][k];
-      });
-
-      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-        const k = el.dataset.i18nPh;
-        if (T[lang][k] !== undefined) el.placeholder = T[lang][k];
-      });
-
-      document.querySelectorAll('[data-lang]').forEach(b =>
-        b.classList.toggle('active', b.dataset.lang === lang)
-      );
     }
+/* Internal alias for page-specific logic */
+const T = window.PAGE_TRANSLATIONS;
+;
+
+    /* currentLang removed — use document.documentElement.lang */
+
+    /* lang.js handles setLanguage. Page-specific onLangChange: none needed. */
 
 
     /* ── reveal ── */
@@ -471,9 +512,10 @@
     });
 
     /* ── sticky service nav active state on scroll ── */
-    const sections  = ['managed-it','cybersecurity','cloud','backup','networking','consulting'];
+    const sections  = ['managed-it','cybersecurity','cloud','backup','networking','consulting','seo-web'];
     const navBtns   = document.querySelectorAll('.svc-nav-btn');
-    const navOffset = document.getElementById('svcNav').offsetHeight + 72 + 20;
+    const svcNavEl  = document.getElementById('svcNav');
+    const navOffset = (svcNavEl ? svcNavEl.offsetHeight : 0) + 72 + 20;
 
     function updateActiveNav() {
       let current = sections[0];
@@ -493,7 +535,7 @@
     });
 
     /* ── init ── */
-    window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
+    /* lang.js applies saved language */
   /* init logo */
   (function(){
     var isL = document.body.classList.contains('theme-light');

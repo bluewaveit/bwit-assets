@@ -1,5 +1,5 @@
 /* BlueWave IT — about.js — loads after site.js */
-const T = {
+window.PAGE_TRANSLATIONS = {
     en: {
       nav_label:'Managed IT Services', nav_home:'Home', nav_services:'Services', nav_about:'About', nav_pricing:'Pricing', nav_contact:'Contact', cta_book:'Book a Consultation',
       theme_dark:'Dark', theme_light:'Light',
@@ -92,12 +92,6 @@ const T = {
       cert_footer_strong:'Every technician on your account', cert_footer_rest:'holds all four certifications — not just senior staff. You get the same standard of expertise on every call, every visit, every ticket.',
       cta_h:'Ready to meet your new IT partner?', cta_p:'Book a free consultation with BlueWave IT and let\'s talk about where your business is today, and where your IT should take it next.',
       cta_btn1:'Book a Free Consultation', cta_btn2:'Explore Our Services',
-      ft_tagline:'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
-      ft_svc_h:'Services', ft_co_h:'Company',
-      ft_s1:'Managed IT', ft_s2:'Cybersecurity', ft_s3:'Cloud & M365', ft_s4:'Backup & Recovery', ft_s5:'Network Management', ft_s6:'IT Consulting',
-      ft_c1:'Home', ft_c2:'About', ft_c3:'Pricing', ft_c4:'FAQ', ft_c5:'Contact',
-      ft_copy:'© 2026 BlueWave IT. Reliable technology for growing businesses.',
-      ft_privacy:'Privacy Policy', ft_gdpr:'GDPR', ft_terms:'Terms and Conditions',
     },
     pt: {
       nav_label:'Serviços IT Geridos', nav_home:'Início', nav_services:'Serviços', nav_about:'Sobre', nav_pricing:'Preços', nav_contact:'Contacto', cta_book:'Marcar Consulta',
@@ -191,30 +185,13 @@ const T = {
       cert_footer_strong:'Todos os técnicos da sua conta', cert_footer_rest:'possuem as quatro certificações — não apenas os seniores. Obtém o mesmo nível de especialização em cada chamada, cada visita, cada ticket.',
       cta_h:'Pronto para conhecer o seu novo parceiro IT?', cta_p:'Marque uma consulta gratuita com a BlueWave IT e falemos sobre onde está o seu negócio hoje e para onde o seu IT o deve levar a seguir.',
       cta_btn1:'Marcar uma Consulta Gratuita', cta_btn2:'Explorar os Nossos Serviços',
-      ft_tagline:'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
-      ft_svc_h:'Serviços', ft_co_h:'Empresa',
-      ft_s1:'IT Gerido', ft_s2:'Cibersegurança', ft_s3:'Cloud e M365', ft_s4:'Backup e Recuperação', ft_s5:'Gestão de Rede', ft_s6:'Consultoria IT',
-      ft_c1:'Início', ft_c2:'Sobre', ft_c3:'Preços', ft_c4:'FAQ', ft_c5:'Contacto',
-      ft_copy:'© 2026 BlueWave IT. Tecnologia fiável para empresas em crescimento.',
-      ft_privacy:'Política de Privacidade', ft_gdpr:'RGPD',ft_terms:'Termos e Condições', 
     }
   };
 
-  let currentLang = 'en';
-
-  window.setLanguage = function setLanguage(lang) {
-    currentLang = lang;
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const k = el.dataset.i18n;
-      if (T[lang][k] !== undefined) el.textContent = T[lang][k];
-    });
-    document.querySelectorAll('[data-lang]').forEach(b =>
-      b.classList.toggle('active', b.dataset.lang === lang)
-    );
-    // Re-run stack filter to update category labels
+  /* Lang is handled by js/lang.js. Re-run stack filter on lang change. */
+  window._onLangChange = function () {
     filterStack(document.querySelector('.stack-tab.active')?.dataset.filter || 'all');
-  }
+  };
 
 
   /* ── reveal on scroll ── */
@@ -313,7 +290,7 @@ const T = {
   );
 
   /* ── init ── */
-  window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
+  /* lang.js applies saved language on DOMContentLoaded */
   /* init logo */
   (function(){
     var isL = document.body.classList.contains('theme-light');

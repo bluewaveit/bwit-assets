@@ -6,7 +6,7 @@
    ================================================================ */
 
 /* ── Shared nav + footer translations ────────────────────────────── */
-window.T = {
+window.PAGE_TRANSLATIONS = {
   en: {
     nav_label:                     'Managed IT Services',
     nav_home:                      'Home',
@@ -17,10 +17,15 @@ window.T = {
     nav_contact:                   'Contact',
     theme_dark:                    'Dark',
     theme_light:                   'Light',
+    footer_tagline:                'Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.',
+    footer_services_head:          'Services',
+    footer_company_head:           'Company',
+    footer_s1: 'Managed IT', footer_s2: 'Cybersecurity', footer_s3: 'Cloud & M365',
+    footer_s4: 'Backup & Recovery', footer_s5: 'Network Management', footer_s6: 'IT Consulting',
     footer_terms:                  'Terms and Conditions',
     footer_privacy:                'Privacy Policy',
     footer_gdpr:                   'GDPR',
-    footer_copy:                   '© 2026 BlueWave IT. All rights reserved.',
+    footer_copy:                   '© 2026 BlueWave IT. Reliable technology for growing businesses.',
     gdpr_pill:                     'GDPR Compliance',
     gdpr_h1:                       'Your data. Protected by design.',
     gdpr_bc:                       'GDPR',
@@ -83,6 +88,66 @@ window.T = {
     terms_h2_10:                   'Term & Termination',
     terms_h2_11:                   'Acceptable Use',
     terms_h2_12:                   'Governing Law & Disputes',
+    /* ── Terms body ── */
+    terms_intro:   'These Terms and Conditions govern the provision of managed IT services by BlueWave IT to its clients. They are supplemented by a Master Service Agreement (MSA) and Statement of Work (SOW) signed at onboarding, which take precedence in the event of any conflict. Last revised: January 2026.',
+    terms_s2_p:    'BlueWave IT will provide the Services described in the Statement of Work. Services are delivered remotely and, where specified, on-site within the Algarve region. The scope of managed services is defined at onboarding and may be adjusted by mutual written agreement.',
+    terms_s3_p:    'Fees are charged on a per-user per-month basis as agreed in the SOW, invoiced monthly in advance. There is no minimum user count — services are available from a single user. User counts are adjusted on a pro-rated basis for additions or removals within a billing period.',
+    terms_s4_p1:   'Response and resolution targets are defined per priority level in the signed SLA schedule. In summary:',
+    terms_s4_p2:   'SLA targets apply during business hours except where 24/7 coverage is explicitly included in the SOW. BlueWave IT tracks SLA compliance and provides monthly reports. Persistent SLA breach (below 95% compliance over 3 consecutive months) entitles the client to a service credit as defined in the SLA schedule.',
+    terms_s5_r1_h: 'Provide accurate information',  terms_s5_r1_p: 'Provide complete and accurate information about your IT environment, user counts, and any changes that may affect service delivery.',
+    terms_s5_r2_h: 'Grant required access',          terms_s5_r2_p: 'Provide the administrative credentials, network access, and physical access necessary for BlueWave IT to deliver the Services as described in the SOW.',
+    terms_s5_r3_h: 'Designate a contact',             terms_s5_r3_p: 'Designate a primary point of contact with authority to approve changes, respond to communications, and provide instructions relating to the managed service.',
+    terms_s5_r4_h: 'Comply with acceptable use',     terms_s5_r4_p: 'Ensure that your staff uses managed systems in accordance with the Acceptable Use Policy (AUP) provided at onboarding. Misuse that results in additional remediation work may be chargeable.',
+    terms_s5_r5_h: 'Pay fees promptly',               terms_s5_r5_p: 'Pay invoices within the agreed terms. Disputes should be raised in writing within 7 days of invoice date; undisputed portions remain payable.',
+    terms_s6_p:    'All intellectual property created by BlueWave IT in the course of delivering Services (including scripts, templates, documentation, and tooling configurations) remains the property of BlueWave IT, unless the SOW explicitly states otherwise. Clients are granted a non-exclusive, non-transferable licence to use such materials solely for their own business operations during the term of the Agreement.',
+    terms_s7_p:    'Both parties agree to keep confidential all non-public information received from the other party in connection with the Agreement ("Confidential Information"). This includes business data, system configurations, pricing, and client lists. Confidential Information may only be disclosed to employees or sub-contractors who need it to deliver the Services and are bound by equivalent obligations.',
+    terms_s8_p1:   'Both parties agree to comply with all applicable data protection legislation, including GDPR (EU) 2016/679 and Lei n.º 58/2019. Where BlueWave IT processes personal data on behalf of the client, this is governed by the Data Processing Agreement (DPA) executed at onboarding, which forms part of the Agreement.',
+    terms_s8_p2:   'A GDPR-compliant DPA is included as a standard schedule in every BlueWave IT managed service contract. No client data is processed without a valid DPA in place.',
+    terms_s9_p:    "BlueWave IT's total aggregate liability to the client under or in connection with the Agreement, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, shall not exceed the total fees paid by the client in the 3 months immediately preceding the event giving rise to the claim.",
+    terms_s10_p:   "The Agreement commences on the date the MSA is signed and continues on a monthly rolling basis after the initial term specified in the SOW (typically 3 or 12 months). Either party may terminate by giving 30 days' written notice after the initial term.",
+    terms_s11_p:   'The client must not use managed systems, networks, or services for any illegal, harmful, or abusive purpose. This includes, without limitation:',
+    terms_s11_li1: 'Distributing malware, spam, or unsolicited communications',
+    terms_s11_li2: 'Accessing systems, accounts, or data without authorisation',
+    terms_s11_li3: 'Circumventing security controls implemented by BlueWave IT',
+    terms_s11_li4: 'Storing or transmitting illegal content, including content that infringes third-party intellectual property rights',
+    terms_s11_li5: 'Using managed infrastructure for cryptocurrency mining or other high-resource non-business activities',
+    terms_s12_p:   'This Agreement is governed by the laws of Portugal. The parties agree to submit to the exclusive jurisdiction of the courts of Portimão, Algarve, for any dispute arising under or in connection with this Agreement, except that BlueWave IT may seek injunctive or other equitable relief in any court of competent jurisdiction to protect its intellectual property or confidential information.',
+    /* ── Privacy body ── */
+    priv_s1_p:   '<strong>BlueWave IT</strong> is a managed IT services provider registered in Portugal, operating from Portimão, Algarve. We provide IT support, cybersecurity, cloud management, backup, and consulting services to businesses across the Algarve and Portugal.',
+    priv_s2_p1:  'We collect the minimum data needed to respond to enquiries and deliver our services.',
+    priv_s2_p2:  'We do not collect special-category data (health, biometric, political views, etc.) through our website. We do not use automated decision-making or profiling.',
+    priv_s4_r1_h:'Respond to your enquiry',          priv_s4_r1_p:'We use the information you submit to reply to your message, book a consultation, or provide the information you requested.',
+    priv_s4_r2_h:'Deliver managed IT services',      priv_s4_r2_p:'For clients, we use contact and account information to manage service delivery, communicate about incidents, and fulfil our contractual obligations.',
+    priv_s4_r3_h:'Improve our website and services', priv_s4_r3_p:'We review aggregated and anonymised usage data to understand how the site is being used and where we can improve the experience.',
+    priv_s4_r4_h:'Meet legal obligations',           priv_s4_r4_p:'We may retain certain records for tax compliance, audit purposes, or other legal requirements under Portuguese and EU law.',
+    priv_s4_p2:  'We do <strong>not</strong> sell, rent, or share your personal data with third parties for marketing purposes. We do not use your data for advertising.',
+    priv_s5_p:   'After the applicable retention period, data is securely deleted or anonymised. You can request earlier deletion at any time — see Section 6.',
+    priv_r1_h:'Access',        priv_r1_p:'Request a copy of the personal data we hold about you.',
+    priv_r2_h:'Rectification', priv_r2_p:'Ask us to correct inaccurate or incomplete data.',
+    priv_r3_h:'Erasure',       priv_r3_p:'Request deletion of your data where there is no legal reason to retain it.',
+    priv_r4_h:'Restriction',   priv_r4_p:'Ask us to pause processing while a dispute or objection is considered.',
+    priv_r5_h:'Portability',   priv_r5_p:'Receive your data in a portable format where processing is based on consent or contract.',
+    priv_r6_h:'Object',        priv_r6_p:'Object to processing based on legitimate interests at any time.',
+    priv_s7_p1:  'Our website uses a minimal set of cookies. We do not use advertising cookies, tracking pixels, or third-party analytics platforms that build user profiles.',
+    priv_s7_p2:  'We do not use Google Analytics, Meta Pixel, or any advertising network cookies. If this changes, this policy will be updated and, where required, we will seek your consent before placing non-essential cookies.',
+    priv_s8_p:   'We use the following third-party services in connection with our website. Each operates under its own privacy policy.',
+    priv_s9_p:   'We implement technical and organisational measures appropriate to the sensitivity of the data we process. These include TLS encryption in transit, access controls limiting who can access submitted data, and regular security reviews of our systems and third-party providers.',
+    priv_s10_p:  'We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we do, we will update the "Last revised" date at the top of this page. We encourage you to review this policy periodically.',
+    /* ── GDPR body ── */
+    gdpr_s1_p1:   'Under GDPR, BlueWave IT operates in two distinct roles depending on the context:',
+    gdpr_s1_p2:   'When acting as a <strong>data processor</strong>, BlueWave IT never uses client data for any purpose other than delivering the contracted services. We do not sell, mine, or monetise data we process on behalf of clients under any circumstances.',
+    gdpr_s2_intro:'Article 5 GDPR establishes seven core principles that govern all personal data processing. BlueWave IT embeds these into every service and internal process:',
+    gdpr_pr1_h:'Lawfulness, Fairness & Transparency', gdpr_pr1_p:'We identify a valid legal basis for every processing activity and disclose our practices clearly in this page and our Privacy Policy.',
+    gdpr_pr2_h:'Purpose Limitation',    gdpr_pr2_p:'Data is collected for specified, explicit purposes and is never processed in a manner incompatible with those purposes.',
+    gdpr_pr3_h:'Data Minimisation',     gdpr_pr3_p:'We collect only the data that is adequate, relevant, and limited to what is necessary for each processing purpose.',
+    gdpr_pr4_h:'Accuracy',              gdpr_pr4_p:'We take reasonable steps to ensure personal data is accurate and kept up to date, and we act promptly on correction requests.',
+    gdpr_pr5_h:'Storage Limitation',    gdpr_pr5_p:'Data is kept for no longer than necessary. Our documented retention schedule defines specific periods for each data category.',
+    gdpr_pr6_h:'Integrity & Confidentiality', gdpr_pr6_p:'We implement technical and organisational security measures appropriate to the risk — including encryption, access controls, and regular security reviews.',
+    gdpr_pr7_h:'Accountability',        gdpr_pr7_p:'We are responsible for, and able to demonstrate, compliance with all six principles above. This includes maintaining processing records (Art. 30), conducting DPIAs where required (Art. 35), and implementing privacy by design and by default (Art. 25).',
+    gdpr_s3_p1:  'Article 28 GDPR requires that any organisation engaging a data processor does so under a written contract — a Data Processing Agreement (DPA). BlueWave IT provides a GDPR-compliant DPA to all managed service clients.',
+    gdpr_s3_p3:  'Our DPA satisfies all Article 28(3) GDPR requirements and specifies:',
+    gdpr_dpa1_h: 'Subject matter, duration & nature', gdpr_dpa1_p:'The specific IT services covered, contract duration, and the nature of processing activities (access, storage, transmission).',
+    gdpr_dpa2_h: 'Processing on documented instructions only', gdpr_dpa2_p:'BlueWave IT processes client data exclusively on written instructions from the client controller. We notify the client if we believe any instruction infringes GDPR (Art. 28(3)(h)).',
   },
   pt: {
     nav_label:                     'Serviços IT Geridos',
@@ -94,6 +159,11 @@ window.T = {
     nav_contact:                   'Contacto',
     theme_dark:                    'Escuro',
     theme_light:                   'Claro',
+    footer_tagline:                'Gestão IT de nível empresarial para empresas em crescimento no Algarve. Fiável, segura e com preço previsível.',
+    footer_services_head:          'Serviços',
+    footer_company_head:           'Empresa',
+    footer_s1: 'IT Gerido', footer_s2: 'Cibersegurança', footer_s3: 'Cloud e M365',
+    footer_s4: 'Backup e Recuperação', footer_s5: 'Gestão de Rede', footer_s6: 'Consultoria IT',
     footer_terms:                  'Termos e Condições',
     footer_privacy:                'Política de Privacidade',
     footer_gdpr:                   'RGPD',
@@ -160,31 +230,74 @@ window.T = {
     terms_h2_10:                   'Vigência e Rescisão',
     terms_h2_11:                   'Utilização Aceitável',
     terms_h2_12:                   'Lei Aplicável e Litígios',
+    /* ── Termos (corpo) ── */
+    terms_intro:   'Estes Termos e Condições regem a prestação de serviços IT geridos pela BlueWave IT aos seus clientes. São complementados por um Contrato de Serviços Principal (CSP) e uma Declaração de Trabalho (DT) assinados no onboarding, que prevalecem em caso de conflito. Última revisão: janeiro de 2026.',
+    terms_s2_p:    'A BlueWave IT prestará os Serviços descritos na Declaração de Trabalho. Os serviços são prestados remotamente e, quando especificado, presencialmente na região do Algarve. O âmbito dos serviços geridos é definido no onboarding e pode ser ajustado por mútuo acordo escrito.',
+    terms_s3_p:    'Os honorários são cobrados por utilizador por mês, conforme acordado na DT, faturados mensalmente antecipadamente. Não existe número mínimo de utilizadores — os serviços estão disponíveis a partir de um único utilizador. Os números de utilizadores são ajustados pro-rata para adições ou remoções dentro de um período de faturação.',
+    terms_s4_p1:   'Os objetivos de resposta e resolução são definidos por nível de prioridade no calendário de SLA assinado. Em resumo:',
+    terms_s4_p2:   'Os objetivos de SLA aplicam-se durante o horário de expediente, exceto quando a cobertura 24/7 está explicitamente incluída na DT. A BlueWave IT monitoriza o cumprimento do SLA e fornece relatórios mensais. A violação persistente do SLA (abaixo de 95% de cumprimento durante 3 meses consecutivos) dá direito ao cliente a um crédito de serviço conforme definido no calendário de SLA.',
+    terms_s5_r1_h: 'Fornecer informações precisas',   terms_s5_r1_p: 'Fornecer informações completas e precisas sobre o seu ambiente IT, número de utilizadores e quaisquer alterações que possam afetar a prestação do serviço.',
+    terms_s5_r2_h: 'Conceder o acesso necessário',    terms_s5_r2_p: 'Fornecer as credenciais administrativas, acesso à rede e acesso físico necessários para que a BlueWave IT preste os Serviços descritos na DT.',
+    terms_s5_r3_h: 'Designar um contacto',            terms_s5_r3_p: 'Designar um ponto de contacto principal com autoridade para aprovar alterações, responder a comunicações e fornecer instruções relativas ao serviço gerido.',
+    terms_s5_r4_h: 'Cumprir a política de utilização aceitável', terms_s5_r4_p: 'Garantir que os seus colaboradores utilizam os sistemas geridos de acordo com a Política de Utilização Aceitável (PUA) fornecida no onboarding. A utilização indevida que resulte em trabalho de remediação adicional pode ser faturada.',
+    terms_s5_r5_h: 'Pagar atempadamente',             terms_s5_r5_p: 'Pagar as faturas dentro dos prazos acordados. As disputas devem ser comunicadas por escrito no prazo de 7 dias a contar da data da fatura; as parcelas não contestadas continuam a ser devidas.',
+    terms_s6_p:    'Toda a propriedade intelectual criada pela BlueWave IT no âmbito da prestação dos Serviços (incluindo scripts, modelos, documentação e configurações de ferramentas) permanece propriedade da BlueWave IT, salvo disposição expressa em contrário na DT. Os clientes recebem uma licença não exclusiva e intransmissível para utilizar esses materiais exclusivamente nas suas operações comerciais durante a vigência do Contrato.',
+    terms_s7_p:    'Ambas as partes concordam em manter confidenciais todas as informações não públicas recebidas da outra parte no âmbito do Contrato ("Informações Confidenciais"). Isto inclui dados comerciais, configurações de sistemas, preços e listas de clientes. As Informações Confidenciais só podem ser divulgadas a colaboradores ou subcontratados que necessitem delas para prestar os Serviços e que estejam vinculados por obrigações equivalentes.',
+    terms_s8_p1:   'Ambas as partes concordam em cumprir toda a legislação aplicável em matéria de proteção de dados, incluindo o RGPD (UE) 2016/679 e a Lei n.º 58/2019. Quando a BlueWave IT trata dados pessoais em nome do cliente, este tratamento é regido pelo Acordo de Tratamento de Dados (ATD) celebrado no onboarding, que faz parte do Contrato.',
+    terms_s8_p2:   'Um ATD conforme com o RGPD está incluído como anexo padrão em todos os contratos de serviços geridos da BlueWave IT. Nenhum dado de cliente é tratado sem um ATD válido em vigor.',
+    terms_s9_p:    'A responsabilidade total e agregada da BlueWave IT perante o cliente no âmbito do Contrato, seja em contrato, responsabilidade civil (incluindo negligência), violação de obrigação legal ou outro, não excederá o total dos honorários pagos pelo cliente nos 3 meses imediatamente anteriores ao evento que deu origem à reclamação.',
+    terms_s10_p:   'O Contrato inicia-se na data de assinatura do CSP e continua em regime mensal renovável após o prazo inicial especificado na DT (tipicamente 3 ou 12 meses). Qualquer das partes pode rescindir mediante aviso prévio de 30 dias após o prazo inicial.',
+    terms_s11_p:   'O cliente não deve utilizar sistemas, redes ou serviços geridos para qualquer fim ilegal, prejudicial ou abusivo. Isto inclui, sem limitação:',
+    terms_s11_li1: 'Distribuição de malware, spam ou comunicações não solicitadas',
+    terms_s11_li2: 'Acesso a sistemas, contas ou dados sem autorização',
+    terms_s11_li3: 'Contornar controlos de segurança implementados pela BlueWave IT',
+    terms_s11_li4: 'Armazenar ou transmitir conteúdo ilegal, incluindo conteúdo que infrinja direitos de propriedade intelectual de terceiros',
+    terms_s11_li5: 'Utilizar infraestrutura gerida para mineração de criptomoedas ou outras atividades de elevado consumo de recursos não relacionadas com o negócio',
+    terms_s12_p:   'Este Contrato é regido pelas leis de Portugal. As partes concordam em submeter-se à jurisdição exclusiva dos tribunais de Portimão, Algarve, para qualquer litígio decorrente ou relacionado com este Contrato, sem prejuízo de a BlueWave IT poder solicitar medidas cautelares ou outros recursos equitativos em qualquer tribunal competente para proteger a sua propriedade intelectual ou informações confidenciais.',
+    /* ── Privacidade (corpo) ── */
+    priv_s1_p:   '<strong>BlueWave IT</strong> é um fornecedor de serviços IT geridos registado em Portugal, com sede em Portimão, Algarve. Prestamos serviços de suporte IT, cibersegurança, gestão de cloud, backup e consultoria a empresas no Algarve e em Portugal.',
+    priv_s2_p1:  'Recolhemos apenas os dados mínimos necessários para responder a pedidos de informação e prestar os nossos serviços.',
+    priv_s2_p2:  'Não recolhemos dados de categorias especiais (saúde, biométricos, opiniões políticas, etc.) através do nosso website. Não utilizamos tomada de decisões automatizada nem elaboração de perfis.',
+    priv_s4_r1_h:'Responder ao seu pedido de informação',    priv_s4_r1_p:'Utilizamos a informação que submete para responder à sua mensagem, marcar uma consulta ou fornecer a informação solicitada.',
+    priv_s4_r2_h:'Prestar serviços IT geridos',             priv_s4_r2_p:'Para clientes, utilizamos informações de contacto e de conta para gerir a prestação do serviço, comunicar sobre incidentes e cumprir as nossas obrigações contratuais.',
+    priv_s4_r3_h:'Melhorar o nosso website e serviços',     priv_s4_r3_p:'Analisamos dados de utilização agregados e anonimizados para compreender como o site está a ser utilizado e onde podemos melhorar a experiência.',
+    priv_s4_r4_h:'Cumprir obrigações legais',               priv_s4_r4_p:'Podemos conservar determinados registos para fins de conformidade fiscal, auditoria ou outros requisitos legais ao abrigo da lei portuguesa e europeia.',
+    priv_s4_p2:  'Não <strong>vendemos, alugamos nem partilhamos</strong> os seus dados pessoais com terceiros para fins de marketing. Não utilizamos os seus dados para publicidade.',
+    priv_s5_p:   'Após o período de retenção aplicável, os dados são eliminados de forma segura ou anonimizados. Pode solicitar a eliminação antecipada a qualquer momento — consulte a Secção 6.',
+    priv_r1_h:'Acesso',         priv_r1_p:'Solicitar uma cópia dos dados pessoais que detemos sobre si.',
+    priv_r2_h:'Retificação',    priv_r2_p:'Pedir-nos que corrijamos dados incorretos ou incompletos.',
+    priv_r3_h:'Eliminação',     priv_r3_p:'Solicitar a eliminação dos seus dados quando não existe motivo legal para os conservar.',
+    priv_r4_h:'Limitação',      priv_r4_p:'Pedir-nos que suspendamos o tratamento enquanto uma disputa ou objeção é apreciada.',
+    priv_r5_h:'Portabilidade',  priv_r5_p:'Receber os seus dados num formato portátil quando o tratamento se baseia em consentimento ou contrato.',
+    priv_r6_h:'Oposição',       priv_r6_p:'Opor-se ao tratamento baseado em interesses legítimos a qualquer momento.',
+    priv_s7_p1:  'O nosso website utiliza um conjunto mínimo de cookies. Não utilizamos cookies de publicidade, píxeis de rastreamento nem plataformas de análise de terceiros que criem perfis de utilizadores.',
+    priv_s7_p2:  'Não utilizamos Google Analytics, Meta Pixel nem cookies de qualquer rede publicitária. Caso isto mude, esta política será atualizada e, quando exigido, solicitaremos o seu consentimento antes de colocar cookies não essenciais.',
+    priv_s8_p:   'Utilizamos os seguintes serviços de terceiros em ligação com o nosso website. Cada um opera ao abrigo da sua própria política de privacidade.',
+    priv_s9_p:   'Implementamos medidas técnicas e organizacionais adequadas à sensibilidade dos dados que tratamos. Estas incluem encriptação TLS em trânsito, controlos de acesso que limitam quem pode aceder aos dados submetidos, e revisões de segurança regulares dos nossos sistemas e fornecedores terceiros.',
+    priv_s10_p:  'Podemos atualizar esta Política de Privacidade periodicamente para refletir alterações nas nossas práticas, tecnologia, requisitos legais ou outros fatores. Quando o fizermos, atualizaremos a data de "Última revisão" no topo desta página. Encorajamo-lo a rever esta política periodicamente.',
+    /* ── RGPD (corpo) ── */
+    gdpr_s1_p1:   'Ao abrigo do RGPD, a BlueWave IT opera em dois papéis distintos consoante o contexto:',
+    gdpr_s1_p2:   'Quando atua como <strong>subcontratante de dados</strong>, a BlueWave IT nunca utiliza dados de clientes para qualquer fim que não seja a prestação dos serviços contratados. Não vendemos, mineramos nem monetizamos dados que tratamos em nome de clientes em nenhuma circunstância.',
+    gdpr_s2_intro:'O Artigo 5.º do RGPD estabelece sete princípios fundamentais que regem todo o tratamento de dados pessoais. A BlueWave IT integra estes princípios em todos os serviços e processos internos:',
+    gdpr_pr1_h:'Licitude, Lealdade e Transparência',   gdpr_pr1_p:'Identificamos uma base legal válida para cada atividade de tratamento e divulgamos as nossas práticas de forma clara nesta página e na nossa Política de Privacidade.',
+    gdpr_pr2_h:'Limitação das Finalidades',             gdpr_pr2_p:'Os dados são recolhidos para finalidades específicas e explícitas e nunca são tratados de forma incompatível com essas finalidades.',
+    gdpr_pr3_h:'Minimização dos Dados',                 gdpr_pr3_p:'Recolhemos apenas os dados adequados, pertinentes e limitados ao necessário para cada finalidade de tratamento.',
+    gdpr_pr4_h:'Exatidão',                              gdpr_pr4_p:'Tomamos medidas razoáveis para garantir que os dados pessoais são exatos e mantidos atualizados, e atuamos prontamente em pedidos de correção.',
+    gdpr_pr5_h:'Limitação da Conservação',              gdpr_pr5_p:'Os dados são conservados pelo tempo estritamente necessário. O nosso calendário de retenção documentado define prazos específicos para cada categoria de dados.',
+    gdpr_pr6_h:'Integridade e Confidencialidade',       gdpr_pr6_p:'Implementamos medidas de segurança técnicas e organizacionais adequadas ao risco — incluindo encriptação, controlos de acesso e revisões de segurança regulares.',
+    gdpr_pr7_h:'Responsabilidade',                      gdpr_pr7_p:'Somos responsáveis por, e capazes de demonstrar, o cumprimento de todos os seis princípios acima. Isto inclui manter registos de tratamento (Art. 30), realizar AIAs quando necessário (Art. 35) e implementar privacidade por design e por defeito (Art. 25).',
+    gdpr_s3_p1:  'O Artigo 28.º do RGPD exige que qualquer organização que recorra a um subcontratante de dados o faça ao abrigo de um contrato escrito — um Acordo de Tratamento de Dados (ATD). A BlueWave IT fornece um ATD conforme com o RGPD a todos os clientes de serviços geridos.',
+    gdpr_s3_p3:  'O nosso ATD satisfaz todos os requisitos do Artigo 28.º(3) do RGPD e especifica:',
+    gdpr_dpa1_h: 'Objeto, duração e natureza',          gdpr_dpa1_p:'Os serviços IT específicos abrangidos, a duração do contrato e a natureza das atividades de tratamento (acesso, armazenamento, transmissão).',
+    gdpr_dpa2_h: 'Tratamento exclusivamente com base em instruções documentadas', gdpr_dpa2_p:'A BlueWave IT trata os dados dos clientes exclusivamente com base em instruções escritas do responsável pelo tratamento cliente. Notificamos o cliente se considerarmos que alguma instrução infringe o RGPD (Art. 28.º(3)(h)).',
   }
 };
 
 /* ── setLanguage — translates nav data-i18n elements ─────────────── */
-window.setLanguage = function setLanguage(lang) {
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach(function (el) {
-    var k = el.dataset.i18n;
-    if (window.T[lang] && window.T[lang][k] !== undefined) {
-      el.textContent = window.T[lang][k];
-    }
-  });
-  document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
-    var k = el.dataset.i18nHtml;
-    if (window.T[lang] && window.T[lang][k] !== undefined) {
-      el.innerHTML = window.T[lang][k];
-    }
-  });
-  document.querySelectorAll('[data-lang]').forEach(function (b) {
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-};
+/* lang.js handles setLanguage — no override */;
 
 /* ── init: apply saved language preference ───────────────────────── */
-window.setLanguage(localStorage.getItem('bwit-lang') || 'en');
+/* lang.js applies saved language on DOMContentLoaded */
 
 /* ── reveal on scroll ────────────────────────────────────────────── */
 var revealObs = new IntersectionObserver(function (entries) {
