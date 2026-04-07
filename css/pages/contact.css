@@ -533,6 +533,24 @@
   .back-to-top.show { opacity: 1; pointer-events: auto; }
   .back-to-top:hover { background: rgba(56,217,232,0.24); transform: translateY(-3px); }
 
+  /* ─── FIELD ERRORS ──────────────────────────────────────── */
+  .field-error {
+    font-size: 0.79rem;
+    color: var(--danger);
+    font-weight: 500;
+    line-height: 1.4;
+    display: none;
+  }
+  .field-error:not(:empty) { display: block; }
+
+  .contact-form input.is-invalid,
+  .contact-form select.is-invalid,
+  .contact-form textarea.is-invalid {
+    border-color: rgba(255,95,95,0.55) !important;
+    background: rgba(255,95,95,0.03) !important;
+    box-shadow: 0 0 0 3px rgba(255,95,95,0.08) !important;
+  }
+
   /* ─── RESPONSIVE ─────────────────────────────────────────── */
   @media (max-width: 980px) {
     .nav-links,    .contact-wrap { grid-template-columns: 1fr; }
