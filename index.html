@@ -90,7 +90,7 @@
       <div class="hero-bg-img" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="reveal">
-          <div class="eyebrow" data-i18n="hero_eyebrow">Proactive MSP support for small and growing businesses</div>
+          <div class="eyebrow" data-i18n="hero_eyebrow">Fast, secure, AI-optimized IT services for Algarve businesses — without enterprise pricing.</div>
           <h1>
             <span data-i18n="hero_title_1">Smart IT.</span><br>
             <span class="gradient-text" data-i18n="hero_title_2">Strong Security.</span><br>
@@ -124,7 +124,7 @@
           <div class="dash-top" style="margin-bottom:16px;">
             <div>
               <h3 data-i18n="ops_title">Your IT, Always On</h3>
-              <p style="margin:4px 0 0;color:var(--muted);font-size:0.80rem;" data-i18n="ops_subtitle">Proactive monitoring & round-the-clock protection</p>
+              <p style="margin:4px 0 0;color:var(--muted);font-size:0.80rem;" data-i18n="ops_subtitle">Fast, secure, AI-optimized IT services for Algarve businesses — without enterprise pricing.</p>
             </div>
             <div class="badge" style="display:inline-flex;align-items:center;gap:6px;white-space:nowrap;">
               <span style="width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;flex:0 0 auto;"></span>
@@ -561,6 +561,7 @@
               <strong>€60</strong>
               <span data-i18n="pricing_unit">per user / month</span>
             </div>
+            <div style="font-size:0.82rem;color:var(--muted);margin:-4px 0 16px;" data-i18n="pricing_note">Starting from 1 user. No minimum seat requirement. Flexible monthly support for businesses of any size.</div>
             <ul class="feature-list" style="margin-bottom:22px;">
               <li data-i18n="pricing_f1">Managed endpoint support</li>
               <li data-i18n="pricing_f2">Monitoring and routine maintenance</li>
@@ -725,59 +726,16 @@
   </main>
 
   <!-- ─── FOOTER ─────────────────────────────────────────── -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <div class="logo-mark" style="width:38px;height:38px;border-radius:11px;background:transparent;border:none;box-shadow:none;">
-              <img src="images/logo_dark.png" data-dark="images/logo_dark.png" data-light="images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
-            </div>
-            <strong>BlueWave IT</strong>
-          </div>
-          <p data-i18n="footer_tagline">Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.</p>
-        </div>
-        <div class="footer-col">
-          <h4 data-i18n="footer_services_head">Services</h4>
-          <ul>
-            <li><a href="services.html" data-i18n="svc_it_title">Managed IT</a></li>
-            <li><a href="services.html" data-i18n="svc_sec_title">Cybersecurity</a></li>
-            <li><a href="services.html" data-i18n="svc_cloud_title">Cloud Services</a></li>
-            <li><a href="services.html" data-i18n="svc_net_title">Network Management</a></li>
-            <li><a href="services.html" data-i18n="svc_backup_title">Backup & Recovery</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4 data-i18n="footer_company_head">Company</h4>
-          <ul>
-            <li><a href="about.html"   data-i18n="nav_about">About</a></li>
-            <li><a href="pricing.html" data-i18n="nav_pricing">Pricing</a></li>
-            <li><a href="pricing.html#faq"     data-i18n="nav_faq">FAQ</a></li>
-            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-         
-            
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span data-i18n="footer_copy">© 2026 BlueWave IT. Reliable technology for growing businesses.</span>
-        <div class="footer-legal">
-          <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
-          <a href="terms.html" data-i18n="footer_terms">Terms and Conditions</a>
-          <a href="gdpr.html" data-i18n="footer_gdpr">GDPR</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-    <script src="js/nav.js" defer></script>
+  <!-- lang.js MUST load first -->
+  <script src="js/lang.js"></script>
   <script src="js/site.js"></script>
   <script src="js/pages/home.js"></script>
+  <script src="js/nav.js" defer></script>
 
 
 
-<!-- Turnstile loaded lazily via home.js on first form interaction -->
-</body>
-</html>
+<!--

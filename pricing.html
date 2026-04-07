@@ -144,186 +144,307 @@
     </div>
   </div>
 
-  <!-- ── INTERACTIVE CALCULATOR ── -->
-  <section class="calc-section" id="calculator">
+
+  <!-- ── MSP FIT CALCULATOR ── -->
+  <section class="fit-section band" id="fit-check">
     <div class="container reveal">
-      <div class="calc-wrap">
-        <div class="calc-header">
-          <div>
-            <h2 data-i18n="calc_h">Cost calculator</h2>
-            <p data-i18n="calc_p">Adjust the sliders to model your exact environment. Pricing updates in real time.</p>
+      <div class="fit-layout">
+
+        <!-- Left: Questions -->
+        <div class="fit-questions">
+          <div class="section-label" style="margin-bottom:16px;" data-i18n="fit_label">MSP Fit Check</div>
+          <h2 style="font-size:clamp(1.7rem,2.8vw,2.5rem);margin-bottom:12px;" data-i18n="fit_h">Is managed IT right for your business?</h2>
+          <p class="fit-sub" data-i18n="fit_sub">Answer six questions about how your business operates. Your result updates as you go.</p>
+
+          <!-- Q1: Team size -->
+          <div class="fit-q-group">
+            <label for="fitQ1" data-i18n="fitQ1_label">How many people use IT in your business?</label>
+            <select id="fitQ1" class="fit-select">
+              <option value="-1" data-en="— Select —" data-pt="— Selecione —">— Select —</option>
+              <option value="0" data-en="1–2 people" data-pt="1–2 pessoas">1–2 people</option>
+              <option value="1" data-en="3–5 people" data-pt="3–5 pessoas">3–5 people</option>
+              <option value="2" data-en="6–15 people" data-pt="6–15 pessoas">6–15 people</option>
+              <option value="3" data-en="16+ people" data-pt="16+ pessoas">16+ people</option>
+            </select>
           </div>
-          <div class="calc-live-badge"><div class="calc-live-dot"></div> <span data-i18n="calc_live">Live estimate</span></div>
+
+          <!-- Q2: Downtime frequency -->
+          <div class="fit-q-group">
+            <label for="fitQ2" data-i18n="fitQ2_label">How often does a tech issue stop someone from working?</label>
+            <select id="fitQ2" class="fit-select">
+              <option value="-1" data-en="— Select —" data-pt="— Selecione —">— Select —</option>
+              <option value="0" data-en="Rarely or never" data-pt="Raramente ou nunca">Rarely or never</option>
+              <option value="1" data-en="A few times a month" data-pt="Algumas vezes por mês">A few times a month</option>
+              <option value="2" data-en="Weekly or more" data-pt="Semanalmente ou mais">Weekly or more</option>
+            </select>
+          </div>
+
+          <!-- Q3: Current IT (inverted scoring) -->
+          <div class="fit-q-group">
+            <label for="fitQ3" data-i18n="fitQ3_label">How is your IT currently handled?</label>
+            <select id="fitQ3" class="fit-select">
+              <option value="-1" data-en="— Select —" data-pt="— Selecione —">— Select —</option>
+              <option value="0" data-en="Dedicated in-house IT person" data-pt="Pessoa de IT dedicada internamente">Dedicated in-house IT person</option>
+              <option value="1" data-en="A colleague who handles IT on the side" data-pt="Um colega que trata da IT em paralelo">A colleague who handles IT on the side</option>
+              <option value="2" data-en="No one — we just deal with issues as they come" data-pt="Ninguém — resolvemos os problemas à medida que surgem">No one — we just deal with issues as they come</option>
+            </select>
+          </div>
+
+          <!-- Q4: Remote / multi-site -->
+          <div class="fit-q-group">
+            <label for="fitQ4" data-i18n="fitQ4_label">Do any of your team work remotely or from multiple locations?</label>
+            <select id="fitQ4" class="fit-select">
+              <option value="-1" data-en="— Select —" data-pt="— Selecione —">— Select —</option>
+              <option value="0" data-en="No — everyone is in one place" data-pt="Não — todos estão no mesmo local">No — everyone is in one place</option>
+              <option value="1" data-en="Sometimes — a few people occasionally" data-pt="Às vezes — algumas pessoas ocasionalmente">Sometimes — a few people occasionally</option>
+              <option value="2" data-en="Yes — regularly, or across locations" data-pt="Sim — regularmente, ou em vários locais">Yes — regularly, or across locations</option>
+            </select>
+          </div>
+
+          <!-- Q5: Security concern -->
+          <div class="fit-q-group">
+            <label for="fitQ5" data-i18n="fitQ5_label">How concerned are you about cybersecurity and data protection?</label>
+            <select id="fitQ5" class="fit-select">
+              <option value="-1" data-en="— Select —" data-pt="— Selecione —">— Select —</option>
+              <option value="0" data-en="Not very — we haven't had issues" data-pt="Pouco — não tivemos problemas">Not very — we haven't had issues</option>
+              <option value="1" data-en="Somewhat — we know it matters but haven't fully addressed it" data-pt="Algum — sabemos que é importante, mas ainda não tratámos totalmente">Somewhat — we know it matters but haven't fully addressed it</option>
+              <option value="2" data-en="Very — it's a real concern for us" data-pt="Elevado — é uma preocupação real para nós">Very — it's a real concern for us</option>
+            </select>
+          </div>
+
+          <!-- Q6: Data criticality -->
+          <div class="fit-q-group">
+            <label for="fitQ6" data-i18n="fitQ6_label">How critical is your business data? (client records, financial data, operations)</label>
+            <select id="fitQ6" class="fit-select">
+              <option value="-1" data-en="— Select —" data-pt="— Selecione —">— Select —</option>
+              <option value="0" data-en="Low — we could recover without it" data-pt="Baixa — conseguíamos recuperar sem eles">Low — we could recover without it</option>
+              <option value="1" data-en="Moderate — losing it would cause problems" data-pt="Moderada — perdê-los causaria problemas">Moderate — losing it would cause problems</option>
+              <option value="2" data-en="High — losing it would be seriously damaging" data-pt="Elevada — perdê-los seria seriamente prejudicial">High — losing it would be seriously damaging</option>
+            </select>
+          </div>
+
+          <p class="fit-trust" data-i18n="fit_trust">This check is designed to be practical, not inflated. It reflects how your business operates, not worst-case assumptions.</p>
         </div>
-        <div class="calc-body">
-          <!-- Inputs -->
-          <div class="calc-inputs">
-            <div class="slider-group">
-              <div class="slider-top">
-                <span class="slider-label" data-i18n="sl_users_label">Number of users</span>
-                <span class="slider-val" id="usersVal">10</span>
-              </div>
-              <div class="slider-desc" data-i18n="sl_users_desc">Staff members who need IT support, email, and device management</div>
-              <input type="range" id="usersRange" min="1" max="50" value="10" step="1"/>
+
+        <!-- Right: Result panel -->
+        <div class="fit-result-wrap">
+          <div class="fit-result-panel">
+
+            <!-- Score display -->
+            <div class="fit-score-row">
+              <span class="fit-score-number" id="fitScore">0</span>
+              <span class="fit-score-meta">
+                <span class="fit-score-label" data-i18n="fit_score_label">Your fit score</span>
+                <span class="fit-score-of"><span data-i18n="fit_score_of">out of 15</span></span>
+              </span>
             </div>
 
-            <div class="slider-group">
-              <div class="slider-top">
-                <span class="slider-label" data-i18n="sl_backup_plan_label">Cloud backup plan</span>
-                <span class="slider-val" id="backupPlanVal" style="font-size:0.80rem;padding:5px 10px;">Standard — €119</span>
-              </div>
-              <div class="slider-desc" data-i18n="sl_backup_plan_desc">Optional add-on — select the plan that fits your data volume</div>
-              <input type="range" id="backupPlanRange" min="0" max="4" value="2" step="1"/>
-              <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.72rem;color:var(--muted);">
-                <span data-i18n="sl_bp_none">None</span>
-                <span>Essentials</span>
-                <span>Standard</span>
-                <span>Plus</span>
-                <span>Archive</span>
-              </div>
+            <!-- Progress bar -->
+            <div class="fit-band-track">
+              <div class="fit-band-fill fit-band-empty" id="fitBandBar" style="width:0%"></div>
             </div>
 
-            <div class="slider-group">
-              <div class="slider-top">
-                <span class="slider-label" data-i18n="sl_backup_label">Estimated data volume (GB)</span>
-                <span class="slider-val" id="backupVal">500 GB</span>
-              </div>
-              <div class="slider-desc" data-i18n="sl_backup_desc">Business data across local storage and Microsoft 365</div>
-              <input type="range" id="backupRange" min="50" max="5000" value="500" step="50"/>
-            </div>
-          </div>
+            <!-- Empty state -->
+            <div id="fitEmptyMsg" class="fit-empty" data-i18n="fit_empty_msg">Answer the questions to see your result.</div>
 
-          <!-- Output -->
-          <div class="calc-output">
-            <div class="calc-out-total">
-              <div class="calc-out-label" data-i18n="calc_monthly_label">Estimated monthly investment</div>
-              <div class="calc-out-num" id="calcTotal">€600</div>
-              <div class="calc-out-period" id="calcAnnual">€7,200 / <span data-i18n="calc_year">year</span></div>
-            </div>
+            <!-- Result content (hidden until answered) -->
+            <div id="fitResultWrap" style="display:none;">
+              <div class="fit-result-title" id="fitResultTitle"></div>
+              <p class="fit-result-desc" id="fitResultDesc"></p>
 
-            <div class="calc-breakdown">
-              <div class="calc-row">
-                <span class="calc-row-label" data-i18n="cb_users_label">Managed users</span>
-                <span class="calc-row-val highlight" id="cbUsers">10 users × €60</span>
+              <div id="fitReasonsWrap">
+                <div class="fit-section-head" data-i18n="fit_reasons_head">Why this matters for you</div>
+                <ul class="fit-reasons-list" id="fitReasonsList"></ul>
               </div>
-              <div class="calc-row" id="cbBackupRow">
-                <span class="calc-row-label" data-i18n="cb_backup_plan_label">Cloud backup plan</span>
-                <span class="calc-row-val highlight" id="cbBackupPlan">Standard — €119/mo</span>
-              </div>
-              <div class="calc-row">
-                <span class="calc-row-label" data-i18n="cb_backup_label">Estimated data volume</span>
-                <span class="calc-row-val" id="cbBackup">500 GB</span>
-              </div>
-              <div class="calc-row" style="border-top:1px solid var(--line-s);margin-top:4px;padding-top:12px;">
-                <span class="calc-row-label" style="font-weight:600;color:var(--text);" data-i18n="cb_total_label">Total monthly</span>
-                <span class="calc-row-val highlight" id="cbTotal" style="font-size:1.05rem;">€719</span>
+
+              <div class="fit-budget-wrap">
+                <div class="fit-section-head" data-i18n="fit_budget_head">What to budget</div>
+                <p class="fit-budget-text" id="fitBudgetText"></p>
               </div>
             </div>
 
-            <div class="calc-savings">
-              <div class="calc-savings-head" data-i18n="calc_tip_head">Why this model saves money</div>
-              <div class="calc-savings-body" id="calcTip" data-i18n="calc_tip_base">A dedicated in-house IT hire in Portugal costs €25,000–€40,000/year — before tools, licences, and training. The managed model delivers more coverage at a fraction of that cost.</div>
+            <!-- CTAs — always visible -->
+            <div class="fit-actions">
+              <a href="#calculator"><button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})" data-i18n="fit_cta_primary">See My Setup Estimate</button></a>
+              <a href="contact.html" class="btn btn-secondary" style="width:100%;justify-content:center;text-decoration:none;" data-i18n="fit_cta_secondary">Talk Through My Options</a>
             </div>
+
           </div>
         </div>
-      </div>
-    </div>
+
+      </div><!-- /.fit-layout -->
+    </div><!-- /.container -->
   </section>
 
-  <!-- ── PLAN CARD + FREE ASSESSMENT ── -->
-  <section class="plan-section band">
-    <div class="container reveal">
-      <div style="margin-bottom:36px;">
-        <div class="section-label" data-i18n="plan_label">The Plan</div>
-        <h2 style="font-size:clamp(2rem,3.2vw,2.8rem);margin-bottom:12px;" data-i18n="plan_h">One plan, fully loaded</h2>
-        <p style="color:var(--muted-2);max-width:60ch;" data-i18n="plan_p">All six service areas are active for every managed client from day one. There are no starter tiers or upgrade paths — just complete, proactive IT management.</p>
-      </div>
-      <div class="plan-grid">
-        <!-- Main plan card -->
-        <div class="plan-card">
-          <div class="plan-badge" data-i18n="plan_badge">Standard Managed Plan</div>
-          <div class="plan-name" data-i18n="plan_name">Complete Managed IT</div>
-          <div class="plan-desc" data-i18n="plan_desc">Everything your business needs to run reliably, stay secure, and scale with confidence — managed proactively by BlueWave IT.</div>
-          <div class="plan-price-row">
-            <strong>€60</strong>
-            <span data-i18n="plan_unit">per user / month</span>
-          </div>
-          <div class="plan-sub" data-i18n="plan_sub">Billed monthly. Minimum 5 users. No lock-in contracts.</div>
-          <div class="plan-divider"></div>
-          <div class="includes-grid">
-            <div class="inc-item">
-              <div class="inc-icon"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M9 19h6"/><path d="M12 16v3"/></svg></div>
-              <div>
-                <div class="inc-name" data-i18n="inc_1_name">Managed IT & Helpdesk</div>
-                <div class="inc-sub"  data-i18n="inc_1_sub">24/7 monitoring, fast response</div>
-              </div>
-            </div>
-            <div class="inc-item">
-              <div class="inc-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9.5 12.5l1.7 1.7 3.8-3.9"/></svg></div>
-              <div>
-                <div class="inc-name" data-i18n="inc_2_name">Cybersecurity</div>
-                <div class="inc-sub"  data-i18n="inc_2_sub">EDR, email filter, MFA</div>
-              </div>
-            </div>
-            <div class="inc-item">
-              <div class="inc-icon"><svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 6.8 8.2 3.8 3.8 0 0 0 7 18z"/></svg></div>
-              <div>
-                <div class="inc-name" data-i18n="inc_3_name">Cloud & Microsoft 365</div>
-                <div class="inc-sub"  data-i18n="inc_3_sub">Admin, Teams, SharePoint</div>
-              </div>
-            </div>
-            <div class="inc-item">
-              <div class="inc-icon"><svg viewBox="0 0 24 24"><path d="M12 8v5l3 2"/><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v6h-6"/></svg></div>
-              <div>
-                <div class="inc-name" data-i18n="inc_4_name">Backup & Recovery</div>
-                <div class="inc-sub"  data-i18n="inc_4_sub">Daily verification, DR planning</div>
-              </div>
-            </div>
-            <div class="inc-item">
-              <div class="inc-icon"><svg viewBox="0 0 24 24"><path d="M4 8h16"/><path d="M4 16h16"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
-              <div>
-                <div class="inc-name" data-i18n="inc_5_name">Network Management</div>
-                <div class="inc-sub"  data-i18n="inc_5_sub">UniFi, firewall, VPN</div>
-              </div>
-            </div>
-            <div class="inc-item">
-              <div class="inc-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-              <div>
-                <div class="inc-name" data-i18n="inc_6_name">IT Consulting</div>
-                <div class="inc-sub"  data-i18n="inc_6_sub">Roadmaps, GDPR, strategy</div>
-              </div>
-            </div>
-          </div>
-          <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="event.preventDefault();openModal('Managed IT Plan—€60/user')" data-i18n="plan_cta">Get Started — Book a Consultation</a>
-        </div>
+  <style>
+    /* ── MSP Fit Calculator ───────────────────────────── */
+    .fit-section { padding: 80px 0; }
+    .fit-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+    .fit-sub {
+      color: var(--muted-2);
+      max-width: 58ch;
+      margin-bottom: 32px;
+    }
+    /* Questions */
+    .fit-q-group { margin-bottom: 20px; }
+    .fit-q-group label {
+      display: block;
+      font-size: 0.93rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .fit-select {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--r-sm);
+      color: var(--text);
+      padding: 10px 14px;
+      font-size: 0.93rem;
+      font-family: inherit;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      color-scheme: dark;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      transition: border-color 0.18s;
+    }
+    .fit-select:focus { outline: none; border-color: var(--cyan); }
+    .theme-light .fit-select { color-scheme: light; }
+    .fit-trust {
+      font-size: 0.83rem;
+      color: var(--muted);
+      border-left: 2px solid var(--line-s);
+      padding-left: 12px;
+      margin-top: 28px;
+      line-height: 1.55;
+    }
+    /* Result panel */
+    .fit-result-wrap {
+      position: sticky;
+      top: calc(var(--hh, 72px) + 20px);
+    }
+    .fit-result-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 28px 24px;
+    }
+    /* Score */
+    .fit-score-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .fit-score-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--cyan);
+      line-height: 1;
+      font-family: var(--fd, var(--font-display, inherit));
+      min-width: 2.2ch;
+    }
+    .fit-score-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .fit-score-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .fit-score-of {
+      font-size: 0.85rem;
+      color: var(--muted-2);
+    }
+    /* Band bar */
+    .fit-band-track {
+      height: 6px;
+      background: var(--line);
+      border-radius: 3px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .fit-band-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.4s ease, background-color 0.3s ease;
+    }
+    .fit-band-empty  { background: var(--line-s, #2a3d52); }
+    .fit-band-0 { background: var(--muted, #64748b); }
+    .fit-band-1 { background: var(--amber, #f59e0b); }
+    .fit-band-2 { background: var(--cyan-2, #22d3ee); }
+    .fit-band-3 { background: var(--green, #22c55e); }
+    /* States */
+    .fit-empty {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 16px 0 20px;
+    }
+    .fit-result-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .fit-result-desc {
+      font-size: 0.875rem;
+      color: var(--muted-2);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .fit-section-head {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--cyan-3);
+      margin-bottom: 8px;
+    }
+    .fit-reasons-list {
+      margin: 0 0 18px 0;
+      padding-left: 18px;
+    }
+    .fit-reasons-list li {
+      font-size: 0.85rem;
+      color: var(--muted-2);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+    .fit-budget-wrap { margin-bottom: 22px; }
+    .fit-budget-text {
+      font-size: 0.875rem;
+      color: var(--muted-2);
+      line-height: 1.6;
+      margin: 0;
+    }
+    /* CTAs */
+    .fit-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    /* Mobile */
+    @media (max-width: 860px) {
+      .fit-layout { grid-template-columns: 1fr; }
+      .fit-result-wrap { position: static; }
+    }
+  </style>
 
-        <!-- Side cards -->
-        <div class="side-cards">
-          <div class="side-card">
-            <div class="free-badge">
-              <strong data-i18n="free_val">Free</strong>
-              <span data-i18n="free_unit">IT assessment</span>
-            </div>
-            <h3 data-i18n="free_h">Start with a free review</h3>
-            <p data-i18n="free_p">Not ready to commit? We'll review your current IT environment, identify gaps, and give you a clear, written summary of risks and opportunities — at no cost and no obligation.</p>
-            <ul class="feature-list">
-              <li data-i18n="free_f1">Full environment audit</li>
-              <li data-i18n="free_f2">Security gap identification</li>
-              <li data-i18n="free_f3">Backup status check</li>
-              <li data-i18n="free_f4">Written recommendations</li>
-            </ul>
-            <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:18px;" onclick="event.preventDefault();openModal('IT Assessment &amp; Enquiry')" data-i18n="free_cta">Request Free Assessment</a>
-          </div>
-
-          <div class="side-card">
-            <h3 data-i18n="addon_h">Need something specific?</h3>
-            <p data-i18n="addon_p">For larger environments, multi-site deployments, or specialist project work — infrastructure design, server builds, office relocations — we scope bespoke engagements. Contact us to discuss.</p>
-            <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="event.preventDefault();openModal('IT Assessment &amp; Enquiry')" data-i18n="addon_cta">Discuss a Custom Scope</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ── SERVICE INCLUSION MATRIX ── -->
   <section class="matrix-section">
@@ -381,338 +502,6 @@
     </div>
   </section>
 
-  <!-- ── ROI ESTIMATOR ── -->
-  <section class="roi-section band">
-    <div class="container reveal">
-
-      <!-- Section header -->
-      <div style="margin-bottom:32px;">
-        <div class="section-label" data-i18n="roi_label">ROI Estimator</div>
-        <h2 style="font-size:clamp(2rem,3.2vw,2.8rem);margin-bottom:12px;" data-i18n="roi_h">See what managed IT is worth to your business</h2>
-        <p style="color:var(--muted-2);max-width:66ch;" data-i18n="roi_p">Enter your current IT situation to calculate your total annual burden — and see exactly how a managed service stacks up. Licences are always client-paid; BlueWave IT eliminates the hidden costs around them.</p>
-      </div>
-
-      <!-- Hero stat strip -->
-      <div class="roi-hero-stats">
-        <div class="roi-hero-stat">
-          <div class="rhs-icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <div class="rhs-val" id="rhsSMB">€18,960</div>
-          <div class="rhs-label">Estimated annual<br>IT burden</div>
-        </div>
-        <div class="roi-hero-stat">
-          <div class="rhs-icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          <div class="rhs-val" id="rhsMSP">€7,200</div>
-          <div class="rhs-label">BlueWave IT<br>annual investment</div>
-        </div>
-        <div class="roi-hero-stat" style="border-color:rgba(62,232,154,0.22);background:linear-gradient(160deg,rgba(62,232,154,0.06),rgba(0,194,203,0.04),rgba(255,255,255,0.025));">
-          <div class="rhs-icon" style="background:rgba(62,232,154,0.15);border-color:rgba(62,232,154,0.24);color:var(--green);"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-          <div class="rhs-val" id="rhsSaving" style="background:linear-gradient(135deg,var(--green),#5af0b2);-webkit-background-clip:text;background-clip:text;">+€11,760</div>
-          <div class="rhs-label">Estimated net<br>annual benefit</div>
-        </div>
-      </div>
-
-      <!-- Main 2-col layout -->
-      <div class="roi-wrap">
-
-        <!-- LEFT: Inputs -->
-        <div class="roi-inputs">
-          <div class="roi-inputs-head">
-            <h3 data-i18n="roi_inputs_h">Your current situation</h3>
-            <p data-i18n="roi_inputs_p">Fill in what your business currently spends. Licences you already pay stay yours — BlueWave eliminates the labour, risk, and hidden overhead around them.</p>
-          </div>
-          <div class="roi-inputs-body">
-
-            <!-- Staff & Downtime -->
-            <div class="roi-section-head">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              <span data-i18n="roi_sec_staff">Staff &amp; Downtime</span>
-            </div>
-
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_users">Number of users <span class="roi-input-hint" data-i18n="roi_hint_users">headcount on IT</span></div>
-              <div class="roi-slider-row">
-                <input type="range" id="roiUsers2" value="10" min="5" max="50" step="1"/>
-                <span class="roi-slider-val" id="roiUsers2Val">10</span>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_wage">Avg hourly cost per employee <span class="roi-input-hint" data-i18n="roi_hint_wage">€/hr incl. oncosts</span></div>
-              <div class="roi-slider-row">
-                <input type="range" id="roiWage" value="18" min="10" max="80" step="1"/>
-                <span class="roi-slider-val" id="roiWageVal">€18</span>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_hours">Hours lost to IT issues / employee / month <span class="roi-input-hint" data-i18n="roi_hint_hours">avg SMB: 3–6 hrs</span></div>
-              <div class="roi-slider-row">
-                <input type="range" id="roiHours" value="6" min="0" max="20" step="0.5"/>
-                <span class="roi-slider-val" id="roiHoursVal">6 hrs</span>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_outages">Major IT outages per year</div>
-              <div class="roi-slider-row">
-                <input type="range" id="roiOutage" value="3" min="0" max="20" step="1"/>
-                <span class="roi-slider-val" id="roiOutageVal">3</span>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_outagecost">Estimated cost per outage (€) <span class="roi-input-hint" data-i18n="roi_hint_outagecost">productivity + recovery</span></div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€</span>
-                <input type="number" id="roiOutageCost" value="2000" min="0" max="20000" step="100"/>
-              </div>
-            </div>
-
-            <!-- Software & Licences -->
-            <div class="roi-section-head">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
-              <span data-i18n="roi_sec_software">Software &amp; Licences</span>
-            </div>
-
-            <div class="roi-licence-note">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-              <span data-i18n="roi_licence_note">Licence costs remain <strong data-i18n="roi_licence_note_strong">yours to pay</strong> — BlueWave IT manages, administers, and optimises them at no extra charge.</span>
-            </div>
-
-            <div class="roi-input-group" style="margin-top:12px;">
-              <div class="roi-input-label" data-i18n="roi_lbl_m365">Microsoft 365 licences / year (€) <span class="roi-input-hint" data-i18n="roi_hint_m365">current annual total</span></div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€/yr</span>
-                <input type="number" id="roiM365" value="0" min="0" max="30000" step="100"/>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_av">Antivirus / endpoint security / year (€)</div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€/yr</span>
-                <input type="number" id="roiAntivirus" value="0" min="0" max="10000" step="50"/>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_saas">Other SaaS &amp; software subscriptions / year (€)</div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€/yr</span>
-                <input type="number" id="roiOtherSoftware" value="0" min="0" max="20000" step="100"/>
-              </div>
-            </div>
-
-            <!-- Ad-Hoc & Security -->
-            <div class="roi-section-head">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-              <span data-i18n="roi_sec_adhoc">Ad-Hoc Support &amp; Security Risk</span>
-            </div>
-
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_adhoc">Ad-hoc IT callouts per year <span class="roi-input-hint" data-i18n="roi_hint_adhoc">€75–€120/hr typical Algarve</span></div>
-              <div class="roi-input-row">
-                <span class="roi-prefix" data-i18n="roi_prefix_visits">visits</span>
-                <input type="number" id="roiAdHocCalls" value="0" min="0" max="50" step="1"/>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_adhocrate">Average cost per callout (€)</div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€</span>
-                <input type="number" id="roiAdHocRate" value="150" min="50" max="500" step="25"/>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_breach">Security incident / breach cost past 3 yrs (€) <span class="roi-input-hint" data-i18n="roi_hint_breach">amortised annually</span></div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€/yr</span>
-                <input type="number" id="roiSecurityBreach" value="0" min="0" max="100000" step="500"/>
-              </div>
-            </div>
-
-            <!-- Infrastructure -->
-            <div class="roi-section-head">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="6" rx="1"/><rect x="2" y="14" width="20" height="4" rx="1"/><path d="M6 9h.01M6 16h.01"/></svg>
-              <span data-i18n="roi_sec_infra">Infrastructure &amp; Hardware</span>
-            </div>
-
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_hardware">Hardware replacement &amp; repairs / year (€)</div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€/yr</span>
-                <input type="number" id="roiHardware" value="0" min="0" max="20000" step="100"/>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_backup">Backup storage &amp; services / year (€)</div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€/yr</span>
-                <input type="number" id="roiBackupCost" value="0" min="0" max="10000" step="50"/>
-              </div>
-            </div>
-            <div class="roi-input-group">
-              <div class="roi-input-label" data-i18n="roi_lbl_network">Network &amp; connectivity costs / year (€)</div>
-              <div class="roi-input-row">
-                <span class="roi-prefix">€/yr</span>
-                <input type="number" id="roiNetworkCost" value="0" min="0" max="10000" step="50"/>
-              </div>
-            </div>
-
-          </div><!-- /body -->
-        </div><!-- /inputs -->
-
-        <!-- RIGHT: Results -->
-        <div class="roi-results">
-          <div class="roi-results-head">
-            <h3 data-i18n="roi_results_h2">Annual cost analysis</h3>
-          </div>
-
-          <!-- Big savings number -->
-          <div class="roi-saving-hero">
-            <div class="roi-saving-label" data-i18n="roi_saving_label">Estimated net annual benefit</div>
-            <div class="roi-saving-num" id="roiSaving">+€6,672</div>
-              <!-- ── Gross value + ROI % + 3-year (new) ── -->
-              <div class="roi-gross-value" style="margin-top:16px;">
-                <div class="roi-gross-label" data-i18n="roi_gross_label">Gross value delivered per year</div>
-                <div class="roi-gross-num" id="roiGrossValue">€13,872</div>
-                <div class="roi-pct-row">
-                  <span class="roi-pct-item"><strong id="roiPctVal">93%</strong> <span data-i18n="roi_roi_pct">ROI in year 1</span></span>
-                  <span class="roi-pct-item">·</span>
-                  <span class="roi-pct-item"><strong id="roiPaybackVal2">~6.2 months</strong> <span data-i18n="roi_payback2">payback</span></span>
-                </div>
-              </div>
-              <div style="margin-top:14px;">
-                <div style="font-size:0.79rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:10px;" data-i18n="roi_3yr_label">3-year net benefit projection</div>
-                <div class="roi-year-grid">
-                  <div class="roi-year-card"><div class="roi-year-lbl" data-i18n="roi_yr1">Year 1</div><div class="roi-year-val" id="roiYr1">+€6,672</div></div>
-                  <div class="roi-year-card"><div class="roi-year-lbl" data-i18n="roi_yr2">Year 2</div><div class="roi-year-val" id="roiYr2">+€7,673</div></div>
-                  <div class="roi-year-card"><div class="roi-year-lbl" data-i18n="roi_yr3">Year 3</div><div class="roi-year-val" id="roiYr3">+€8,824</div></div>
-                </div>
-              </div>
-            <div class="roi-saving-sub" data-i18n="roi_saving_sub">What switching to BlueWave IT puts back in your business each year</div>
-          </div>
-
-          <!-- Payback + per-user strip -->
-          <div class="roi-meta-strip">
-            <div class="roi-meta-item">
-              <div class="roi-meta-lbl" data-i18n="roi_meta_payback">Payback period</div>
-              <div class="roi-meta-val" id="roiPayback">~1.5 months</div>
-            </div>
-            <div class="roi-meta-item">
-              <div class="roi-meta-lbl" data-i18n="roi_meta_peruser">Cost per user / month</div>
-              <div class="roi-meta-val" id="roiPerUser">€60.00</div>
-            </div>
-          </div>
-
-          <!-- Visual bar chart -->
-          <div class="roi-bar-chart">
-            <div class="roi-bar-section-head" data-i18n="roi_bar_current">Your current annual IT costs</div>
-            <div class="roi-bar-row">
-              <span class="roi-bar-lbl" data-i18n="roi_bar_prod">Productivity lost</span>
-              <div class="roi-bar-track"><div class="roi-bar-fill bar-prod" id="barProd" style="width:100%"></div></div>
-              <span class="roi-bar-val" id="barProdVal">€8,640</span>
-            </div>
-            <div class="roi-bar-row">
-              <span class="roi-bar-lbl" data-i18n="roi_bar_outage">Outage cost</span>
-              <div class="roi-bar-track"><div class="roi-bar-fill bar-outage" id="barOutage" style="width:52%"></div></div>
-              <span class="roi-bar-val" id="barOutageVal">€4,500</span>
-            </div>
-            <div class="roi-bar-row" id="barSwRow">
-              <span class="roi-bar-lbl" data-i18n="roi_bar_sw">Software licences</span>
-              <div class="roi-bar-track"><div class="roi-bar-fill bar-sw" id="barSw" style="width:0%"></div></div>
-              <span class="roi-bar-val" id="barSwVal">€0</span>
-            </div>
-            <div class="roi-bar-row" id="barAdHocRow">
-              <span class="roi-bar-lbl" data-i18n="roi_bar_adhoc">Ad-hoc + breaches</span>
-              <div class="roi-bar-track"><div class="roi-bar-fill bar-adhoc" id="barAdHoc" style="width:0%"></div></div>
-              <span class="roi-bar-val" id="barAdHocVal">€0</span>
-            </div>
-            <div class="roi-bar-row" id="barInfraRow">
-              <span class="roi-bar-lbl" data-i18n="roi_bar_infra">Infrastructure</span>
-              <div class="roi-bar-track"><div class="roi-bar-fill bar-infra" id="barInfra" style="width:0%"></div></div>
-              <span class="roi-bar-val" id="barInfraVal">€0</span>
-            </div>
-            <div class="roi-bar-section-head" style="margin-top:12px;" data-i18n="roi_bar_msp">BlueWave IT managed service</div>
-            <div class="roi-bar-row">
-              <span class="roi-bar-lbl" data-i18n="roi_bar_msp_cost">BlueWave IT cost</span>
-              <div class="roi-bar-track"><div class="roi-bar-fill bar-msp" id="barMsp" style="width:55%"></div></div>
-              <span class="roi-bar-val" id="barMspVal">€7,200</span>
-            </div>
-          </div>
-
-          <!-- Breakdown rows -->
-          <div class="roi-breakdown">
-
-            <div class="roi-bk-row">
-              <div class="roi-bk-icon loss"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-              <div class="roi-bk-text">
-                <div class="roi-bk-name" data-i18n="roi_bk_prod_name">Productivity lost to IT friction</div>
-                <div class="roi-bk-note" data-i18n="roi_bk_prod_note">hrs × wage × users × 12 — 70% recoverable under managed model</div>
-              </div>
-              <div class="roi-bk-amt" id="roiLost">€8,640</div>
-            </div>
-
-            <div class="roi-bk-row">
-              <div class="roi-bk-icon loss"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
-              <div class="roi-bk-text">
-                <div class="roi-bk-name" data-i18n="roi_bk_outage_name">Unplanned outage cost</div>
-                <div class="roi-bk-note" data-i18n="roi_bk_outage_note">outages × cost per event — 80% prevented proactively</div>
-              </div>
-              <div class="roi-bk-amt" id="roiOutageTot">€4,500</div>
-            </div>
-
-            <div class="roi-bk-row">
-              <div class="roi-bk-icon cost"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg></div>
-              <div class="roi-bk-text">
-                <div class="roi-bk-name" data-i18n="roi_bk_sw_name">Software &amp; licences</div>
-                <div class="roi-bk-note" data-i18n="roi_bk_sw_note">M365 + AV + SaaS — client-paid, BlueWave managed</div>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
-                <div class="roi-bk-amt" id="roiSoftwareTot">€0</div>
-                <span class="roi-bk-tag" data-i18n="roi_bk_managed_tag">Managed by us</span>
-              </div>
-            </div>
-
-            <div class="roi-bk-row">
-              <div class="roi-bk-icon cost"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-              <div class="roi-bk-text">
-                <div class="roi-bk-name" data-i18n="roi_bk_adhoc_name">Ad-hoc support &amp; security incidents</div>
-                <div class="roi-bk-note" data-i18n="roi_bk_adhoc_note">callouts × rate + breach amortisation — 85% eliminated</div>
-              </div>
-              <div class="roi-bk-amt" id="roiAdHocTot">€0</div>
-            </div>
-
-            <div class="roi-bk-row">
-              <div class="roi-bk-icon cost"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="6" rx="1"/><rect x="2" y="14" width="20" height="4" rx="1"/><path d="M6 9h.01M6 16h.01"/></svg></div>
-              <div class="roi-bk-text">
-                <div class="roi-bk-name" data-i18n="roi_bk_infra_name">Infrastructure &amp; hardware</div>
-                <div class="roi-bk-note" data-i18n="roi_bk_infra_note">hardware + backup + network — better managed, ~10% optimised</div>
-              </div>
-              <div class="roi-bk-amt" id="roiInfraTot">€0</div>
-            </div>
-
-          </div>
-
-          <!-- Total burden -->
-          <div class="roi-total-row">
-            <span class="roi-total-row-lbl" data-i18n="roi_total_lbl">Total current annual IT burden</span>
-            <span class="roi-total-row-val" id="roiBurdenTot">€13,140</span>
-          </div>
-
-          <!-- BlueWave row -->
-          <div class="roi-breakdown" style="padding-top:12px;">
-            <div class="roi-bk-row" style="border-color:rgba(62,232,154,0.22);background:rgba(62,232,154,0.04);">
-              <div class="roi-bk-icon msp"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="roi-bk-text">
-                <div class="roi-bk-name" data-i18n="roi_bk_msp_name">BlueWave IT — annual investment</div>
-                <div class="roi-bk-note" data-i18n="roi_bk_msp_note">€60 × users × 12 months — all 6 service areas included</div>
-              </div>
-              <div class="roi-bk-amt" id="roiMspCost" style="color:var(--green);">€7,200</div>
-            </div>
-          </div>
-
-          <div class="roi-disclaimer" data-i18n="roi_disclaimer">Indicative estimates based on typical Algarve SMB data. Productivity and outage savings modelled at 70% / 80% reduction. Licence costs remain client-paid and are excluded from savings calculation — BlueWave IT manages them as part of the service. Actual results will vary.</div>
-
-        </div><!-- /results -->
-      </div><!-- /wrap -->
-    </div>
-  </section>
-
   <!-- ── COMPARISON TABLE ── -->
   <section class="compare-section">
     <div class="container reveal">
@@ -745,457 +534,452 @@
     </div>
   </section>
 
-  <!-- ── BACKUP PRICING ── -->
-  <section class="backup-section" id="backup-pricing">
+
+  <!-- ── COST ESTIMATOR ── -->
+  <span id="calculator"></span>
+  <section class="est-section" id="estimator">
     <div class="container reveal">
-
-      <div style="margin-bottom:32px;">
-        <div class="section-label" data-i18n="bk_label">Cloud Backup &amp; Storage</div>
-        <h2 style="font-size:clamp(2rem,3.2vw,2.8rem);margin-bottom:12px;" data-i18n="bk_h">Managed cloud backup pricing</h2>
-        <p style="color:var(--muted-2);max-width:62ch;" data-i18n="bk_p">Predictable, packaged backup plans with managed storage, daily monitoring, and tested restores. Add to any managed IT plan or run standalone.</p>
+      <div style="margin-bottom:36px;text-align:center;">
+        <div class="section-label" style="margin:0 auto 14px;" data-i18n="est_label">Cost Estimator</div>
+        <h2 style="font-size:clamp(1.9rem,3vw,2.7rem);margin-bottom:12px;" data-i18n="est_h">Estimate your business IT setup</h2>
+        <p style="color:var(--muted-2);max-width:64ch;margin:0 auto;" data-i18n="est_p">Get a quick estimate for your full IT setup — including Microsoft 365, networking, security cameras, and support.</p>
       </div>
 
-      <!-- Plan toggle -->
-      <div class="storage-toggle">
-        <button class="storage-toggle-btn active" data-view="plans"   data-i18n="bk_toggle_plans">Storage Plans</button>
-        <button class="storage-toggle-btn"        data-view="overage" data-i18n="bk_toggle_overage">Overage &amp; Restores</button>
+      <!-- ── PRESET BUTTONS ── -->
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+        <button class="est-preset-btn" data-preset="small" onclick="applyPreset('small')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 12h.01"/></svg>
+          Small Business
+          <span style="display:block;font-size:0.70rem;font-weight:400;opacity:0.7;margin-top:2px;">3 users · starter setup</span>
+        </button>
+        <button class="est-preset-btn active" data-preset="office" onclick="applyPreset('office')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Office
+          <span style="display:block;font-size:0.70rem;font-weight:400;opacity:0.7;margin-top:2px;">8 users · standard office</span>
+        </button>
+        <button class="est-preset-btn" data-preset="growing" onclick="applyPreset('growing')">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          Growing Team
+          <span style="display:block;font-size:0.70rem;font-weight:400;opacity:0.7;margin-top:2px;">15 users · advanced setup</span>
+        </button>
       </div>
 
-      <!-- Plans view -->
-      <div id="bkPlansView">
-        <div class="backup-grid">
+      <div class="est-layout">
 
-          <!-- Essentials -->
-          <div class="bk-card">
-            <div class="bk-icon"><svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 6.8 8.2 3.8 3.8 0 0 0 7 18z"/><path d="M12 11v6"/><path d="M9.5 13.5 12 11l2.5 2.5"/></svg></div>
-            <div class="bk-name" data-i18n="bk_e_name">Cloud Backup Essentials</div>
-            <div class="bk-storage" data-i18n="bk_e_storage">Up to 500 GB included</div>
-            <div class="bk-price-row"><strong>€39</strong><span data-i18n="bk_month">/month</span></div>
-            <div class="bk-price-note" data-i18n="bk_e_note">Ideal for small teams with moderate data needs</div>
-            <div class="bk-divider"></div>
-            <ul class="bk-features">
-              <li data-i18n="bk_e_f1">Managed backup storage</li>
-              <li data-i18n="bk_e_f2">Daily backup checks</li>
-              <li data-i18n="bk_e_f3">Basic retention policy</li>
-              <li data-i18n="bk_e_f4">Restore support (business hours)</li>
-            </ul>
-            <div class="bk-spacer"></div>
-            <a href="index.html/#contact" class="bk-cta" data-i18n="bk_cta_start" onclick="event.preventDefault();openModal('Cloud Backup — Get Started')">Get Started</a>
+        <!-- ── INPUTS ── -->
+        <div class="est-inputs">
+
+          <!-- Microsoft 365 -->
+          <div class="est-group">
+            <div class="est-group-head">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span data-i18n="est_ms_head">Microsoft 365</span>
+            </div>
+            <p style="font-size:0.80rem;color:var(--muted);margin:0 0 14px;line-height:1.5;" data-i18n="est_ms_sub">Configured for email, file sharing, and real-world business communication — Teams is optional.</p>
+
+            <!-- Users slider -->
+            <div class="est-field">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+                <label class="est-label" for="est-users" style="margin:0;" data-i18n="est_users_label">Number of users</label>
+                <span class="est-slider-val" id="est-users-display">8</span>
+              </div>
+              <input type="range" class="est-slider" id="est-users" min="1" max="30" value="8" step="1"/>
+              <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:0.72rem;color:var(--muted);">
+                <span>1</span><span>5</span><span>10</span><span>15</span><span>20</span><span>25</span><span>30</span>
+              </div>
+            </div>
+
+            <!-- Plan selector -->
+            <div class="est-field" style="margin-top:16px;">
+              <label class="est-label" for="est-ms-plan" data-i18n="est_ms_plan_label">Microsoft 365 plan</label>
+              <select class="est-select est-select-dark" id="est-ms-plan">
+                <optgroup label="Includes Microsoft Teams (video calls &amp; meetings)">
+                  <option value="basic"    selected>Business Basic — €6.24/user/mo</option>
+                  <option value="standard">Business Standard — €12.96/user/mo</option>
+                  <option value="premium" >Business Premium — €22.92/user/mo</option>
+                </optgroup>
+                <optgroup label="Without Teams · EEA — use WhatsApp instead">
+                  <option value="basic_eea"   >Business Basic EEA — €4.56/user/mo</option>
+                  <option value="standard_eea">Business Standard EEA — €9.60/user/mo</option>
+                  <option value="premium_eea" >Business Premium EEA — €19.56/user/mo</option>
+                  <option value="apps_smb"    >M365 Apps for SMB — €10.92/user/mo</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Plan detail card — populated by JS on every change -->
+            <div id="est-ms-detail" style="margin-top:12px;padding:14px 16px;background:rgba(0,194,203,0.05);border:1px solid rgba(0,194,203,0.18);border-radius:10px;font-size:0.82rem;line-height:1.65;min-height:64px;"></div>
+
+            <div style="margin-top:10px;display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted);">
+              <span style="color:var(--cyan);flex:0 0 auto;">✓</span>
+              <span data-i18n="est_ms_sharepoint_hint">Share files securely with clients and vendors using SharePoint — no scattered email attachments</span>
+            </div>
+
           </div>
 
-          <!-- Standard — featured -->
-          <div class="bk-card featured">
-            <div class="bk-badge popular" data-i18n="bk_popular">Most Popular</div>
-            <div class="bk-icon"><svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 6.8 8.2 3.8 3.8 0 0 0 7 18z"/><path d="M12 11v6"/><path d="M9.5 13.5 12 11l2.5 2.5"/><path d="M12 18v2"/></svg></div>
-            <div class="bk-name" data-i18n="bk_s_name">Cloud Backup Standard</div>
-            <div class="bk-storage" data-i18n="bk_s_storage">Up to 2 TB included</div>
-            <div class="bk-price-row"><strong>€119</strong><span data-i18n="bk_month">/month</span></div>
-            <div class="bk-price-note" data-i18n="bk_s_note">Best fit for most Algarve SMBs</div>
-            <div class="bk-divider"></div>
-            <ul class="bk-features">
-              <li data-i18n="bk_s_f1">Managed backup storage</li>
-              <li data-i18n="bk_s_f2">Daily backup monitoring</li>
-              <li data-i18n="bk_s_f3">30–90 day retention</li>
-              <li data-i18n="bk_s_f4">Priority restore support</li>
-              <li data-i18n="bk_s_f5">Monthly backup health report</li>
-            </ul>
-            <div class="bk-spacer"></div>
-            <a href="index.html/#contact" class="bk-cta" data-i18n="bk_cta_recommended" onclick="event.preventDefault();openModal('Cloud Backup Standard')">Get Standard Plan</a>
+          <!-- Microsoft Defender for Business -->
+          <div class="est-group">
+            <div class="est-group-head">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
+              <span data-i18n="est_def_head">Endpoint Security</span>
+            </div>
+            <p style="font-size:0.80rem;color:var(--muted);margin:0 0 14px;line-height:1.5;" data-i18n="est_def_sub">Enterprise-grade endpoint protection for every device — Windows, macOS, iOS, and Android.</p>
+
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px;">
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_def_b1">AI-powered threat detection and automatic attack interruption</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_def_b2">Vulnerability management and security posture reporting</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_def_b3">Up to 5 devices per user — no minimum device count</span>
+              </div>
+            </div>
+
+            <div class="est-field">
+              <label class="est-label" for="est-defender-plan" data-i18n="est_def_plan_label">Endpoint security plan</label>
+              <select class="est-select" id="est-defender-plan">
+                <option value="none"     data-en="No endpoint security (not recommended)" data-pt="Sem segurança de endpoint (não recomendado)">No endpoint security (not recommended)</option>
+                <option value="defender" selected data-en="Microsoft Defender for Business — €2.60/user/month" data-pt="Microsoft Defender for Business — €2,60/utilizador/mês">Microsoft Defender for Business — €2.60/user/month</option>
+              </select>
+            </div>
+
+            <!-- Shown when Business Premium M365 plan is selected (Defender included) -->
+            <div id="est-def-included-note" style="display:none;margin-top:10px;padding:10px 13px;background:rgba(0,194,203,0.06);border:1px solid rgba(0,194,203,0.22);border-radius:8px;">
+              <div style="display:flex;align-items:flex-start;gap:8px;font-size:0.80rem;color:var(--cyan-3);">
+                <span style="flex:0 0 auto;font-size:0.9rem;">✓</span>
+                <span data-i18n="est_def_included_note">Microsoft Defender for Business is included with your Business Premium licence — no extra cost.</span>
+              </div>
+            </div>
+
+            <!-- Detail card — populated by JS -->
+            <div id="est-def-detail" style="margin-top:12px;padding:12px 14px;background:rgba(0,194,203,0.05);border:1px solid rgba(0,194,203,0.18);border-radius:10px;font-size:0.80rem;line-height:1.6;display:none;"></div>
+
+            <div style="margin-top:10px;display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted);">
+              <span style="color:var(--cyan);flex:0 0 auto;">✓</span>
+              <span data-i18n="est_def_hint">Configured and monitored by BlueWave IT as part of your managed plan.</span>
+            </div>
           </div>
 
-          <!-- Plus -->
-          <div class="bk-card">
-            <div class="bk-badge new-badge" data-i18n="bk_plus_badge">Full Coverage</div>
-            <div class="bk-icon"><svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 6.8 8.2 3.8 3.8 0 0 0 7 18z"/><path d="M12 8v10"/><path d="M9.5 10.5 12 8l2.5 2.5"/><path d="M9.5 15.5 12 18l2.5-2.5"/></svg></div>
-            <div class="bk-name" data-i18n="bk_p_name">Cloud Backup Plus</div>
-            <div class="bk-storage" data-i18n="bk_p_storage">Up to 5 TB included</div>
-            <div class="bk-price-row"><strong>€249</strong><span data-i18n="bk_month">/month</span></div>
-            <div class="bk-price-note" data-i18n="bk_p_note">For data-heavy operations and full DR coverage</div>
-            <div class="bk-divider"></div>
-            <ul class="bk-features">
-              <li data-i18n="bk_p_f1">Managed backup storage</li>
-              <li data-i18n="bk_p_f2">Monitoring and alerting</li>
-              <li data-i18n="bk_p_f3">Long-term retention options</li>
-              <li data-i18n="bk_p_f4">Priority restores</li>
-              <li data-i18n="bk_p_f5">Monthly backup health report</li>
-              <li data-i18n="bk_p_f6">Quarterly backup review</li>
-            </ul>
-            <div class="bk-spacer"></div>
-            <a href="index.html/#contact" class="bk-cta" data-i18n="bk_cta_start" onclick="event.preventDefault();openModal('Cloud Backup — Get Started')">Get Started</a>
+          <!-- Networking -->
+          <div class="est-group">
+            <div class="est-group-head">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="9" height="9"/><rect x="13" y="2" width="9" height="9"/><rect x="13" y="13" width="9" height="9"/><rect x="2" y="13" width="9" height="9"/></svg>
+              <span data-i18n="est_net_head">Managed Networking</span>
+            </div>
+            <p style="font-size:0.80rem;color:var(--muted);margin:0 0 14px;line-height:1.5;" data-i18n="est_net_sub">Secure business Wi-Fi with no licensing fees and full remote visibility.</p>
+
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px;">
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_net_b1">Access your office network remotely</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_net_b2">Built-in advanced firewall protection</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_net_b3">No recurring licensing fees — UniFi advantage</span>
+              </div>
+            </div>
+
+            <div class="est-field">
+              <label class="est-label" for="est-net-size" data-i18n="est_net_size_label">Network size</label>
+              <select class="est-select" id="est-net-size">
+                <option value="none"     data-en="No networking hardware"                  data-pt="Sem hardware de rede"                    data-i18n="est_net_size_none">No networking hardware</option>
+                <option value="small"    data-en="Small site — UDM + WiFi (€295.81)"              data-pt="Local pequeno — UDM + WiFi (€295,81)"           data-i18n="est_net_size_small">Small site — UDM (€295.81)</option>
+                <option value="standard" selected data-en="Standard office — Express 7 + WiFi (€175.47)" data-pt="Escritório standard — Express 7 + WiFi (€175,47)" data-i18n="est_net_size_standard">Standard office — Express 7 (€175.47)</option>
+                <option value="advanced" data-en="Larger office — UDM-SE (€465.49)"       data-pt="Escritório maior — UDM-SE (€465,49)"      data-i18n="est_net_size_advanced">Larger office — UDM-SE (€465.49)</option>
+              </select>
+              <!-- Dynamic recommendation card — populated by recalcEstimator() -->
+              <div id="est-net-detail" style="margin-top:10px;padding:12px 14px;border-radius:10px;font-size:0.80rem;line-height:1.6;border:1px solid rgba(0,194,203,0.18);background:rgba(0,194,203,0.05);"></div>
+            </div>
+            <div class="est-field">
+              <label class="est-label" for="est-extra-aps" data-i18n="est_extra_aps_label">Extra Wi-Fi access points</label>
+              <input class="est-number" type="number" id="est-extra-aps" min="0" value="0" step="1"/>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-add-switch" class="est-check"/>
+              <label for="est-add-switch" data-i18n="est_add_switch_label">Add 8 port PoE switch (€229)</label>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-add-install" class="est-check"/>
+              <label for="est-add-install" data-i18n="est_add_install_label">Add one-time network install</label>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-managed-network" class="est-check"/>
+              <label for="est-managed-network" data-i18n="est_managed_net_label">Monthly managed networking (€35/month)</label>
+            </div>
+            <div class="est-hint" style="margin-top:8px;" data-i18n="est_net_helper">Perfect for small offices, retail shops, and multi-room setups.</div>
           </div>
 
-          <!-- Archive -->
-          <div class="bk-card archive">
-            <div class="bk-badge archive-badge" data-i18n="bk_arc_badge">Long-Term</div>
-            <div class="bk-icon"><svg viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7l8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
-            <div class="bk-name" data-i18n="bk_a_name">Archive Retention</div>
-            <div class="bk-storage" data-i18n="bk_a_storage">Up to 5 TB archived</div>
-            <div class="bk-price-row"><strong>€79</strong><span data-i18n="bk_month">/month</span></div>
-            <div class="bk-price-note" data-i18n="bk_a_note">Retrieval billed separately if needed</div>
-            <div class="bk-divider"></div>
-            <ul class="bk-features">
-              <li data-i18n="bk_a_f1">Long-term archive storage</li>
-              <li data-i18n="bk_a_f2">Compliance-style retention</li>
-              <li data-i18n="bk_a_f3">Low-cost cold storage design</li>
-              <li data-i18n="bk_a_f4">Retrieval billed separately</li>
-            </ul>
-            <div class="bk-spacer"></div>
-            <a href="#" class="bk-cta" data-i18n="bk_cta_start" onclick="event.preventDefault();openModal('Cloud Backup — Get Started')">Get Started</a>
+          <!-- Cloud Backup -->
+          <div class="est-group">
+            <div class="est-group-head">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 6.8 8.2 3.8 3.8 0 0 0 7 18z"/><polyline points="9 15 12 12 15 15"/><line x1="12" y1="12" x2="12" y2="21"/></svg>
+              <span data-i18n="est_bk_head">Cloud Backup</span>
+            </div>
+            <p style="font-size:0.80rem;color:var(--muted);margin:0 0 14px;line-height:1.5;" data-i18n="est_bk_sub">Protect your business data automatically — laptops, desktops, and servers.</p>
+
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px;">
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_bk_b1">Protect files from ransomware and accidental deletion</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_bk_b2">Automatic backups running silently in the background</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_bk_b3">Fast recovery when something goes wrong</span>
+              </div>
+            </div>
+
+            <div class="est-field">
+              <label class="est-label" for="est-backup-plan" data-i18n="est_bk_plan_label">Backup plan</label>
+              <select class="est-select" id="est-backup-plan">
+                <option value="none"       data-i18n="est_bk_plan_none">No backup selected (not recommended)</option>
+                <option value="none"     data-i18n="est_bk_plan_onsite">On-site backup required</option>
+                <option value="essentials" data-i18n="est_bk_plan_essentials">Essentials — up to 500 GB · €39/month</option>
+                <option value="standard"   data-i18n="est_bk_plan_standard">Standard — up to 2 TB · €119/month</option>
+                <option value="plus"       data-i18n="est_bk_plan_plus">Plus — up to 5 TB · €249/month</option>
+                <option value="archive"    data-i18n="est_bk_plan_archive">Archive Retention — up to 5 TB · €79/month</option>
+              </select>
+            </div>
+
+            <!-- Plan detail card — populated by JS -->
+            <div id="est-bk-detail" style="margin-top:12px;padding:12px 14px;background:rgba(0,194,203,0.05);border:1px solid rgba(0,194,203,0.18);border-radius:10px;font-size:0.80rem;line-height:1.6;display:none;"></div>
+
+            <div style="margin-top:10px;display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted);">
+              <span style="color:var(--cyan);flex:0 0 auto;">✓</span>
+              <span data-i18n="est_bk_hint">Daily backup checks, tested restores, and a monthly health report — included with every plan.</span>
+            </div>
           </div>
 
+          <!-- Cameras -->
+          <div class="est-group">
+            <div class="est-group-head">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              <span data-i18n="est_cam_head">Security Cameras</span>
+              <span class="est-no-fee-badge" data-i18n="est_cam_badge">NO MONTHLY FEES</span>
+            </div>
+            <p style="font-size:0.80rem;color:var(--muted);margin:0 0 14px;line-height:1.5;" data-i18n="est_cam_sub">Check your business from anywhere using the UniFi app — simple, secure, and no subscriptions.</p>
+
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px;">
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_cam_b1">View live cameras from your phone</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_cam_b2">Instant alerts and playback</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.78rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_cam_b3">No monthly cloud fees</span>
+              </div>
+            </div>
+
+            <div class="est-field">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+                <label class="est-label" for="est-cameras" style="margin:0;" data-i18n="est_cameras_label">Number of cameras</label>
+                <span class="est-slider-val" id="est-cameras-display">0</span>
+              </div>
+              <input type="range" class="est-slider" id="est-cameras" min="0" max="5" value="0" step="1"/>
+              <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:0.72rem;color:var(--muted);">
+                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+              </div>
+            </div>
+            <div class="est-field">
+              <label class="est-label" for="est-cam-type" data-i18n="est_cam_type_label">Camera type</label>
+              <select class="est-select" id="est-cam-type">
+                <option value="essential" data-en="Turret 2k, night vision, AI detection,audio and mic (€110 each)" data-pt="Torreta 2K, visão noturna, deteção por IA, áudio e microfone. (€110 cada)" data-i18n="est_cam_type_essential">Essential Coverage (€77.20 each)</option>
+                <option value="advanced"  data-en="Wireless Indoor and Outdoor IP Security Camera (€220.50 each)" data-pt="Sem fios Câmara de segurança IP para ambientes interiores e exteriores (€220.50  cada)" data-i18n="est_cam_type_advanced">Advanced Coverage (€168.86 each)</option>
+              </select>
+            </div>
+            <div class="est-field">
+              <label class="est-label" for="est-cam-recording" data-i18n="est_cam_rec_label">Recording storage</label>
+              <select class="est-select" id="est-cam-recording">
+                <option value="none"     data-en="No recording storage"              data-pt="Sem armazenamento de gravação"         data-i18n="est_cam_rec_none">No recording storage</option>
+                <option value="basic"    data-en="Basic recording (€274.70)"         data-pt="Gravação básica (€274,70)"             data-i18n="est_cam_rec_basic">Basic recording (€274.70)</option>
+                <option value="advanced" data-en="Advanced recording system (€599.00)" data-pt="Sistema avançado (€599,00)"          data-i18n="est_cam_rec_advanced">Advanced recording system (€599.00)</option>
+              </select>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-managed-cameras" class="est-check"/>
+              <label for="est-managed-cameras" data-i18n="est_managed_cam_label">Monthly managed cameras (€25/month)</label>
+            </div>
+            <div class="est-hint" style="margin-top:8px;" data-i18n="est_cam_helper">Ideal for entrances, offices, warehouses, and retail spaces.</div>
+          </div>
+
+          <!-- Setup Services -->
+          <div class="est-group">
+            <div class="est-group-head">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M6.34 17.66l-1.41 1.41M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M12 2v2M12 20v2"/></svg>
+              <span data-i18n="est_setup_head">Setup &amp; Productivity Services</span>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-email-migration" class="est-check"/>
+              <label for="est-email-migration" data-i18n="est_email_label">Email setup &amp; migration (€120 one-time)</label>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-sharepoint-setup" class="est-check"/>
+              <label for="est-sharepoint-setup" data-i18n="est_sp_label">SharePoint setup (€220 one-time)</label>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-remote-onboarding" class="est-check"/>
+              <label for="est-remote-onboarding" data-i18n="est_onboard_label">Remote support onboarding (€95 one-time)</label>
+            </div>
+            <div class="est-hint" style="margin-top:6px;">SharePoint helps with secure file sharing with clients and vendors.</div>
+          </div>
+
+          <!-- Managed IT -->
+          <div class="est-group">
+            <div class="est-group-head">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
+              <span data-i18n="est_it_head">Managed IT Support</span>
+            </div>
+            <div class="est-check-row">
+              <input type="checkbox" id="est-managed-it"  class="est-check" checked/>
+              <label for="est-managed-it" data-i18n="est_managed_it_label">Monthly managed IT support (€45 base + €12/user)</label>
+            </div>
+          </div>
+
+
+
+        </div><!-- /est-inputs -->
+
+        <!-- ── SUMMARY ── -->
+        <div class="est-summary-wrap">
+          <div class="est-summary">
+            <div class="est-summary-head" data-i18n="est_summary_head">Your estimated IT setup</div>
+
+            <div class="est-out-rows">
+              <div class="est-out-row">
+                <span data-i18n="est_out_hardware_label">Hardware subtotal</span>
+                <span class="est-out-val" id="est-out-hardware">€0.00</span>
+              </div>
+              <div class="est-out-row">
+                <span data-i18n="est_out_software_label">Monthly Microsoft 365</span>
+                <span class="est-out-val" id="est-out-software">€0.00</span>
+              </div>
+              <div class="est-out-row" id="est-out-defender-row" style="display:none;">
+                <span data-i18n="est_out_defender_label">Endpoint security</span>
+                <span class="est-out-val" id="est-out-defender">€0.00</span>
+              </div>
+              <div class="est-out-row">
+                <span data-i18n="est_out_managed_label">Monthly managed services</span>
+                <span class="est-out-val" id="est-out-managed">€0.00</span>
+              </div>
+              <div class="est-out-row">
+                <span data-i18n="est_out_backup_label">Cloud backup</span>
+                <span class="est-out-val" id="est-out-backup">€0.00</span>
+              </div>
+              <div class="est-out-row">
+                <span data-i18n="est_out_setup_label">One-time setup costs</span>
+                <span class="est-out-val" id="est-out-setup">€0.00</span>
+              </div>
+            </div>
+
+            <div class="est-total-block">
+              <div class="est-total-label" data-i18n="est_out_first_month_label">Estimated first-month total</div>
+              <div class="est-total-num" id="est-out-first-month">€0.00</div>
+              <div style="font-size:0.74rem;color:var(--muted);margin-top:6px;line-height:1.4;" data-i18n="est_total_note">Includes hardware, setup, and monthly services based on your selections.</div>
+            </div>
+
+            <!-- Value bullets -->
+            <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.77rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_val_b1">No licensing fees for networking</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.77rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_val_b2">No subscription required for camera access</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:0.77rem;color:var(--muted-2);">
+                <span style="color:var(--cyan);flex:0 0 auto;">✔</span>
+                <span data-i18n="est_val_b3">Secure remote access included</span>
+              </div>
+            </div>
+
+            <div class="est-summary-text" id="est-out-summary"></div>
+
+            <div class="est-disclaimer-text" data-i18n="est_disclaimer">This is an estimate only. Final pricing depends on site layout, coverage, cabling, installation, migration, and support requirements.</div>
+
+            <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:18px;" data-i18n="est_cta">Get My Custom IT Plan</a>
+
+            <p style="font-size:0.76rem;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5;font-style:italic;" data-i18n="est_psychology">This is not just an estimate — it's a cleaner, more secure way to run your business.</p>
+          </div>
         </div>
 
-        <!-- Storage usage visualiser -->
-        <div class="storage-vis reveal">
-          <h4 data-i18n="sv_h">Storage tier cost comparison — price per GB at included capacity</h4>
-          <div class="sv-row">
-            <span class="sv-label" data-i18n="sv_hot">Hot (active)</span>
-            <div class="sv-bar-wrap"><div class="sv-fill hot" style="width:100%"></div></div>
-            <span class="sv-price">€0.078<small>/GB</small></span>
-            <span class="sv-note" data-i18n="sv_standard_note">Standard plan avg.</span>
-          </div>
-          <div class="sv-row">
-            <span class="sv-label" data-i18n="sv_overhot">Hot overage</span>
-            <div class="sv-bar-wrap"><div class="sv-fill hot" style="width:64%;opacity:0.65"></div></div>
-            <span class="sv-price">€0.05<small>/GB</small></span>
-            <span class="sv-note" data-i18n="sv_overage_note">Beyond plan limit</span>
-          </div>
-          <div class="sv-row">
-            <span class="sv-label" data-i18n="sv_cool">Cool storage</span>
-            <div class="sv-bar-wrap"><div class="sv-fill cool" style="width:38%"></div></div>
-            <span class="sv-price">€0.03<small>/GB</small></span>
-            <span class="sv-note" data-i18n="sv_cool_note">Infrequent access</span>
-          </div>
-          <div class="sv-row" style="margin-bottom:0;">
-            <span class="sv-label" data-i18n="sv_archive">Archive</span>
-            <div class="sv-bar-wrap"><div class="sv-fill archive" style="width:13%"></div></div>
-            <span class="sv-price">€0.01<small>/GB</small></span>
-            <span class="sv-note" data-i18n="sv_archive_note">Long-term cold</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Overage view (hidden by default) -->
-      <div id="bkOverageView" style="display:none;">
-        <div class="overage-wrap">
-          <div class="overage-head">
-            <div>
-              <h3 data-i18n="ov_h">Overage &amp; restore pricing</h3>
-              <p data-i18n="ov_p">All plans include storage up to the stated limit. Usage above the included capacity is billed at the rates below, keeping plan fees predictable.</p>
-            </div>
-          </div>
-
-          <div class="overage-grid">
-            <div class="overage-item">
-              <div class="overage-type" data-i18n="ov_hot_type">Hot Storage</div>
-              <div class="overage-price">€0.05</div>
-              <div class="overage-unit" data-i18n="ov_per_gb">per GB / month</div>
-            </div>
-            <div class="overage-item">
-              <div class="overage-type" data-i18n="ov_cool_type">Cool Storage</div>
-              <div class="overage-price">€0.03</div>
-              <div class="overage-unit" data-i18n="ov_per_gb">per GB / month</div>
-            </div>
-            <div class="overage-item">
-              <div class="overage-type" data-i18n="ov_archive_type">Archive Storage</div>
-              <div class="overage-price">€0.01</div>
-              <div class="overage-unit" data-i18n="ov_per_gb">per GB / month</div>
-            </div>
-          </div>
-
-          <div style="display:grid;gap:10px;">
-            <div class="restore-row">
-              <span class="restore-row-left" data-i18n="ov_restore_std">Standard restore request (fair use)</span>
-              <span class="restore-row-right" data-i18n="ov_restore_std_val">✓ Included in all plans</span>
-            </div>
-            <div class="restore-row" style="background:rgba(255,207,78,0.05);border-color:rgba(255,207,78,0.18);">
-              <span class="restore-row-left" data-i18n="ov_restore_large">Large restore or urgent out-of-hours recovery</span>
-              <span class="restore-row-right" style="color:var(--amber);" data-i18n="ov_restore_large_val">Scoped &amp; billed separately</span>
-            </div>
-          </div>
-
-          <div style="margin-top:20px;padding:16px 18px;background:rgba(255,255,255,0.025);border:1px solid var(--line);border-radius:14px;">
-            <div style="font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:8px;" data-i18n="ov_tip_h"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--cyan-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.5-1 4.5-3 6l-1 1H9l-1-1C6 13.5 5 11.5 5 9a7 7 0 0 1 7-7z"/></svg> Best-practice structure for most clients</div>
-            <div style="font-size:0.84rem;color:var(--muted-2);line-height:1.6;" data-i18n="ov_tip_body">The packaged plan fee covers the non-storage work: setup, monitoring, support, retention policy management, reporting, and restore handling. Raw storage overages are billed at cost. This keeps billing transparent and aligned with actual usage.</div>
-          </div>
-        </div>
-      </div>
-
+      </div><!-- /est-layout -->
     </div>
   </section>
 
-  <!-- ── ON-SITE BACKUP ── -->
-  <section class="backup-section band" id="onsite-backup">
-    <div class="container reveal">
+  <style>
+  /* ── ESTIMATOR ── */
+  .est-section { padding: 80px 0; }
+  .est-layout { display:grid; grid-template-columns:1fr 360px; gap:32px; align-items:start; }
+  @media(max-width:900px){ .est-layout { grid-template-columns:1fr; } }
+  .est-inputs { display:flex; flex-direction:column; gap:16px; }
+  .est-group { background:var(--bg-card); border:1px solid var(--line-s); border-radius:var(--r-sm,13px); padding:20px; }
+  .est-group-head { display:flex; align-items:center; gap:8px; font-weight:600; font-size:0.93rem; color:var(--cyan); margin-bottom:16px; }
+  .est-field { margin-bottom:12px; }
+  .est-field:last-child { margin-bottom:0; }
+  .est-label { display:block; font-size:0.83rem; color:var(--muted-2); margin-bottom:5px; }
+  .est-number { width:100%; background:rgba(255,255,255,0.04); border:1px solid var(--line-s); border-radius:8px; color:var(--text); font-family:var(--fm,monospace); font-size:1rem; padding:9px 12px; outline:none; transition:border-color .15s; }
+  .est-number:focus { border-color:var(--cyan); }
+  .est-select { width:100%; background:rgba(255,255,255,0.04); border:1px solid var(--line-s); border-radius:8px; color:var(--text); font-size:0.88rem; padding:9px 12px; outline:none; cursor:pointer; transition:border-color .15s; appearance:none; }
+  .est-select:focus { border-color:var(--cyan); }
+  .est-check-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; font-size:0.86rem; color:var(--muted-2); line-height:1.5; cursor:pointer; }
+  .est-check-row:last-child { margin-bottom:0; }
+  .est-check { flex:0 0 auto; width:16px; height:16px; accent-color:var(--cyan); cursor:pointer; margin-top:2px; }
+  .est-check-row label { cursor:pointer; }
+  .est-hint { font-size:0.76rem; color:var(--muted); font-style:italic; }
+  body.theme-light .est-number, body.theme-light .est-select { background:rgba(0,0,0,0.04); color:var(--text); }
 
-      <div class="onsite-header">
-        <div>
-          <div class="section-label" data-i18n="os_label">On-Site Backup Solutions</div>
-          <h3 data-i18n="os_h">Local backup appliances — deployed and managed on your premises</h3>
-          <p data-i18n="os_p">For organisations that prefer local backup infrastructure instead of cloud storage. We deploy and manage dedicated backup appliances installed at your office — providing high-speed local backups, rapid restore capability, and full data control within your premises.</p>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:14px 18px;background:rgba(62,232,154,0.06);border:1px solid rgba(62,232,154,0.18);border-radius:14px;white-space:nowrap;align-self:flex-start;">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.5-1 4.5-3 6l-1 1H9l-1-1C6 13.5 5 11.5 5 9a7 7 0 0 1 7-7z"/></svg>
-          <span style="font-size:0.84rem;color:var(--muted-2);" data-i18n="os_tip">Hybrid backup is our recommended default for most clients</span>
-        </div>
-      </div>
+  /* Slider */
+  .est-slider { width:100%; -webkit-appearance:none; appearance:none; height:5px; border-radius:3px; background:linear-gradient(90deg,var(--cyan) 0%,var(--line-s) 0%); outline:none; cursor:pointer; }
+  .est-slider::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%; background:var(--cyan); border:2px solid #060e1a; box-shadow:0 0 8px rgba(0,194,203,0.5); cursor:pointer; }
+  .est-slider::-moz-range-thumb { width:18px; height:18px; border-radius:50%; background:var(--cyan); border:2px solid #060e1a; box-shadow:0 0 8px rgba(0,194,203,0.5); cursor:pointer; }
+  .est-slider-val { font-family:var(--fm,monospace); font-size:1.1rem; font-weight:700; color:var(--cyan); min-width:2ch; text-align:right; }
 
-      <div class="onsite-grid">
+  /* Dropdown — force dark colours so text is readable in the native dropdown overlay */
+  .est-select-dark { color-scheme: dark; background-color: #0d1f36; color: #eef4fc; }
+  .est-select-dark optgroup { background-color: #060e1a; color: #7d9ab8; font-style: normal; font-weight: 700; font-size: 0.76rem; }
+  .est-select-dark option { background-color: #0d1f36; color: #eef4fc; font-size: 0.86rem; padding: 4px 0; }
 
-        <!-- Entry Appliance -->
-        <div class="os-card os-entry">
-          <div class="os-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><circle cx="12" cy="10" r="2"/></svg>
-          </div>
-          <div class="os-name" data-i18n="os_e_name">Local Backup Appliance — Entry</div>
-          <div class="os-price-block">
-            <div class="os-price-hw">
-              <strong data-i18n="os_e_hw_price">From €499</strong>
-              <span data-i18n="os_hw_label">hardware</span>
-            </div>
-            <div class="os-price-mgmt">+ <strong>€29</strong> <span data-i18n="os_month_mgmt">/month management</span></div>
-          </div>
-          <div class="os-divider"></div>
-          <div class="os-cols">
-            <div>
-              <div class="os-col-head" data-i18n="os_includes_head">Includes</div>
-              <ul class="os-list">
-                <li class="include" data-i18n="os_e_f1">On-site backup device</li>
-                <li class="include" data-i18n="os_e_f2">Automated backups</li>
-                <li class="include" data-i18n="os_e_f3">Monitoring and alerts</li>
-                <li class="include" data-i18n="os_e_f4">Restore assistance</li>
-                <li class="include" data-i18n="os_e_f5">Health checks</li>
-              </ul>
-            </div>
-            <div>
-              <div class="os-col-head" data-i18n="os_suitable_head">Suitable for</div>
-              <ul class="os-list">
-                <li class="suitable" data-i18n="os_e_s1">Small offices</li>
-                <li class="suitable" data-i18n="os_e_s2">Workstations</li>
-                <li class="suitable" data-i18n="os_e_s3">Small file servers</li>
-              </ul>
-            </div>
-          </div>
-          <a href="#" class="os-cta" onclick="event.preventDefault();openModal('On-Site Backup — Enquire')" data-i18n="os_cta_enquire">Enquire About This Plan</a>
-        </div>
+  /* Summary */
+  .est-summary-wrap { position:sticky; top:calc(var(--hh,72px) + 20px); }
+  .est-summary { background:linear-gradient(160deg,rgba(0,194,203,0.07),rgba(15,76,129,0.08),rgba(255,255,255,0.025)); border:1px solid rgba(0,194,203,0.22); border-radius:var(--r,20px); padding:28px; }
+  .est-summary-head { font-size:0.80rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--cyan); margin-bottom:20px; }
+  .est-out-rows { display:flex; flex-direction:column; gap:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+  .est-out-row { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; font-size:0.84rem; border-bottom:1px solid var(--line); }
+  .est-out-row:last-child { border-bottom:none; }
+  .est-out-row span:first-child { color:var(--muted-2); }
+  .est-out-val { font-family:var(--fm,monospace); font-size:0.90rem; color:var(--text); font-weight:500; }
+  .est-total-block { background:rgba(0,194,203,0.07); border:1px solid rgba(0,194,203,0.18); border-radius:12px; padding:18px; text-align:center; margin-bottom:16px; }
+  .est-total-label { font-size:0.78rem; color:var(--muted-2); margin-bottom:6px; }
+  .est-total-num { font-family:var(--fm,monospace); font-size:2.2rem; font-weight:700; color:var(--cyan); }
+  .est-summary-text { font-size:0.80rem; color:var(--muted); text-align:center; margin-bottom:10px; min-height:1.2em; }
+  .est-disclaimer-text { font-size:0.75rem; color:var(--muted); line-height:1.55; border-top:1px solid var(--line); padding-top:12px; margin-top:4px; }
 
-        <!-- Business Appliance -->
-        <div class="os-card os-business">
-          <div class="os-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M6 8h.01"/><path d="M6 12h.01"/><path d="M10 8h8"/><path d="M10 12h8"/></svg>
-          </div>
-          <div class="os-name" data-i18n="os_b_name">Local Backup Appliance — Business</div>
-          <div class="os-price-block">
-            <div class="os-price-hw">
-              <strong data-i18n="os_b_hw_price">From €899</strong>
-              <span data-i18n="os_hw_label">hardware</span>
-            </div>
-            <div class="os-price-mgmt">+ <strong>€49</strong> <span data-i18n="os_month_mgmt">/month management</span></div>
-          </div>
-          <div class="os-divider"></div>
-          <div class="os-cols">
-            <div>
-              <div class="os-col-head" data-i18n="os_includes_head">Includes</div>
-              <ul class="os-list">
-                <li class="include" data-i18n="os_b_f1">Larger storage capacity</li>
-                <li class="include" data-i18n="os_b_f2">Automated backups</li>
-                <li class="include" data-i18n="os_b_f3">Monitoring and alerts</li>
-                <li class="include" data-i18n="os_b_f4">Backup integrity verification</li>
-                <li class="include" data-i18n="os_b_f5">Priority restore support</li>
-              </ul>
-            </div>
-            <div>
-              <div class="os-col-head" data-i18n="os_suitable_head">Suitable for</div>
-              <ul class="os-list">
-                <li class="suitable" data-i18n="os_b_s1">Business servers</li>
-                <li class="suitable" data-i18n="os_b_s2">Shared storage</li>
-                <li class="suitable" data-i18n="os_b_s3">Multi-user environments</li>
-              </ul>
-            </div>
-          </div>
-          <a href="#" class="os-cta" onclick="event.preventDefault();openModal('On-Site Backup — Enquire')" data-i18n="os_cta_enquire">Enquire About This Plan</a>
-        </div>
+  /* Preset buttons */
+  .est-preset-btn { display:inline-flex; flex-direction:column; align-items:center; gap:2px; padding:10px 20px; background:rgba(255,255,255,0.03); border:1px solid var(--line-s); border-radius:10px; color:var(--muted-2); font-size:0.86rem; font-weight:600; font-family:inherit; cursor:pointer; transition:border-color .18s, color .18s, background .18s; text-align:center; }
+  .est-preset-btn:hover { border-color:rgba(0,194,203,0.45); color:var(--text); background:rgba(0,194,203,0.06); }
+  .est-preset-btn.active { border-color:var(--cyan); color:var(--cyan); background:rgba(0,194,203,0.08); box-shadow:0 0 12px rgba(0,194,203,0.15); }
 
-        <!-- Hybrid — recommended -->
-        <div class="os-card os-hybrid">
-          <div class="os-badge recommended" data-i18n="os_recommended">Recommended</div>
-          <div class="os-icon">
-            <svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 6.8 8.2 3.8 3.8 0 0 0 7 18z"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/></svg>
-          </div>
-          <div class="os-name" data-i18n="os_h_name">Hybrid Backup</div>
-          <div class="os-price-block">
-            <div class="os-price-hw">
-              <strong data-i18n="os_h_price">From €79</strong>
-              <span data-i18n="os_h_unit">/month</span>
-            </div>
-            <div class="os-price-mgmt" data-i18n="os_h_sub">Local backup + secure off-site replication</div>
-          </div>
-          <div class="os-divider"></div>
-          <div class="os-cols">
-            <div>
-              <div class="os-col-head" data-i18n="os_benefits_head">Benefits</div>
-              <ul class="os-list">
-                <li class="include" data-i18n="os_h_f1">Fast local restores</li>
-                <li class="include" data-i18n="os_h_f2">Protected against fire, theft, or ransomware</li>
-                <li class="include" data-i18n="os_h_f3">Off-site disaster recovery</li>
-                <li class="include" data-i18n="os_h_f4">Automated monitoring</li>
-                <li class="include" data-i18n="os_h_f5">Best of local and cloud in one plan</li>
-              </ul>
-            </div>
-          </div>
+  /* NO MONTHLY FEES badge */
+  .est-no-fee-badge { margin-left:auto; font-size:0.62rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; background:rgba(0,194,203,0.12); color:var(--cyan); border:1px solid rgba(0,194,203,0.35); border-radius:5px; padding:2px 7px; white-space:nowrap; }
+  </style>
 
-          <!-- Hybrid diagram -->
-          <div style="margin-top:18px;padding:16px;background:rgba(62,232,154,0.05);border:1px solid rgba(62,232,154,0.14);border-radius:12px;">
-            <div style="display:flex;align-items:center;gap:0;justify-content:center;font-size:0.80rem;color:var(--muted-2);">
-              <div style="text-align:center;padding:0 10px;">
-                <div style="width:32px;height:32px;margin:0 auto 6px;display:grid;place-items:center;border-radius:8px;background:rgba(62,232,154,0.10);border:1px solid rgba(62,232,154,0.22);">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                </div>
-                <span data-i18n="os_diag_devices">Devices</span>
-              </div>
-              <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(62,232,154,0.6),rgba(62,232,154,0.2));position:relative;">
-                <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--green);"></div>
-              </div>
-              <div style="text-align:center;padding:0 10px;">
-                <div style="width:32px;height:32px;margin:0 auto 6px;display:grid;place-items:center;border-radius:8px;background:rgba(62,232,154,0.10);border:1px solid rgba(62,232,154,0.22);">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="6" rx="1"/><rect x="2" y="14" width="20" height="4" rx="1"/><path d="M6 9h.01M6 16h.01"/><path d="M10 9h4M10 16h4"/></svg>
-                </div>
-                <span data-i18n="os_diag_local">Local NAS</span>
-              </div>
-              <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(56,217,232,0.2),rgba(56,217,232,0.6));position:relative;">
-                <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--cyan-2);"></div>
-              </div>
-              <div style="text-align:center;padding:0 10px;">
-                <div style="width:32px;height:32px;margin:0 auto 6px;display:grid;place-items:center;border-radius:8px;background:rgba(56,217,232,0.10);border:1px solid rgba(56,217,232,0.22);">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--cyan-2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 0 1 0 9Z"/></svg>
-                </div>
-                <span data-i18n="os_diag_cloud">Off-site</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="#" class="os-cta" onclick="event.preventDefault();openModal('On-Site Backup — Enquire')" style="margin-top:18px;" data-i18n="os_cta_hybrid">Get Hybrid Backup</a>
-        </div>
-
-      </div>
-
-      <!-- Appliance note -->
-      <div style="margin-top:20px;padding:14px 18px;background:rgba(255,255,255,0.025);border:1px solid var(--line);border-radius:14px;display:flex;gap:12px;align-items:flex-start;">
-        <span style="flex:0 0 auto;margin-top:1px;width:18px;height:18px;display:grid;place-items:center;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
-        <div style="font-size:0.84rem;color:var(--muted-2);line-height:1.6;" data-i18n="os_hw_note">Hardware pricing is indicative and depends on storage capacity, RAID configuration, and final specification. All appliances are sourced, configured, and deployed by BlueWave IT. Monthly management fees cover monitoring, firmware updates, health checks, and restore support.</div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ── WEB PRESENCE PRICING ── -->
-  <section class="wp-section band" id="web-presence">
-    <div class="container">
-
-      <div class="wp-intro-grid reveal">
-        <div class="wp-intro-text">
-          <div class="section-label" data-i18n="wp_section_label">Web Presence Pricing</div>
-          <h2>
-            Fast, affordable<br>
-            <em data-i18n="wp_subhead">web presence packages</em><br>
-            for businesses with<br>
-            little or no online visibility.
-          </h2>
-        </div>
-        <div>
-          <p data-i18n="wp_intro_p">This service is designed for speed, clarity, and results. The goal is not a large custom website project. The goal is to get a business online quickly with a polished presence, better credibility, and a clear path for customer inquiries.</p>
-        </div>
-      </div>
-
-      <div class="wp-cards-grid">
-
-        <!-- Starter Presence -->
-        <div class="wp-card reveal">
-          <div class="wp-card-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-          </div>
-          <h3 data-i18n="wp_c1_name">Starter Presence</h3>
-          <p class="wp-desc" data-i18n="wp_c1_desc">Best for businesses with no website or a very weak online presence that need something clean, credible, and live quickly.</p>
-          <ul class="wp-feat-list">
-            <li data-i18n="wp_c1_f1">1–3 page polished website</li>
-            <li data-i18n="wp_c1_f2">Mobile-friendly design</li>
-            <li data-i18n="wp_c1_f3">Contact form and WhatsApp button</li>
-            <li data-i18n="wp_c1_f4">Google Business setup or cleanup</li>
-            <li data-i18n="wp_c1_f5">Hosting and basic updates</li>
-          </ul>
-          <div class="wp-tags">
-            <span class="wp-tag" data-i18n="wp_c1_setup">€300–€800 setup</span>
-            <span class="wp-tag" data-i18n="wp_c1_mo">€39–€79/mo</span>
-            <span class="wp-tag highlight" data-i18n="wp_c1_tag">Fast Launch</span>
-          </div>
-          <a href="#" class="wp-cta-btn" onclick="event.preventDefault();openModal('Starter Presence')">
-            <span data-i18n="wp_c1_cta">See Starter Details</span>
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-
-        <!-- Growth Presence -->
-        <div class="wp-card featured reveal d1">
-          <div class="wp-card-icon">
-            <svg viewBox="0 0 24 24"><polyline points="17 11 21 7 17 3"/><line x1="21" y1="7" x2="9" y2="7"/><path d="M3 21v-4a4 4 0 0 1 4-4h14"/></svg>
-          </div>
-          <h3 data-i18n="wp_c2_name">Growth Presence</h3>
-          <p class="wp-desc" data-i18n="wp_c2_desc">For businesses that want a stronger lead flow, clearer service pages, and a more active online presence without moving into a high-end custom build.</p>
-          <ul class="wp-feat-list">
-            <li data-i18n="wp_c2_f1">Everything in Starter Presence</li>
-            <li data-i18n="wp_c2_f2">Extra landing pages or service pages</li>
-            <li data-i18n="wp_c2_f3">Lead capture improvements</li>
-            <li data-i18n="wp_c2_f4">Review and trust-building elements</li>
-            <li data-i18n="wp_c2_f5">Monthly content and visibility improvements</li>
-          </ul>
-          <div class="wp-tags">
-            <span class="wp-tag" data-i18n="wp_c2_setup">€800–€1,500 setup</span>
-            <span class="wp-tag" data-i18n="wp_c2_mo">€99–€199/mo</span>
-            <span class="wp-tag highlight" data-i18n="wp_c2_tag">Lead Focused</span>
-          </div>
-          <a href="#" class="wp-cta-btn" onclick="event.preventDefault();openModal('Growth Presence')">
-            <span data-i18n="wp_c2_cta">See Growth Details</span>
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-
-        <!-- Presence + AI Boost -->
-        <div class="wp-card reveal d2">
-          <div class="wp-card-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-          </div>
-          <h3 data-i18n="wp_c3_name">Presence + AI Boost</h3>
-          <p class="wp-desc" data-i18n="wp_c3_desc">For organizations that want a stronger web presence plus practical AI-assisted enhancements for content, lead handling, and workflow support.</p>
-          <ul class="wp-feat-list">
-            <li data-i18n="wp_c3_f1">Everything in Growth Presence</li>
-            <li data-i18n="wp_c3_f2">AI-assisted content refinement</li>
-            <li data-i18n="wp_c3_f3">Smarter inquiry and form workflows</li>
-            <li data-i18n="wp_c3_f4">Basic automation guidance</li>
-            <li data-i18n="wp_c3_f5">Ongoing optimization support</li>
-          </ul>
-          <div class="wp-tags">
-            <span class="wp-tag" data-i18n="wp_c3_setup">€1,200–€2,000 setup</span>
-            <span class="wp-tag" data-i18n="wp_c3_mo">€149–€299/mo</span>
-            <span class="wp-tag highlight" data-i18n="wp_c3_tag">AI Enhanced</span>
-          </div>
-          <a href="#" class="wp-cta-btn" onclick="event.preventDefault();openModal('Presence + AI Boost')">
-            <span data-i18n="wp_c3_cta">See AI Boost Details</span>
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-
-      </div><!-- /wp-cards-grid -->
-
-      <p class="wp-note reveal">
-        All packages are designed to get your business online quickly and professionally.
-        Setup fees vary based on complexity and existing content.
-        Monthly fees cover hosting, support, and ongoing improvements.
-        <strong>Contact us to discuss which package fits your situation.</strong>
-      </p>
-
-    </div>
-  </section>
 
   <!-- ── PRICING FAQ ── -->
   <section id="faq" class="faq-section band">
@@ -1212,7 +996,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q"><span data-i18n="fq2_q">Is there a minimum number of users?</span><span class="faq-chevron">+</span></button>
-          <div class="faq-a" data-i18n="fq2_a">Yes — the minimum is 5 users. This reflects the minimum environment size needed to deliver a properly managed service at the tooling and monitoring depth BlueWave IT operates at. Most clients start between 8 and 20 users.</div>
+          <div class="faq-a" data-i18n="fq2_a">No minimum. BlueWave IT supports solo operators, small teams, and growing businesses — starting from just 1 user. Plans scale as your team grows, with no minimum seat requirement and no lock-in contracts.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q"><span data-i18n="fq3_q">Are there any setup or onboarding fees?</span><span class="faq-chevron">+</span></button>
@@ -1257,51 +1041,7 @@
   </section>
 
   <!-- ── FOOTER ── -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo-row">
-            <div class="logo-mark" style="width:36px;height:36px;border-radius:10px;background:transparent;border:none;box-shadow:none;">
-          <img src="images/logo_dark.png" data-dark="images/logo_dark.png" data-light="images/logo_light.png" alt="BlueWave IT" class="logo-img" width="38" height="38" style="width:100%;height:100%;object-fit:contain;border-radius:10px;"/>
-        </div>
-            <strong>BlueWave IT</strong>
-          </div>
-          <p data-i18n="ft_tagline">Enterprise-grade IT management for growing businesses across the Algarve. Reliable, secure, and predictably priced.</p>
-        </div>
-        <div class="footer-col">
-          <h4 data-i18n="ft_svc_h">Services</h4>
-          <ul>
-            <li><a href="services.html#managed-it"   data-i18n="ft_s1">Managed IT</a></li>
-            <li><a href="services.html#cybersecurity" data-i18n="ft_s2">Cybersecurity</a></li>
-            <li><a href="services.html#cloud"         data-i18n="ft_s3">Cloud &amp; M365</a></li>
-            <li><a href="services.html#backup"        data-i18n="ft_s4">Backup &amp; Recovery</a></li>
-            <li><a href="services.html#networking"    data-i18n="ft_s5">Network Management</a></li>
-            <li><a href="services.html#consulting"    data-i18n="ft_s6">IT Consulting</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4 data-i18n="ft_co_h">Company</h4>
-          <ul>
-            <li><a href="index.html"         data-i18n="ft_c1">Home</a></li>
-            <li><a href="about.html"         data-i18n="ft_c2">About</a></li>
-            <li><a href="pricing.html"       data-i18n="ft_c3">Pricing</a></li>
-            <li><a href="pricing.html#faq"     data-i18n="ft_c4">FAQ</a></li>
-            <li><a href="contact.html" data-i18n="ft_c5">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span data-i18n="ft_copy">© 2026 BlueWave IT. Reliable technology for growing businesses.</span>
-        <div class="footer-legal">
-          <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
-          <a href="terms.html" data-i18n="footer_terms">Terms and Conditions</a>
-
-          <a href="gdpr.html" data-i18n="footer_gdpr">GDPR</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
@@ -1343,7 +1083,6 @@
         </div>
         <button class="cmodal-submit" id="cmodalSubmit" data-i18n="cm_submit">Send Enquiry</button>
         <p class="cmodal-note" data-i18n="cm_note">We'll reply within one business day. No sales pressure — just a straight conversation about whether we're a good fit.</p>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACsPyae8CCOwYrCp"></div>
       </div>
 
       <!-- Success view -->
@@ -1358,9 +1097,376 @@
   </div>
 
   
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  <script src="js/pages/pricing.js"></script>
-  <script src="js/nav.js" defer></script>
+  <!-- ── COST ESTIMATOR JS (self-contained, no external dependency) ── -->
+  <script>
+  (function() {
+
+    /* ── Pricing config — all editable prices in one place ── */
+    var ESTIMATOR_CONFIG = {
+      microsoft: {
+        /* With Teams */
+        basic:        6.24,
+        standard:    12.96,
+        premium:     22.92,
+        /* Without Teams — EEA plans */
+        basic_eea:    4.56,
+        standard_eea: 9.60,
+        premium_eea: 19.56,
+        apps_smb:    10.92,
+        /* Standalone Defender for Business (€2.60/user/month) */
+        defender:     2.60
+      },
+      networking: {
+        small: 295.81, standard: 175.47, advanced: 465.49,
+        accessPoint: 145.00, switch: 229.00,
+        installBasic: 250.00, installAdvanced: 450.00
+      },
+      cameras: { essential: 110.00, advanced: 220.50, recordingBasic: 274.70, recordingAdvanced: 599.00 },
+      services: { emailMigration: 120.00, sharePointSetup: 220.00, remoteOnboarding: 95.00 },
+      managed: { networkMonthly: 35.00, cameraMonthly: 25.00, itBaseMonthly: 45.00, itPerUserMonthly: 12.00 },
+      backup: { essentials: 39.00, standard: 119.00, plus: 249.00, archive: 79.00 }
+    };
+
+    /* Plan descriptions shown in the detail card */
+    var MS_PLAN_INFO = {
+      basic:        { teams: true,  desc: 'Business email, web & mobile Office apps, 1 TB OneDrive, and SharePoint for secure file sharing. Includes Microsoft Teams. Good starting point for most small businesses.' },
+      standard:     { teams: true,  desc: 'Full desktop Office apps (Word, Excel, PowerPoint, Outlook) plus SharePoint and Teams. Share files securely with clients and staff — no more scattered email attachments.' },
+      premium:      { teams: true,  desc: 'Everything in Standard with advanced security — Defender for Business, Intune device management, and Azure AD P1. Best protection for businesses handling sensitive data.' },
+      basic_eea:    { teams: false, desc: 'Business email, web & mobile Office apps, 1 TB OneDrive, and SharePoint for secure file sharing with clients and vendors. No Teams — great if your team already uses WhatsApp.' },
+      standard_eea: { teams: false, desc: 'Full desktop Office apps plus SharePoint — without Teams. Ideal if you use WhatsApp or phone calls and want to save on licence costs while keeping your files in the cloud.' },
+      premium_eea:  { teams: false, desc: 'Advanced security (Defender for Business, Intune, Azure AD P1) with SharePoint, without Teams. Best security for businesses that don\'t need video conferencing built in.' },
+      apps_smb:     { teams: false, desc: 'Desktop Office apps only (Word, Excel, PowerPoint, Outlook) — no email hosting. Good for businesses with existing email who just need the Office suite and local file tools.' }
+    };
+
+    /* ── Helpers ── */
+    function safeInt(id) {
+      var el = document.getElementById(id);
+      if (!el) return 0;
+      var v = parseInt(el.value, 10);
+      return isNaN(v) || v < 0 ? 0 : v;
+    }
+    function fmtEUR(n) {
+      n = isNaN(n) || n < 0 ? 0 : n;
+      return '€' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    function chk(id) { var el = document.getElementById(id); return el ? el.checked : false; }
+    function sel(id)  { var el = document.getElementById(id); return el ? el.value   : '';    }
+    function setOut(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+
+    /* ── Update slider track fill ── */
+    function updateSliderFill(slider) {
+      var pct = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+      slider.style.background = 'linear-gradient(90deg,var(--cyan) ' + pct + '%,rgba(255,255,255,0.08) ' + pct + '%)';
+    }
+
+    /* ── Main recalc ── */
+    window.recalcEstimator = function() {
+      var cfg  = ESTIMATOR_CONFIG;
+      var lang = document.documentElement.lang || 'en';
+
+      /* Users slider */
+      var usersSlider = document.getElementById('est-users');
+      var users = usersSlider ? Math.max(1, parseInt(usersSlider.value, 10) || 1) : 1;
+      setOut('est-users-display', users);
+      if (usersSlider) updateSliderFill(usersSlider);
+
+      /* Microsoft 365 */
+      var msPlan  = sel('est-ms-plan');
+      var msPrice = cfg.microsoft[msPlan] !== undefined ? cfg.microsoft[msPlan] : cfg.microsoft.basic;
+      var microsoftMonthly = users * msPrice;
+
+      /* Plan detail card */
+      var detailEl = document.getElementById('est-ms-detail');
+      if (detailEl) {
+        var info = MS_PLAN_INFO[msPlan] || {};
+        var t2   = window.PAGE_TRANSLATIONS && window.PAGE_TRANSLATIONS[lang];
+        /* Teams / no-Teams label — translated */
+        var teamsTag = info.teams
+          ? '<span style="color:var(--cyan);font-weight:600;">✓ ' + ((t2 && t2.est_ms_teams_tag) || (lang === 'pt' ? 'Inclui Microsoft Teams' : 'Includes Microsoft Teams')) + '</span>'
+          : '<span style="color:#f59e42;font-weight:600;">✗ ' + ((t2 && t2.est_ms_noteams_tag) || (lang === 'pt' ? 'Sem Teams — use WhatsApp ou telefone' : 'No Teams — use WhatsApp or phone')) + '</span>';
+        /* Plan description — pull from translations first, fall back to MS_PLAN_INFO */
+        var descKey = 'est_ms_desc_' + msPlan;
+        var planDesc = (t2 && t2[descKey]) || info.desc || '';
+        detailEl.innerHTML = teamsTag + '<br><span style="color:var(--muted-2);">' + planDesc + '</span>';
+      }
+
+      /* Defender for Business */
+      var PREMIUM_PLANS = ['premium', 'premium_eea'];
+      var defenderIncluded = PREMIUM_PLANS.indexOf(msPlan) !== -1;
+      var defPlan          = sel('est-defender-plan');
+      var defenderMonthly  = 0;
+
+      var defNoteEl   = document.getElementById('est-def-included-note');
+      var defDetailEl = document.getElementById('est-def-detail');
+      var defSelectEl = document.getElementById('est-defender-plan');
+      var defRowEl    = document.getElementById('est-out-defender-row');
+      var t2d = window.PAGE_TRANSLATIONS && window.PAGE_TRANSLATIONS[lang];
+
+      if (defenderIncluded) {
+        /* Defender bundled with Business Premium — zero cost */
+        defenderMonthly = 0;
+        if (defNoteEl)   { defNoteEl.style.display   = '';     }
+        if (defDetailEl) { defDetailEl.style.display  = 'none'; }
+        if (defSelectEl) { defSelectEl.style.opacity  = '0.35'; defSelectEl.disabled = true; }
+        if (defRowEl)    { defRowEl.style.display      = 'none'; }
+      } else {
+        if (defNoteEl)   { defNoteEl.style.display   = 'none'; }
+        if (defSelectEl) { defSelectEl.style.opacity  = '';    defSelectEl.disabled = false; }
+        if (defPlan === 'defender') {
+          defenderMonthly = users * cfg.microsoft.defender;
+          if (defDetailEl) {
+            var defUsers = (t2d && t2d.est_def_users_label) || 'users';
+            var defText  = (t2d && t2d.est_def_detail_text) || 'AI threat detection · Vulnerability management · Next-gen antivirus · Automated investigation & remediation · Monthly security reports';
+            defDetailEl.style.display = 'block';
+            defDetailEl.innerHTML = '<span style="color:var(--cyan);font-weight:600;">' + fmtEUR(defenderMonthly) + '/month</span> &nbsp;·&nbsp; <span style="color:var(--muted-2);">' + users + ' ' + defUsers + '</span><br><span style="color:var(--muted-2);">' + defText + '</span>';
+          }
+          if (defRowEl) defRowEl.style.display = '';
+        } else {
+          defenderMonthly = 0;
+          if (defDetailEl) defDetailEl.style.display = 'none';
+          if (defRowEl)    defRowEl.style.display     = 'none';
+        }
+      }
+
+      /* Networking */
+      var netSize   = sel('est-net-size');
+      var netHW     = { none: 0, small: cfg.networking.small, standard: cfg.networking.standard, advanced: cfg.networking.advanced }[netSize] || 0;
+      var extraAPs  = safeInt('est-extra-aps');
+      var extraAPCost  = extraAPs * cfg.networking.accessPoint;
+      var switchCost   = chk('est-add-switch')   ? cfg.networking.switch   : 0;
+      var installPrice = netSize === 'advanced'   ? cfg.networking.installAdvanced : cfg.networking.installBasic;
+      var installCost  = chk('est-add-install')  ? installPrice : 0;
+      var netHWSubtotal     = netHW + extraAPCost + switchCost;
+      var netManagedMonthly = chk('est-managed-network') ? cfg.managed.networkMonthly : 0;
+
+      /* Network recommendation card */
+      var netDetailEl = document.getElementById('est-net-detail');
+      if (netDetailEl) {
+        var tn = window.PAGE_TRANSLATIONS && window.PAGE_TRANSLATIONS[lang];
+        var NET_INFO = {
+          none:     { warn: true  },
+          small:    { deviceKey: 'est_net_device_small',    descKey: 'est_net_desc_small',    fitKey: 'est_net_fit_small',    recommended: false },
+          standard: { deviceKey: 'est_net_device_standard', descKey: 'est_net_desc_standard', fitKey: 'est_net_fit_standard', recommended: true  },
+          advanced: { deviceKey: 'est_net_device_advanced', descKey: 'est_net_desc_advanced', fitKey: 'est_net_fit_advanced', recommended: false }
+        };
+        var ni = NET_INFO[netSize];
+        if (ni && ni.warn) {
+          netDetailEl.style.background   = 'rgba(245,158,11,0.05)';
+          netDetailEl.style.borderColor  = 'rgba(245,158,11,0.22)';
+          var noneText = (tn && tn.est_net_desc_none) || 'No networking hardware selected. Suitable only if you already have a reliable business-grade network in place.';
+          netDetailEl.innerHTML = '<span style="color:var(--amber,#f59e0b);font-size:0.82rem;">⚠ </span><span style="color:var(--muted-2);">' + noneText + '</span>';
+        } else if (ni) {
+          netDetailEl.style.background   = 'rgba(0,194,203,0.05)';
+          netDetailEl.style.borderColor  = 'rgba(0,194,203,0.18)';
+          var netDevice = (tn && tn[ni.deviceKey]) || '';
+          var netDesc   = (tn && tn[ni.descKey])   || '';
+          var netFit    = (tn && tn[ni.fitKey])     || '';
+          var netRec    = ni.recommended ? ' <span style="background:rgba(0,194,203,0.14);color:var(--cyan);font-size:0.71rem;padding:1px 8px;border-radius:20px;margin-left:6px;font-weight:600;vertical-align:middle;">' + ((tn && tn.est_net_recommended) || 'recommended') + '</span>' : '';
+          netDetailEl.innerHTML =
+            '<span style="color:var(--cyan);font-weight:600;">' + netDevice + '</span>' + netRec +
+            '<br><span style="color:var(--muted-2);">' + netDesc + '</span>' +
+            (netFit ? '<br><span style="color:var(--cyan-3);font-size:0.77rem;margin-top:3px;display:block;">' + netFit + '</span>' : '');
+        }
+      }
+
+      /* Cameras slider */
+      var camSlider = document.getElementById('est-cameras');
+      var camCount  = camSlider ? Math.max(0, parseInt(camSlider.value, 10) || 0) : 0;
+      setOut('est-cameras-display', camCount);
+      if (camSlider) updateSliderFill(camSlider);
+      var camType   = sel('est-cam-type');
+      var camPrice  = camType === 'advanced' ? cfg.cameras.advanced : cfg.cameras.essential;
+      var camRec    = sel('est-cam-recording');
+      var recPrice  = { none: 0, basic: cfg.cameras.recordingBasic, advanced: cfg.cameras.recordingAdvanced }[camRec] || 0;
+      var camHWSubtotal     = (camCount * camPrice) + (camCount > 0 ? recPrice : 0);
+      var camManagedMonthly = chk('est-managed-cameras') ? cfg.managed.cameraMonthly : 0;
+
+      /* Totals */
+      /* Cloud backup */
+      var backupPlan    = sel('est-backup-plan');
+      var backupMonthly = cfg.backup[backupPlan] !== undefined ? cfg.backup[backupPlan] : 0;
+
+      /* Backup detail card */
+      var bkDetailEl = document.getElementById('est-bk-detail');
+      if (bkDetailEl) {
+        var t3 = window.PAGE_TRANSLATIONS && window.PAGE_TRANSLATIONS[lang];
+        var bkInfo = {
+          essentials: { storage: '500 GB', key: 'est_bk_info_essentials', fallback: 'Daily backup checks · Basic retention policy · Restore support (business hours)' },
+          standard:   { storage: '2 TB',   key: 'est_bk_info_standard',   fallback: 'Daily monitoring · 30–90 day retention · Priority restore support · Monthly health report' },
+          plus:       { storage: '5 TB',   key: 'est_bk_info_plus',       fallback: 'Monitoring & alerting · Long-term retention options · Priority restores · Monthly report · Quarterly review' },
+          archive:    { storage: '5 TB',   key: 'est_bk_info_archive',    fallback: 'Long-term archive storage · Compliance-style retention · Low-cost cold storage · Retrieval billed separately' }
+        };
+        if (backupPlan === 'none') {
+          bkDetailEl.style.display = 'none';
+        } else {
+          var bi = bkInfo[backupPlan] || {};
+          bkDetailEl.style.display = 'block';
+          bkDetailEl.innerHTML = '<span style="color:var(--cyan);font-weight:600;">' + fmtEUR(backupMonthly) + '/month</span> &nbsp;·&nbsp; <span style="color:var(--muted-2);">' + bi.storage + ' ' + ((t3 && t3.est_bk_included) || 'included') + '</span><br><span style="color:var(--muted-2);">' + ((t3 && t3[bi.key]) || bi.fallback) + '</span>';
+        }
+      }
+
+      var hardwareSubtotal = netHWSubtotal + camHWSubtotal;
+      var monthlySoftware  = microsoftMonthly + defenderMonthly;
+      var managedITMonthly = chk('est-managed-it') ? (cfg.managed.itBaseMonthly + users * cfg.managed.itPerUserMonthly) : 0;
+      var monthlyManaged   = netManagedMonthly + camManagedMonthly + managedITMonthly;
+
+      var servicesSetup = 0;
+      if (chk('est-email-migration'))   servicesSetup += cfg.services.emailMigration;
+      if (chk('est-sharepoint-setup'))  servicesSetup += cfg.services.sharePointSetup;
+      if (chk('est-remote-onboarding')) servicesSetup += cfg.services.remoteOnboarding;
+      var oneTimeSetup    = installCost + servicesSetup;
+      var firstMonthTotal = hardwareSubtotal + monthlySoftware + monthlyManaged + backupMonthly + oneTimeSetup;
+
+      /* Outputs */
+      setOut('est-out-hardware',    fmtEUR(hardwareSubtotal));
+      setOut('est-out-software',    fmtEUR(microsoftMonthly));
+      setOut('est-out-defender',    fmtEUR(defenderMonthly));
+      setOut('est-out-managed',     fmtEUR(monthlyManaged));
+      setOut('est-out-backup',      fmtEUR(backupMonthly));
+      setOut('est-out-setup',       fmtEUR(oneTimeSetup));
+      setOut('est-out-first-month', fmtEUR(firstMonthTotal));
+
+      /* Summary line */
+      var t   = window.PAGE_TRANSLATIONS && window.PAGE_TRANSLATIONS[lang];
+      var pre    = (t && t.est_summary_prefix)  || (lang === 'pt' ? 'Estimativa para'       : 'Estimate based on');
+      var uLabel = (t && t.est_summary_users)   || (lang === 'pt' ? 'utilizadores'           : 'users');
+      var cLabel = (t && t.est_summary_cameras) || (lang === 'pt' ? 'câmaras'                : 'cameras');
+      var suf    = (t && t.est_summary_suffix)  || (lang === 'pt' ? 'e opções selecionadas.' : 'and selected options.');
+      setOut('est-out-summary', pre + ' ' + users + ' ' + uLabel + ', ' + camCount + ' ' + cLabel + ', ' + suf);
+    };
+
+    /* ── Preset loader ── */
+    window.applyPreset = function(preset) {
+      var presets = {
+        small: {
+          users: 3,
+          msPlan: 'basic',
+          defenderPlan: 'defender',
+          netSize: 'small',
+          extraAPs: 0,
+          addSwitch: false,
+          addInstall: false,
+          managedNetwork: false,
+          cameras: 1,
+          camType: 'essential',
+          camRecording: 'none',
+          managedCameras: false,
+          emailMigration: false,
+          sharePointSetup: false,
+          remoteOnboarding: false,
+          managedIT: false,
+          backupPlan: 'essentials'
+        },
+        office: {
+          users: 8,
+          msPlan: 'basic',
+          defenderPlan: 'defender',
+          netSize: 'standard',
+          extraAPs: 0,
+          addSwitch: false,
+          addInstall: false,
+          managedNetwork: false,
+          cameras: 2,
+          camType: 'essential',
+          camRecording: 'none',
+          managedCameras: false,
+          emailMigration: false,
+          sharePointSetup: false,
+          remoteOnboarding: false,
+          managedIT: false,
+          backupPlan: 'standard'
+        },
+        growing: {
+          users: 15,
+          msPlan: 'standard',
+          defenderPlan: 'defender',
+          netSize: 'advanced',
+          extraAPs: 2,
+          addSwitch: true,
+          addInstall: true,
+          managedNetwork: true,
+          cameras: 4,
+          camType: 'advanced',
+          camRecording: 'basic',
+          managedCameras: true,
+          emailMigration: true,
+          sharePointSetup: true,
+          remoteOnboarding: true,
+          managedIT: true,
+          backupPlan: 'plus'
+        }
+      };
+
+      var p = presets[preset];
+      if (!p) return;
+
+      /* Apply values */
+      function setVal(id, v) { var el = document.getElementById(id); if (el) el.value = v; }
+      function setChk(id, v) { var el = document.getElementById(id); if (el) el.checked = v; }
+
+      setVal('est-users',         p.users);
+      setVal('est-ms-plan',       p.msPlan);
+      setVal('est-defender-plan', p.defenderPlan || 'defender');
+      setVal('est-net-size',      p.netSize);
+      setVal('est-extra-aps',    p.extraAPs);
+      setChk('est-add-switch',       p.addSwitch);
+      setChk('est-add-install',      p.addInstall);
+      setChk('est-managed-network',  p.managedNetwork);
+      setVal('est-cameras',      p.cameras);
+      setVal('est-cam-type',     p.camType);
+      setVal('est-cam-recording',p.camRecording);
+      setChk('est-managed-cameras',  p.managedCameras);
+      setChk('est-email-migration',  p.emailMigration);
+      setChk('est-sharepoint-setup', p.sharePointSetup);
+      setChk('est-remote-onboarding',p.remoteOnboarding);
+      setChk('est-managed-it',       p.managedIT);
+      setVal('est-backup-plan',      p.backupPlan);
+
+      /* Update active preset button state */
+      document.querySelectorAll('.est-preset-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.preset === preset);
+      });
+
+      /* Recalculate */
+      window.recalcEstimator();
+    };
+
+    /* ── Init & event wiring ──
+       Script is at end of <body> so DOM is already parsed — call directly,
+       no need to wait for DOMContentLoaded (which has already fired). ── */
+    function initEstimator() {
+      var changeIds = ['est-ms-plan','est-defender-plan','est-net-size','est-cam-type','est-cam-recording',
+                       'est-add-switch','est-add-install','est-managed-network',
+                       'est-managed-cameras','est-email-migration','est-sharepoint-setup',
+                       'est-remote-onboarding','est-managed-it','est-backup-plan'];
+      var inputIds  = ['est-users','est-extra-aps','est-cameras'];
+
+      changeIds.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('change', window.recalcEstimator);
+      });
+      inputIds.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('input', window.recalcEstimator);
+      });
+
+      window.recalcEstimator();
+    }
+
+    /* Guard: if somehow called before DOM is ready, wait; otherwise run now */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initEstimator);
+    } else {
+      initEstimator();
+    }
+
+  })();
+  </script>
+
+  <!-- lang.js MUST load first -->
+  <script src="js/lang.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/pages/pricing.js?v=7"></script>
+  <script src="js/nav.js" defer></script>
 </body>
 </html>
